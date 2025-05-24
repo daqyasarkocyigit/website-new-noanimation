@@ -2,26 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Improved accessibility and performance */
+:root {
+  --min-tap-target-height: 44px;
+}
+
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   @apply text-cool-gray-800 antialiased;
   touch-action: manipulation;
+  text-rendering: optimizeLegibility;
 }
 
+/* Improved contrast ratios for accessibility */
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red-600 via-slate-blue-600 to-brand-red-500;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red-700 via-slate-blue-700 to-brand-red-700;
 }
 
 .btn-primary {
-  @apply px-6 py-3 min-h-[44px] rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1 active:translate-y-0;
+  @apply px-6 py-3 min-h-[var(--min-tap-target-height)] rounded-md bg-gradient-to-r from-brand-red-700 to-brand-red-800 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-red-500 focus:ring-offset-2;
 }
 
 .btn-secondary {
-  @apply px-6 py-3 min-h-[44px] rounded-md border border-brand-red-400 text-brand-red-600 font-medium transition-all duration-300 hover:bg-brand-red-50 hover:shadow-sm active:bg-brand-red-100;
+  @apply px-6 py-3 min-h-[var(--min-tap-target-height)] rounded-md border-2 border-brand-red-600 text-brand-red-700 font-medium transition-all duration-300 hover:bg-brand-red-50 hover:shadow-sm active:bg-brand-red-100 focus:outline-none focus:ring-2 focus:ring-brand-red-500 focus:ring-offset-2;
 }
 
 .section-title {
@@ -30,7 +38,7 @@ body {
 
 .section-title::after {
   content: '';
-  @apply block w-16 h-1 bg-gradient-to-r from-brand-red-500 to-slate-blue-500 mt-2;
+  @apply block w-16 h-1 bg-gradient-to-r from-brand-red-600 to-slate-blue-600 mt-2;
 }
 
 .card-hover {
@@ -38,16 +46,18 @@ body {
 }
 
 .nav-link {
-  @apply relative text-cool-gray-800 hover:text-brand-red-500 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red-500 after:transition-all after:duration-300 hover:after:w-full min-h-[44px] flex items-center;
+  @apply relative text-cool-gray-800 hover:text-brand-red-700 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red-600 after:transition-all after:duration-300 hover:after:w-full min-h-[var(--min-tap-target-height)] flex items-center;
 }
 
 .nav-link.active {
-  @apply text-brand-red-500 after:w-full;
+  @apply text-brand-red-700 after:w-full;
 }
 
+/* Performance optimized animations */
 .animate-bg {
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
+  will-change: background-position;
 }
 
 @keyframes gradient {
@@ -66,26 +76,10 @@ body {
   filter: blur(100px);
   z-index: -1;
   transform: translateZ(0);
+  will-change: transform;
 }
 
-.hero-particles {
-  @apply absolute inset-0 z-0;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-cool-gray-100;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-brand-red-400 to-slate-blue-500 rounded-full;
-}
-
-/* Mobile optimizations */
+/* Improved mobile experience */
 @media (max-width: 768px) {
   .container {
     @apply px-4;
@@ -98,9 +92,14 @@ body {
   .btn-primary, .btn-secondary {
     @apply w-full;
   }
+
+  /* Improved touch targets */
+  .nav-link, button, a {
+    @apply min-h-[var(--min-tap-target-height)] px-4;
+  }
 }
 
-/* Snap scrolling for hero and CTA sections */
+/* Enhanced snap scrolling */
 .snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -110,4 +109,24 @@ body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+}
+
+/* Improved accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+:focus-visible {
+  @apply outline-none ring-2 ring-brand-red-500 ring-offset-2;
+}
+
+/* Skip to main content link for accessibility */
+.skip-to-content {
+  @apply sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-brand-red-700 focus:shadow-lg;
 }
