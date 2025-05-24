@@ -6,11 +6,11 @@ import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden animated-bg">
+    <section className="h-screen flex items-center justify-center relative overflow-hidden animated-bg">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center">
           <motion.h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -69,6 +69,7 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Background Elements */}
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-red-500/5 via-slate-blue-500/5 to-brand-red-400/5 pointer-events-none"></div>
       <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-electric-blue-400/10 rounded-full filter blur-3xl pointer-events-none"></div>
       <div className="absolute top-32 -left-10 w-72 h-72 bg-midnight-purple-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
     </section>
