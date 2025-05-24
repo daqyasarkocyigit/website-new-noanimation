@@ -4,11 +4,13 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  @apply text-cool-gray-800 antialiased;
+  @apply text-cool-gray-800 antialiased text-base;
   touch-action: manipulation;
 }
 
@@ -17,28 +19,28 @@ body {
 }
 
 .btn-primary {
-  @apply px-6 py-3 min-h-[44px] rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1 active:translate-y-0;
+  @apply px-6 py-3 min-h-[44px] rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium shadow-lg shadow-brand-red-500/10 transition-all duration-300 hover:shadow-xl hover:shadow-brand-red-500/20 transform hover:-translate-y-1 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-red-500 focus:ring-offset-2;
 }
 
 .btn-secondary {
-  @apply px-6 py-3 min-h-[44px] rounded-md border border-brand-red-400 text-brand-red-600 font-medium transition-all duration-300 hover:bg-brand-red-50 hover:shadow-sm active:bg-brand-red-100;
+  @apply px-6 py-3 min-h-[44px] rounded-md border-2 border-brand-red-400 text-brand-red-600 font-medium transition-all duration-300 hover:bg-brand-red-50 hover:shadow-lg hover:shadow-brand-red-500/10 active:bg-brand-red-100 focus:outline-none focus:ring-2 focus:ring-brand-red-400 focus:ring-offset-2;
 }
 
 .section-title {
-  @apply text-2xl md:text-3xl lg:text-4xl font-bold mb-4 relative;
+  @apply text-2xl md:text-3xl lg:text-4xl font-bold mb-6 relative inline-block;
 }
 
 .section-title::after {
   content: '';
-  @apply block w-16 h-1 bg-gradient-to-r from-brand-red-500 to-slate-blue-500 mt-2;
+  @apply block w-16 h-1 bg-gradient-to-r from-brand-red-500 to-slate-blue-500 mt-2 rounded-full;
 }
 
 .card-hover {
-  @apply transition-transform duration-300 hover:shadow-xl hover:shadow-brand-red-500/10 transform hover:-translate-y-1 active:translate-y-0;
+  @apply transition-all duration-300 hover:shadow-xl hover:shadow-brand-red-500/10 transform hover:-translate-y-1 active:translate-y-0;
 }
 
 .nav-link {
-  @apply relative text-cool-gray-800 hover:text-brand-red-500 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red-500 after:transition-all after:duration-300 hover:after:w-full min-h-[44px] flex items-center;
+  @apply relative text-cool-gray-800 hover:text-brand-red-500 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red-500 after:transition-all after:duration-300 hover:after:w-full min-h-[44px] flex items-center text-base font-medium;
 }
 
 .nav-link.active {
@@ -62,45 +64,12 @@ body {
 
 .animated-bg::before {
   content: "";
-  @apply absolute inset-0 bg-gradient-to-br from-brand-red-500/10 via-slate-blue-500/10 to-brand-red-400/10 animate-bg;
+  @apply absolute inset-0 bg-gradient-to-br from-brand-red-500/5 via-slate-blue-500/5 to-brand-red-400/5 animate-bg;
   filter: blur(100px);
   z-index: -1;
   transform: translateZ(0);
 }
 
-.hero-particles {
-  @apply absolute inset-0 z-0;
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  @apply bg-cool-gray-100;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-brand-red-400 to-slate-blue-500 rounded-full;
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  .container {
-    @apply px-4;
-  }
-  
-  .section-title {
-    @apply text-2xl;
-  }
-  
-  .btn-primary, .btn-secondary {
-    @apply w-full;
-  }
-}
-
-/* Snap scrolling for hero and CTA sections */
 .snap-section {
   scroll-snap-align: start;
   scroll-snap-stop: always;
@@ -110,4 +79,50 @@ body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+}
+
+/* Enhanced accessibility focus styles */
+*:focus-visible {
+  @apply outline-none ring-2 ring-brand-red-500 ring-offset-2;
+}
+
+/* Improved button touch targets for mobile */
+@media (max-width: 768px) {
+  .btn-primary,
+  .btn-secondary {
+    @apply min-h-[48px] px-8;
+  }
+  
+  .nav-link {
+    @apply min-h-[48px] py-3;
+  }
+}
+
+/* Enhanced typography scale */
+h1 {
+  @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl font-semibold tracking-tight;
+}
+
+p {
+  @apply text-base md:text-lg leading-relaxed text-cool-gray-700;
+}
+
+/* Improved form elements */
+input,
+select,
+textarea {
+  @apply w-full px-4 py-3 rounded-md border-2 border-cool-gray-200 focus:border-brand-red-500 focus:ring-2 focus:ring-brand-red-500/20 transition-colors duration-200;
+}
+
+/* Enhanced card styles */
+.card {
+  @apply bg-white rounded-xl shadow-lg p-6 transition-all duration-300;
 }
