@@ -2,14 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: 'Inter', sans-serif;
   @apply text-cool-gray-800 antialiased;
-  touch-action: manipulation;
 }
 
 .gradient-text {
@@ -17,15 +12,15 @@ body {
 }
 
 .btn-primary {
-  @apply px-6 py-3 min-h-[44px] rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1 active:translate-y-0;
+  @apply px-6 py-3 rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1;
 }
 
 .btn-secondary {
-  @apply px-6 py-3 min-h-[44px] rounded-md border border-brand-red-400 text-brand-red-600 font-medium transition-all duration-300 hover:bg-brand-red-50 hover:shadow-sm active:bg-brand-red-100;
+  @apply px-6 py-3 rounded-md border border-brand-red-400 text-brand-red-600 font-medium transition-all duration-300 hover:bg-brand-red-50 hover:shadow-sm;
 }
 
 .section-title {
-  @apply text-2xl md:text-3xl lg:text-4xl font-bold mb-4 relative;
+  @apply text-3xl md:text-4xl font-bold mb-4 relative;
 }
 
 .section-title::after {
@@ -34,11 +29,11 @@ body {
 }
 
 .card-hover {
-  @apply transition-transform duration-300 hover:shadow-xl hover:shadow-brand-red-500/10 transform hover:-translate-y-1 active:translate-y-0;
+  @apply transition-all duration-300 hover:shadow-xl hover:shadow-brand-red-500/10 transform hover:-translate-y-1;
 }
 
 .nav-link {
-  @apply relative text-cool-gray-800 hover:text-brand-red-500 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red-500 after:transition-all after:duration-300 hover:after:w-full min-h-[44px] flex items-center;
+  @apply relative text-cool-gray-800 hover:text-brand-red-500 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red-500 after:transition-all after:duration-300 hover:after:w-full;
 }
 
 .nav-link.active {
@@ -51,9 +46,15 @@ body {
 }
 
 @keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .animated-bg {
@@ -65,7 +66,6 @@ body {
   @apply absolute inset-0 bg-gradient-to-br from-brand-red-500/10 via-slate-blue-500/10 to-brand-red-400/10 animate-bg;
   filter: blur(100px);
   z-index: -1;
-  transform: translateZ(0);
 }
 
 .hero-particles {
@@ -83,31 +83,4 @@ body {
 
 ::-webkit-scrollbar-thumb {
   @apply bg-gradient-to-b from-brand-red-400 to-slate-blue-500 rounded-full;
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  .container {
-    @apply px-4;
-  }
-  
-  .section-title {
-    @apply text-2xl;
-  }
-  
-  .btn-primary, .btn-secondary {
-    @apply w-full;
-  }
-}
-
-/* Snap scrolling for hero and CTA sections */
-.snap-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-}
-
-.snap-container {
-  scroll-snap-type: y mandatory;
-  overflow-y: scroll;
-  height: 100vh;
 }

@@ -6,11 +6,11 @@ import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden animated-bg snap-section min-h-[100vh] flex items-center">
+    <section className="pt-24 pb-16 md:pt-32 md:pb-24 relative overflow-hidden animated-bg">
       <div className="container mx-auto px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center">
           <motion.h1 
-            className="text-3xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
           </motion.h1>
 
           <motion.p
-            className="text-base md:text-xl text-gray-600 mb-8 px-4 md:px-0"
+            className="text-lg md:text-xl text-gray-600 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -43,27 +43,15 @@ const Hero: React.FC = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center px-4 md:px-0"
+            className="flex flex-col sm:flex-row gap-4 justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link 
-              to="/talent" 
-              className="btn-primary"
-              onClick={() => {
-                document.getElementById('hire-talent')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
+            <Link to="/talent" className="btn-primary">
               Hire Talent
             </Link>
-            <Link 
-              to="/services" 
-              className="btn-secondary flex items-center justify-center"
-              onClick={() => {
-                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
+            <Link to="/services" className="btn-secondary flex items-center justify-center">
               Our Services <ArrowRight size={16} className="ml-2" />
             </Link>
           </motion.div>
@@ -71,8 +59,8 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Background Elements */}
-      <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-electric-blue-400/10 rounded-full filter blur-3xl transform-gpu"></div>
-      <div className="absolute top-32 -left-10 w-72 h-72 bg-midnight-purple-500/10 rounded-full filter blur-3xl transform-gpu"></div>
+      <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-electric-blue-400/10 rounded-full filter blur-3xl"></div>
+      <div className="absolute top-32 -left-10 w-72 h-72 bg-midnight-purple-500/10 rounded-full filter blur-3xl"></div>
     </section>
   );
 };
