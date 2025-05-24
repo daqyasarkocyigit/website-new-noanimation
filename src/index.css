@@ -8,36 +8,36 @@ body {
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red-600 via-slate-blue-600 to-brand-red-500;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-electric-blue-500 via-midnight-purple-500 to-electric-blue-400;
 }
 
 .btn-primary {
-  @apply px-6 py-3 rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1;
+  @apply px-6 py-3 rounded-lg bg-gradient-to-r from-electric-blue-500 to-electric-blue-600 text-white font-semibold shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-electric-blue-500/20 transform hover:-translate-y-1 focus:ring-2 focus:ring-electric-blue-400 focus:ring-offset-2;
 }
 
 .btn-secondary {
-  @apply px-6 py-3 rounded-md border border-brand-red-400 text-brand-red-600 font-medium transition-all duration-300 hover:bg-brand-red-50 hover:shadow-sm;
+  @apply px-6 py-3 rounded-lg border-2 border-electric-blue-400 text-electric-blue-600 font-semibold transition-all duration-300 hover:bg-electric-blue-50 hover:border-electric-blue-500 hover:text-electric-blue-700 focus:ring-2 focus:ring-electric-blue-400 focus:ring-offset-2;
 }
 
 .section-title {
-  @apply text-3xl md:text-4xl font-bold mb-4 relative;
+  @apply text-3xl md:text-4xl font-bold mb-6 relative;
 }
 
 .section-title::after {
   content: '';
-  @apply block w-16 h-1 bg-gradient-to-r from-brand-red-500 to-slate-blue-500 mt-2;
+  @apply block w-20 h-1 bg-gradient-to-r from-electric-blue-500 to-midnight-purple-500 mt-4;
 }
 
 .card-hover {
-  @apply transition-all duration-300 hover:shadow-xl hover:shadow-brand-red-500/10 transform hover:-translate-y-1;
+  @apply transition-all duration-300 hover:shadow-xl hover:shadow-electric-blue-500/10 transform hover:-translate-y-1;
 }
 
 .nav-link {
-  @apply relative text-cool-gray-800 hover:text-brand-red-500 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red-500 after:transition-all after:duration-300 hover:after:w-full;
+  @apply relative text-cool-gray-800 font-medium hover:text-electric-blue-600 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-electric-blue-500 after:transition-all after:duration-300 hover:after:w-full;
 }
 
 .nav-link.active {
-  @apply text-brand-red-500 after:w-full;
+  @apply text-electric-blue-600 after:w-full;
 }
 
 .animate-bg {
@@ -46,15 +46,9 @@ body {
 }
 
 @keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .animated-bg {
@@ -63,13 +57,9 @@ body {
 
 .animated-bg::before {
   content: "";
-  @apply absolute inset-0 bg-gradient-to-br from-brand-red-500/10 via-slate-blue-500/10 to-brand-red-400/10 animate-bg;
+  @apply absolute inset-0 bg-gradient-to-br from-electric-blue-500/5 via-midnight-purple-500/5 to-electric-blue-400/5 animate-bg;
   filter: blur(100px);
   z-index: -1;
-}
-
-.hero-particles {
-  @apply absolute inset-0 z-0;
 }
 
 /* Scrollbar styling */
@@ -78,9 +68,37 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-cool-gray-100;
+  @apply bg-gray-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-brand-red-400 to-slate-blue-500 rounded-full;
+  @apply bg-gradient-to-b from-electric-blue-400 to-midnight-purple-500 rounded-full;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  @apply tracking-tight;
+}
+
+p {
+  @apply leading-relaxed;
+}
+
+/* Form elements */
+input, select, textarea {
+  @apply transition-all duration-200;
+}
+
+input:focus, select:focus, textarea:focus {
+  @apply ring-2 ring-electric-blue-400 ring-offset-2 outline-none;
+}
+
+/* List styling */
+ul.feature-list li {
+  @apply flex items-start space-x-3;
+}
+
+/* Card styling */
+.feature-card {
+  @apply bg-white rounded-xl p-6 shadow-lg transition-all duration-300 hover:shadow-xl hover:shadow-electric-blue-500/10;
 }
