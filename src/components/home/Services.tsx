@@ -16,7 +16,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, lin
   return (
     <AnimatedSection delay={delay}>
       <Link to={link} className="block h-full">
-        <div className="bg-white p-8 rounded-xl shadow-lg card-hover h-full flex flex-col">
+        <div className="bg-white/80 backdrop-blur-sm p-8 rounded-xl shadow-lg card-hover h-full flex flex-col">
           <div className="flex items-center justify-center w-16 h-16 mb-6 text-electric-blue-500">
             {icon}
           </div>
@@ -41,7 +41,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, lin
 
 const Services: React.FC = () => {
   return (
-    <section className="py-16 md:py-24" id="services">
+    <section className="py-16 md:py-24 -mt-24 relative z-20" id="services">
       <div className="container mx-auto px-4 md:px-6">
         <AnimatedSection className="mb-12 text-center">
           <h2 className="section-title mx-auto">Our Services</h2>
