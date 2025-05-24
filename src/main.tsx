@@ -1,10 +1,24 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App.tsx';
 import './index.css';
+
+const App = lazy(() => import('./App.tsx'));
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <Suspense fallback={
+      <div className="h-screen flex items-center justify-center">
+        <div className="animate-pulse text-brand-red-600 text-xl">Loading...</div>
+      </div>
+    }>
+      <App />
+    </Suspense>
   </StrictMode>
 );
+
+// Register service worker
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(console.error);
+  });
+}
