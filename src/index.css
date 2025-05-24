@@ -4,45 +4,46 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  @apply text-cool-gray-800 antialiased;
+  @apply text-gray-800 antialiased;
   touch-action: manipulation;
 }
 
 .gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red-600 via-slate-blue-600 to-brand-red-500;
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-electric-blue-600 via-midnight-purple-600 to-electric-blue-500;
 }
 
 .btn-primary {
-  @apply px-6 py-3 min-h-[44px] rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1 active:translate-y-0;
+  @apply px-6 py-3 min-h-[44px] rounded-md bg-gradient-to-r from-electric-blue-600 to-electric-blue-700 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-electric-blue-500/20 transform hover:-translate-y-1 active:translate-y-0;
 }
 
 .btn-secondary {
-  @apply px-6 py-3 min-h-[44px] rounded-md border border-brand-red-400 text-brand-red-600 font-medium transition-all duration-300 hover:bg-brand-red-50 hover:shadow-sm active:bg-brand-red-100;
+  @apply px-6 py-3 min-h-[44px] rounded-md border border-electric-blue-400 text-electric-blue-600 font-medium transition-all duration-300 hover:bg-electric-blue-50 hover:shadow-sm active:bg-electric-blue-100;
 }
 
 .section-title {
-  @apply text-2xl md:text-3xl lg:text-4xl font-bold mb-4 relative;
+  @apply text-2xl md:text-3xl lg:text-4xl font-bold mb-4 relative tracking-tight;
 }
 
 .section-title::after {
   content: '';
-  @apply block w-16 h-1 bg-gradient-to-r from-brand-red-500 to-slate-blue-500 mt-2;
+  @apply block w-16 h-1 bg-gradient-to-r from-electric-blue-500 to-midnight-purple-500 mt-2;
 }
 
 .card-hover {
-  @apply transition-transform duration-300 hover:shadow-xl hover:shadow-brand-red-500/10 transform hover:-translate-y-1 active:translate-y-0;
+  @apply transition-transform duration-300 hover:shadow-xl hover:shadow-electric-blue-500/10 transform hover:-translate-y-1 active:translate-y-0;
 }
 
 .nav-link {
-  @apply relative text-cool-gray-800 hover:text-brand-red-500 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red-500 after:transition-all after:duration-300 hover:after:w-full min-h-[44px] flex items-center;
+  @apply relative text-gray-800 hover:text-electric-blue-500 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-electric-blue-500 after:transition-all after:duration-300 hover:after:w-full min-h-[44px] flex items-center;
 }
 
 .nav-link.active {
-  @apply text-brand-red-500 after:w-full;
+  @apply text-electric-blue-500 after:w-full;
 }
 
 .animate-bg {
@@ -62,7 +63,7 @@ body {
 
 .animated-bg::before {
   content: "";
-  @apply absolute inset-0 bg-gradient-to-br from-brand-red-500/10 via-slate-blue-500/10 to-brand-red-400/10 animate-bg;
+  @apply absolute inset-0 bg-gradient-to-br from-electric-blue-500/10 via-midnight-purple-500/10 to-electric-blue-400/10 animate-bg;
   filter: blur(100px);
   z-index: -1;
   transform: translateZ(0);
@@ -78,11 +79,11 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-cool-gray-100;
+  @apply bg-gray-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-brand-red-400 to-slate-blue-500 rounded-full;
+  @apply bg-gradient-to-b from-electric-blue-400 to-midnight-purple-500 rounded-full;
 }
 
 /* Mobile optimizations */
@@ -110,4 +111,23 @@ body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
   height: 100vh;
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+  @apply tracking-tight;
+}
+
+p {
+  @apply leading-relaxed;
+}
+
+/* Improved touch targets for mobile */
+button, a {
+  @apply touch-manipulation;
+}
+
+/* Enhanced focus styles */
+*:focus-visible {
+  @apply outline-none ring-2 ring-electric-blue-500 ring-offset-2;
 }
