@@ -6,14 +6,18 @@
 * {
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
+  will-change: auto;
 }
 
+/* Optimize scrolling performance */
 body {
   font-family: 'Inter', sans-serif;
   @apply text-cool-gray-800 antialiased;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Reduce motion on mobile */
@@ -21,10 +25,22 @@ body {
   .animated-bg::before {
     animation: none;
     background-size: 100% 100%;
+    opacity: 0.05;
   }
   
   .card-hover {
     @apply transition-none transform-none hover:transform-none;
+  }
+
+  /* Disable complex animations on mobile */
+  .motion-safe:motion-reduce {
+    animation: none;
+    transform: none !important;
+  }
+
+  /* Simplify shadows for better performance */
+  .shadow-lg, .shadow-xl {
+    @apply shadow-md;
   }
 }
 
@@ -32,13 +48,14 @@ body {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red-600 via-slate-blue-600 to-brand-red-500;
 }
 
+/* Optimize button rendering */
 .btn-primary {
-  @apply px-6 py-3 rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1;
+  @apply px-6 py-3 rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-transform duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1;
   will-change: transform;
 }
 
 .btn-secondary {
-  @apply px-6 py-3 rounded-md border border-brand-red-400 text-brand-red-600 font-medium transition-all duration-300 hover:bg-brand-red-50 hover:shadow-sm;
+  @apply px-6 py-3 rounded-md border border-brand-red-400 text-brand-red-600 font-medium transition-colors duration-300 hover:bg-brand-red-50 hover:shadow-sm;
 }
 
 .section-title {
@@ -50,8 +67,9 @@ body {
   @apply block w-16 h-1 bg-gradient-to-r from-brand-red-500 to-slate-blue-500 mt-2;
 }
 
+/* Optimize card transitions */
 .card-hover {
-  @apply transition-all duration-300 hover:shadow-xl hover:shadow-brand-red-500/10 transform hover:-translate-y-1;
+  @apply transition-transform duration-300 hover:shadow-xl hover:shadow-brand-red-500/10 transform hover:-translate-y-1;
   will-change: transform;
 }
 
@@ -63,6 +81,7 @@ body {
   @apply text-brand-red-500;
 }
 
+/* Optimize background animations */
 .animated-bg {
   @apply relative overflow-hidden;
 }
@@ -84,4 +103,19 @@ body {
 
 ::-webkit-scrollbar-thumb {
   @apply bg-gradient-to-b from-brand-red-400 to-slate-blue-500 rounded-full;
+}
+
+/* Optimize image loading */
+img {
+  @apply transition-opacity duration-300;
+  loading: lazy;
+}
+
+/* Reduce layout shifts */
+.aspect-w-16 {
+  @apply relative pb-[56.25%];
+}
+
+.aspect-w-16 > * {
+  @apply absolute inset-0 w-full h-full object-cover;
 }

@@ -21,8 +21,16 @@ export default defineConfig({
     terserOptions: {
       compress: {
         drop_console: true,
-        drop_debugger: true
+        drop_debugger: true,
+        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn']
       }
+    },
+    reportCompressedSize: false,
+    chunkSizeWarningLimit: 1000
+  },
+  server: {
+    headers: {
+      'Cache-Control': 'public, max-age=31536000'
     }
   }
 });
