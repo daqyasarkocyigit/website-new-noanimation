@@ -6,11 +6,11 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Logo and About */}
-          <div className="space-y-4">
-            <h3 className="text-xl font-bold text-brand-red-600">DAQ Consulting</h3>
-            <p className="text-gray-400">
+          <div className="flex flex-col">
+            <h3 className="text-xl font-bold text-brand-red-600 mb-4">DAQ Consulting</h3>
+            <p className="text-gray-400 mb-4">
               Empowering Data-Driven Decisions with AI & Cloud. We build modern, scalable data ecosystems tailored to your business.
             </p>
             <p className="text-gray-500 italic">
@@ -19,9 +19,9 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Quick Links */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
-            <ul className="space-y-2.5">
+          <div className="flex flex-col">
+            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-3">
               <li>
                 <Link to="/" className="text-gray-400 hover:text-electric-blue-400 transition-colors">
                   Home
@@ -51,9 +51,9 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Industries */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Industries</h3>
-            <ul className="space-y-2.5">
+          <div className="flex flex-col">
+            <h3 className="text-lg font-semibold mb-4">Industries</h3>
+            <ul className="space-y-3">
               <li className="text-gray-400">Retail & Consumer Goods</li>
               <li className="text-gray-400">Healthcare & Life Sciences</li>
               <li className="text-gray-400">Financial Services</li>
@@ -64,8 +64,8 @@ const Footer: React.FC = () => {
           </div>
 
           {/* Contact */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Contact Us</h3>
+          <div className="flex flex-col">
+            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
             <div className="flex items-center space-x-3">
               <Mail size={20} className="text-electric-blue-400 flex-shrink-0" />
               <a href="mailto:info@daqconsulting.com" className="text-gray-400 hover:text-electric-blue-400 transition-colors">
