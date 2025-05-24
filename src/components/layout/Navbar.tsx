@@ -35,9 +35,6 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <NavLink to="/" className="nav-link">
-              Home
-            </NavLink>
             <div className="relative group">
               <button 
                 className="flex items-center nav-link"
@@ -124,13 +121,6 @@ const Navbar: React.FC = () => {
           }}
         >
           <div className="px-4 py-2 bg-white/40 backdrop-blur-sm">
-            <NavLink
-              to="/"
-              className="block py-3 border-b border-gray-200/50"
-              onClick={() => setIsOpen(false)}
-            >
-              Home
-            </NavLink>
             <button
               className="flex justify-between items-center w-full py-3 border-b border-gray-200/50"
               onClick={() => setServicesOpen(!servicesOpen)}
