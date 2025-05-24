@@ -47,37 +47,32 @@ const Navbar: React.FC = () => {
               >
                 Services <ChevronDown size={16} className="ml-1 transition-transform duration-200 group-hover:rotate-180" />
               </button>
-              <div className="absolute left-0 mt-2 w-64 bg-gradient-to-br from-white/95 to-gray-50/95 backdrop-blur-sm rounded-xl overflow-hidden transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform group-hover:translate-y-0 translate-y-2 shadow-lg border border-gray-100/20">
-                <Link 
-                  to="/services#data-engineering" 
-                  className="block px-4 py-3 hover:bg-brand-red-50 hover:text-brand-red-600 transition-colors duration-200 border-l-2 border-transparent hover:border-brand-red-500"
-                >
-                  Data Engineering
-                </Link>
-                <Link 
-                  to="/services#data-visualization" 
-                  className="block px-4 py-3 hover:bg-brand-red-50 hover:text-brand-red-600 transition-colors duration-200 border-l-2 border-transparent hover:border-brand-red-500"
-                >
-                  Data Visualization
-                </Link>
-                <Link 
-                  to="/services#business-intelligence" 
-                  className="block px-4 py-3 hover:bg-brand-red-50 hover:text-brand-red-600 transition-colors duration-200 border-l-2 border-transparent hover:border-brand-red-500"
-                >
-                  Business Intelligence & Analytics
-                </Link>
-                <Link 
-                  to="/services#cloud-modernization" 
-                  className="block px-4 py-3 hover:bg-brand-red-50 hover:text-brand-red-600 transition-colors duration-200 border-l-2 border-transparent hover:border-brand-red-500"
-                >
-                  Cloud Modernization
-                </Link>
-                <Link 
-                  to="/services#ai-engineering" 
-                  className="block px-4 py-3 hover:bg-brand-red-50 hover:text-brand-red-600 transition-colors duration-200 border-l-2 border-transparent hover:border-brand-red-500"
-                >
-                  AI Engineering
-                </Link>
+              <div 
+                className="absolute left-0 mt-2 w-64 rounded-xl overflow-hidden transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform group-hover:translate-y-0 translate-y-2"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,56,56,0.03) 0%, rgba(75,120,255,0.03) 50%, rgba(255,56,56,0.03) 100%)',
+                  backdropFilter: 'blur(10px)',
+                  WebkitBackdropFilter: 'blur(10px)',
+                  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1)'
+                }}
+              >
+                <div className="bg-white/40 backdrop-blur-sm">
+                  {[
+                    { path: '/services#data-engineering', label: 'Data Engineering' },
+                    { path: '/services#data-visualization', label: 'Data Visualization' },
+                    { path: '/services#business-intelligence', label: 'Business Intelligence & Analytics' },
+                    { path: '/services#cloud-modernization', label: 'Cloud Modernization' },
+                    { path: '/services#ai-engineering', label: 'AI Engineering' }
+                  ].map((item, index) => (
+                    <Link 
+                      key={index}
+                      to={item.path} 
+                      className="block px-4 py-3 text-cool-gray-800 hover:bg-brand-red-50/50 hover:text-brand-red-600 transition-colors duration-200 border-l-2 border-transparent hover:border-brand-red-500"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
               </div>
             </div>
             <NavLink to="/talent" className="nav-link">
@@ -118,20 +113,26 @@ const Navbar: React.FC = () => {
 
         {/* Mobile Navigation */}
         <div
-          className={`md:hidden absolute top-full left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg transition-all duration-300 ${
+          className={`md:hidden absolute top-full left-0 right-0 transition-all duration-300 ${
             isOpen ? 'max-h-screen opacity-100 visible' : 'max-h-0 opacity-0 invisible'
           } overflow-hidden`}
+          style={{
+            background: 'linear-gradient(135deg, rgba(255,56,56,0.03) 0%, rgba(75,120,255,0.03) 50%, rgba(255,56,56,0.03) 100%)',
+            backdropFilter: 'blur(10px)',
+            WebkitBackdropFilter: 'blur(10px)',
+            boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1)'
+          }}
         >
-          <div className="px-4 py-2">
+          <div className="px-4 py-2 bg-white/40 backdrop-blur-sm">
             <NavLink
               to="/"
-              className="block py-3 border-b border-gray-100"
+              className="block py-3 border-b border-gray-200/50"
               onClick={() => setIsOpen(false)}
             >
               Home
             </NavLink>
             <button
-              className="flex justify-between items-center w-full py-3 border-b border-gray-100"
+              className="flex justify-between items-center w-full py-3 border-b border-gray-200/50"
               onClick={() => setServicesOpen(!servicesOpen)}
               aria-expanded={servicesOpen}
             >
@@ -146,54 +147,35 @@ const Navbar: React.FC = () => {
             <div
               className={`transition-all duration-300 ${
                 servicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-              } overflow-hidden bg-gray-50/50`}
+              } overflow-hidden`}
             >
-              <Link
-                to="/services#data-engineering"
-                className="block py-3 px-4 text-cool-gray-700 hover:text-brand-red-600 hover:bg-brand-red-50 transition-colors border-l-2 border-transparent hover:border-brand-red-500"
-                onClick={() => setIsOpen(false)}
-              >
-                Data Engineering
-              </Link>
-              <Link
-                to="/services#data-visualization"
-                className="block py-3 px-4 text-cool-gray-700 hover:text-brand-red-600 hover:bg-brand-red-50 transition-colors border-l-2 border-transparent hover:border-brand-red-500"
-                onClick={() => setIsOpen(false)}
-              >
-                Data Visualization
-              </Link>
-              <Link
-                to="/services#business-intelligence"
-                className="block py-3 px-4 text-cool-gray-700 hover:text-brand-red-600 hover:bg-brand-red-50 transition-colors border-l-2 border-transparent hover:border-brand-red-500"
-                onClick={() => setIsOpen(false)}
-              >
-                Business Intelligence & Analytics
-              </Link>
-              <Link
-                to="/services#cloud-modernization"
-                className="block py-3 px-4 text-cool-gray-700 hover:text-brand-red-600 hover:bg-brand-red-50 transition-colors border-l-2 border-transparent hover:border-brand-red-500"
-                onClick={() => setIsOpen(false)}
-              >
-                Cloud Modernization
-              </Link>
-              <Link
-                to="/services#ai-engineering"
-                className="block py-3 px-4 text-cool-gray-700 hover:text-brand-red-600 hover:bg-brand-red-50 transition-colors border-l-2 border-transparent hover:border-brand-red-500"
-                onClick={() => setIsOpen(false)}
-              >
-                AI Engineering
-              </Link>
+              {[
+                { path: '/services#data-engineering', label: 'Data Engineering' },
+                { path: '/services#data-visualization', label: 'Data Visualization' },
+                { path: '/services#business-intelligence', label: 'Business Intelligence & Analytics' },
+                { path: '/services#cloud-modernization', label: 'Cloud Modernization' },
+                { path: '/services#ai-engineering', label: 'AI Engineering' }
+              ].map((item, index) => (
+                <Link
+                  key={index}
+                  to={item.path}
+                  className="block py-3 px-4 text-cool-gray-700 hover:text-brand-red-600 hover:bg-brand-red-50/50 transition-colors border-l-2 border-transparent hover:border-brand-red-500"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
             </div>
             <NavLink
               to="/talent"
-              className="block py-3 border-b border-gray-100"
+              className="block py-3 border-b border-gray-200/50"
               onClick={() => setIsOpen(false)}
             >
               Hire Talent
             </NavLink>
             <NavLink
               to="/about"
-              className="block py-3 border-b border-gray-100"
+              className="block py-3 border-b border-gray-200/50"
               onClick={() => setIsOpen(false)}
             >
               About
