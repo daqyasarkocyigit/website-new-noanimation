@@ -48,10 +48,20 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <Link to="/talent" className="btn-primary">
+            <Link 
+              to="/talent" 
+              className="btn-primary touch-manipulation"
+              role="button"
+              aria-label="Hire Talent"
+            >
               Hire Talent
             </Link>
-            <Link to="/services" className="btn-secondary flex items-center justify-center">
+            <Link 
+              to="/services" 
+              className="btn-secondary touch-manipulation flex items-center justify-center"
+              role="button"
+              aria-label="View Our Services"
+            >
               Our Services <ArrowRight size={16} className="ml-2" />
             </Link>
           </motion.div>
@@ -59,8 +69,8 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Background Elements */}
-      <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-electric-blue-400/10 rounded-full filter blur-3xl"></div>
-      <div className="absolute top-32 -left-10 w-72 h-72 bg-midnight-purple-500/10 rounded-full filter blur-3xl"></div>
+      <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-electric-blue-400/10 rounded-full filter blur-3xl pointer-events-none"></div>
+      <div className="absolute top-32 -left-10 w-72 h-72 bg-midnight-purple-500/10 rounded-full filter blur-3xl pointer-events-none"></div>
     </section>
   );
 };

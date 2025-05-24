@@ -7,6 +7,8 @@
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   will-change: auto;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 /* Optimize scrolling performance */
@@ -20,7 +22,7 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* Reduce motion on mobile */
+/* Mobile optimizations */
 @media (max-width: 768px) {
   .animated-bg::before {
     animation: none;
@@ -29,18 +31,29 @@ body {
   }
   
   .card-hover {
-    @apply transition-none transform-none hover:transform-none;
+    @apply transition-none transform-none hover:transform-none active:scale-95;
   }
 
-  /* Disable complex animations on mobile */
+  /* Disable complex animations */
   .motion-safe:motion-reduce {
     animation: none;
     transform: none !important;
   }
 
-  /* Simplify shadows for better performance */
+  /* Optimize shadows */
   .shadow-lg, .shadow-xl {
     @apply shadow-md;
+  }
+
+  /* Enhance touch targets */
+  button, a {
+    @apply min-h-[44px] min-w-[44px];
+    cursor: pointer;
+  }
+
+  /* Improve touch feedback */
+  .btn-primary, .btn-secondary {
+    @apply active:scale-95 transition-transform;
   }
 }
 
@@ -52,10 +65,12 @@ body {
 .btn-primary {
   @apply px-6 py-3 rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-transform duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1;
   will-change: transform;
+  user-select: none;
 }
 
 .btn-secondary {
   @apply px-6 py-3 rounded-md border border-brand-red-400 text-brand-red-600 font-medium transition-colors duration-300 hover:bg-brand-red-50 hover:shadow-sm;
+  user-select: none;
 }
 
 .section-title {
@@ -75,6 +90,7 @@ body {
 
 .nav-link {
   @apply relative text-cool-gray-800 hover:text-brand-red-500 transition-colors duration-300;
+  user-select: none;
 }
 
 .nav-link.active {
@@ -90,9 +106,10 @@ body {
   content: "";
   @apply absolute inset-0 bg-gradient-to-br from-brand-red-500/10 via-slate-blue-500/10 to-brand-red-400/10;
   z-index: -1;
+  pointer-events: none;
 }
 
-/* Optimize scrollbar for better performance */
+/* Optimize scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
