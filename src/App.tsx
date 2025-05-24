@@ -13,12 +13,9 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <a href="#main-content" className="skip-to-content">
-        Skip to main content
-      </a>
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main id="main-content" className="flex-grow" role="main">
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
