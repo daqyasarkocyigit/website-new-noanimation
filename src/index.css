@@ -63,13 +63,13 @@ body {
 
 /* Optimize button rendering */
 .btn-primary {
-  @apply px-6 py-3 rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-transform duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1;
+  @apply px-5 py-2.5 text-sm rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-transform duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1;
   will-change: transform;
   user-select: none;
 }
 
 .btn-secondary {
-  @apply px-6 py-3 rounded-md border border-brand-red-400 text-brand-red-600 font-medium transition-colors duration-300 hover:bg-brand-red-50 hover:shadow-sm;
+  @apply px-5 py-2.5 text-sm rounded-md border border-brand-red-400 text-brand-red-600 font-medium transition-colors duration-300 hover:bg-brand-red-50 hover:shadow-sm;
   user-select: none;
 }
 
