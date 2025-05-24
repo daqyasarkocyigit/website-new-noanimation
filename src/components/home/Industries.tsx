@@ -12,14 +12,14 @@ interface IndustryCardProps {
 const IndustryCard: React.FC<IndustryCardProps> = ({ icon, title, description, delay }) => {
   return (
     <AnimatedSection delay={delay}>
-      <div className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-        <div className="w-12 h-12 rounded-full bg-brand-red-100 flex items-center justify-center mb-4">
+      <div className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+        <div className="flex items-center justify-center w-16 h-16 rounded-full bg-brand-red-100 mb-6">
           <div className="text-brand-red-600">
             {icon}
           </div>
         </div>
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600">{description}</p>
+        <h3 className="text-2xl font-semibold mb-4">{title}</h3>
+        <p className="text-gray-600 flex-grow">{description}</p>
       </div>
     </AnimatedSection>
   );
@@ -37,44 +37,44 @@ const Industries: React.FC = () => {
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           <IndustryCard
-            icon={<Building2 size={24} />}
+            icon={<Building2 size={32} />}
             title="Retail & Consumer Goods"
             description="Optimize inventory, enhance customer experience, and drive sales through data-driven insights."
             delay={0.1}
           />
           
           <IndustryCard
-            icon={<Heart size={24} />}
+            icon={<Heart size={32} />}
             title="Healthcare & Life Sciences"
             description="Improve patient outcomes and operational efficiency with advanced analytics solutions."
             delay={0.2}
           />
           
           <IndustryCard
-            icon={<Landmark size={24} />}
+            icon={<Landmark size={32} />}
             title="Financial Services"
             description="Enable data-driven decision making and risk management in banking and finance."
             delay={0.3}
           />
           
           <IndustryCard
-            icon={<Factory size={24} />}
+            icon={<Factory size={32} />}
             title="Manufacturing"
             description="Streamline operations and enhance productivity through smart factory solutions."
             delay={0.4}
           />
           
           <IndustryCard
-            icon={<Cpu size={24} />}
+            icon={<Cpu size={32} />}
             title="Technology"
             description="Accelerate innovation and scale operations with cutting-edge data infrastructure."
             delay={0.5}
           />
           
           <IndustryCard
-            icon={<Zap size={24} />}
+            icon={<Zap size={32} />}
             title="Energy & Utilities"
             description="Optimize resource allocation and improve grid efficiency with predictive analytics."
             delay={0.6}
