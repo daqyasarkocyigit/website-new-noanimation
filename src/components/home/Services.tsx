@@ -41,7 +41,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, lin
 
 const Services: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-b from-white to-gray-50" id="services">
+    <section className="py-16 md:py-24" id="services">
       <div className="container mx-auto px-4 md:px-6">
         <AnimatedSection className="mb-12 text-center">
           <h2 className="section-title mx-auto">Our Services</h2>
