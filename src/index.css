@@ -2,9 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Optimize paint performance */
+* {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   @apply text-cool-gray-800 antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Reduce motion on mobile */
+@media (max-width: 768px) {
+  .animated-bg::before {
+    animation: none;
+    background-size: 100% 100%;
+  }
+  
+  .card-hover {
+    @apply transition-none transform-none hover:transform-none;
+  }
 }
 
 .gradient-text {
@@ -13,6 +34,7 @@ body {
 
 .btn-primary {
   @apply px-6 py-3 rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-all duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1;
+  will-change: transform;
 }
 
 .btn-secondary {
@@ -30,31 +52,15 @@ body {
 
 .card-hover {
   @apply transition-all duration-300 hover:shadow-xl hover:shadow-brand-red-500/10 transform hover:-translate-y-1;
+  will-change: transform;
 }
 
 .nav-link {
-  @apply relative text-cool-gray-800 hover:text-brand-red-500 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-red-500 after:transition-all after:duration-300 hover:after:w-full;
+  @apply relative text-cool-gray-800 hover:text-brand-red-500 transition-colors duration-300;
 }
 
 .nav-link.active {
-  @apply text-brand-red-500 after:w-full;
-}
-
-.animate-bg {
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  @apply text-brand-red-500;
 }
 
 .animated-bg {
@@ -63,16 +69,11 @@ body {
 
 .animated-bg::before {
   content: "";
-  @apply absolute inset-0 bg-gradient-to-br from-brand-red-500/10 via-slate-blue-500/10 to-brand-red-400/10 animate-bg;
-  filter: blur(100px);
+  @apply absolute inset-0 bg-gradient-to-br from-brand-red-500/10 via-slate-blue-500/10 to-brand-red-400/10;
   z-index: -1;
 }
 
-.hero-particles {
-  @apply absolute inset-0 z-0;
-}
-
-/* Scrollbar styling */
+/* Optimize scrollbar for better performance */
 ::-webkit-scrollbar {
   width: 8px;
 }
