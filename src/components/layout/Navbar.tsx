@@ -86,6 +86,16 @@ const Navbar: React.FC = () => {
             </NavLink>
           </nav>
 
+          {/* CTA Button */}
+          <Link 
+            to="/contact" 
+            className="hidden md:block btn-primary"
+            role="button"
+            aria-label="Get Started"
+          >
+            Get Started
+          </Link>
+
           {/* Mobile Menu Button */}
           <button
             className="md:hidden p-2 rounded-lg hover:bg-gray-100/50 transition-colors"
@@ -177,6 +187,15 @@ const Navbar: React.FC = () => {
             >
               Contact
             </NavLink>
+            <Link
+              to="/contact"
+              className="block my-4 btn-primary text-center"
+              onClick={() => setIsOpen(false)}
+              role="button"
+              aria-label="Get Started"
+            >
+              Get Started
+            </Link>
           </div>
         </div>
       </div>
