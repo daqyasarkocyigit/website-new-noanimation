@@ -30,16 +30,14 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex flex-col items-start group" aria-label="DAQ Consulting Home">
-            <span className="flex items-center space-x-2 md:space-x-3">
-              {/* Responsive text sizes for logo */}
-              <span className="text-xl md:text-2xl font-extrabold tracking-tight transition-transform duration-200 group-hover:scale-105">
+            <span className="flex items-center space-x-1 md:space-x-3">
+              <span className="text-lg md:text-2xl font-extrabold tracking-tight transition-transform duration-200 group-hover:scale-105">
                 <span className="text-brand-red-600 drop-shadow-sm">DAQ</span>
-                <span className="hidden md:inline-block w-1 h-6 bg-brand-red-600 rounded-full opacity-60 mx-2"></span>
-                <span className="text-gray-800 font-semibold tracking-wider md:inline">Consulting</span>
+                <span className="inline-block w-0.5 h-4 md:h-6 bg-brand-red-600 rounded-full opacity-60 mx-1.5 md:mx-2"></span>
+                <span className="text-gray-800 font-semibold tracking-wider inline">Consulting</span>
               </span>
             </span>
-            {/* Subtitle - hidden on smallest screens */}
-            <span className="hidden sm:block text-[10px] md:text-xs text-gray-500 mt-0.5 tracking-wide group-hover:text-brand-red-600 transition-colors duration-200">
+            <span className="text-[9px] md:text-xs text-gray-500 mt-0.5 tracking-wide group-hover:text-brand-red-600 transition-colors duration-200">
               AI & Data Engineering Experts
             </span>
           </Link>
@@ -159,71 +157,85 @@ const Navbar: React.FC = () => {
         <div
           className={`md:hidden absolute top-full left-0 right-0 transition-all duration-300 ${
             isOpen ? 'max-h-screen opacity-100 visible' : 'max-h-0 opacity-0 invisible'
-          } overflow-hidden`}
-          style={{
-            background: 'linear-gradient(135deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.95) 100%)',
-            backdropFilter: 'blur(16px)',
-            WebkitBackdropFilter: 'blur(16px)',
-            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)'
-          }}
+          } overflow-hidden bg-white/95 backdrop-blur-md`}
         >
-          <div className="px-4 py-2">
-            <button
-              className="flex justify-between items-center w-full py-2.5 text-sm border-b border-gray-200/50"
-              onClick={() => setServicesOpen(!servicesOpen)}
-              aria-expanded={servicesOpen}
-            >
-              <span className="font-medium">Services</span>
-              <ChevronDown
-                size={14}
-                className={`transition-transform duration-300 ${
-                  servicesOpen ? 'rotate-180' : ''
-                }`}
-              />
-            </button>
-            <div
-              className={`transition-all duration-300 ${
-                servicesOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-              } overflow-hidden`}
-            >
+          <div className="px-4 py-3">
+            <div className="relative">
+              <button
+                className="flex justify-between items-center w-full py-3 text-base font-medium text-gray-800"
+                onClick={() => setServicesOpen(!servicesOpen)}
+                aria-expanded={servicesOpen}
+              >
+                <span>Services</span>
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-300 ${
+                    servicesOpen ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+              
+              <div
+                className={`transition-all duration-300 ${
+                  servicesOpen ? 'max-h-[400px] opacity-100' : 'max-h-0 opacity-0'
+                } overflow-hidden`}
+              >
+                {[
+                  { 
+                    path: '/services#data-engineering', 
+                    label: 'Data Engineering',
+                    description: 'Build robust data pipelines and infrastructure'
+                  },
+                  { 
+                    path: '/services#data-visualization', 
+                    label: 'Data Visualization',
+                    description: 'Transform complex data into clear insights'
+                  },
+                  { 
+                    path: '/services#business-intelligence', 
+                    label: 'Business Intelligence & Analytics',
+                    description: 'Drive decisions with powerful analytics'
+                  },
+                  { 
+                    path: '/services#cloud-modernization', 
+                    label: 'Cloud Modernization',
+                    description: 'Scale your infrastructure for the future'
+                  },
+                  { 
+                    path: '/services#ai-engineering', 
+                    label: 'AI Engineering',
+                    description: 'Implement cutting-edge AI solutions'
+                  }
+                ].map((item, index) => (
+                  <Link
+                    key={index}
+                    to={item.path}
+                    className="block py-3 pl-4 pr-3 hover:bg-gray-50/80"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <span className="block font-medium text-gray-800 mb-0.5">{item.label}</span>
+                    <span className="block text-sm text-gray-500">{item.description}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div className="border-t border-gray-100 mt-2">
               {[
-                { path: '/services#data-engineering', label: 'Data Engineering' },
-                { path: '/services#data-visualization', label: 'Data Visualization' },
-                { path: '/services#business-intelligence', label: 'Business Intelligence' },
-                { path: '/services#cloud-modernization', label: 'Cloud Modernization' },
-                { path: '/services#ai-engineering', label: 'AI Engineering' }
+                { to: '/talent', label: 'Hire Talent' },
+                { to: '/about', label: 'About' },
+                { to: '/contact', label: 'Contact' }
               ].map((item, index) => (
-                <Link
+                <NavLink
                   key={index}
-                  to={item.path}
-                  className="block py-2.5 px-4 text-sm text-gray-700 hover:text-brand-red-600 hover:bg-brand-red-50/50 transition-colors border-l-2 border-transparent hover:border-brand-red-500"
+                  to={item.to}
+                  className="block py-3 text-base text-gray-800 hover:text-brand-red-600 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
-                </Link>
+                </NavLink>
               ))}
             </div>
-            <NavLink
-              to="/talent"
-              className="block py-2.5 text-sm border-b border-gray-200/50"
-              onClick={() => setIsOpen(false)}
-            >
-              Hire Talent
-            </NavLink>
-            <NavLink
-              to="/about"
-              className="block py-2.5 text-sm border-b border-gray-200/50"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className="block py-2.5 text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              Contact
-            </NavLink>
           </div>
         </div>
       </div>
