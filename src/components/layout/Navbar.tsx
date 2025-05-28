@@ -91,6 +91,7 @@ const Navbar: React.FC = () => {
           </nav>
 
           {/* CTA Button */}
+          {/* 
           <Link 
             to="/contact" 
             className="hidden md:block btn-primary"
@@ -99,6 +100,7 @@ const Navbar: React.FC = () => {
           >
             Get Started
           </Link>
+          */}
 
           {/* Mobile Menu Button */}
           <button
