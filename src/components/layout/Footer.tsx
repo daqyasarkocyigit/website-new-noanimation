@@ -108,7 +108,6 @@ const Footer: React.FC = () => {
                 info@daqconsulting.com
               </a>
             </div>
-            <span className="text-gray-500 text-xs mt-2">İstanbul, Berlin, London</span>
           </div>
         </div>
 
