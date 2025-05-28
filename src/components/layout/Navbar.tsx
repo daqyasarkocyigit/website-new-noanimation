@@ -186,6 +186,8 @@ const Navbar: React.FC = () => {
             >
               Contact
             </NavLink>
+            {/* Mobil menüde Get Started butonu */}
+            {/* 
             <Link
               to="/contact"
               className="block my-4 btn-primary text-center"
@@ -195,6 +197,7 @@ const Navbar: React.FC = () => {
             >
               Get Started
             </Link>
+            */}
           </div>
         </div>
       </div>
