@@ -44,36 +44,70 @@ const Navbar: React.FC = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <div className="relative group">
               <button 
-                className="flex items-center nav-link"
+                className="flex items-center nav-link group relative overflow-hidden"
                 onClick={() => setServicesOpen(!servicesOpen)}
                 aria-expanded={servicesOpen}
                 aria-haspopup="true"
               >
-                Services <ChevronDown size={16} className="ml-1 transition-transform duration-200 group-hover:rotate-180" />
+                <span className="relative z-10">Services</span>
+                <ChevronDown size={16} className="ml-1 transition-transform duration-300 group-hover:rotate-180" />
+                <span className="absolute inset-0 bg-gradient-to-r from-brand-red-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               </button>
+
               <div 
-                className="absolute left-0 mt-2 w-64 rounded-xl overflow-hidden transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform group-hover:translate-y-0 translate-y-2"
+                className="absolute left-0 mt-2 w-72 rounded-2xl overflow-hidden transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform group-hover:translate-y-0 translate-y-2"
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255,56,56,0.03) 0%, rgba(75,120,255,0.03) 50%, rgba(255,56,56,0.03) 100%)',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
-                  boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1)'
+                  background: 'linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.97))',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  boxShadow: `
+                    0 8px 32px rgba(0, 0, 0, 0.08),
+                    0 2px 8px rgba(0, 0, 0, 0.04),
+                    0 0 1px rgba(0, 0, 0, 0.05),
+                    0 0 0 1px rgba(255, 255, 255, 0.2) inset
+                  `
                 }}
               >
-                <div className="bg-white/40 backdrop-blur-sm">
+                <div className="py-2 backdrop-blur-xl">
                   {[
-                    { path: '/services#data-engineering', label: 'Data Engineering' },
-                    { path: '/services#data-visualization', label: 'Data Visualization' },
-                    { path: '/services#business-intelligence', label: 'Business Intelligence & Analytics' },
-                    { path: '/services#cloud-modernization', label: 'Cloud Modernization' },
-                    { path: '/services#ai-engineering', label: 'AI Engineering' }
+                    { 
+                      path: '/services#data-engineering', 
+                      label: 'Data Engineering',
+                      description: 'Build robust data pipelines and infrastructure'
+                    },
+                    { 
+                      path: '/services#data-visualization', 
+                      label: 'Data Visualization',
+                      description: 'Transform complex data into clear insights'
+                    },
+                    { 
+                      path: '/services#business-intelligence', 
+                      label: 'Business Intelligence & Analytics',
+                      description: 'Drive decisions with powerful analytics'
+                    },
+                    { 
+                      path: '/services#cloud-modernization', 
+                      label: 'Cloud Modernization',
+                      description: 'Scale your infrastructure for the future'
+                    },
+                    { 
+                      path: '/services#ai-engineering', 
+                      label: 'AI Engineering',
+                      description: 'Implement cutting-edge AI solutions'
+                    }
                   ].map((item, index) => (
                     <Link 
                       key={index}
                       to={item.path} 
-                      className="block px-4 py-3 text-cool-gray-800 hover:bg-brand-red-50/50 hover:text-brand-red-600 transition-colors duration-200 border-l-2 border-transparent hover:border-brand-red-500"
+                      className="group/item flex flex-col px-5 py-3 hover:bg-gradient-to-r hover:from-brand-red-50/80 hover:to-transparent transition-all duration-300"
                     >
-                      {item.label}
+                      <span className="font-semibold text-gray-800 group-hover/item:text-brand-red-600 transition-colors duration-200">
+                        {item.label}
+                      </span>
+                      <span className="text-sm text-gray-500 group-hover/item:text-gray-600 transition-colors duration-200 mt-0.5">
+                        {item.description}
+                      </span>
+                      <span className="block w-0 group-hover/item:w-full h-px bg-brand-red-200 transition-all duration-300 mt-2"></span>
                     </Link>
                   ))}
                 </div>
