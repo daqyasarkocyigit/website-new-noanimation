@@ -30,12 +30,16 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link to="/" className="flex flex-col items-start group" aria-label="DAQ Consulting Home">
-            <span className="flex items-center space-x-3 text-2xl font-extrabold tracking-tight transition-transform duration-200 group-hover:scale-105">
-              <span className="text-brand-red-600 drop-shadow-sm">DAQ</span>
-              <span className="w-1 h-6 bg-brand-red-600 rounded-full inline-block opacity-60"></span>
-              <span className="text-gray-800 font-semibold tracking-wider">Consulting</span>
+            <span className="flex items-center space-x-2 md:space-x-3">
+              {/* Responsive text sizes for logo */}
+              <span className="text-xl md:text-2xl font-extrabold tracking-tight transition-transform duration-200 group-hover:scale-105">
+                <span className="text-brand-red-600 drop-shadow-sm">DAQ</span>
+                <span className="hidden md:inline-block w-1 h-6 bg-brand-red-600 rounded-full opacity-60 mx-2"></span>
+                <span className="text-gray-800 font-semibold tracking-wider md:inline">Consulting</span>
+              </span>
             </span>
-            <span className="text-xs text-gray-500 mt-1 tracking-wide group-hover:text-brand-red-600 transition-colors duration-200">
+            {/* Subtitle - hidden on smallest screens */}
+            <span className="hidden sm:block text-[10px] md:text-xs text-gray-500 mt-0.5 tracking-wide group-hover:text-brand-red-600 transition-colors duration-200">
               AI & Data Engineering Experts
             </span>
           </Link>
@@ -138,15 +142,15 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-gray-100/50 transition-colors"
+            className="md:hidden p-1.5 rounded-lg hover:bg-gray-100/50 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
             aria-expanded={isOpen}
           >
             {isOpen ? (
-              <X size={24} className="text-cool-gray-800" />
+              <X size={20} className="text-cool-gray-800" />
             ) : (
-              <Menu size={24} className="text-cool-gray-800" />
+              <Menu size={20} className="text-cool-gray-800" />
             )}
           </button>
         </div>
@@ -157,21 +161,21 @@ const Navbar: React.FC = () => {
             isOpen ? 'max-h-screen opacity-100 visible' : 'max-h-0 opacity-0 invisible'
           } overflow-hidden`}
           style={{
-            background: 'linear-gradient(135deg, rgba(255,56,56,0.03) 0%, rgba(75,120,255,0.03) 50%, rgba(255,56,56,0.03) 100%)',
-            backdropFilter: 'blur(10px)',
-            WebkitBackdropFilter: 'blur(10px)',
-            boxShadow: '0 4px 30px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.1)'
+            background: 'linear-gradient(135deg, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.95) 100%)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04)'
           }}
         >
-          <div className="px-4 py-2 bg-white/40 backdrop-blur-sm">
+          <div className="px-4 py-2">
             <button
-              className="flex justify-between items-center w-full py-3 border-b border-gray-200/50"
+              className="flex justify-between items-center w-full py-2.5 text-sm border-b border-gray-200/50"
               onClick={() => setServicesOpen(!servicesOpen)}
               aria-expanded={servicesOpen}
             >
-              Services
+              <span className="font-medium">Services</span>
               <ChevronDown
-                size={16}
+                size={14}
                 className={`transition-transform duration-300 ${
                   servicesOpen ? 'rotate-180' : ''
                 }`}
@@ -185,14 +189,14 @@ const Navbar: React.FC = () => {
               {[
                 { path: '/services#data-engineering', label: 'Data Engineering' },
                 { path: '/services#data-visualization', label: 'Data Visualization' },
-                { path: '/services#business-intelligence', label: 'Business Intelligence & Analytics' },
+                { path: '/services#business-intelligence', label: 'Business Intelligence' },
                 { path: '/services#cloud-modernization', label: 'Cloud Modernization' },
                 { path: '/services#ai-engineering', label: 'AI Engineering' }
               ].map((item, index) => (
                 <Link
                   key={index}
                   to={item.path}
-                  className="block py-3 px-4 text-cool-gray-700 hover:text-brand-red-600 hover:bg-brand-red-50/50 transition-colors border-l-2 border-transparent hover:border-brand-red-500"
+                  className="block py-2.5 px-4 text-sm text-gray-700 hover:text-brand-red-600 hover:bg-brand-red-50/50 transition-colors border-l-2 border-transparent hover:border-brand-red-500"
                   onClick={() => setIsOpen(false)}
                 >
                   {item.label}
@@ -201,37 +205,25 @@ const Navbar: React.FC = () => {
             </div>
             <NavLink
               to="/talent"
-              className="block py-3 border-b border-gray-200/50"
+              className="block py-2.5 text-sm border-b border-gray-200/50"
               onClick={() => setIsOpen(false)}
             >
               Hire Talent
             </NavLink>
             <NavLink
               to="/about"
-              className="block py-3 border-b border-gray-200/50"
+              className="block py-2.5 text-sm border-b border-gray-200/50"
               onClick={() => setIsOpen(false)}
             >
               About
             </NavLink>
             <NavLink
               to="/contact"
-              className="block py-3"
+              className="block py-2.5 text-sm"
               onClick={() => setIsOpen(false)}
             >
               Contact
             </NavLink>
-            {/* Mobil menüde Get Started butonu */}
-            {/* 
-            <Link
-              to="/contact"
-              className="block my-4 btn-primary text-center"
-              onClick={() => setIsOpen(false)}
-              role="button"
-              aria-label="Get Started"
-            >
-              Get Started
-            </Link>
-            */}
           </div>
         </div>
       </div>
