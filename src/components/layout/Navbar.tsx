@@ -29,8 +29,15 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="text-xl font-bold text-brand-red-600">DAQ Consulting</span>
+          <Link to="/" className="flex flex-col items-start group" aria-label="DAQ Consulting Home">
+            <span className="flex items-center space-x-3 text-2xl font-extrabold tracking-tight transition-transform duration-200 group-hover:scale-105">
+              <span className="text-brand-red-600 drop-shadow-sm">DAQ</span>
+              <span className="w-1 h-6 bg-brand-red-600 rounded-full inline-block opacity-60"></span>
+              <span className="text-gray-800 font-semibold tracking-wider">Consulting</span>
+            </span>
+            <span className="text-xs text-gray-500 mt-1 tracking-wide group-hover:text-brand-red-600 transition-colors duration-200">
+              AI & Data Engineering Experts
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
