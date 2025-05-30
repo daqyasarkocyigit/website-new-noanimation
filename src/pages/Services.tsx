@@ -72,7 +72,7 @@ const Services: React.FC = () => {
           "Business metrics tracking",
           "Automated reporting systems"
         ]}
-        image="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        image="https://i.imgur.com/b7254fd2.png"
         icon={<BarChart size={32} />}
         isReversed
       />
