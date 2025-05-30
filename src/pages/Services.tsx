@@ -57,7 +57,7 @@ const Services: React.FC = () => {
           "Real-time data processing solutions",
           "Data quality and governance frameworks"
         ]}
-        image="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        image="https://images.pexels.com/photos/7654069/pexels-photo-7654069.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<Database size={32} />}
       />
 
