@@ -1,104 +1,111 @@
 import React from 'react';
-import { Database, BarChart, LineChart, Cloud, Brain } from 'lucide-react';
-import ServiceDetail from '../components/services/ServiceDetail';
-import CallToAction from '../components/home/CallToAction';
+import { Mail, User, Briefcase } from 'lucide-react';
 import AnimatedSection from '../components/utils/AnimatedSection';
 
-const Services: React.FC = () => {
+const Contact: React.FC = () => {
   return (
     <>
-      <section className="pt-32 pb-12 animated-bg">
-        <div className="container mx-auto px-4 md:px-6">
-          <AnimatedSection className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
-            <p className="text-lg md:text-xl text-gray-600">
-              Comprehensive data and AI solutions to help your business make better decisions,
-              streamline operations, and unlock new opportunities for growth.
-            </p>
-          </AnimatedSection>
+      {/* Hero Section */}
+      <AnimatedSection className="pt-32 pb-16 md:pt-40 md:pb-24 bg-gradient-to-b from-gray-50 via-slate-50 to-white">
+        <div className="container mx-auto px-4 md:px-6 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-800 mb-4">
+            Get in Touch
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+            We're here to help you unlock the power of your data. Reach out to us with your questions, projects, or talent needs.
+          </p>
         </div>
-      </section>
+      </AnimatedSection>
 
-      <ServiceDetail
-        id="data-engineering"
-        title="Data Engineering"
-        description="We design and implement robust data infrastructure and pipelines to collect, process, store, and analyze your data efficiently."
-        benefits={[
-          "Custom ETL/ELT pipeline development",
-          "Data lake and data warehouse architecture",
-          "Real-time data processing solutions",
-          "Data quality monitoring and validation",
-          "Scalable data storage solutions"
-        ]}
-        image="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        icon={<Database size={32} strokeWidth={1.5} />}
-      />
+      {/* Contact Info & Form Section */}
+      <AnimatedSection className="py-16 md:py-24 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-2xl mx-auto">
+            {/* Contact Information */}
+            <div className="space-y-8">
+              <h2 className="text-3xl font-semibold text-gray-800 mb-6 text-center md:text-left">Contact Information</h2>
+              
+              <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex-shrink-0 w-10 h-10 bg-brand-red-100 text-brand-red-600 rounded-full flex items-center justify-center">
+                  <Mail size={20} />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-700">General Inquiries</h3>
+                  <a href="mailto:info@daqconsulting.com" className="text-brand-red-600 hover:text-brand-red-700 transition-colors">
+                    info@daqconsulting.com
+                  </a>
+                </div>
+              </div>
 
-      <ServiceDetail
-        id="data-visualization"
-        title="Data Visualization"
-        description="Transform raw data into intuitive, interactive visualizations that tell a compelling story and drive insights across your organization."
-        benefits={[
-          "Interactive dashboards and reports",
-          "Custom visualization development",
-          "Real-time data monitoring",
-          "Executive KPI dashboards",
-          "Embedded analytics solutions"
-        ]}
-        image="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        icon={<BarChart size={32} strokeWidth={1.5} />}
-        isReversed={true}
-      />
+              <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex-shrink-0 w-10 h-10 bg-brand-red-100 text-brand-red-600 rounded-full flex items-center justify-center">
+                  <Briefcase size={20} />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-700">Talent & Hiring</h3>
+                  <p className="text-gray-600">Looking to hire top talent?</p>
+                  <a href="mailto:talent@daqconsulting.com" className="text-brand-red-600 hover:text-brand-red-700 transition-colors">
+                    talent@daqconsulting.com
+                  </a>
+                </div>
+              </div>
 
-      <ServiceDetail
-        id="business-intelligence"
-        title="Business Intelligence & Analytics"
-        description="Leverage your data to gain actionable insights, identify trends, and make data-driven decisions that improve business outcomes."
-        benefits={[
-          "Advanced analytics implementation",
-          "Predictive modeling and forecasting",
-          "Customer segmentation and analysis",
-          "Marketing and sales analytics",
-          "Operations and supply chain optimization"
-        ]}
-        image="https://images.pexels.com/photos/95916/pexels-photo-95916.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        icon={<LineChart size={32} strokeWidth={1.5} />}
-      />
+              <div className="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex-shrink-0 w-10 h-10 bg-brand-red-100 text-brand-red-600 rounded-full flex items-center justify-center">
+                  <User size={20} />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-700">Careers</h3>
+                  <p className="text-gray-600">Interested in joining our team?</p>
+                  <a href="mailto:careers@daqconsulting.com" className="text-brand-red-600 hover:text-brand-red-700 transition-colors">
+                    careers@daqconsulting.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </AnimatedSection>
 
-      <ServiceDetail
-        id="cloud-modernization"
-        title="Cloud Modernization"
-        description="Migrate and optimize your data infrastructure on modern cloud platforms for scalability, reliability, and cost efficiency."
-        benefits={[
-          "Cloud migration strategy and implementation",
-          "Multi-cloud and hybrid cloud solutions",
-          "Cloud cost optimization",
-          "Serverless architecture design",
-          "DevOps and CI/CD implementation"
-        ]}
-        image="https://images.pexels.com/photos/2041627/pexels-photo-2041627.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        icon={<Cloud size={32} strokeWidth={1.5} />}
-        isReversed={true}
-      />
-
-      <ServiceDetail
-        id="ai-engineering"
-        title="AI Engineering"
-        description="Implement advanced machine learning and AI solutions to automate processes, gain predictive insights, and create intelligent applications."
-        benefits={[
-          "Custom machine learning model development",
-          "Natural language processing (NLP) solutions",
-          "Computer vision and image recognition",
-          "AI-powered recommendation systems",
-          "MLOps and model deployment"
-        ]}
-        image="https://images.pexels.com/photos/8386434/pexels-photo-8386434.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        icon={<Brain size={32} strokeWidth={1.5} />}
-      />
-
-      <CallToAction />
+      {/* FAQ Section - Simplified for brevity, can be expanded if needed */}
+      <AnimatedSection className="py-16 md:py-24 bg-slate-50">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-gray-600">
+              Find quick answers to common questions about our services and processes.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-4xl mx-auto">
+            {[ 
+              {
+                q: "How do you typically structure your engagements?",
+                a: "We start with a discovery phase to understand your needs, followed by a tailored proposal. Projects range from short consultations to long-term partnerships."
+              },
+              {
+                q: "What industries do you specialize in?",
+                a: "We have experience across healthcare, finance, retail, and more. Our data and AI methodologies are adaptable to most industries."
+              },
+              {
+                q: "How long does a typical project take?",
+                a: "Timelines vary. Small projects might take 4-8 weeks, while larger implementations could span 6-12 months. We provide detailed timelines in our proposals."
+              },
+              {
+                q: "Do you offer ongoing support after project completion?",
+                a: "Yes, we offer various support options, including managed services, training, and on-call support, tailored to your needs."
+              }
+            ].map((faq, index) => (
+              <div key={index} className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">{faq.q}</h3>
+                <p className="text-gray-600 text-sm">{faq.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </AnimatedSection>
     </>
   );
 };
 
-export default Services;
+export default Contact;   

@@ -46,31 +46,20 @@ const Navbar: React.FC = () => {
           <nav className="hidden md:flex items-center space-x-8">
             <div className="relative group">
               <button 
-                className="flex items-center nav-link group relative overflow-hidden"
+                className="flex items-center text-gray-700 hover:text-brand-red-600 font-medium group relative overflow-hidden transition-colors duration-200"
                 onClick={() => setServicesOpen(!servicesOpen)}
                 aria-expanded={servicesOpen}
                 aria-haspopup="true"
               >
                 <span className="relative z-10">Services</span>
                 <ChevronDown size={16} className="ml-1 transition-transform duration-300 group-hover:rotate-180" />
-                <span className="absolute inset-0 bg-gradient-to-r from-brand-red-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-red-600 group-hover:w-full transition-all duration-300"></span>
               </button>
 
               <div 
-                className="absolute left-0 mt-2 w-72 rounded-2xl overflow-hidden transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform group-hover:translate-y-0 translate-y-2"
-                style={{
-                  background: 'linear-gradient(165deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.97))',
-                  backdropFilter: 'blur(20px)',
-                  WebkitBackdropFilter: 'blur(20px)',
-                  boxShadow: `
-                    0 8px 32px rgba(0, 0, 0, 0.08),
-                    0 2px 8px rgba(0, 0, 0, 0.04),
-                    0 0 1px rgba(0, 0, 0, 0.05),
-                    0 0 0 1px rgba(255, 255, 255, 0.2) inset
-                  `
-                }}
+                className="absolute left-0 mt-2 w-72 rounded-xl shadow-2xl bg-white transition-all duration-300 opacity-0 invisible group-hover:opacity-100 group-hover:visible transform group-hover:translate-y-0 translate-y-2"
               >
-                <div className="py-2 backdrop-blur-xl">
+                <div className="py-2">
                   {[
                     { 
                       path: '/services#data-engineering', 
@@ -101,28 +90,38 @@ const Navbar: React.FC = () => {
                     <Link 
                       key={index}
                       to={item.path} 
-                      className="group/item flex flex-col px-5 py-3 hover:bg-gradient-to-r hover:from-brand-red-50/80 hover:to-transparent transition-all duration-300"
+                      className="group/item flex flex-col px-5 py-3 hover:bg-gray-100 transition-all duration-200"
                     >
-                      <span className="font-semibold text-gray-800 group-hover/item:text-brand-red-600 transition-colors duration-200">
+                      <span className="font-medium text-gray-800 group-hover/item:text-brand-red-600 transition-colors duration-200">
                         {item.label}
                       </span>
-                      <span className="text-sm text-gray-500 group-hover/item:text-gray-600 transition-colors duration-200 mt-0.5">
+                      <span className="text-sm text-cool-gray-500 group-hover/item:text-cool-gray-600 transition-colors duration-200 mt-0.5">
                         {item.description}
                       </span>
-                      <span className="block w-0 group-hover/item:w-full h-px bg-brand-red-200 transition-all duration-300 mt-2"></span>
+                      <span className="block w-0 group-hover/item:w-full h-px bg-brand-red-400 transition-all duration-300 mt-2"></span>
                     </Link>
                   ))}
                 </div>
               </div>
             </div>
-            <NavLink to="/talent" className="nav-link">
-              Hire Talent
+            <NavLink to="/talent" className={({ isActive }: { isActive: boolean }) => isActive ? "text-brand-red-600 font-semibold relative group transition-colors duration-200" : "text-gray-700 hover:text-brand-red-600 font-medium relative group transition-colors duration-200"}>
+              {() => "Hire Talent"}
             </NavLink>
-            <NavLink to="/about" className="nav-link">
-              About
+            <NavLink to="/about" className={({ isActive }: { isActive: boolean }) => isActive ? "text-brand-red-600 font-semibold relative group transition-colors duration-200" : "text-gray-700 hover:text-brand-red-600 font-medium relative group transition-colors duration-200"}>
+              {() => "About"}
             </NavLink>
-            <NavLink to="/contact" className="nav-link">
-              Contact
+            <NavLink to="/contact" className={({ isActive }: { isActive: boolean }) => isActive ? "text-brand-red-600 font-semibold relative group transition-colors duration-200" : "text-gray-700 hover:text-brand-red-600 font-medium relative group transition-colors duration-200"}>
+              {({ isActive }: { isActive: boolean }) => {
+                const underlineClassName = isActive 
+                  ? "absolute bottom-0 left-0 w-full h-0.5 bg-brand-red-600 transition-all duration-300" 
+                  : "absolute bottom-0 left-0 w-0 h-0.5 bg-brand-red-600 group-hover:w-full transition-all duration-300";
+                return (
+                  <>
+                    Contact
+                    <span className={underlineClassName}></span>
+                  </>
+                );
+              }}
             </NavLink>
           </nav>
 
@@ -159,7 +158,7 @@ const Navbar: React.FC = () => {
             isOpen ? 'max-h-screen opacity-100 visible' : 'max-h-0 opacity-0 invisible'
           } overflow-hidden bg-white/95 backdrop-blur-md`}
         >
-          <div className="px-4 py-3">
+          <div className="px-4 py-2">
             <div className="relative">
               <button
                 className="flex justify-between items-center w-full py-3 text-base font-medium text-gray-800"
@@ -208,34 +207,35 @@ const Navbar: React.FC = () => {
                   }
                 ].map((item, index) => (
                   <Link
-                    key={index}
+                    key={`mobile-service-${index}`}
                     to={item.path}
-                    className="block py-3 pl-4 pr-3 hover:bg-gray-50/80"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => { setIsOpen(false); setServicesOpen(false); }}
+                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-brand-red-600 transition-colors duration-200"
                   >
-                    <span className="block font-medium text-gray-800 mb-0.5">{item.label}</span>
-                    <span className="block text-sm text-gray-500">{item.description}</span>
+                    <span className="font-medium">{item.label}</span>
+                    <span className="block text-xs text-cool-gray-500 mt-0.5">{item.description}</span>
                   </Link>
                 ))}
               </div>
             </div>
 
-            <div className="border-t border-gray-100 mt-2">
-              {[
-                { to: '/talent', label: 'Hire Talent' },
-                { to: '/about', label: 'About' },
-                { to: '/contact', label: 'Contact' }
-              ].map((item, index) => (
-                <NavLink
-                  key={index}
-                  to={item.to}
-                  className="block py-3 text-base text-gray-800 hover:text-brand-red-600 transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {item.label}
-                </NavLink>
-              ))}
-            </div>
+          </div>
+
+          <div className="border-t border-gray-200 pt-2 mt-2">
+            {[
+              { to: '/talent', label: 'Hire Talent' },
+              { to: '/about', label: 'About' },
+              { to: '/contact', label: 'Contact' }
+            ].map((item, index) => (
+              <NavLink
+                key={`mobile-nav-${index}`}
+                to={item.to}
+                className={({ isActive }: { isActive: boolean }) => isActive ? "block w-full px-4 py-3 text-base font-semibold text-brand-red-600 transition-colors duration-200 bg-brand-red-50 rounded-md" : "block w-full px-4 py-3 text-base font-medium text-gray-800 hover:text-brand-red-600 hover:bg-gray-50 rounded-md transition-colors duration-200"}
+                onClick={() => setIsOpen(false)}
+              >
+                {item.label}
+              </NavLink>
+            ))}
           </div>
         </div>
       </div>
