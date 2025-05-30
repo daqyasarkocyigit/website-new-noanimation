@@ -54,13 +54,13 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
           </AnimatedSection>
           
           <AnimatedSection delay={0.3} className={`order-1 ${isReversed ? 'md:order-1' : 'md:order-2'}`}>
-            <div className="relative rounded-xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-xl overflow-hidden shadow-2xl aspect-w-16 aspect-h-9">
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
               <img 
                 src={image} 
                 alt={title} 
-                className="w-full h-auto object-cover z-10 relative"
+                className="w-full h-full object-cover z-10 relative"
               />
             </div>
           </AnimatedSection>
