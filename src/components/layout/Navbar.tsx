@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,6 +20,22 @@ const Navbar: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleServiceClick = (path: string) => {
+    const [route, section] = path.split('#');
+    navigate('/services');
+    
+    // Wait for navigation to complete
+    setTimeout(() => {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+
+    setServicesOpen(false);
+    setIsOpen(false);
+  };
 
   return (
     <header 
@@ -87,10 +104,10 @@ const Navbar: React.FC = () => {
                       description: 'Implement cutting-edge AI solutions'
                     }
                   ].map((item, index) => (
-                    <Link 
+                    <button 
                       key={index}
-                      to={item.path} 
-                      className="group/item flex flex-col px-5 py-3 hover:bg-gray-100 transition-all duration-200"
+                      onClick={() => handleServiceClick(item.path)}
+                      className="group/item flex flex-col w-full text-left px-5 py-3 hover:bg-gray-100 transition-all duration-200"
                     >
                       <span className="font-medium text-gray-800 group-hover/item:text-brand-red-600 transition-colors duration-200">
                         {item.label}
@@ -99,7 +116,7 @@ const Navbar: React.FC = () => {
                         {item.description}
                       </span>
                       <span className="block w-0 group-hover/item:w-full h-px bg-brand-red-400 transition-all duration-300 mt-2"></span>
-                    </Link>
+                    </button>
                   ))}
                 </div>
               </div>
@@ -124,18 +141,6 @@ const Navbar: React.FC = () => {
               }}
             </NavLink>
           </nav>
-
-          {/* CTA Button */}
-          {/* 
-          <Link 
-            to="/contact" 
-            className="hidden md:block btn-primary"
-            role="button"
-            aria-label="Get Started"
-          >
-            Get Started
-          </Link>
-          */}
 
           {/* Mobile Menu Button */}
           <button
@@ -206,19 +211,17 @@ const Navbar: React.FC = () => {
                     description: 'Implement cutting-edge AI solutions'
                   }
                 ].map((item, index) => (
-                  <Link
+                  <button
                     key={`mobile-service-${index}`}
-                    to={item.path}
-                    onClick={() => { setIsOpen(false); setServicesOpen(false); }}
-                    className="block px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-brand-red-600 transition-colors duration-200"
+                    onClick={() => handleServiceClick(item.path)}
+                    className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-gray-100 hover:text-brand-red-600 transition-colors duration-200"
                   >
                     <span className="font-medium">{item.label}</span>
                     <span className="block text-xs text-cool-gray-500 mt-0.5">{item.description}</span>
-                  </Link>
+                  </button>
                 ))}
               </div>
             </div>
-
           </div>
 
           <div className="border-t border-gray-200 pt-2 mt-2">
