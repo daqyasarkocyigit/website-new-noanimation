@@ -1,4 +1,4 @@
-import { StrictMode, Suspense, lazy } from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Talent from './pages/Talent';
 import Privacy from './pages/Privacy';
 import CookiePolicy from './pages/CookiePolicy';
+import Terms from './pages/Terms';
 import ScrollToTop from './components/utils/ScrollToTop';
 import CookieConsent from './components/utils/CookieConsent';
 
@@ -27,6 +28,7 @@ function App() {
             <Route path="/talent" element={<Talent />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </main>
         <Footer />

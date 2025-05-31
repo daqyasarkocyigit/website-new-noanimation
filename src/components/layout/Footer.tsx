@@ -74,6 +74,9 @@ const Footer: React.FC = () => {
             <Link to="/privacy" className="text-cool-gray-500 hover:text-brand-red-600 text-sm transition-colors">
               Privacy Policy
             </Link>
+            <Link to="/terms" className="text-cool-gray-500 hover:text-brand-red-600 text-sm transition-colors">
+              Terms of Use
+            </Link>
             <Link to="/cookie-policy" className="text-cool-gray-500 hover:text-brand-red-600 text-sm transition-colors">
               Cookie Policy
             </Link>
