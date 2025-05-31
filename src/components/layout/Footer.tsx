@@ -60,7 +60,6 @@ const Footer: React.FC = () => {
                 <Mail size={16} className="mr-2 text-brand-red-500" />
                 <span>info@daqconsulting.com</span>
               </a>
-
             </div>
           </div>
         </div>
@@ -75,8 +74,8 @@ const Footer: React.FC = () => {
             <Link to="/privacy" className="text-cool-gray-500 hover:text-brand-red-600 text-sm transition-colors">
               Privacy Policy
             </Link>
-            <Link to="/terms" className="text-cool-gray-500 hover:text-brand-red-600 text-sm transition-colors">
-              Terms of Service
+            <Link to="/cookie-policy" className="text-cool-gray-500 hover:text-brand-red-600 text-sm transition-colors">
+              Cookie Policy
             </Link>
           </div>
         </div>

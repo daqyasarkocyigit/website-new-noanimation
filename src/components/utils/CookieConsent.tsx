@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CookieConsent: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -38,9 +39,9 @@ const CookieConsent: React.FC = () => {
                 <p className="text-gray-600">
                   We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. 
                   By clicking "Accept", you consent to our use of cookies. Read our{' '}
-                  <a href="/privacy" className="text-brand-red-600 hover:text-brand-red-700 underline">
-                    Privacy Policy
-                  </a>{' '}
+                  <Link to="/cookie-policy" className="text-brand-red-600 hover:text-brand-red-700 underline">
+                    Cookie Policy
+                  </Link>{' '}
                   for more information.
                 </p>
               </div>
