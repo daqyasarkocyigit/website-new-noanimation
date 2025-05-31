@@ -9,6 +9,7 @@ import Contact from './pages/Contact';
 import Talent from './pages/Talent';
 import Privacy from './pages/Privacy';
 import ScrollToTop from './components/utils/ScrollToTop';
+import CookieConsent from './components/utils/CookieConsent';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <CookieConsent />
       </div>
     </BrowserRouter>
   );
