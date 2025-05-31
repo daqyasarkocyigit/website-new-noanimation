@@ -1,4 +1,4 @@
-    import React from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle, Award, Lightbulb, Target, TrendingUp, Shield, Zap } from 'lucide-react';
 import AnimatedSection from '../components/utils/AnimatedSection';
@@ -178,11 +178,9 @@ const About: React.FC = () => {
         </div>
       </section>
 
-
-
       <CallToAction />
     </>
   );
 };
 
-export default About; 
+export default About;
