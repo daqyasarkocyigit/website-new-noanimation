@@ -7,6 +7,7 @@ import Services from './pages/Services';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Talent from './pages/Talent';
+import Privacy from './pages/Privacy';
 import ScrollToTop from './components/utils/ScrollToTop';
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/talent" element={<Talent />} />
+            <Route path="/privacy" element={<Privacy />} />
           </Routes>
         </main>
         <Footer />
@@ -29,5 +31,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;
