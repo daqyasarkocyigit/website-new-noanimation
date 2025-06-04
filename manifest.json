@@ -1,0 +1,21 @@
+{
+  "name": "DAQ Consulting",
+  "short_name": "DAQ",
+  "description": "AI & Data Engineering Experts",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "https://i.imgur.com/mCWcjTw.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://i.imgur.com/mCWcjTw.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
