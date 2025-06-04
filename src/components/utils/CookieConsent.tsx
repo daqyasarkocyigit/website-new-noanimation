@@ -7,10 +7,12 @@ const CookieConsent: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    // Clear existing consent for testing
+    localStorage.removeItem('cookieConsent');
+    
     const consent = localStorage.getItem('cookieConsent');
     if (!consent) {
-      const timer = setTimeout(() => setIsVisible(true), 1500);
-      return () => clearTimeout(timer);
+      setIsVisible(true);
     }
   }, []);
 
