@@ -1,82 +1,86 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Mail } from 'lucide-react';
+import { Mail, ChevronRight } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          {/* Logo and About */}
-          <div className="flex flex-col">
-            <h3 className="text-xl font-bold text-brand-red-600 mb-4">DAQ Consulting</h3>
-            <p className="text-gray-400 mb-4">
-              Empowering Data-Driven Decisions with AI & Cloud. We build modern, scalable data ecosystems tailored to your business.
-            </p>
-            <p className="text-gray-500 italic">
-              AI & Cloud Transformation Partner
+    <footer className="bg-white border-t border-gray-100">
+      <div className="container mx-auto px-4 py-12">
+        {/* Main footer content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Company info */}
+          <div>
+            <Link to="/" className="inline-block mb-4">
+              <span className="flex items-center space-x-1 text-xl font-bold">
+                <span className="text-brand-red-600">DAQ</span>
+                <span className="inline-block w-0.5 h-5 bg-brand-red-600 rounded-full opacity-60 mx-1.5"></span>
+                <span className="text-gray-800 font-semibold">Consulting</span>
+              </span>
+              <p className="text-xs text-gray-500 mt-1">
+                AI & Data Engineering Experts
+              </p>
+            </Link>
+            <p className="text-cool-gray-600 text-sm leading-relaxed">
+              Empowering businesses with AI & Cloud solutions to drive innovation and growth through data-driven insights.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div className="flex flex-col">
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link to="/" className="text-gray-400 hover:text-electric-blue-400 transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-gray-400 hover:text-electric-blue-400 transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-gray-400 hover:text-electric-blue-400 transition-colors">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link to="/talent" className="text-gray-400 hover:text-electric-blue-400 transition-colors">
-                  Hire Talent
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-400 hover:text-electric-blue-400 transition-colors">
-                  Contact
-                </Link>
-              </li>
+          {/* Quick links */}
+          <div>
+            <h3 className="text-gray-800 font-semibold mb-4">Quick Links</h3>
+            <ul className="space-y-2">
+              {[
+                { name: 'Home', path: '/' },
+                { name: 'Services', path: '/services' },
+                { name: 'About Us', path: '/about' },
+                { name: 'Hire Talent', path: '/talent' },
+                { name: 'Contact', path: '/contact' }
+              ].map((item) => (
+                <li key={item.name} className="group">
+                  <Link 
+                    to={item.path}
+                    className="text-cool-gray-600 hover:text-brand-red-600 flex items-center transition-colors text-sm"
+                  >
+                    <ChevronRight size={14} className="mr-1 text-brand-red-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span>{item.name}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Industries */}
-          <div className="flex flex-col">
-            <h3 className="text-lg font-semibold mb-4">Industries</h3>
-            <ul className="space-y-3">
-              <li className="text-gray-400">Retail & Consumer Goods</li>
-              <li className="text-gray-400">Healthcare & Life Sciences</li>
-              <li className="text-gray-400">Financial Services</li>
-              <li className="text-gray-400">Manufacturing</li>
-              <li className="text-gray-400">Technology</li>
-              <li className="text-gray-400">Energy & Utilities</li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div className="flex flex-col">
-            <h3 className="text-lg font-semibold mb-4">Contact Us</h3>
-            <div className="flex items-center space-x-3">
-              <Mail size={20} className="text-electric-blue-400 flex-shrink-0" />
-              <a href="mailto:info@daqconsulting.com" className="text-gray-400 hover:text-electric-blue-400 transition-colors">
-                info@daqconsulting.com
+          {/* Contact info */}
+          <div>
+            <h3 className="text-gray-800 font-semibold mb-4">Contact Us</h3>
+            <div className="space-y-3">
+              <a 
+                href="mailto:info@daqconsulting.com" 
+                className="text-cool-gray-600 hover:text-brand-red-600 flex items-center transition-colors text-sm"
+              >
+                <Mail size={16} className="mr-2 text-brand-red-500" />
+                <span>info@daqconsulting.com</span>
               </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} DAQ Consulting. All rights reserved.</p>
+        {/* Footer bottom */}
+        <div className="mt-10 pt-6 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-cool-gray-500 text-sm mb-4 md:mb-0">
+            © {new Date().getFullYear()} <span className="font-medium text-gray-700">DAQ Consulting</span>. All rights reserved.
+          </p>
+          
+          <div className="flex space-x-6">
+            <Link to="/privacy" className="text-cool-gray-500 hover:text-brand-red-600 text-sm transition-colors">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="text-cool-gray-500 hover:text-brand-red-600 text-sm transition-colors">
+              Terms of Use
+            </Link>
+            <Link to="/cookie-policy" className="text-cool-gray-500 hover:text-brand-red-600 text-sm transition-colors">
+              Cookie Policy
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

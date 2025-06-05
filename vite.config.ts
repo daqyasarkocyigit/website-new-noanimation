@@ -28,11 +28,15 @@ export default defineConfig({
     },
     reportCompressedSize: false,
     chunkSizeWarningLimit: 1000,
-    assetsInlineLimit: 4096
+    assetsInlineLimit: 4096,
+    sourcemap: true
   },
   server: {
     headers: {
-      'Cache-Control': 'public, max-age=31536000'
+      'Cache-Control': 'public, max-age=31536000',
+      'X-Content-Type-Options': 'nosniff',
+      'X-Frame-Options': 'DENY',
+      'X-XSS-Protection': '1; mode=block',
     }
   }
 });

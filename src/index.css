@@ -2,137 +2,117 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optimize paint performance */
-* {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  will-change: auto;
-  -webkit-tap-highlight-color: transparent;
-  touch-action: manipulation;
+/* Mobile-first approach */
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-base antialiased touch-manipulation overscroll-none;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
 
-/* Optimize scrolling performance */
-body {
-  font-family: 'Inter', sans-serif;
-  @apply text-cool-gray-800 antialiased;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Mobile optimizations */
-@media (max-width: 768px) {
-  .animated-bg::before {
-    animation: none;
-    background-size: 100% 100%;
-    opacity: 0.05;
-  }
-  
-  .card-hover {
-    @apply transition-none transform-none hover:transform-none active:scale-95;
-  }
-
-  /* Disable complex animations */
-  .motion-safe:motion-reduce {
-    animation: none;
-    transform: none !important;
-  }
-
-  /* Optimize shadows */
-  .shadow-lg, .shadow-xl {
-    @apply shadow-md;
-  }
-
-  /* Enhance touch targets */
-  button, a {
+/* Optimize touch targets */
+@layer components {
+  .touch-target {
     @apply min-h-[44px] min-w-[44px];
-    cursor: pointer;
   }
 
-  /* Improve touch feedback */
-  .btn-primary, .btn-secondary {
-    @apply active:scale-95 transition-transform;
+  .btn-primary {
+    @apply touch-target px-4 py-2 text-sm md:text-base rounded-lg bg-brand-red-600 text-white font-medium 
+    transition-all duration-200 hover:bg-brand-red-700 active:scale-95 
+    disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .btn-secondary {
+    @apply touch-target px-4 py-2 text-sm md:text-base rounded-lg border border-brand-red-400 
+    text-brand-red-600 font-medium transition-all duration-200 
+    hover:bg-brand-red-50 active:scale-95
+    disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100;
+  }
+
+  .nav-link {
+    @apply touch-target relative text-gray-700 hover:text-brand-red-600 transition-colors duration-200;
+  }
+
+  .card-hover {
+    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1 active:scale-[0.98];
   }
 }
 
-.gradient-text {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-red-600 via-slate-blue-600 to-brand-red-500;
+/* Performance optimizations */
+@layer utilities {
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .no-tap-highlight {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .momentum-scroll {
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
-/* Optimize button rendering */
-.btn-primary {
-  @apply px-5 py-2.5 text-sm rounded-md bg-gradient-to-r from-brand-red-600 to-brand-red-700 text-white font-medium transition-transform duration-300 hover:shadow-lg hover:shadow-brand-red-500/20 transform hover:-translate-y-1;
-  will-change: transform;
-  user-select: none;
+/* Optimize images */
+img {
+  @apply w-full h-auto;
+  content-visibility: auto;
 }
 
-.btn-secondary {
-  @apply px-5 py-2.5 text-sm rounded-md border border-brand-red-400 text-brand-red-600 font-medium transition-colors duration-300 hover:bg-brand-red-50 hover:shadow-sm;
-  user-select: none;
+/* Reduce motion if preferred */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-.section-title {
-  @apply text-3xl md:text-4xl font-bold mb-4 relative;
-}
-
-.section-title::after {
-  content: '';
-  @apply block w-16 h-1 bg-gradient-to-r from-brand-red-500 to-slate-blue-500 mt-2;
-}
-
-/* Optimize card transitions */
-.card-hover {
-  @apply transition-transform duration-300 hover:shadow-xl hover:shadow-brand-red-500/10 transform hover:-translate-y-1;
-  will-change: transform;
-}
-
-.nav-link {
-  @apply relative text-cool-gray-800 hover:text-brand-red-500 transition-colors duration-300;
-  user-select: none;
-}
-
-.nav-link.active {
-  @apply text-brand-red-500;
-}
-
-/* Optimize background animations */
-.animated-bg {
-  @apply relative overflow-hidden;
-}
-
-.animated-bg::before {
-  content: "";
-  @apply absolute inset-0 bg-gradient-to-br from-brand-red-500/10 via-slate-blue-500/10 to-brand-red-400/10;
-  z-index: -1;
-  pointer-events: none;
+/* Enhanced touch feedback */
+@media (hover: none) {
+  .btn-primary:active,
+  .btn-secondary:active,
+  .card-hover:active {
+    @apply transform scale-[0.98] transition-transform duration-75;
+  }
 }
 
 /* Optimize scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  @apply w-2;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-cool-gray-100;
+  @apply bg-gray-100;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-brand-red-400 to-slate-blue-500 rounded-full;
+  @apply bg-gray-300 rounded-full hover:bg-gray-400 transition-colors;
 }
 
-/* Optimize image loading */
-img {
-  @apply transition-opacity duration-300;
-  loading: lazy;
+/* Loading states */
+.skeleton {
+  @apply animate-pulse bg-gray-200 rounded;
 }
 
-/* Reduce layout shifts */
-.aspect-w-16 {
+/* Aspect ratio containers */
+.aspect-video {
   @apply relative pb-[56.25%];
 }
 
-.aspect-w-16 > * {
+.aspect-video > * {
   @apply absolute inset-0 w-full h-full object-cover;
 }

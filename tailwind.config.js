@@ -42,23 +42,28 @@ export default {
         },
       },
       fontFamily: {
-        'inter': ['Inter', 'sans-serif'],
+        'inter': ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
-      animation: {
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+      screens: {
+        'xs': '375px',
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'xl': '1280px',
+        '2xl': '1536px',
       },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-      },
-      backgroundImage: {
-        'hero-pattern': "url('https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1600')",
-        'cta-pattern': "url('https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?auto=compress&cs=tinysrgb&w=1600')",
+      spacing: {
+        'safe-top': 'env(safe-area-inset-top)',
+        'safe-bottom': 'env(safe-area-inset-bottom)',
+        'safe-left': 'env(safe-area-inset-left)',
+        'safe-right': 'env(safe-area-inset-right)',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addVariant }) {
+      addVariant('supports-hover', '@media (hover: hover)');
+      addVariant('touch', '@media (hover: none)');
+    },
+  ],
 };

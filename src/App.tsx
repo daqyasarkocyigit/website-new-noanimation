@@ -7,7 +7,11 @@ import Services from './pages/Services';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Talent from './pages/Talent';
+import Privacy from './pages/Privacy';
+import CookiePolicy from './pages/CookiePolicy';
+import Terms from './pages/Terms';
 import ScrollToTop from './components/utils/ScrollToTop';
+import CookieConsent from './components/utils/CookieConsent';
 
 function App() {
   return (
@@ -22,9 +26,13 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/talent" element={<Talent />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="/terms" element={<Terms />} />
           </Routes>
         </main>
         <Footer />
+        <CookieConsent />
       </div>
     </BrowserRouter>
   );
