@@ -5,6 +5,13 @@ import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
 import { motion } from 'framer-motion';
 
+// Import animations
+import dataEngineeringAnimation from '../animations/data-engineering.json';
+import dataVisualizationAnimation from '../animations/data-visualization.json';
+import businessIntelligenceAnimation from '../animations/business-intelligence.json';
+import cloudModernizationAnimation from '../animations/cloud-modernization.json';
+import aiEngineeringAnimation from '../animations/ai-engineering.json';
+
 const Services: React.FC = () => {
   return (
     <>
@@ -57,7 +64,7 @@ const Services: React.FC = () => {
           "Real-time data processing solutions",
           "Data quality and governance frameworks"
         ]}
-        image="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        animation={dataEngineeringAnimation}
         icon={<Database size={32} />}
       />
 
@@ -72,7 +79,7 @@ const Services: React.FC = () => {
           "Business metrics tracking",
           "Automated reporting systems"
         ]}
-        image="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        animation={dataVisualizationAnimation}
         icon={<BarChart size={32} />}
         isReversed
       />
@@ -88,7 +95,7 @@ const Services: React.FC = () => {
           "Business performance analysis",
           "Competitive intelligence solutions"
         ]}
-        image="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        animation={businessIntelligenceAnimation}
         icon={<LineChart size={32} />}
       />
 
@@ -103,7 +110,7 @@ const Services: React.FC = () => {
           "Cloud cost optimization",
           "Security and compliance"
         ]}
-        image="https://images.pexels.com/photos/1624895/pexels-photo-1624895.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        animation={cloudModernizationAnimation}
         icon={<Cloud size={32} />}
         isReversed
       />
@@ -119,7 +126,7 @@ const Services: React.FC = () => {
           "Computer vision applications",
           "MLOps implementation"
         ]}
-        image="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1600"
+        animation={aiEngineeringAnimation}
         icon={<Brain size={32} />}
       />
 
