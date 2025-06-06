@@ -20,8 +20,11 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   icon,
   isReversed = false,
 }) => {
+  // Create ref at the top level of the component
+  const sectionRef = React.useRef<HTMLElement>(null);
+
   const { scrollYProgress } = useScroll({
-    target: React.useRef<HTMLElement>(null),
+    target: sectionRef, // Use the ref here
     offset: ["start end", "end start"]
   });
 
@@ -111,7 +114,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   };
 
   return (
-    <section id={id} className="py-20 scroll-mt-24 overflow-hidden" ref={React.useRef}>
+    <section id={id} className="py-20 scroll-mt-24 overflow-hidden" ref={sectionRef}>
       <motion.div 
         className="container mx-auto px-4 md:px-6"
         style={{ opacity: springOpacity, scale: springScale }}
