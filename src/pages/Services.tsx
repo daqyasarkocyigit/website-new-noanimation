@@ -3,47 +3,89 @@ import { Database, BarChart, LineChart, Cloud, Brain } from 'lucide-react';
 import ServiceDetail from '../components/services/ServiceDetail';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Services: React.FC = () => {
+  const { scrollYProgress } = useScroll();
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
     <>
       <section className="pt-32 pb-20 relative overflow-hidden">
         <motion.div
           className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 z-0"
+          style={{ y: backgroundY, opacity }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 1.5 }}
+        />
+        
+        <motion.div
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.1 }}
+          transition={{ duration: 2 }}
+          style={{
+            backgroundImage: `radial-gradient(circle at 50% 50%, rgba(255, 20, 20, 0.1) 0%, transparent 50%)`,
+          }}
         />
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ 
+                duration: 1,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+              }}
             >
               <motion.h1 
                 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ 
+                  duration: 0.8,
+                  delay: 0.2,
+                  type: "spring"
+                }}
               >
-                Our <span className="text-brand-red-600">Services</span>
+                Our <motion.span 
+                  className="text-brand-red-600"
+                  animate={{ 
+                    color: ["#ff1414", "#ff6b6b", "#ff1414"],
+                  }}
+                  transition={{ 
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  Services
+                </motion.span>
               </motion.h1>
+              
               <motion.div 
                 className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6 mx-auto"
                 initial={{ width: 0 }}
                 animate={{ width: "5rem" }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{
+                  duration: 1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 20
+                }}
               />
             </motion.div>
             
             <motion.p
-              className="text-lg md:text-xl text-cool-gray-600"
+              className="text-lg text-cool-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
             >
               Comprehensive data and AI solutions to help your business make better decisions,
               streamline operations, and unlock new opportunities.
