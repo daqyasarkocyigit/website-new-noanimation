@@ -8,13 +8,16 @@ import { motion } from 'framer-motion';
 const Services: React.FC = () => {
   return (
     <>
+      {/* Hero Section with Gradient Background */}
       <section className="pt-32 pb-20 relative overflow-hidden">
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 z-0"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        />
+        <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 z-0"></div>
+        <div 
+          className="absolute top-0 right-0 w-1/2 h-full opacity-10 z-0"
+          style={{
+            backgroundImage: 'url("/images/pattern-dots.svg")',
+            backgroundSize: '30px 30px'
+          }}
+        ></div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -23,27 +26,17 @@ const Services: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <motion.h1 
-                className="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
                 Our <span className="text-brand-red-600">Services</span>
-              </motion.h1>
-              <motion.div 
-                className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6 mx-auto"
-                initial={{ width: 0 }}
-                animate={{ width: "5rem" }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              />
+              </h1>
+              <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6 mx-auto"></div>
             </motion.div>
             
             <motion.p
               className="text-lg md:text-xl text-cool-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
               Comprehensive data and AI solutions to help your business make better decisions,
               streamline operations, and unlock new opportunities.
@@ -52,6 +45,7 @@ const Services: React.FC = () => {
         </div>
       </section>
 
+      {/* Services Details */}
       <ServiceDetail
         id="data-engineering"
         title="Data Engineering"
@@ -63,6 +57,7 @@ const Services: React.FC = () => {
           "Real-time data processing solutions",
           "Data quality and governance frameworks"
         ]}
+        image="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<Database size={32} />}
       />
 
@@ -77,6 +72,7 @@ const Services: React.FC = () => {
           "Business metrics tracking",
           "Automated reporting systems"
         ]}
+        image="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<BarChart size={32} />}
         isReversed
       />
@@ -92,6 +88,7 @@ const Services: React.FC = () => {
           "Business performance analysis",
           "Competitive intelligence solutions"
         ]}
+        image="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<LineChart size={32} />}
       />
 
@@ -106,6 +103,7 @@ const Services: React.FC = () => {
           "Cloud cost optimization",
           "Security and compliance"
         ]}
+        image="https://images.pexels.com/photos/1624895/pexels-photo-1624895.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<Cloud size={32} />}
         isReversed
       />
@@ -121,6 +119,7 @@ const Services: React.FC = () => {
           "Computer vision applications",
           "MLOps implementation"
         ]}
+        image="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<Brain size={32} />}
       />
 
