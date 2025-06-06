@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { Sphere, Box } from '@react-three/drei';
+import { Box, Line } from '@react-three/drei';
 import * as THREE from 'three';
 
 const AIModel: React.FC = () => {
@@ -10,36 +10,71 @@ const AIModel: React.FC = () => {
     if (groupRef.current) {
       groupRef.current.rotation.y += 0.005;
       groupRef.current.children.forEach((child, i) => {
-        const scale = Math.sin(state.clock.elapsedTime * 2 + i) * 0.1 + 1;
-        child.scale.set(scale, scale, scale);
+        if (child.name === 'neuron') {
+          const scale = Math.sin(state.clock.elapsedTime * 2 + i) * 0.2 + 1;
+          child.scale.set(scale, scale, scale);
+        }
       });
+    }
+  });
+
+  // Create neural network structure
+  const neurons = [];
+  const connections = [];
+  const connectionPoints = [];
+
+  // Create three layers of neurons
+  const layers = [4, 6, 4];
+  let neuronCount = 0;
+
+  layers.forEach((count, layerIndex) => {
+    const xPos = (layerIndex - 1) * 2;
+    
+    for (let i = 0; i < count; i++) {
+      const yPos = (i - (count - 1) / 2) * 0.8;
+      
+      neurons.push(
+        <Box
+          key={`neuron-${neuronCount}`}
+          name="neuron"
+          args={[0.3, 0.3, 0.3]}
+          position={[xPos, yPos, 0]}
+        >
+          <meshStandardMaterial color={layerIndex === 1 ? "#ff1414" : "#4b78ff"} metalness={0.6} roughness={0.2} />
+        </Box>
+      );
+
+      // Connect to next layer
+      if (layerIndex < layers.length - 1) {
+        for (let j = 0; j < layers[layerIndex + 1]; j++) {
+          const nextYPos = (j - (layers[layerIndex + 1] - 1) / 2) * 0.8;
+          
+          connectionPoints.push(
+            new THREE.Vector3(xPos, yPos, 0),
+            new THREE.Vector3(xPos + 2, nextYPos, 0)
+          );
+          
+          connections.push(
+            <Line
+              key={`connection-${neuronCount}-${j}`}
+              points={connectionPoints.slice(-2)}
+              color="#ffffff"
+              lineWidth={1}
+              opacity={0.3}
+              transparent
+            />
+          );
+        }
+      }
+      
+      neuronCount++;
     }
   });
 
   return (
     <group ref={groupRef}>
-      <Sphere args={[0.8, 32, 32]} position={[0, 0, 0]}>
-        <meshStandardMaterial color="#ff1414" metalness={0.7} roughness={0.3} />
-      </Sphere>
-      
-      {[...Array(12)].map((_, i) => {
-        const phi = Math.acos(-1 + (2 * i) / 12);
-        const theta = Math.sqrt(12 * Math.PI) * phi;
-        
-        return (
-          <Box
-            key={i}
-            args={[0.2, 0.2, 0.2]}
-            position={[
-              Math.cos(theta) * Math.sin(phi) * 1.5,
-              Math.sin(theta) * Math.sin(phi) * 1.5,
-              Math.cos(phi) * 1.5
-            ]}
-          >
-            <meshStandardMaterial color="#4b78ff" metalness={0.6} roughness={0.3} />
-          </Box>
-        );
-      })}
+      {neurons}
+      {connections}
     </group>
   );
 };
