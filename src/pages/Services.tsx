@@ -1,59 +1,21 @@
 import React from 'react';
 import { Database, BarChart, LineChart, Cloud, Brain } from 'lucide-react';
 import ServiceDetail from '../components/services/ServiceDetail';
+import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
-import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Services: React.FC = () => {
   const { scrollYProgress } = useScroll();
-  const springConfig = { stiffness: 100, damping: 30, mass: 0.8 };
-  
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
-  
-  const springBackgroundY = useSpring(backgroundY, springConfig);
-  const springOpacity = useSpring(opacity, springConfig);
-  const springScale = useSpring(scale, springConfig);
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 20,
-        mass: 1,
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const letterVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 200,
-        damping: 20,
-      },
-    },
-  };
 
   return (
     <>
       <section className="pt-32 pb-20 relative overflow-hidden">
         <motion.div
           className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 z-0"
-          style={{ 
-            y: springBackgroundY,
-            opacity: springOpacity,
-            scale: springScale,
-          }}
+          style={{ y: backgroundY, opacity }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}
@@ -62,43 +24,48 @@ const Services: React.FC = () => {
         <motion.div
           className="absolute inset-0"
           initial={{ opacity: 0 }}
-          animate={{ 
-            opacity: [0, 0.1, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{ 
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          animate={{ opacity: 0.1 }}
+          transition={{ duration: 2 }}
           style={{
-            backgroundImage: `radial-gradient(circle at 50% 50%, rgba(255, 20, 20, 0.2) 0%, transparent 50%)`,
+            backgroundImage: `radial-gradient(circle at 50% 50%, rgba(255, 20, 20, 0.1) 0%, transparent 50%)`,
           }}
         />
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
             <motion.div
-              variants={titleVariants}
-              initial="hidden"
-              animate="visible"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 1,
+                type: "spring",
+                stiffness: 100,
+                damping: 20
+              }}
             >
               <motion.h1 
-                className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 flex items-center justify-center gap-2"
+                className="text-4xl md:text-5xl font-bold mb-6 text-gray-900"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.8,
+                  delay: 0.2,
+                  type: "spring"
+                }}
               >
-                {"Our Services".split(" ").map((word, i) => (
-                  <motion.span
-                    key={i}
-                    variants={letterVariants}
-                    className={i === 1 ? "text-brand-red-600" : ""}
-                    whileHover={{
-                      scale: 1.1,
-                      transition: { type: "spring", stiffness: 300 }
-                    }}
-                  >
-                    {word}
-                  </motion.span>
-                ))}
+                Our <motion.span 
+                  className="text-brand-red-600"
+                  animate={{ 
+                    color: ["#ff1414", "#ff6b6b", "#ff1414"],
+                  }}
+                  transition={{ 
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                >
+                  Services
+                </motion.span>
               </motion.h1>
               
               <motion.div 
@@ -118,13 +85,7 @@ const Services: React.FC = () => {
               className="text-lg text-cool-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ 
-                duration: 0.8,
-                delay: 0.6,
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-              }}
+              transition={{ duration: 0.8, delay: 0.6 }}
             >
               Comprehensive data and AI solutions to help your business make better decisions,
               streamline operations, and unlock new opportunities.
