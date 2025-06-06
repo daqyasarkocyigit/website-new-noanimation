@@ -59,6 +59,7 @@ const Services: React.FC = () => {
         ]}
         image="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<Database size={32} />}
+        modelType="database"
       />
 
       <ServiceDetail
@@ -74,6 +75,7 @@ const Services: React.FC = () => {
         ]}
         image="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<BarChart size={32} />}
+        modelType="chart"
         isReversed
       />
 
@@ -90,6 +92,7 @@ const Services: React.FC = () => {
         ]}
         image="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<LineChart size={32} />}
+        modelType="analytics"
       />
 
       <ServiceDetail
@@ -105,6 +108,7 @@ const Services: React.FC = () => {
         ]}
         image="https://images.pexels.com/photos/1624895/pexels-photo-1624895.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<Cloud size={32} />}
+        modelType="cloud"
         isReversed
       />
 
@@ -121,6 +125,7 @@ const Services: React.FC = () => {
         ]}
         image="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<Brain size={32} />}
+        modelType="brain"
       />
 
       <CallToAction />
