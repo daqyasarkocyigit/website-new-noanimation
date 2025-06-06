@@ -1,7 +1,8 @@
-import { StrictMode } from 'react';
+import { StrictMode, Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-import App from './App';
+
+const App = lazy(() => import('./App.tsx'));
 
 const rootElement = document.getElementById('root');
 
@@ -14,7 +15,13 @@ if (!rootElement) {
 } else {
   createRoot(rootElement).render(
     <StrictMode>
-      <App />
+      <Suspense fallback={
+        <div className="h-screen flex items-center justify-center">
+          <div className="animate-pulse text-brand-red-600 text-xl">Loading...</div>
+        </div>
+      }>
+        <App />
+      </Suspense>
     </StrictMode>
   );
 }

@@ -4,6 +4,13 @@ import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
 import { motion } from 'framer-motion';
 
+// Import Lottie animations
+import dataEngineeringAnimation from '../animations/data-engineering.json';
+import dataVisualizationAnimation from '../animations/data-visualization.json';
+import businessIntelligenceAnimation from '../animations/business-intelligence.json';
+import cloudModernizationAnimation from '../animations/cloud-modernization.json';
+import aiEngineeringAnimation from '../animations/ai-engineering.json';
+
 const Services: React.FC = () => {
   return (
     <>
@@ -56,6 +63,7 @@ const Services: React.FC = () => {
           "Real-time data processing solutions",
           "Data quality and governance frameworks"
         ]}
+        animationData={dataEngineeringAnimation}
       />
 
       <ServiceDetail
@@ -69,6 +77,7 @@ const Services: React.FC = () => {
           "Business metrics tracking",
           "Automated reporting systems"
         ]}
+        animationData={dataVisualizationAnimation}
         isReversed
       />
 
@@ -83,6 +92,7 @@ const Services: React.FC = () => {
           "Business performance analysis",
           "Competitive intelligence solutions"
         ]}
+        animationData={businessIntelligenceAnimation}
       />
 
       <ServiceDetail
@@ -96,6 +106,7 @@ const Services: React.FC = () => {
           "Cloud cost optimization",
           "Security and compliance"
         ]}
+        animationData={cloudModernizationAnimation}
         isReversed
       />
 
@@ -110,6 +121,7 @@ const Services: React.FC = () => {
           "Computer vision applications",
           "MLOps implementation"
         ]}
+        animationData={aiEngineeringAnimation}
       />
 
       <CallToAction />
