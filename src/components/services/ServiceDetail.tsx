@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
-import Lottie from 'lottie-react';
 import AnimatedSection from '../utils/AnimatedSection';
 
 interface ServiceDetailProps {
@@ -9,7 +8,7 @@ interface ServiceDetailProps {
   title: string;
   description: string;
   benefits: string[];
-  animation: any;
+  image: string;
   icon: React.ReactNode;
   isReversed?: boolean;
 }
@@ -19,7 +18,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   title,
   description,
   benefits,
-  animation,
+  image,
   icon,
   isReversed = false,
 }) => {
@@ -55,13 +54,13 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
           </AnimatedSection>
           
           <AnimatedSection delay={0.3} className={`order-1 ${isReversed ? 'md:order-1' : 'md:order-2'}`}>
-            <div className="relative rounded-xl overflow-hidden shadow-2xl bg-white p-8">
+            <div className="relative rounded-xl overflow-hidden shadow-2xl aspect-w-16 aspect-h-9">
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
-              <Lottie 
-                animationData={animation}
-                loop={true}
-                className="w-full h-auto max-w-md mx-auto relative z-10"
+              <img 
+                src={image} 
+                alt={title} 
+                className="w-full h-full object-cover z-10 relative"
               />
             </div>
           </AnimatedSection>
