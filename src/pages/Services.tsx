@@ -57,7 +57,7 @@ const Services: React.FC = () => {
           "Real-time data processing solutions",
           "Data quality and governance frameworks"
         ]}
-        animationType="data-engineering"
+        image="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<Database size={32} />}
       />
 
@@ -72,7 +72,7 @@ const Services: React.FC = () => {
           "Business metrics tracking",
           "Automated reporting systems"
         ]}
-        animationType="data-visualization"
+        image="https://images.pexels.com/photos/7688336/pexels-photo-7688336.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<BarChart size={32} />}
         isReversed
       />
@@ -88,7 +88,7 @@ const Services: React.FC = () => {
           "Business performance analysis",
           "Competitive intelligence solutions"
         ]}
-        animationType="business-intelligence"
+        image="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<LineChart size={32} />}
       />
 
@@ -103,7 +103,7 @@ const Services: React.FC = () => {
           "Cloud cost optimization",
           "Security and compliance"
         ]}
-        animationType="cloud-modernization"
+        image="https://images.pexels.com/photos/1624895/pexels-photo-1624895.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<Cloud size={32} />}
         isReversed
       />
@@ -119,7 +119,7 @@ const Services: React.FC = () => {
           "Computer vision applications",
           "MLOps implementation"
         ]}
-        animationType="ai-engineering"
+        image="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<Brain size={32} />}
       />
 

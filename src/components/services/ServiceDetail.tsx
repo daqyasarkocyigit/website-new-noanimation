@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import AnimatedSection from '../utils/AnimatedSection';
-import ServiceAnimation from './ServiceAnimation';
 
 interface ServiceDetailProps {
   id: string;
@@ -11,7 +10,6 @@ interface ServiceDetailProps {
   benefits: string[];
   image: string;
   icon: React.ReactNode;
-  animationType: 'data-engineering' | 'data-visualization' | 'business-intelligence' | 'cloud-modernization' | 'ai-engineering';
   isReversed?: boolean;
 }
 
@@ -20,8 +18,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   title,
   description,
   benefits,
+  image,
   icon,
-  animationType,
   isReversed = false,
 }) => {
   return (
@@ -56,7 +54,15 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
           </AnimatedSection>
           
           <AnimatedSection delay={0.3} className={`order-1 ${isReversed ? 'md:order-1' : 'md:order-2'}`}>
-            <ServiceAnimation type={animationType} />
+            <div className="relative rounded-xl overflow-hidden shadow-2xl aspect-w-16 aspect-h-9">
+              <div className="absolute -top-6 -right-6 w-32 h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
+              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
+              <img 
+                src={image} 
+                alt={title} 
+                className="w-full h-full object-cover z-10 relative"
+              />
+            </div>
           </AnimatedSection>
         </div>
       </div>
