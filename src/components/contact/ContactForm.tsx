@@ -58,9 +58,26 @@ const ContactForm: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Create email body
+      const emailBody = `
+Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company || 'Not provided'}
+Service of Interest: ${formData.service || 'Not specified'}
+
+Message:
+${formData.message}
+      `.trim();
+
+      // Create mailto link
+      const subject = encodeURIComponent(`Contact Form Submission from ${formData.name}`);
+      const body = encodeURIComponent(emailBody);
+      const mailtoLink = `mailto:info@daqconsulting.com?subject=${subject}&body=${body}`;
+
+      // Open email client
+      window.location.href = mailtoLink;
       
+      // Show success message
       setIsSubmitted(true);
       
       // Reset form after showing success message
@@ -93,9 +110,9 @@ const ContactForm: React.FC = () => {
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <CheckCircle className="w-8 h-8 text-green-500" />
           </div>
-          <h3 className="text-2xl font-semibold mb-2">Message Sent!</h3>
+          <h3 className="text-2xl font-semibold mb-2">Email Client Opened!</h3>
           <p className="text-gray-600">
-            Thank you for reaching out. We'll get back to you shortly.
+            Your email client should have opened with your message. Please send the email to complete your inquiry.
           </p>
         </motion.div>
       ) : (
@@ -185,6 +202,7 @@ const ContactForm: React.FC = () => {
                 <option value="business-intelligence">Business Intelligence & Analytics</option>
                 <option value="cloud-modernization">Cloud Modernization</option>
                 <option value="ai-engineering">AI Engineering</option>
+                <option value="talent-hiring">Talent & Hiring</option>
                 <option value="other">Other / Not Sure</option>
               </select>
             </div>
@@ -225,7 +243,7 @@ const ContactForm: React.FC = () => {
             {isSubmitting ? (
               <>
                 <div className="loading-spinner w-4 h-4 mr-2" />
-                Sending...
+                Opening Email...
               </>
             ) : (
               <>
@@ -236,7 +254,7 @@ const ContactForm: React.FC = () => {
           </button>
           
           <p className="mt-3 text-xs text-gray-500 text-center">
-            We'll respond within 24 hours during business days.
+            This will open your email client with your message pre-filled to send to info@daqconsulting.com
           </p>
         </form>
       )}
