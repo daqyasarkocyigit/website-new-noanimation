@@ -2,15 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import AnimatedSection from '../utils/AnimatedSection';
+import DataEngineeringVisual from './DataEngineeringVisual';
 
 interface ServiceDetailProps {
   id: string;
   title: string;
   description: string;
   benefits: string[];
-  image: string;
+  image?: string;
   icon: React.ReactNode;
   isReversed?: boolean;
+  useCustomVisual?: boolean;
 }
 
 const ServiceDetail: React.FC<ServiceDetailProps> = ({
@@ -21,6 +23,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   image,
   icon,
   isReversed = false,
+  useCustomVisual = false,
 }) => {
   return (
     <section id={id} className="py-20 scroll-mt-24">
@@ -57,11 +60,18 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
             <div className="relative rounded-xl overflow-hidden shadow-2xl aspect-w-16 aspect-h-9">
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
-              <img 
-                src={image} 
-                alt={title} 
-                className="w-full h-full object-cover z-10 relative"
-              />
+              
+              {useCustomVisual ? (
+                <div className="w-full h-96 relative z-10">
+                  <DataEngineeringVisual />
+                </div>
+              ) : (
+                <img 
+                  src={image} 
+                  alt={title} 
+                  className="w-full h-full object-cover z-10 relative"
+                />
+              )}
             </div>
           </AnimatedSection>
         </div>
