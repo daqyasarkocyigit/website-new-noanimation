@@ -51,8 +51,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   return (
     <section id={id} className="py-20 scroll-mt-24">
       <div className="container mx-auto px-4 md:px-6">
-        <div className={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center ${isReversed ? 'md:flex-row-reverse' : ''}`}>
-          <AnimatedSection delay={0.1} className="order-2 md:order-1">
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${isReversed ? 'lg:flex-row-reverse' : ''}`}>
+          <AnimatedSection delay={0.1} className="order-2 lg:order-1">
             <div className="flex items-center space-x-3 mb-4">
               <div className="text-brand-red-600">
                 {icon}
@@ -79,20 +79,20 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
             </ul>
           </AnimatedSection>
           
-          <AnimatedSection delay={0.3} className={`order-1 ${isReversed ? 'md:order-1' : 'md:order-2'}`}>
-            <div className="relative rounded-xl overflow-hidden shadow-2xl aspect-w-16 aspect-h-9">
+          <AnimatedSection delay={0.3} className={`order-1 ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}>
+            <div className="relative rounded-xl overflow-hidden shadow-2xl">
               <div className="absolute -top-6 -right-6 w-32 h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
               
               {useCustomVisual ? (
-                <div className="w-full h-96 relative z-10">
+                <div className="w-full h-[400px] relative z-10 bg-gray-900 rounded-xl">
                   {renderCustomVisual()}
                 </div>
               ) : (
                 <img 
                   src={image} 
                   alt={title} 
-                  className="w-full h-full object-cover z-10 relative"
+                  className="w-full h-[400px] object-cover z-10 relative rounded-xl"
                 />
               )}
             </div>
