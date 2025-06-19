@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { CheckCircle, Award, Lightbulb, Target, TrendingUp, Shield, Zap } from 'lucide-react';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
+import AboutHeroVisual from '../components/about/AboutHeroVisual';
 
 const About: React.FC = () => {
   return (
@@ -52,16 +53,14 @@ const About: React.FC = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <div className="relative rounded-lg overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-tr from-brand-red-600/10 to-cool-gray-500/10 z-10"></div>
-                <img 
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
-                  alt="DAQ Consulting team working together" 
-                  className="w-full h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 object-cover z-0"
-                />
+              <div className="relative">
+                <div className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-16 h-16 sm:w-32 sm:h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
+                <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-16 h-16 sm:w-32 sm:h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
+                
+                <div className="relative z-10">
+                  <AboutHeroVisual />
+                </div>
               </div>
-              <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-12 h-12 sm:w-24 sm:h-24 bg-brand-red-600/80 rounded-lg z-20"></div>
-              <div className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-12 h-12 sm:w-24 sm:h-24 bg-cool-gray-600/80 rounded-lg z-20"></div>
             </motion.div>
           </div>
         </div>
