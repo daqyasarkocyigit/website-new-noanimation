@@ -1,113 +1,114 @@
 import React from 'react';
-import { Cloud, Server, Shield, Database, Zap, ArrowUpRight, Globe, Lock } from 'lucide-react';
+import { Cloud, Server, Shield, Database, Globe, ArrowUpRight, Zap } from 'lucide-react';
 
 const CloudModernizationVisual: React.FC = () => {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 rounded-xl overflow-hidden relative">
+    <div className="w-full h-full bg-gradient-to-br from-slate-900 to-gray-900 rounded-xl overflow-hidden relative">
       {/* Subtle Grid Pattern */}
-      <div className="absolute inset-0 opacity-[0.02]">
+      <div className="absolute inset-0 opacity-[0.03]">
         <div 
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(239, 68, 68, 0.05) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(239, 68, 68, 0.05) 1px, transparent 1px)
+              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
             `,
-            backgroundSize: '40px 40px'
+            backgroundSize: '30px 30px'
           }}
         />
       </div>
 
       {/* Main Container */}
-      <div className="relative w-full h-full flex items-center justify-center p-8">
-        {/* Cloud Infrastructure Visualization */}
-        <div className="relative">
-          {/* Central Cloud Platform */}
-          <div className="relative z-20">
-            <div className="w-48 h-32 bg-gradient-to-b from-slate-800/90 to-gray-800/90 rounded-2xl shadow-2xl border border-gray-700/30 backdrop-blur-sm">
-              {/* Cloud Icon Container */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <Cloud className="w-20 h-20 text-brand-red-500/80" strokeWidth={1} />
+      <div className="relative w-full h-full flex flex-col items-center justify-center p-8">
+        
+        {/* Migration Progress - Top */}
+        <div className="absolute top-8 left-8 right-8 bg-slate-800/40 backdrop-blur-sm rounded-xl p-6 border border-gray-700/30">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-brand-red-500/20 flex items-center justify-center">
+                <ArrowUpRight className="w-5 h-5 text-brand-red-500" />
               </div>
+              <div>
+                <h3 className="text-sm font-semibold text-gray-200">Cloud Migration Progress</h3>
+                <p className="text-xs text-gray-500">Migrating infrastructure to cloud</p>
+              </div>
+            </div>
+            <div className="text-right">
+              <div className="text-2xl font-bold text-gray-200">
+                <span className="migration-percentage">0</span>%
+              </div>
+              <div className="text-xs text-gray-500">Complete</div>
+            </div>
+          </div>
+          
+          <div className="w-full h-3 bg-gray-800/50 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-gradient-to-r from-brand-red-500 to-brand-red-600 rounded-full transition-all duration-300"
+              style={{
+                animation: 'progressFill 8s ease-out infinite'
+              }}
+            />
+          </div>
+          
+          <div className="flex justify-between mt-2 text-xs text-gray-500">
+            <span>0GB</span>
+            <span className="text-brand-red-500 font-medium">
+              <span className="data-transferred">0</span>TB / 3TB
+            </span>
+          </div>
+        </div>
+
+        {/* Central Cloud Infrastructure */}
+        <div className="relative mt-20">
+          {/* Floating Cloud Platform */}
+          <div 
+            className="relative"
+            style={{ animation: 'cloudFloat 6s ease-in-out infinite' }}
+          >
+            {/* Cloud Container */}
+            <div className="w-64 h-48 relative">
+              {/* Cloud Shape */}
+              <div className="absolute inset-0 bg-gradient-to-b from-slate-800/60 to-gray-800/60 rounded-full blur-xl" />
+              <div className="absolute bottom-0 left-8 right-8 h-32 bg-gradient-to-b from-slate-800/80 to-gray-800/80 rounded-full blur-lg" />
+              <div className="absolute bottom-0 left-4 right-4 h-24 bg-gradient-to-b from-slate-700 to-gray-800 rounded-full" />
               
-              {/* Cloud Layers Effect */}
-              <div className="absolute -bottom-2 left-4 right-4 h-8 bg-gray-800/50 rounded-xl blur-sm" />
-              <div className="absolute -bottom-4 left-8 right-8 h-6 bg-gray-800/30 rounded-xl blur-md" />
+              {/* Cloud Icon */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Cloud className="w-24 h-24 text-white/20" strokeWidth={1} />
+              </div>
             </div>
           </div>
 
-          {/* Service Nodes */}
-          <div className="absolute inset-0 w-96 h-96 -top-32 -left-24">
+          {/* Service Icons Orbiting */}
+          <div className="absolute inset-0 w-80 h-80 -top-16 -left-8">
             {[
-              { 
-                icon: Server, 
-                position: { top: '20%', left: '50%' }, 
-                label: 'Compute',
-                delay: '0s',
-                color: 'from-blue-500/20 to-blue-600/20'
-              },
-              { 
-                icon: Database, 
-                position: { top: '50%', right: '15%' }, 
-                label: 'Storage',
-                delay: '0.5s',
-                color: 'from-green-500/20 to-green-600/20'
-              },
-              { 
-                icon: Shield, 
-                position: { bottom: '20%', left: '50%' }, 
-                label: 'Security',
-                delay: '1s',
-                color: 'from-purple-500/20 to-purple-600/20'
-              },
-              { 
-                icon: Globe, 
-                position: { top: '50%', left: '15%' }, 
-                label: 'Network',
-                delay: '1.5s',
-                color: 'from-orange-500/20 to-orange-600/20'
-              }
+              { icon: Server, angle: 0, label: 'Compute', color: 'from-blue-500 to-blue-600' },
+              { icon: Database, angle: 72, label: 'Storage', color: 'from-green-500 to-green-600' },
+              { icon: Shield, angle: 144, label: 'Security', color: 'from-purple-500 to-purple-600' },
+              { icon: Globe, angle: 216, label: 'Network', color: 'from-orange-500 to-orange-600' },
+              { icon: Zap, angle: 288, label: 'Performance', color: 'from-yellow-500 to-yellow-600' }
             ].map((service, i) => {
               const IconComponent = service.icon;
+              const radian = (service.angle * Math.PI) / 180;
+              const x = 140 * Math.cos(radian);
+              const y = 140 * Math.sin(radian);
+              
               return (
                 <div
                   key={i}
-                  className="absolute group"
+                  className="absolute top-1/2 left-1/2 transition-all duration-300"
                   style={{
-                    ...service.position,
-                    animation: `serviceFloat ${6 + i}s ease-in-out infinite ${service.delay}`
+                    transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+                    animation: `orbitRotate 20s linear infinite`,
+                    animationDelay: `${i * 0.2}s`
                   }}
                 >
-                  {/* Connection Line to Center */}
-                  <svg 
-                    className="absolute w-48 h-48 -top-24 -left-24 pointer-events-none opacity-20"
-                    style={{ zIndex: 1 }}
-                  >
-                    <line
-                      x1="96"
-                      y1="96"
-                      x2="192"
-                      y2="192"
-                      stroke="rgba(239, 68, 68, 0.3)"
-                      strokeWidth="1"
-                      strokeDasharray="5,5"
-                      style={{
-                        animation: `dashMove 10s linear infinite ${service.delay}`
-                      }}
-                    />
-                  </svg>
-
-                  {/* Service Node */}
-                  <div 
-                    className={`relative z-10 w-20 h-20 bg-gradient-to-br ${service.color} backdrop-blur-sm rounded-xl flex flex-col items-center justify-center border border-gray-700/30 shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <IconComponent className="w-8 h-8 text-gray-300 mb-1" strokeWidth={1.5} />
-                    <span className="text-xs text-gray-400">{service.label}</span>
-                    
-                    {/* Active Indicator */}
-                    <div className="absolute -top-1 -right-1 w-3 h-3">
-                      <div className="absolute inset-0 bg-green-500 rounded-full animate-ping" />
-                      <div className="relative w-3 h-3 bg-green-500 rounded-full" />
+                  <div className="group relative">
+                    <div className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-110`}>
+                      <IconComponent className="w-7 h-7 text-white" strokeWidth={1.5} />
+                    </div>
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-gray-400 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+                      {service.label}
                     </div>
                   </div>
                 </div>
@@ -115,148 +116,112 @@ const CloudModernizationVisual: React.FC = () => {
             })}
           </div>
 
-          {/* Data Flow Particles */}
-          <div className="absolute inset-0 pointer-events-none">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-1 h-1 bg-brand-red-400 rounded-full"
-                style={{
-                  top: '50%',
-                  left: '50%',
-                  animation: `particleOrbit ${15 + i * 2}s linear infinite`,
-                  animationDelay: `${i * 2}s`
-                }}
-              />
-            ))}
-          </div>
+          {/* Data Flow Lines */}
+          <svg className="absolute inset-0 w-80 h-80 -top-16 -left-8 pointer-events-none opacity-20">
+            <circle
+              cx="160"
+              cy="160"
+              r="140"
+              fill="none"
+              stroke="rgba(239, 68, 68, 0.2)"
+              strokeWidth="1"
+              strokeDasharray="5,10"
+              style={{
+                animation: 'dashRotate 30s linear infinite'
+              }}
+            />
+          </svg>
         </div>
 
-        {/* Migration Progress Indicator */}
-        <div className="absolute top-8 left-8 bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700/30">
-          <div className="flex items-center gap-3 mb-2">
-            <ArrowUpRight className="w-4 h-4 text-brand-red-500" />
-            <span className="text-sm font-medium text-gray-300">Migration Status</span>
-          </div>
-          <div className="w-48 h-2 bg-gray-700/50 rounded-full overflow-hidden">
+        {/* Bottom Stats */}
+        <div className="absolute bottom-8 left-8 right-8 grid grid-cols-3 gap-4">
+          {[
+            { label: 'Reduced Costs', value: '42%', icon: '💰' },
+            { label: 'Faster Deploy', value: '3x', icon: '🚀' },
+            { label: 'Uptime', value: '99.9%', icon: '✅' }
+          ].map((stat, i) => (
             <div 
-              className="h-full bg-gradient-to-r from-brand-red-500 to-brand-red-600 rounded-full"
+              key={i}
+              className="bg-slate-800/30 backdrop-blur-sm rounded-lg p-4 text-center border border-gray-700/30"
               style={{
-                width: '75%',
-                animation: 'progressMove 3s ease-in-out infinite'
+                animation: `statFade 4s ease-in-out infinite ${i * 0.3}s`
               }}
-            />
-          </div>
-          <div className="flex justify-between mt-1">
-            <span className="text-xs text-gray-500">75% Complete</span>
-            <span className="text-xs text-gray-500">2.3TB/3TB</span>
-          </div>
-        </div>
-
-        {/* Security Badge */}
-        <div className="absolute top-8 right-8 bg-slate-800/50 backdrop-blur-sm rounded-lg px-4 py-2 border border-gray-700/30 flex items-center gap-2">
-          <Lock className="w-4 h-4 text-green-500" />
-          <span className="text-xs text-gray-400">End-to-End Encrypted</span>
-        </div>
-
-        {/* Performance Metrics */}
-        <div className="absolute bottom-8 left-8 right-8">
-          <div className="grid grid-cols-4 gap-4">
-            {[
-              { label: 'Uptime', value: '99.99%', trend: '+0.02%' },
-              { label: 'Latency', value: '12ms', trend: '-3ms' },
-              { label: 'Cost', value: '-42%', trend: 'Optimized' },
-              { label: 'Scale', value: 'Auto', trend: 'Active' }
-            ].map((metric, i) => (
-              <div 
-                key={i} 
-                className="bg-slate-800/30 backdrop-blur-sm rounded-lg p-3 border border-gray-700/30"
-                style={{
-                  animation: `metricFade 4s ease-in-out infinite ${i * 0.5}s`
-                }}
-              >
-                <div className="text-xs text-gray-500 mb-1">{metric.label}</div>
-                <div className="text-lg font-semibold text-gray-200">{metric.value}</div>
-                <div className="text-xs text-green-500 mt-1">{metric.trend}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Cloud Rings */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          {[1, 2, 3].map((ring) => (
-            <div
-              key={ring}
-              className="absolute rounded-full border border-gray-700/10"
-              style={{
-                width: `${ring * 150}px`,
-                height: `${ring * 150}px`,
-                animation: `ringPulse ${4 + ring}s ease-in-out infinite`,
-                animationDelay: `${ring * 0.3}s`
-              }}
-            />
+            >
+              <div className="text-2xl mb-1">{stat.icon}</div>
+              <div className="text-xl font-bold text-gray-200">{stat.value}</div>
+              <div className="text-xs text-gray-500">{stat.label}</div>
+            </div>
           ))}
         </div>
       </div>
 
       <style jsx>{`
-        @keyframes serviceFloat {
-          0%, 100% { 
-            transform: translateY(0px) scale(1);
+        @keyframes progressFill {
+          0% { 
+            width: 0%;
           }
-          50% { 
-            transform: translateY(-15px) scale(1.02);
-          }
-        }
-
-        @keyframes dashMove {
-          0% { stroke-dashoffset: 0; }
-          100% { stroke-dashoffset: -10; }
-        }
-
-        @keyframes particleOrbit {
-          0% {
-            transform: rotate(0deg) translateX(120px) rotate(0deg);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          90% {
-            opacity: 1;
-          }
-          100% {
-            transform: rotate(360deg) translateX(120px) rotate(-360deg);
-            opacity: 0;
+          100% { 
+            width: 100%;
           }
         }
 
-        @keyframes progressMove {
-          0%, 100% { width: 75%; }
-          50% { width: 78%; }
+        @keyframes cloudFloat {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-20px); }
         }
 
-        @keyframes metricFade {
+        @keyframes orbitRotate {
+          0% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) rotate(0deg); }
+          100% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) rotate(360deg); }
+        }
+
+        @keyframes dashRotate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        @keyframes statFade {
           0%, 100% { 
             opacity: 0.7;
-            transform: translateY(0);
+            transform: scale(0.95);
           }
           50% { 
             opacity: 1;
-            transform: translateY(-2px);
+            transform: scale(1);
           }
         }
 
-        @keyframes ringPulse {
-          0%, 100% {
-            opacity: 0.1;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 0.2;
-            transform: scale(1.05);
-          }
+        /* Counter Animation */
+        @property --num {
+          syntax: '<integer>';
+          initial-value: 0;
+          inherits: false;
+        }
+
+        .migration-percentage {
+          animation: countUp 8s ease-out infinite;
+          counter-reset: num var(--num);
+        }
+
+        .migration-percentage::after {
+          content: counter(num);
+        }
+
+        @keyframes countUp {
+          0% { --num: 0; }
+          100% { --num: 100; }
+        }
+
+        .data-transferred {
+          animation: dataCount 8s ease-out infinite;
+        }
+
+        @keyframes dataCount {
+          0% { content: "0.0"; }
+          25% { content: "0.8"; }
+          50% { content: "1.5"; }
+          75% { content: "2.3"; }
+          100% { content: "3.0"; }
         }
       `}</style>
     </div>
