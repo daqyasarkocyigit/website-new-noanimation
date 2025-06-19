@@ -18,11 +18,11 @@ const DataVisualizationVisual: React.FC = () => {
         />
       </div>
 
-      {/* Main Container - Mobile Optimized */}
+      {/* Main Container - Optimized for full visibility */}
       <div className="relative w-full h-full flex flex-col p-2 sm:p-3 lg:p-4">
         
         {/* Dashboard Performance Card */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-white/20 shadow-xl mb-2 sm:mb-3">
+        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-white/20 shadow-xl mb-2 sm:mb-3 flex-shrink-0">
           <div className="flex items-center justify-between mb-1.5 sm:mb-2">
             <div className="flex items-center gap-1.5 sm:gap-2">
               <div className="relative">
@@ -59,19 +59,19 @@ const DataVisualizationVisual: React.FC = () => {
           </div>
         </div>
 
-        {/* Visualization Types Grid - Mobile Responsive */}
-        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
+        {/* Visualization Types Grid - Optimized for mobile */}
+        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 min-h-0">
           
           {/* Interactive Charts Section */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50">
-            <h4 className="text-xs font-semibold text-gray-300 mb-1.5 sm:mb-2 flex items-center">
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50 flex flex-col">
+            <h4 className="text-xs font-semibold text-gray-300 mb-1.5 sm:mb-2 flex items-center flex-shrink-0">
               <BarChart3 className="w-3 h-3 mr-1" />
               Interactive Charts
             </h4>
             
             {/* Bar Chart Preview */}
-            <div className="bg-gray-900/50 rounded p-1.5 sm:p-2 mb-1.5 sm:mb-2 border border-gray-700/30">
-              <div className="flex items-end gap-0.5 sm:gap-1 h-12 sm:h-16">
+            <div className="bg-gray-900/50 rounded p-1.5 sm:p-2 mb-1.5 sm:mb-2 border border-gray-700/30 flex-shrink-0">
+              <div className="flex items-end gap-0.5 sm:gap-1 h-10 sm:h-12 lg:h-14">
                 {[40, 65, 35, 80, 55, 70, 45].map((height, i) => (
                   <div
                     key={i}
@@ -87,7 +87,7 @@ const DataVisualizationVisual: React.FC = () => {
             </div>
             
             {/* Metrics */}
-            <div className="grid grid-cols-2 gap-1 sm:gap-1.5">
+            <div className="grid grid-cols-2 gap-1 sm:gap-1.5 flex-shrink-0">
               <div className="bg-gray-900/50 rounded p-1 sm:p-1.5 text-center border border-gray-700/30">
                 <div className="text-xs text-gray-400">Charts</div>
                 <div className="text-sm font-bold text-white">24</div>
@@ -100,34 +100,34 @@ const DataVisualizationVisual: React.FC = () => {
           </div>
 
           {/* Real-time Dashboards */}
-          <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-brand-red-500/30 shadow-lg">
-            <h4 className="text-xs font-semibold text-brand-red-400 mb-1.5 sm:mb-2 flex items-center">
+          <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-brand-red-500/30 shadow-lg flex flex-col">
+            <h4 className="text-xs font-semibold text-brand-red-400 mb-1.5 sm:mb-2 flex items-center flex-shrink-0">
               <Grid3x3 className="w-3 h-3 mr-1" />
               Live Dashboards
             </h4>
             
             {/* Dashboard Grid */}
-            <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mb-1.5 sm:mb-2">
+            <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mb-1.5 sm:mb-2 flex-shrink-0">
               <div className="bg-white/5 rounded p-1.5 sm:p-2 border border-white/10">
-                <PieChart className="w-4 h-4 sm:w-6 sm:h-6 text-brand-red-400 mx-auto mb-0.5 sm:mb-1" />
+                <PieChart className="w-4 h-4 sm:w-5 sm:h-5 text-brand-red-400 mx-auto mb-0.5 sm:mb-1" />
                 <div className="text-xs text-gray-300 text-center">Analytics</div>
               </div>
               <div className="bg-white/5 rounded p-1.5 sm:p-2 border border-white/10">
-                <LineChart className="w-4 h-4 sm:w-6 sm:h-6 text-brand-red-400 mx-auto mb-0.5 sm:mb-1" />
+                <LineChart className="w-4 h-4 sm:w-5 sm:h-5 text-brand-red-400 mx-auto mb-0.5 sm:mb-1" />
                 <div className="text-xs text-gray-300 text-center">Metrics</div>
               </div>
               <div className="bg-white/5 rounded p-1.5 sm:p-2 border border-white/10">
-                <TrendingUp className="w-4 h-4 sm:w-6 sm:h-6 text-brand-red-400 mx-auto mb-0.5 sm:mb-1" />
+                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-brand-red-400 mx-auto mb-0.5 sm:mb-1" />
                 <div className="text-xs text-gray-300 text-center">KPIs</div>
               </div>
               <div className="bg-white/5 rounded p-1.5 sm:p-2 border border-white/10">
-                <Eye className="w-4 h-4 sm:w-6 sm:h-6 text-brand-red-400 mx-auto mb-0.5 sm:mb-1" />
+                <Eye className="w-4 h-4 sm:w-5 sm:h-5 text-brand-red-400 mx-auto mb-0.5 sm:mb-1" />
                 <div className="text-xs text-gray-300 text-center">Monitor</div>
               </div>
             </div>
             
             {/* Live Indicator */}
-            <div className="bg-white/5 rounded p-1 sm:p-1.5 border border-white/10">
+            <div className="bg-white/5 rounded p-1 sm:p-1.5 border border-white/10 flex-shrink-0">
               <div className="flex items-center justify-between">
                 <span className="text-xs text-gray-300">Live Refresh</span>
                 <div className="flex items-center gap-1">
@@ -139,16 +139,16 @@ const DataVisualizationVisual: React.FC = () => {
           </div>
 
           {/* Custom Visualizations */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50 sm:col-span-2 lg:col-span-1">
-            <h4 className="text-xs font-semibold text-gray-300 mb-1.5 sm:mb-2 flex items-center">
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50 sm:col-span-2 lg:col-span-1 flex flex-col">
+            <h4 className="text-xs font-semibold text-gray-300 mb-1.5 sm:mb-2 flex items-center flex-shrink-0">
               <Palette className="w-3 h-3 mr-1" />
               Custom Visuals
             </h4>
             
             {/* Heatmap Preview */}
-            <div className="bg-gray-900/50 rounded p-1.5 sm:p-2 mb-1.5 sm:mb-2 border border-gray-700/30">
+            <div className="bg-gray-900/50 rounded p-1.5 sm:p-2 mb-1.5 sm:mb-2 border border-gray-700/30 flex-shrink-0">
               <div className="grid grid-cols-7 gap-0.5">
-                {[...Array(28)].map((_, i) => {
+                {[...Array(21)].map((_, i) => {
                   const intensity = Math.random();
                   return (
                     <div
@@ -166,7 +166,7 @@ const DataVisualizationVisual: React.FC = () => {
             </div>
             
             {/* Customization Options */}
-            <div className="space-y-1">
+            <div className="space-y-1 flex-shrink-0">
               <div className="bg-gray-900/50 rounded p-1 sm:p-1.5 flex items-center justify-between border border-gray-700/30">
                 <span className="text-xs text-gray-300">Color Themes</span>
                 <span className="text-xs text-gray-500">12</span>
@@ -179,8 +179,8 @@ const DataVisualizationVisual: React.FC = () => {
           </div>
         </div>
 
-        {/* Key Performance Metrics */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2 mt-2 sm:mt-3">
+        {/* Key Performance Metrics - Fixed at bottom */}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2 mt-2 sm:mt-3 flex-shrink-0">
           <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2.5 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
