@@ -280,16 +280,10 @@ const Navbar: React.FC = () => {
               isOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
           >
-            {/* Header */}
+            {/* Header - Simplified without duplicate close button */}
             <div className="flex items-center justify-between p-4 border-b border-gray-200">
               <span className="text-lg font-semibold text-gray-900">Menu</span>
-              <button
-                onClick={closeMenu}
-                className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors focus-ring"
-                aria-label="Close menu"
-              >
-                <X size={20} className="text-gray-600" />
-              </button>
+              {/* The close functionality is handled by the main hamburger button */}
             </div>
 
             {/* Menu Content */}
