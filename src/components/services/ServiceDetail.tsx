@@ -49,18 +49,18 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   };
 
   return (
-    <section id={id} className="py-20 scroll-mt-24">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-start ${isReversed ? 'lg:flex-row-reverse' : ''}`}>
+    <section id={id} className="section-padding scroll-mt-24">
+      <div className="container">
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start ${isReversed ? 'lg:flex-row-reverse' : ''}`}>
           <AnimatedSection delay={0.1} className="order-2 lg:order-1">
             <div className="flex items-center space-x-3 mb-4">
               <div className="text-brand-red-600">
                 {icon}
               </div>
-              <h2 className="text-3xl font-bold text-gray-900">{title}</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{title}</h2>
             </div>
             
-            <p className="text-lg text-cool-gray-600 mb-6 leading-relaxed">{description}</p>
+            <p className="text-responsive-lg text-cool-gray-600 mb-6 leading-relaxed">{description}</p>
             
             <ul className="space-y-3">
               {benefits.map((benefit, index) => (
@@ -73,7 +73,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
                   viewport={{ once: true }}
                 >
                   <Check size={20} className="text-brand-red-600 mt-1 mr-3 flex-shrink-0" />
-                  <span className="text-cool-gray-600">{benefit}</span>
+                  <span className="text-cool-gray-600 text-responsive">{benefit}</span>
                 </motion.li>
               ))}
             </ul>
@@ -85,14 +85,15 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
               <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
               
               {useCustomVisual ? (
-                <div className="w-full h-[450px] relative z-10 bg-gray-900 rounded-xl overflow-hidden">
+                <div className="w-full h-64 sm:h-80 lg:h-96 relative z-10 bg-gray-900 rounded-xl overflow-hidden">
                   {renderCustomVisual()}
                 </div>
               ) : (
                 <img 
                   src={image} 
                   alt={title} 
-                  className="w-full h-[450px] object-cover z-10 relative rounded-xl"
+                  className="w-full h-64 sm:h-80 lg:h-96 object-cover z-10 relative rounded-xl"
+                  loading="lazy"
                 />
               )}
             </div>
