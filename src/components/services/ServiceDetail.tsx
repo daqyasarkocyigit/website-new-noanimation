@@ -6,6 +6,7 @@ import DataEngineeringVisual from './DataEngineeringVisual';
 import DataVisualizationVisual from './DataVisualizationVisual';
 import BusinessIntelligenceVisual from './BusinessIntelligenceVisual';
 import AIEngineeringVisual from './AIEngineeringVisual';
+import CloudModernizationVisual from './CloudModernizationVisual';
 
 interface ServiceDetailProps {
   id: string;
@@ -16,7 +17,7 @@ interface ServiceDetailProps {
   icon: React.ReactNode;
   isReversed?: boolean;
   useCustomVisual?: boolean;
-  visualType?: 'data-engineering' | 'data-visualization' | 'business-intelligence' | 'ai-engineering';
+  visualType?: 'data-engineering' | 'data-visualization' | 'business-intelligence' | 'ai-engineering' | 'cloud-modernization';
 }
 
 const ServiceDetail: React.FC<ServiceDetailProps> = ({
@@ -40,6 +41,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
         return <BusinessIntelligenceVisual />;
       case 'ai-engineering':
         return <AIEngineeringVisual />;
+      case 'cloud-modernization':
+        return <CloudModernizationVisual />;
       default:
         return <DataEngineeringVisual />;
     }

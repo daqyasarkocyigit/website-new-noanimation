@@ -106,9 +106,10 @@ const Services: React.FC = () => {
           "Cloud cost optimization",
           "Security and compliance"
         ]}
-        image="https://images.pexels.com/photos/1624895/pexels-photo-1624895.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<Cloud size={32} />}
         isReversed
+        useCustomVisual={true}
+        visualType="cloud-modernization"
       />
 
       <ServiceDetail
