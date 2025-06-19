@@ -20,47 +20,60 @@ const Talent: React.FC = () => {
         ></div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
-                Hire Top <span className="text-brand-red-600">Tech</span> Talent
-              </h1>
-              <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6 mx-auto"></div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <p className="text-base sm:text-lg text-cool-gray-600 leading-relaxed mb-6">
-                Find the right professionals for your business needs. We offer flexible staffing 
-                solutions to help you build and scale your technical teams effectively.
-              </p>
-              <p className="text-base sm:text-lg text-cool-gray-600 leading-relaxed mb-8">
-                Our talent network includes highly skilled professionals in data engineering, 
-                cloud architecture, AI development, and business intelligence.
-              </p>
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
+            <div className="w-full lg:w-1/2 lg:pr-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
+                  Hire Top <span className="text-brand-red-600">Tech</span> Talent
+                </h1>
+                <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6"></div>
+              </motion.div>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a 
-                  href="#hire-talent" 
-                  className="inline-flex items-center justify-center px-6 py-3 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
-                >
-                  <span className="mr-2">Explore Options</span>
-                  <ChevronRight size={16} />
-                </a>
-                <a 
-                  href="/contact" 
-                  className="inline-flex items-center justify-center px-6 py-3 border border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 rounded-lg transition-colors duration-300"
-                >
-                  Request Talent
-                </a>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <p className="text-base sm:text-lg text-cool-gray-600 leading-relaxed mb-6">
+                  Find the right professionals for your business needs. We offer flexible staffing 
+                  solutions to help you build and scale your technical teams effectively.
+                </p>
+                <p className="text-base sm:text-lg text-cool-gray-600 leading-relaxed">
+                  Our talent network includes highly skilled professionals in data engineering, 
+                  cloud architecture, AI development, and business intelligence.
+                </p>
+                
+                <div className="mt-8">
+                  <a 
+                    href="#hire-talent" 
+                    className="inline-flex items-center px-6 py-3 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
+                  >
+                    <span className="mr-2">Explore Options</span>
+                    <ChevronRight size={16} />
+                  </a>
+                </div>
+              </motion.div>
+            </div>
+            
+            <motion.div 
+              className="w-full lg:w-1/2 relative"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <div className="relative rounded-lg overflow-hidden shadow-2xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                  alt="Tech professionals collaborating" 
+                  className="w-full h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 object-cover z-0"
+                />
               </div>
+              <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-12 h-12 sm:w-24 sm:h-24 bg-brand-red-600/80 rounded-lg z-20"></div>
+              <div className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-12 h-12 sm:w-24 sm:h-24 bg-cool-gray-600/80 rounded-lg z-20"></div>
             </motion.div>
           </div>
         </div>
