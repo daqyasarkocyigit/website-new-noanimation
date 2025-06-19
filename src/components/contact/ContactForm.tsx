@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, CheckCircle, AlertCircle, Mail } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +14,6 @@ const ContactForm: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [submitMethod, setSubmitMethod] = useState<'emailjs' | 'mailto'>('emailjs');
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -49,61 +48,6 @@ const ContactForm: React.FC = () => {
     }
   };
 
-  // EmailJS submission (requires setup)
-  const submitWithEmailJS = async () => {
-    try {
-      // EmailJS implementation would go here
-      // For now, we'll simulate success
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      return true;
-    } catch (error) {
-      console.error('EmailJS error:', error);
-      return false;
-    }
-  };
-
-  // Fetch API submission to a serverless function
-  const submitWithFetch = async () => {
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        return true;
-      } else {
-        throw new Error('Network response was not ok');
-      }
-    } catch (error) {
-      console.error('Fetch error:', error);
-      return false;
-    }
-  };
-
-  // Mailto fallback
-  const submitWithMailto = () => {
-    const emailBody = `
-Name: ${formData.name}
-Email: ${formData.email}
-Company: ${formData.company || 'Not provided'}
-Service of Interest: ${formData.service || 'Not specified'}
-
-Message:
-${formData.message}
-    `.trim();
-
-    const subject = encodeURIComponent(`Contact Form Submission from ${formData.name}`);
-    const body = encodeURIComponent(emailBody);
-    const mailtoLink = `mailto:info@daqconsulting.com?subject=${subject}&body=${body}`;
-
-    window.location.href = mailtoLink;
-    return true;
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -114,50 +58,41 @@ ${formData.message}
     setIsSubmitting(true);
     
     try {
-      let success = false;
+      // Create email body
+      const emailBody = `
+Name: ${formData.name}
+Email: ${formData.email}
+Company: ${formData.company || 'Not provided'}
+Service of Interest: ${formData.service || 'Not specified'}
 
-      // Try multiple methods in order of preference
-      // 1. Try fetch API first (for serverless functions)
-      try {
-        success = await submitWithFetch();
-      } catch (error) {
-        console.log('Fetch method failed, trying EmailJS...');
-      }
+Message:
+${formData.message}
+      `.trim();
 
-      // 2. Try EmailJS if fetch fails
-      if (!success) {
-        try {
-          success = await submitWithEmailJS();
-        } catch (error) {
-          console.log('EmailJS method failed, using mailto...');
-        }
-      }
+      // Create mailto link
+      const subject = encodeURIComponent(`Contact Form Submission from ${formData.name}`);
+      const body = encodeURIComponent(emailBody);
+      const mailtoLink = `mailto:info@daqconsulting.com?subject=${subject}&body=${body}`;
 
-      // 3. Fallback to mailto
-      if (!success) {
-        success = submitWithMailto();
-      }
-
-      if (success) {
-        setIsSubmitted(true);
-        
-        // Reset form after showing success message
-        setTimeout(() => {
-          setFormData({
-            name: '',
-            email: '',
-            company: '',
-            service: '',
-            message: ''
-          });
-          setIsSubmitted(false);
-        }, 5000);
-      }
+      // Open email client
+      window.location.href = mailtoLink;
+      
+      // Show success message
+      setIsSubmitted(true);
+      
+      // Reset form after showing success message
+      setTimeout(() => {
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          service: '',
+          message: ''
+        });
+        setIsSubmitted(false);
+      }, 5000);
     } catch (error) {
       console.error('Form submission error:', error);
-      // Fallback to mailto on any error
-      submitWithMailto();
-      setIsSubmitted(true);
     } finally {
       setIsSubmitting(false);
     }
@@ -175,9 +110,9 @@ ${formData.message}
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
             <CheckCircle className="w-8 h-8 text-green-500" />
           </div>
-          <h3 className="text-2xl font-semibold mb-2">Message Sent!</h3>
+          <h3 className="text-2xl font-semibold mb-2">Email Client Opened!</h3>
           <p className="text-gray-600">
-            Thank you for reaching out. We'll get back to you shortly.
+            Your email client should have opened with your message. Please send the email to complete your inquiry.
           </p>
         </motion.div>
       ) : (
@@ -308,7 +243,7 @@ ${formData.message}
             {isSubmitting ? (
               <>
                 <div className="loading-spinner w-4 h-4 mr-2" />
-                Sending...
+                Opening Email...
               </>
             ) : (
               <>
@@ -318,22 +253,8 @@ ${formData.message}
             )}
           </button>
           
-          <div className="mt-4 p-3 bg-gray-50 rounded-lg border border-gray-200">
-            <div className="flex items-start gap-2">
-              <Mail className="w-4 h-4 text-brand-red-500 mt-0.5 flex-shrink-0" />
-              <div className="text-sm text-gray-600">
-                <p className="font-medium mb-1">Direct Email Options:</p>
-                <div className="space-y-1">
-                  <p>• <strong>General:</strong> info@daqconsulting.com</p>
-                  <p>• <strong>Talent:</strong> talent@daqconsulting.com</p>
-                  <p>• <strong>Careers:</strong> careers@daqconsulting.com</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          
           <p className="mt-3 text-xs text-gray-500 text-center">
-            We'll respond within 24 hours during business days.
+            This will open your email client with your message pre-filled to send to info@daqconsulting.com
           </p>
         </form>
       )}
