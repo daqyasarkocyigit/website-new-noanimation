@@ -33,8 +33,8 @@ const CloudModernizationVisual: React.FC = () => {
             className="w-full h-full"
             style={{
               backgroundImage: `
-                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px)
+                linear-gradient(90deg, rgba(239, 68, 68, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(239, 68, 68, 0.03) 1px, transparent 1px)
               `,
               backgroundSize: '50px 50px'
             }}
@@ -72,8 +72,8 @@ const CloudModernizationVisual: React.FC = () => {
       {/* Main Container */}
       <div className="relative w-full h-full flex flex-col p-6">
         
-        {/* Migration Progress Card - Enhanced */}
-        <div className="bg-gradient-to-br from-slate-900/90 to-slate-800/70 backdrop-blur-xl rounded-2xl p-6 border border-slate-600/40 shadow-2xl">
+        {/* Cloud Migration Progress Card */}
+        <div className="bg-gradient-to-br from-slate-900/90 to-slate-800/70 backdrop-blur-xl rounded-2xl p-6 border border-slate-600/40 shadow-2xl mb-4">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
               <div className="relative">
@@ -93,7 +93,7 @@ const CloudModernizationVisual: React.FC = () => {
             </div>
           </div>
           
-          {/* Enhanced Progress Bar */}
+          {/* Progress Bar */}
           <div className="relative w-full h-6 bg-slate-800/80 rounded-full overflow-hidden shadow-inner border border-slate-600/50">
             <div 
               className="absolute inset-y-0 left-0 rounded-full transition-all duration-300 ease-out shadow-lg"
@@ -102,10 +102,7 @@ const CloudModernizationVisual: React.FC = () => {
                 background: 'linear-gradient(90deg, #dc2626 0%, #ef4444 50%, #f97316 100%)'
               }}
             >
-              {/* Enhanced Glossy Effect */}
               <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-white/10 to-transparent rounded-full" />
-              
-              {/* Animated Glow */}
               <div className="absolute inset-0 opacity-60">
                 <div 
                   className="h-full w-32 bg-gradient-to-r from-transparent via-white/40 to-transparent"
@@ -124,13 +121,13 @@ const CloudModernizationVisual: React.FC = () => {
         </div>
 
         {/* Enterprise Cloud Architecture */}
-        <div className="flex-1 flex items-center justify-center relative mt-4 mb-4">
+        <div className="flex-1 flex items-center justify-center relative">
           {/* Central Cloud Infrastructure */}
           <div className="relative">
             {/* Main Cloud Container */}
             <div className="relative w-64 h-48">
               {/* Background Effects */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 rounded-3xl blur-3xl animate-pulse" />
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-red-600/10 to-gray-600/10 rounded-3xl blur-3xl animate-pulse" />
               
               {/* Cloud Structure */}
               <div className="relative w-full h-full">
@@ -222,7 +219,7 @@ const CloudModernizationVisual: React.FC = () => {
         </div>
 
         {/* Enterprise Metrics Dashboard */}
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-4 gap-3 mt-4">
           {[
             { label: 'Cost Reduction', value: '42%', trend: '↓ $2.1M/year', color: 'from-brand-red-500 to-brand-red-600' },
             { label: 'Deployment Speed', value: '3.2x', trend: '↑ 68% faster', color: 'from-gray-500 to-gray-600' },
