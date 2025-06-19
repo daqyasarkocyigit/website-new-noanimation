@@ -51,16 +51,16 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   return (
     <section id={id} className="section-padding scroll-mt-24">
       <div className="container">
-        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start ${isReversed ? 'lg:flex-row-reverse' : ''}`}>
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start ${isReversed ? 'lg:flex-row-reverse' : ''}`}>
           <AnimatedSection delay={0.1} className="order-2 lg:order-1">
             <div className="flex items-center space-x-3 mb-4">
               <div className="text-brand-red-600">
                 {icon}
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">{title}</h2>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">{title}</h2>
             </div>
             
-            <p className="text-responsive-lg text-cool-gray-600 mb-6 leading-relaxed">{description}</p>
+            <p className="text-base sm:text-lg text-cool-gray-600 mb-6 leading-relaxed">{description}</p>
             
             <ul className="space-y-3">
               {benefits.map((benefit, index) => (
@@ -73,7 +73,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
                   viewport={{ once: true }}
                 >
                   <Check size={20} className="text-brand-red-600 mt-1 mr-3 flex-shrink-0" />
-                  <span className="text-cool-gray-600 text-responsive">{benefit}</span>
+                  <span className="text-sm sm:text-base text-cool-gray-600">{benefit}</span>
                 </motion.li>
               ))}
             </ul>
@@ -81,18 +81,18 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
           
           <AnimatedSection delay={0.3} className={`order-1 ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}>
             <div className="relative rounded-xl overflow-hidden shadow-2xl">
-              <div className="absolute -top-6 -right-6 w-32 h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
-              <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
+              <div className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-16 h-16 sm:w-32 sm:h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
+              <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-16 h-16 sm:w-32 sm:h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
               
               {useCustomVisual ? (
-                <div className="w-full h-64 sm:h-80 lg:h-96 relative z-10 bg-gray-900 rounded-xl overflow-hidden">
+                <div className="w-full h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 relative z-10 bg-gray-900 rounded-xl overflow-hidden">
                   {renderCustomVisual()}
                 </div>
               ) : (
                 <img 
                   src={image} 
                   alt={title} 
-                  className="w-full h-64 sm:h-80 lg:h-96 object-cover z-10 relative rounded-xl"
+                  className="w-full h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 object-cover z-10 relative rounded-xl"
                   loading="lazy"
                 />
               )}

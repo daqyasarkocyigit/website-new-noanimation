@@ -25,23 +25,23 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
     <AnimatedSection delay={delay} className="w-full">
       <Link to={link} className="block h-full">
         <div className="relative group overflow-hidden rounded-xl shadow-lg h-full">
-          <div className="aspect-w-16 aspect-h-9 relative">
+          <div className="relative">
             <img 
               src={image} 
               alt={title} 
-              className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+              className="w-full h-48 xs:h-52 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/70 to-transparent opacity-80"></div>
           </div>
           
-          <div className="absolute inset-0 p-6 flex flex-col justify-end">
-            <span className="text-electric-blue-300 text-sm font-medium mb-2">{industry}</span>
-            <h3 className="text-white text-xl font-semibold mb-2">{title}</h3>
-            <p className="text-white text-lg font-bold mb-4">
+          <div className="absolute inset-0 p-4 sm:p-6 flex flex-col justify-end">
+            <span className="text-electric-blue-300 text-xs sm:text-sm font-medium mb-2">{industry}</span>
+            <h3 className="text-white text-lg sm:text-xl font-semibold mb-2">{title}</h3>
+            <p className="text-white text-base sm:text-lg font-bold mb-4">
               {result}
             </p>
             <motion.div
-              className="flex items-center text-electric-blue-300 font-medium"
+              className="flex items-center text-electric-blue-300 font-medium text-sm sm:text-base"
               initial={{ x: 0 }}
               whileHover={{ x: 5 }}
             >
@@ -62,7 +62,7 @@ const CaseStudies: React.FC = () => {
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <h2 className="section-title">Featured Case Studies</h2>
-              <p className="text-lg text-gray-600 max-w-2xl">
+              <p className="text-base sm:text-lg text-gray-600 max-w-2xl">
                 See how we've helped organizations transform their data capabilities and achieve measurable results.
               </p>
             </div>
@@ -72,7 +72,7 @@ const CaseStudies: React.FC = () => {
           </div>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           <CaseStudyCard
             title="Healthcare Analytics Platform"
             industry="Healthcare"

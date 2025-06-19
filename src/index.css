@@ -67,7 +67,7 @@
 
   /* Section title with responsive sizing */
   .section-title {
-    @apply text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight;
+    @apply text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight;
   }
 
   /* Container with proper mobile padding */
@@ -123,10 +123,27 @@
     @apply animate-spin rounded-full border-2 border-gray-300 border-t-brand-red-600;
   }
 
-  /* Image optimization */
+  /* Image optimization with responsive sizing */
   .responsive-image {
     @apply w-full h-auto object-cover;
     content-visibility: auto;
+  }
+
+  /* Enhanced responsive image containers */
+  .image-container-sm {
+    @apply h-32 xs:h-40 sm:h-48;
+  }
+
+  .image-container-md {
+    @apply h-40 xs:h-48 sm:h-56 md:h-64;
+  }
+
+  .image-container-lg {
+    @apply h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80;
+  }
+
+  .image-container-xl {
+    @apply h-56 xs:h-64 sm:h-72 md:h-80 lg:h-96;
   }
 
   /* Typography improvements */
@@ -180,7 +197,7 @@
     will-change: transform;
   }
 
-  /* Prevent layout shift */
+  /* Prevent layout shift with responsive aspect ratios */
   .aspect-ratio-16-9 {
     aspect-ratio: 16 / 9;
   }
@@ -191,6 +208,23 @@
 
   .aspect-ratio-1-1 {
     aspect-ratio: 1 / 1;
+  }
+
+  /* Enhanced responsive breakpoints */
+  .xs-only {
+    @apply block xs:hidden;
+  }
+
+  .sm-up {
+    @apply hidden sm:block;
+  }
+
+  .md-up {
+    @apply hidden md:block;
+  }
+
+  .lg-up {
+    @apply hidden lg:block;
   }
 
   /* Text truncation utilities */
@@ -233,6 +267,8 @@ img {
   content-visibility: auto;
   /* Prevent layout shift */
   height: auto;
+  /* Improve loading performance */
+  loading: lazy;
 }
 
 /* Lazy loading support */
@@ -283,11 +319,6 @@ img[loading="lazy"].loaded {
   .btn-secondary {
     @apply border-2 border-brand-red-600;
   }
-}
-
-/* Dark mode support (if needed) */
-@media (prefers-color-scheme: dark) {
-  /* Add dark mode styles if needed */
 }
 
 /* Optimized scrollbar */

@@ -20,7 +20,7 @@ const Hero: React.FC = () => {
       <div className="container relative z-10 section-padding">
         <div className="max-w-4xl mx-auto text-center">
           <motion.h1 
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6"
+            className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -45,7 +45,7 @@ const Hero: React.FC = () => {
           </motion.h1>
 
           <motion.p
-            className="text-responsive-lg text-cool-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto"
+            className="text-base sm:text-lg md:text-xl text-cool-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -82,8 +82,8 @@ const Hero: React.FC = () => {
       </div>
 
       {/* Background Elements */}
-      <div className="absolute -bottom-10 -right-10 w-48 sm:w-72 h-48 sm:h-72 bg-brand-red-600/10 rounded-full filter blur-3xl pointer-events-none z-0"></div>
-      <div className="absolute top-32 -left-10 w-48 sm:w-72 h-48 sm:h-72 bg-gray-400/10 rounded-full filter blur-3xl pointer-events-none z-0"></div>
+      <div className="absolute -bottom-10 -right-10 w-32 sm:w-48 md:w-72 h-32 sm:h-48 md:h-72 bg-brand-red-600/10 rounded-full filter blur-3xl pointer-events-none z-0"></div>
+      <div className="absolute top-32 -left-10 w-32 sm:w-48 md:w-72 h-32 sm:h-48 md:h-72 bg-gray-400/10 rounded-full filter blur-3xl pointer-events-none z-0"></div>
     </section>
   );
 };
