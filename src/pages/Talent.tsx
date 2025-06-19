@@ -75,7 +75,7 @@ const Talent: React.FC = () => {
                 <div className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-16 h-16 sm:w-32 sm:h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
                 <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-16 h-16 sm:w-32 sm:h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
                 
-                <div className="relative z-10">
+                <div className="relative z-10 w-full h-[400px] sm:h-[450px] lg:h-[500px]">
                   <TalentHeroVisual />
                 </div>
               </div>
