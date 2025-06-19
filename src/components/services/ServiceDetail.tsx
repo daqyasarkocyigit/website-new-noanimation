@@ -51,12 +51,12 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   return (
     <section id={id} className="py-12 sm:py-16 lg:py-20 scroll-mt-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${isReversed ? 'lg:grid-flow-col-dense' : ''}`}>
+        <div className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center`}>
           
           {/* Content Section */}
           <AnimatedSection 
             delay={0.1} 
-            className={`${isReversed ? 'lg:col-start-2' : 'lg:col-start-1'} order-2 lg:order-1`}
+            className="w-full lg:w-1/2 order-2 lg:order-1"
           >
             <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 mb-6">
               <div className="text-brand-red-600 flex-shrink-0">
@@ -87,24 +87,24 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
           {/* Visual Section */}
           <AnimatedSection 
             delay={0.3} 
-            className={`${isReversed ? 'lg:col-start-1' : 'lg:col-start-2'} order-1 lg:order-2`}
+            className="w-full lg:w-1/2 order-1 lg:order-2"
           >
-            <div className="relative">
+            <div className="relative w-full max-w-2xl mx-auto lg:max-w-none">
               {/* Background decorative elements */}
-              <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-20 h-20 sm:w-32 sm:h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
-              <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 w-20 h-20 sm:w-32 sm:h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
+              <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 lg:-top-6 lg:-right-6 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
+              <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 lg:-bottom-6 lg:-left-6 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
               
-              {/* Main visual container */}
-              <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-900">
+              {/* Main visual container with proper mobile sizing */}
+              <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-900 w-full">
                 {useCustomVisual ? (
-                  <div className="w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] relative z-10">
+                  <div className="w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px] relative z-10">
                     {renderCustomVisual()}
                   </div>
                 ) : (
                   <img 
                     src={image} 
                     alt={title} 
-                    className="w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] object-cover z-10 relative"
+                    className="w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px] object-cover z-10 relative"
                     loading="lazy"
                   />
                 )}

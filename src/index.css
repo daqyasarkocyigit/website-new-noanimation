@@ -151,7 +151,7 @@
   }
 
   .service-visual-mobile {
-    @apply aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3];
+    @apply h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px];
   }
 
   /* Typography improvements */
