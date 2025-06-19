@@ -1,159 +1,255 @@
 import React from 'react';
-import { BarChart3, PieChart, TrendingUp, Activity } from 'lucide-react';
+import { BarChart3, PieChart, TrendingUp, Activity, LineChart, Eye, Palette, Grid3x3 } from 'lucide-react';
 
 const DataVisualizationVisual: React.FC = () => {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl overflow-hidden relative p-10">
-      {/* Background Orbs */}
-      <div 
-        className="absolute w-48 h-48 bg-brand-red-500/20 rounded-full filter blur-3xl -top-12 -right-12 opacity-40"
-        style={{ animation: 'orbFloat 15s ease-in-out infinite' }}
-      />
-      <div 
-        className="absolute w-36 h-36 bg-gray-400/20 rounded-full filter blur-3xl -bottom-8 -left-8 opacity-40"
-        style={{ animation: 'orbFloat 15s ease-in-out infinite 5s' }}
-      />
-
-      {/* Floating Elements */}
-      <div 
-        className="absolute w-16 h-10 bg-white/5 border border-white/10 rounded-lg backdrop-blur-sm top-[10%] left-[10%]"
-        style={{ animation: 'float1 8s ease-in-out infinite' }}
-      />
-      <div 
-        className="absolute w-20 h-12 bg-white/5 border border-white/10 rounded-lg backdrop-blur-sm bottom-[15%] right-[8%]"
-        style={{ animation: 'float2 10s ease-in-out infinite' }}
-      />
-
-      {/* Dashboard Grid */}
-      <div className="w-full h-full grid grid-cols-2 grid-rows-2 gap-5 relative z-10">
-        {/* Bar Chart Card */}
+    <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl overflow-hidden relative">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-20">
         <div 
-          className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm flex items-center justify-center"
-          style={{ animation: 'cardFloat 6s ease-in-out infinite 0s' }}
-        >
-          <div className="flex items-end gap-2 h-24">
-            {[40, 70, 50, 90, 60].map((height, i) => (
-              <div
-                key={i}
-                className="w-5 bg-gradient-to-t from-brand-red-600 to-brand-red-400 rounded-t-sm"
-                style={{
-                  height: `${height}%`,
-                  animation: `barGrow 2s ease-in-out infinite ${i * 0.2}s`
-                }}
-              />
-            ))}
+          className="w-full h-full"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+            `,
+            backgroundSize: '40px 40px'
+          }}
+        />
+      </div>
+
+      {/* Main Container */}
+      <div className="relative w-full h-full flex flex-col p-4">
+        
+        {/* Dashboard Performance Card */}
+        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 shadow-xl mb-3">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              <div className="relative">
+                <div className="w-2 h-2 bg-brand-red-500 rounded-full animate-pulse" />
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-white">Dashboard Analytics</h3>
+                <p className="text-xs text-gray-300">Real-time visualization performance</p>
+              </div>
+            </div>
+            <div className="text-right">
+              <div className="text-2xl font-bold text-white tabular-nums">
+                15.2K
+              </div>
+              <div className="text-xs text-gray-300 uppercase">Active Users</div>
+            </div>
           </div>
-        </div>
-
-        {/* Pie Chart Card */}
-        <div 
-          className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm flex items-center justify-center"
-          style={{ animation: 'cardFloat 6s ease-in-out infinite 1s' }}
-        >
-          <div 
-            className="w-24 h-24 relative rounded-full overflow-hidden"
-            style={{ animation: 'rotate 20s linear infinite' }}
-          >
-            <div className="absolute inset-0 bg-brand-red-600" style={{ clipPath: 'polygon(50% 50%, 50% 0%, 100% 0%, 100% 50%)' }} />
-            <div className="absolute inset-0 bg-brand-red-500" style={{ clipPath: 'polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%)', transform: 'rotate(90deg)' }} />
-            <div className="absolute inset-0 bg-gray-400" style={{ clipPath: 'polygon(50% 50%, 50% 100%, 0% 100%, 0% 50%)', transform: 'rotate(180deg)' }} />
-            <div className="absolute inset-0 bg-gray-500" style={{ clipPath: 'polygon(50% 50%, 0% 50%, 0% 0%, 50% 0%)', transform: 'rotate(270deg)' }} />
-          </div>
-        </div>
-
-        {/* Line Chart Card */}
-        <div 
-          className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm flex items-center justify-center"
-          style={{ animation: 'cardFloat 6s ease-in-out infinite 2s' }}
-        >
-          <div className="w-32 h-20 relative">
-            <svg width="128" height="80" viewBox="0 0 128 80" className="w-full h-full">
-              <defs>
-                <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#ef4444" />
-                  <stop offset="100%" stopColor="#dc2626" />
-                </linearGradient>
-              </defs>
-              <path 
-                d="M8,60 Q28,20 40,40 T72,30 T120,50" 
-                stroke="url(#lineGradient)" 
-                strokeWidth="3" 
-                fill="none"
-                strokeDasharray="200"
-                style={{ animation: 'drawLine 3s ease-in-out infinite' }}
-              />
-            </svg>
-          </div>
-        </div>
-
-        {/* Heatmap Card */}
-        <div 
-          className="bg-white/5 border border-white/10 rounded-2xl p-5 backdrop-blur-sm flex items-center justify-center"
-          style={{ animation: 'cardFloat 6s ease-in-out infinite 3s' }}
-        >
-          <div className="grid grid-cols-5 grid-rows-4 gap-1">
-            {[...Array(20)].map((_, i) => {
-              const colors = [
-                'bg-brand-red-600/30',
-                'bg-brand-red-500/50', 
-                'bg-gray-400/70',
-                'bg-brand-red-400/60'
-              ];
-              const colorClass = colors[i % colors.length];
-              return (
-                <div
-                  key={i}
-                  className={`w-4 h-4 rounded-sm ${colorClass}`}
+          
+          {/* Live Update Indicator */}
+          <div className="flex items-center gap-3">
+            <div className="flex-1 flex items-center gap-2">
+              <Activity className="w-3 h-3 text-brand-red-400" />
+              <div className="flex-1 h-1.5 bg-gray-700/50 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-brand-red-500 to-brand-red-600 rounded-full"
                   style={{ 
-                    animation: `heatPulse 2s ease-in-out infinite ${(i % 3) * 0.5}s` 
+                    width: '72%',
+                    animation: 'liveUpdate 3s ease-in-out infinite'
                   }}
                 />
-              );
-            })}
+              </div>
+              <span className="text-xs text-gray-400">72% CPU</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Visualization Types Grid */}
+        <div className="flex-1 grid grid-cols-3 gap-3">
+          
+          {/* Interactive Charts Section */}
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
+            <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
+              <BarChart3 className="w-3 h-3 mr-1" />
+              Interactive Charts
+            </h4>
+            
+            {/* Bar Chart Preview */}
+            <div className="bg-gray-900/50 rounded p-2 mb-2 border border-gray-700/30">
+              <div className="flex items-end gap-1 h-16">
+                {[40, 65, 35, 80, 55, 70, 45].map((height, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 bg-gradient-to-t from-brand-red-600 to-brand-red-400 rounded-t-sm transition-all duration-300"
+                    style={{
+                      height: `${height}%`,
+                      animation: `barGrow 1s ease-out ${i * 0.1}s backwards`
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="text-xs text-gray-500 mt-1 text-center">Weekly Trends</div>
+            </div>
+            
+            {/* Metrics */}
+            <div className="grid grid-cols-2 gap-1.5">
+              <div className="bg-gray-900/50 rounded p-1.5 text-center border border-gray-700/30">
+                <div className="text-xs text-gray-400">Charts</div>
+                <div className="text-sm font-bold text-white">24</div>
+              </div>
+              <div className="bg-gray-900/50 rounded p-1.5 text-center border border-gray-700/30">
+                <div className="text-xs text-gray-400">Updates/s</div>
+                <div className="text-sm font-bold text-white">120</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Real-time Dashboards */}
+          <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-3 border border-brand-red-500/30 shadow-lg">
+            <h4 className="text-xs font-semibold text-brand-red-400 mb-2 flex items-center">
+              <Grid3x3 className="w-3 h-3 mr-1" />
+              Live Dashboards
+            </h4>
+            
+            {/* Dashboard Grid */}
+            <div className="grid grid-cols-2 gap-2 mb-2">
+              <div className="bg-white/5 rounded p-2 border border-white/10">
+                <PieChart className="w-6 h-6 text-brand-red-400 mx-auto mb-1" />
+                <div className="text-xs text-gray-300 text-center">Analytics</div>
+              </div>
+              <div className="bg-white/5 rounded p-2 border border-white/10">
+                <LineChart className="w-6 h-6 text-brand-red-400 mx-auto mb-1" />
+                <div className="text-xs text-gray-300 text-center">Metrics</div>
+              </div>
+              <div className="bg-white/5 rounded p-2 border border-white/10">
+                <TrendingUp className="w-6 h-6 text-brand-red-400 mx-auto mb-1" />
+                <div className="text-xs text-gray-300 text-center">KPIs</div>
+              </div>
+              <div className="bg-white/5 rounded p-2 border border-white/10">
+                <Eye className="w-6 h-6 text-brand-red-400 mx-auto mb-1" />
+                <div className="text-xs text-gray-300 text-center">Monitor</div>
+              </div>
+            </div>
+            
+            {/* Live Indicator */}
+            <div className="bg-white/5 rounded p-1.5 border border-white/10">
+              <div className="flex items-center justify-between">
+                <span className="text-xs text-gray-300">Live Refresh</span>
+                <div className="flex items-center gap-1">
+                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                  <span className="text-xs text-green-400">Active</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Custom Visualizations */}
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
+            <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
+              <Palette className="w-3 h-3 mr-1" />
+              Custom Visuals
+            </h4>
+            
+            {/* Heatmap Preview */}
+            <div className="bg-gray-900/50 rounded p-2 mb-2 border border-gray-700/30">
+              <div className="grid grid-cols-7 gap-0.5">
+                {[...Array(35)].map((_, i) => {
+                  const intensity = Math.random();
+                  return (
+                    <div
+                      key={i}
+                      className="aspect-square rounded-sm"
+                      style={{
+                        backgroundColor: `rgba(239, 68, 68, ${intensity})`,
+                        animation: `heatPulse 3s ease-in-out infinite ${i * 0.05}s`
+                      }}
+                    />
+                  );
+                })}
+              </div>
+              <div className="text-xs text-gray-500 mt-1 text-center">Activity Heatmap</div>
+            </div>
+            
+            {/* Customization Options */}
+            <div className="space-y-1">
+              <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
+                <span className="text-xs text-gray-300">Color Themes</span>
+                <span className="text-xs text-gray-500">12</span>
+              </div>
+              <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
+                <span className="text-xs text-gray-300">Chart Types</span>
+                <span className="text-xs text-gray-500">18</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Key Performance Metrics */}
+        <div className="grid grid-cols-4 gap-2 mt-3">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-xs text-gray-400">Load Time</div>
+                <div className="text-lg font-bold text-white">0.8s</div>
+                <div className="text-xs text-gray-500">avg</div>
+              </div>
+              <TrendingUp className="w-4 h-4 text-green-500" />
+            </div>
+          </div>
+          
+          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-xs text-gray-400">Interactivity</div>
+                <div className="text-lg font-bold text-white">60fps</div>
+                <div className="text-xs text-gray-500">smooth</div>
+              </div>
+              <Activity className="w-4 h-4 text-brand-red-500" />
+            </div>
+          </div>
+          
+          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-xs text-gray-400">Data Points</div>
+                <div className="text-lg font-bold text-white">1.2M</div>
+                <div className="text-xs text-gray-500">rendered</div>
+              </div>
+              <Grid3x3 className="w-4 h-4 text-blue-500" />
+            </div>
+          </div>
+          
+          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-xs text-gray-400">Dashboards</div>
+                <div className="text-lg font-bold text-white">87</div>
+                <div className="text-xs text-gray-500">active</div>
+              </div>
+              <Eye className="w-4 h-4 text-purple-500" />
+            </div>
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        @keyframes cardFloat {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-
         @keyframes barGrow {
-          0%, 100% { transform: scaleY(1); }
-          50% { transform: scaleY(1.2); }
+          from {
+            height: 0;
+          }
         }
-
-        @keyframes rotate {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-
-        @keyframes drawLine {
-          0% { stroke-dashoffset: 200; }
-          50% { stroke-dashoffset: 0; }
-          100% { stroke-dashoffset: -200; }
-        }
-
+        
         @keyframes heatPulse {
-          0%, 100% { opacity: 0.5; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.1); }
+          0%, 100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 1;
+          }
         }
-
-        @keyframes orbFloat {
-          0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(-30px, 30px); }
-        }
-
-        @keyframes float1 {
-          0%, 100% { transform: translate(0, 0) rotate(0deg); }
-          50% { transform: translate(20px, -20px) rotate(10deg); }
-        }
-
-        @keyframes float2 {
-          0%, 100% { transform: translate(0, 0) rotate(0deg); }
-          50% { transform: translate(-20px, -15px) rotate(-10deg); }
+        
+        @keyframes liveUpdate {
+          0%, 100% {
+            width: 72%;
+          }
+          50% {
+            width: 85%;
+          }
         }
       `}</style>
     </div>
