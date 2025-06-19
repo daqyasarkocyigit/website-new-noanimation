@@ -440,3 +440,42 @@ img[loading="lazy"].loaded {
 .animation-finished {
   will-change: auto;
 }
+
+/* Mobile-specific visual optimizations */
+@media (max-width: 767px) {
+  /* Reduce complexity on mobile */
+  .complex-animation {
+    animation: none !important;
+  }
+  
+  /* Simplify gradients on mobile */
+  .mobile-simple-bg {
+    background: #1f2937 !important;
+  }
+  
+  /* Optimize shadows for mobile */
+  .mobile-simple-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* Container queries support where available */
+@supports (container-type: inline-size) {
+  .service-visual-container {
+    container-type: inline-size;
+  }
+  
+  @container (max-width: 400px) {
+    .service-visual-content {
+      padding: 0.75rem;
+      font-size: 0.875rem;
+    }
+  }
+  
+  @container (min-width: 401px) and (max-width: 600px) {
+    .service-visual-content {
+      padding: 1rem;
+      font-size: 1rem;
+    }
+  }
+}

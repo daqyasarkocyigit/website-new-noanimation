@@ -2,11 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import AnimatedSection from '../utils/AnimatedSection';
-import DataEngineeringVisual from './DataEngineeringVisual';
-import DataVisualizationVisual from './DataVisualizationVisual';
-import BusinessIntelligenceVisual from './BusinessIntelligenceVisual';
-import AIEngineeringVisual from './AIEngineeringVisual';
-import CloudModernizationVisual from './CloudModernizationVisual';
+import ResponsiveServiceVisual from './ResponsiveServiceVisual';
 
 interface ServiceDetailProps {
   id: string;
@@ -31,30 +27,13 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   useCustomVisual = false,
   visualType,
 }) => {
-  const renderCustomVisual = () => {
-    switch (visualType) {
-      case 'data-engineering':
-        return <DataEngineeringVisual />;
-      case 'data-visualization':
-        return <DataVisualizationVisual />;
-      case 'business-intelligence':
-        return <BusinessIntelligenceVisual />;
-      case 'ai-engineering':
-        return <AIEngineeringVisual />;
-      case 'cloud-modernization':
-        return <CloudModernizationVisual />;
-      default:
-        return <DataEngineeringVisual />;
-    }
-  };
-
   return (
     <section id={id} className="py-12 sm:py-16 lg:py-20 scroll-mt-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Always use the same layout - content left, visual right */}
+        {/* Mobile-first: Always stack vertically on mobile, side-by-side on desktop */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
           
-          {/* Content Section - Always on the left */}
+          {/* Content Section */}
           <AnimatedSection 
             delay={0.1} 
             className="w-full lg:w-1/2 order-2 lg:order-1"
@@ -78,28 +57,28 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
                   transition={{ duration: 0.5, delay: 0.1 * index }}
                   viewport={{ once: true }}
                 >
-                  <Check size={20} className="text-brand-red-600 mt-1 mr-3 flex-shrink-0" />
+                  <Check size={20} className="text-brand-red-600 mt-1 mr-3 flex-shrink-0 min-w-[20px]" />
                   <span className="text-sm sm:text-base lg:text-lg text-cool-gray-600">{benefit}</span>
                 </motion.li>
               ))}
             </ul>
           </AnimatedSection>
           
-          {/* Visual Section - Always on the right */}
+          {/* Visual Section */}
           <AnimatedSection 
             delay={0.3} 
             className="w-full lg:w-1/2 order-1 lg:order-2"
           >
             <div className="relative w-full max-w-2xl mx-auto lg:max-w-none">
-              {/* Background decorative elements */}
-              <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 lg:-top-6 lg:-right-6 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
-              <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 lg:-bottom-6 lg:-left-6 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
+              {/* Background decorative elements - Responsive sizing */}
+              <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 lg:-top-6 lg:-right-6 w-12 h-12 sm:w-16 sm:h-16 lg:w-32 lg:h-32 bg-brand-red-600/10 rounded-full filter blur-2xl lg:blur-3xl"></div>
+              <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 lg:-bottom-6 lg:-left-6 w-12 h-12 sm:w-16 sm:h-16 lg:w-32 lg:h-32 bg-gray-400/10 rounded-full filter blur-2xl lg:blur-3xl"></div>
               
-              {/* Main visual container with consistent sizing */}
-              <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-900 w-full aspect-[4/3]">
-                {useCustomVisual ? (
+              {/* Main visual container - Mobile-optimized aspect ratio */}
+              <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-900 w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px]">
+                {useCustomVisual && visualType ? (
                   <div className="w-full h-full relative z-10">
-                    {renderCustomVisual()}
+                    <ResponsiveServiceVisual type={visualType} />
                   </div>
                 ) : (
                   <img 

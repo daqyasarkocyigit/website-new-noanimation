@@ -27,13 +27,13 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     
     switch (direction) {
       case 'up':
-        return { opacity: 0, y: 30 };
+        return { opacity: 0, y: 20 }; // Reduced from 30px for mobile
       case 'down':
-        return { opacity: 0, y: -30 };
+        return { opacity: 0, y: -20 };
       case 'left':
-        return { opacity: 0, x: -30 };
+        return { opacity: 0, x: -20 };
       case 'right':
-        return { opacity: 0, x: 30 };
+        return { opacity: 0, x: 20 };
       default:
         return { opacity: 0 };
     }
@@ -58,7 +58,7 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     initial: getInitialState(),
     animate: getAnimateState(),
     transition: { 
-      duration: prefersReducedMotion ? 0.3 : 0.8, 
+      duration: prefersReducedMotion ? 0.1 : 0.6, // Reduced from 0.8s for mobile
       delay: prefersReducedMotion ? 0 : delay,
       ease: [0.25, 0.46, 0.45, 0.94] // Custom easing for smoother animation
     }

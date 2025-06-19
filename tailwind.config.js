@@ -58,12 +58,51 @@ export default {
         'safe-left': 'env(safe-area-inset-left)',
         'safe-right': 'env(safe-area-inset-right)',
       },
+      animation: {
+        'fade-in': 'fadeIn 0.6s ease-out',
+        'slide-up': 'slideUp 0.6s ease-out',
+        'pulse-slow': 'pulse 3s ease-in-out infinite',
+        'float': 'float 6s ease-in-out infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        glow: {
+          '0%': { boxShadow: '0 0 5px rgba(239, 68, 68, 0.5)' },
+          '100%': { boxShadow: '0 0 20px rgba(239, 68, 68, 0.8)' },
+        },
+      },
     },
   },
   plugins: [
-    function({ addVariant }) {
+    function({ addVariant, addUtilities }) {
       addVariant('supports-hover', '@media (hover: hover)');
       addVariant('touch', '@media (hover: none)');
+      addVariant('reduced-motion', '@media (prefers-reduced-motion: reduce)');
+      
+      addUtilities({
+        '.tap-highlight-none': {
+          '-webkit-tap-highlight-color': 'transparent',
+        },
+        '.touch-manipulation': {
+          'touch-action': 'manipulation',
+        },
+        '.gpu-accelerated': {
+          'transform': 'translateZ(0)',
+          'will-change': 'transform',
+        },
+      });
     },
   ],
 };
