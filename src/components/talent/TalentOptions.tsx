@@ -1,12 +1,8 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Users, ChevronRight, CheckCircle, Briefcase, Target, Award, Clock, UserPlus } from 'lucide-react';
-import TalentOptions from '../components/talent/TalentOptions';
-import AnimatedSection from '../components/utils/AnimatedSection';
-import CallToAction from '../components/home/CallToAction';
+import { Users, CheckCircle } from 'lucide-react';
 
-// TalentVisual Component
-const TalentVisual: React.FC = () => {
+// TalentOptions Component (renamed from TalentVisual)
+const TalentOptions: React.FC = () => {
   return (
     <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden relative">
       {/* Background Pattern */}
@@ -371,81 +367,4 @@ const TalentVisual: React.FC = () => {
   );
 };
 
-const Talent: React.FC = () => {
-  return (
-    <>
-      {/* Hero Section with Gradient Background */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 z-0"></div>
-        <div 
-          className="absolute top-0 right-0 w-1/2 h-full opacity-10 z-0"
-          style={{
-            backgroundImage: 'url("/images/pattern-dots.svg")',
-            backgroundSize: '30px 30px'
-          }}
-        ></div>
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-12 items-center">
-            <div className="mb-10 lg:mb-0">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-                  Hire Top <span className="text-brand-red-600">Tech</span> Talent
-                </h1>
-                <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6"></div>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <p className="text-lg text-cool-gray-600 leading-relaxed mb-6">
-                  Find the right professionals for your business needs. We offer flexible staffing 
-                  solutions to help you build and scale your technical teams effectively.
-                </p>
-                <p className="text-lg text-cool-gray-600 leading-relaxed mb-8">
-                  Our talent network includes highly skilled professionals in data engineering, 
-                  cloud architecture, AI development, and business intelligence.
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a 
-                    href="#hire-talent" 
-                    className="inline-flex items-center justify-center px-6 py-3 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
-                  >
-                    <span className="mr-2">Explore Options</span>
-                    <ChevronRight size={16} />
-                  </a>
-                  <a 
-                    href="/contact" 
-                    className="inline-flex items-center justify-center px-6 py-3 border border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 rounded-lg transition-colors duration-300"
-                  >
-                    Request Talent
-                  </a>
-                </div>
-              </motion.div>
-            </div>
-            
-            <motion.div 
-              className="relative w-full max-w-lg mx-auto lg:max-w-none"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-            >
-              <div className="relative rounded-xl overflow-hidden shadow-2xl">
-                <div className="absolute -top-6 -right-6 w-32 h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
-                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
-                
-                <div className="w-full h-[450px] relative z-10">
-                  <TalentVisual />
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+export default TalentOptions;
