@@ -1,252 +1,209 @@
 import React from 'react';
-import { Cpu, Zap, Target, Activity, Network } from 'lucide-react';
+import { Brain, Cpu, Network, Zap, Activity, GitBranch } from 'lucide-react';
 
 const AIEngineeringVisual: React.FC = () => {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl overflow-hidden relative">
-      {/* Background Grid */}
-      <div className="absolute inset-0 opacity-20">
+    <div className="w-full h-full bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 rounded-xl overflow-hidden relative">
+      {/* Subtle Grid Background */}
+      <div className="absolute inset-0 opacity-[0.03]">
         <div 
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(239, 68, 68, 0.05) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(239, 68, 68, 0.05) 1px, transparent 1px)
+              linear-gradient(rgba(239, 68, 68, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(239, 68, 68, 0.1) 1px, transparent 1px)
             `,
-            backgroundSize: '50px 50px',
-            animation: 'gridMove 20s linear infinite'
+            backgroundSize: '30px 30px'
           }}
         />
       </div>
 
-      {/* Glitch Effect */}
-      <div 
-        className="absolute w-full h-0.5 bg-brand-red-500/80 opacity-0"
-        style={{
-          top: '50%',
-          transform: 'translateY(-50%)',
-          animation: 'glitchScan 8s ease-in-out infinite'
-        }}
-      />
-
-      {/* Neural Network Container */}
+      {/* Main Container */}
       <div className="relative w-full h-full flex items-center justify-center p-8">
-        {/* AI Brain Core - Reduced Size */}
-        <div className="relative z-10">
-          <div 
-            className="w-48 h-48 relative"
-            style={{
-              transformStyle: 'preserve-3d',
-              animation: 'brainRotate 20s linear infinite'
-            }}
-          >
-            {/* Core Sphere - Smaller */}
-            <div 
-              className="absolute inset-0 w-full h-full rounded-full bg-gradient-to-br from-brand-red-500 to-brand-red-600 shadow-2xl"
-              style={{
-                boxShadow: `
-                  0 0 60px rgba(239, 68, 68, 0.8),
-                  inset -15px -15px 30px rgba(0,0,0,0.3),
-                  inset 15px 15px 30px rgba(255,255,255,0.3)
-                `,
-                animation: 'corePulse 3s ease-in-out infinite'
-              }}
-            >
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-white text-4xl font-bold tracking-wider">AI</span>
-              </div>
+        {/* Central Neural Network */}
+        <div className="relative">
+          {/* Core AI Brain */}
+          <div className="relative z-20">
+            <div className="w-32 h-32 bg-gradient-to-br from-slate-800 to-gray-900 rounded-2xl flex items-center justify-center shadow-2xl border border-gray-700/50">
+              <Brain className="w-16 h-16 text-brand-red-500" strokeWidth={1.5} />
+              
+              {/* Subtle Glow */}
+              <div 
+                className="absolute inset-0 rounded-2xl"
+                style={{
+                  background: 'radial-gradient(circle at center, rgba(239, 68, 68, 0.1) 0%, transparent 70%)',
+                  animation: 'subtleGlow 4s ease-in-out infinite'
+                }}
+              />
             </div>
+          </div>
 
-            {/* Neural Rings */}
+          {/* Neural Connections */}
+          <svg className="absolute inset-0 w-96 h-96 -top-32 -left-32" style={{ zIndex: 10 }}>
+            {/* Connection Lines */}
             {[
-              { rotation: 'rotateX(0deg) scale(1.8)', animation: 'ringRotate1 15s linear infinite' },
-              { rotation: 'rotateX(60deg) scale(1.8)', animation: 'ringRotate2 20s linear infinite reverse' },
-              { rotation: 'rotateX(120deg) scale(1.8)', animation: 'ringRotate3 25s linear infinite' }
-            ].map((ring, i) => (
+              { x1: 192, y1: 192, x2: 80, y2: 80, delay: '0s' },
+              { x1: 192, y1: 192, x2: 304, y2: 80, delay: '0.5s' },
+              { x1: 192, y1: 192, x2: 304, y2: 304, delay: '1s' },
+              { x1: 192, y1: 192, x2: 80, y2: 304, delay: '1.5s' },
+              { x1: 192, y1: 192, x2: 192, y2: 60, delay: '2s' },
+              { x1: 192, y1: 192, x2: 192, y2: 324, delay: '2.5s' }
+            ].map((line, i) => (
+              <g key={i}>
+                <line
+                  x1={line.x1}
+                  y1={line.y1}
+                  x2={line.x2}
+                  y2={line.y2}
+                  stroke="rgba(239, 68, 68, 0.2)"
+                  strokeWidth="1"
+                />
+                <circle
+                  r="2"
+                  fill="rgba(239, 68, 68, 0.8)"
+                  style={{
+                    animation: `neuralPulse 3s ease-in-out infinite ${line.delay}`
+                  }}
+                >
+                  <animateMotion
+                    dur="3s"
+                    repeatCount="indefinite"
+                    begin={line.delay}
+                  >
+                    <mpath href={`#path${i}`} />
+                  </animateMotion>
+                </circle>
+                <path
+                  id={`path${i}`}
+                  d={`M ${line.x1} ${line.y1} L ${line.x2} ${line.y2}`}
+                  fill="none"
+                />
+              </g>
+            ))}
+          </svg>
+
+          {/* Outer Nodes */}
+          {[
+            { icon: Cpu, position: 'top-0 left-1/2 -translate-x-1/2 -translate-y-24', label: 'Processing' },
+            { icon: Network, position: 'right-0 top-1/2 translate-x-24 -translate-y-1/2', label: 'Networks' },
+            { icon: Activity, position: 'bottom-0 left-1/2 -translate-x-1/2 translate-y-24', label: 'Analysis' },
+            { icon: GitBranch, position: 'left-0 top-1/2 -translate-x-24 -translate-y-1/2', label: 'Models' }
+          ].map((node, i) => {
+            const IconComponent = node.icon;
+            return (
               <div
                 key={i}
-                className="absolute inset-0 w-full h-full border-2 border-brand-red-400/30 rounded-full"
+                className={`absolute ${node.position} group`}
                 style={{
-                  transform: ring.rotation,
-                  transformStyle: 'preserve-3d',
-                  animation: ring.animation
+                  animation: `nodeFloat ${4 + i}s ease-in-out infinite ${i * 0.5}s`
                 }}
               >
-                {/* Neural Nodes on each ring */}
-                {[
-                  { position: 'top-0 left-1/2 -translate-x-1/2 -translate-y-2', icon: Cpu },
-                  { position: 'right-0 top-1/2 translate-x-2 -translate-y-1/2', icon: Network },
-                  { position: 'bottom-0 left-1/2 -translate-x-1/2 translate-y-2', icon: Activity },
-                  { position: 'left-0 top-1/2 -translate-x-2 -translate-y-1/2', icon: Target }
-                ].map((node, j) => {
-                  const IconComponent = node.icon;
-                  return (
-                    <div
-                      key={j}
-                      className={`absolute w-4 h-4 bg-brand-red-500 rounded-full shadow-lg ${node.position}`}
-                      style={{
-                        boxShadow: '0 0 20px rgba(239, 68, 68, 0.8)'
-                      }}
-                    >
-                      <IconComponent className="w-3 h-3 text-white absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
-                    </div>
-                  );
-                })}
+                <div className="w-16 h-16 bg-slate-800/80 backdrop-blur-sm rounded-xl flex items-center justify-center border border-gray-700/50 shadow-lg group-hover:border-brand-red-500/50 transition-all duration-300">
+                  <IconComponent className="w-8 h-8 text-gray-400 group-hover:text-brand-red-500 transition-colors duration-300" strokeWidth={1.5} />
+                </div>
+                <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-gray-500 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {node.label}
+                </div>
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
 
-        {/* Energy Waves */}
-        {[0, 1, 2].map((i) => (
-          <div
-            key={i}
-            className="absolute w-96 h-96 border-2 border-brand-red-400/30 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-            style={{
-              animation: `waveExpand 4s ease-out infinite ${i}s`
-            }}
-          />
-        ))}
+        {/* Data Flow Visualization */}
+        <div className="absolute inset-0 pointer-events-none">
+          {[...Array(3)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute top-1/2 left-1/2 w-64 h-64 -translate-x-1/2 -translate-y-1/2"
+              style={{
+                animation: `dataRing ${10 + i * 2}s linear infinite`,
+                animationDelay: `${i * 2}s`
+              }}
+            >
+              <div className="w-full h-full rounded-full border border-brand-red-500/10" />
+            </div>
+          ))}
+        </div>
 
-        {/* Data Particles */}
-        {[
-          { x1: '-100px', y1: '-100px', x2: '0px', y2: '0px', x3: '100px', y3: '100px', delay: '0s' },
-          { x1: '100px', y1: '-100px', x2: '0px', y2: '0px', x3: '-100px', y3: '100px', delay: '0.5s' },
-          { x1: '-150px', y1: '0px', x2: '0px', y2: '0px', x3: '150px', y3: '0px', delay: '1s' },
-          { x1: '0px', y1: '-150px', x2: '0px', y2: '0px', x3: '0px', y3: '150px', delay: '1.5s' }
-        ].map((particle, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-brand-red-500 rounded-full top-1/2 left-1/2 opacity-0"
-            style={{
-              boxShadow: '0 0 6px rgba(239, 68, 68, 0.8)',
-              animation: `particleFlow 4s ease-in-out infinite ${particle.delay}`,
-              '--x1': particle.x1,
-              '--y1': particle.y1,
-              '--x2': particle.x2,
-              '--y2': particle.y2,
-              '--x3': particle.x3,
-              '--y3': particle.y3
-            } as React.CSSProperties}
-          />
-        ))}
+        {/* Performance Metrics */}
+        <div className="absolute bottom-8 left-8 right-8 flex justify-between items-end">
+          {[
+            { label: 'Accuracy', value: '99.7%', height: '60%' },
+            { label: 'Speed', value: '1.2ms', height: '80%' },
+            { label: 'Models', value: '247', height: '45%' },
+            { label: 'Efficiency', value: '94%', height: '70%' }
+          ].map((metric, i) => (
+            <div key={i} className="flex flex-col items-center gap-2 flex-1">
+              <div className="relative w-full max-w-[60px]">
+                <div className="w-full bg-gray-800/50 rounded-full h-24 relative overflow-hidden">
+                  <div 
+                    className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-red-600/80 to-brand-red-500/60 rounded-full transition-all duration-1000"
+                    style={{
+                      height: metric.height,
+                      animation: `metricFill 3s ease-in-out infinite ${i * 0.5}s`
+                    }}
+                  />
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="text-xs text-gray-500">{metric.label}</div>
+                <div className="text-sm font-semibold text-gray-300">{metric.value}</div>
+              </div>
+            </div>
+          ))}
+        </div>
 
-        {/* AI Metrics */}
-        {[
-          { 
-            position: 'top-[20%] left-[10%]', 
-            label: 'ACCURACY', 
-            value: '99.7%', 
-            delay: '0s' 
-          },
-          { 
-            position: 'top-[70%] right-[10%]', 
-            label: 'PROCESSING', 
-            value: '1.2M/s', 
-            delay: '3s' 
-          },
-          { 
-            position: 'bottom-[20%] left-[15%]', 
-            label: 'MODELS', 
-            value: '247', 
-            delay: '6s' 
-          }
-        ].map((metric, i) => (
-          <div
-            key={i}
-            className={`absolute ${metric.position} bg-white/5 border border-white/10 rounded-xl p-4 backdrop-blur-sm opacity-0`}
-            style={{ animation: `metricFloat 10s ease-in-out infinite ${metric.delay}` }}
-          >
-            <div className="text-brand-red-400 text-xs mb-1">{metric.label}</div>
-            <div className="text-white text-2xl font-bold">{metric.value}</div>
+        {/* Status Indicator */}
+        <div className="absolute top-8 right-8 flex items-center gap-2 bg-slate-800/50 backdrop-blur-sm px-4 py-2 rounded-full border border-gray-700/50">
+          <div className="relative">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+            <div className="absolute inset-0 w-2 h-2 bg-green-500 rounded-full animate-ping" />
           </div>
-        ))}
+          <span className="text-xs text-gray-400">AI Engine Active</span>
+        </div>
       </div>
 
       <style jsx>{`
-        @keyframes brainRotate {
-          0% { transform: rotateY(0deg) rotateX(10deg); }
-          100% { transform: rotateY(360deg) rotateX(10deg); }
+        @keyframes subtleGlow {
+          0%, 100% { opacity: 0.5; }
+          50% { opacity: 1; }
         }
 
-        @keyframes corePulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
+        @keyframes nodeFloat {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
         }
 
-        @keyframes ringRotate1 {
-          0% { transform: rotateX(0deg) rotateZ(0deg) scale(1.8); }
-          100% { transform: rotateX(0deg) rotateZ(360deg) scale(1.8); }
+        @keyframes neuralPulse {
+          0%, 100% { opacity: 0; r: 2; }
+          50% { opacity: 1; r: 4; }
         }
 
-        @keyframes ringRotate2 {
-          0% { transform: rotateX(60deg) rotateY(0deg) scale(1.8); }
-          100% { transform: rotateX(60deg) rotateY(360deg) scale(1.8); }
-        }
-
-        @keyframes ringRotate3 {
-          0% { transform: rotateX(120deg) rotateZ(0deg) scale(1.8); }
-          100% { transform: rotateX(120deg) rotateZ(360deg) scale(1.8); }
-        }
-
-        @keyframes waveExpand {
+        @keyframes dataRing {
           0% {
-            transform: translate(-50%, -50%) scale(0.5);
-            opacity: 1;
-            border-width: 3px;
-          }
-          100% {
-            transform: translate(-50%, -50%) scale(2);
+            transform: translate(-50%, -50%) scale(0);
             opacity: 0;
-            border-width: 1px;
-          }
-        }
-
-        @keyframes particleFlow {
-          0% {
-            opacity: 0;
-            transform: translate(var(--x1), var(--y1)) scale(0);
           }
           10% {
-            opacity: 1;
-            transform: translate(var(--x2), var(--y2)) scale(1);
+            opacity: 0.3;
           }
           90% {
-            opacity: 1;
-            transform: translate(var(--x2), var(--y2)) scale(1);
+            opacity: 0;
           }
           100% {
+            transform: translate(-50%, -50%) scale(3);
             opacity: 0;
-            transform: translate(var(--x3), var(--y3)) scale(0);
           }
         }
 
-        @keyframes metricFloat {
-          0%, 100% {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          20%, 80% {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes gridMove {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(50px, 50px); }
-        }
-
-        @keyframes glitchScan {
+        @keyframes metricFill {
           0%, 100% { 
-            opacity: 0;
-            top: 0%;
+            height: calc(var(--height) * 0.8);
+            opacity: 0.6;
           }
-          45%, 55% {
+          50% { 
+            height: var(--height);
             opacity: 1;
-          }
-          50% {
-            top: 100%;
           }
         }
       `}</style>
