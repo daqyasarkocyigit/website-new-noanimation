@@ -1,11 +1,11 @@
 import React from 'react';
-import { Database, BarChart3, Folder, Calendar, CheckCircle } from 'lucide-react';
+import { Database, Server, GitBranch, Layers, Cpu, HardDrive, Activity, Zap } from 'lucide-react';
 
 const DataEngineeringVisual: React.FC = () => {
   return (
     <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl overflow-hidden relative">
-      {/* Background Grid */}
-      <div className="absolute inset-0 opacity-30">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-20">
         <div 
           className="w-full h-full"
           style={{
@@ -13,110 +13,259 @@ const DataEngineeringVisual: React.FC = () => {
               linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
               linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
             `,
-            backgroundSize: '50px 50px',
-            animation: 'gridMove 10s linear infinite'
+            backgroundSize: '40px 40px'
           }}
         />
       </div>
 
-      {/* Data Visual Container */}
-      <div className="relative w-full h-full flex items-center justify-center">
-        {/* Central Node */}
-        <div className="relative z-10">
-          <div 
-            className="w-32 h-32 bg-gradient-to-br from-brand-red-500 to-brand-red-600 rounded-full flex items-center justify-center shadow-2xl"
-            style={{
-              boxShadow: '0 0 60px rgba(239, 68, 68, 0.5)',
-              animation: 'pulse 3s ease-in-out infinite'
-            }}
-          >
-            <Database className="w-16 h-16 text-white" />
+      {/* Main Container */}
+      <div className="relative w-full h-full flex flex-col p-4">
+        
+        {/* Data Pipeline Status Card */}
+        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 shadow-xl mb-3">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              <div className="relative">
+                <div className="w-2 h-2 bg-brand-red-500 rounded-full animate-pulse" />
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-white">Data Pipeline Status</h3>
+                <p className="text-xs text-gray-300">Processing real-time data streams</p>
+              </div>
+            </div>
+            <div className="text-right">
+              <div className="text-2xl font-bold text-white tabular-nums">
+                24.3K
+              </div>
+              <div className="text-xs text-gray-300 uppercase">Records/sec</div>
+            </div>
+          </div>
+          
+          {/* Processing Bar */}
+          <div className="relative w-full h-4 bg-gray-700/50 rounded-full overflow-hidden">
+            <div 
+              className="absolute inset-y-0 left-0 rounded-full w-full"
+              style={{ 
+                background: 'linear-gradient(90deg, #ef4444 0%, #dc2626 50%, #ef4444 100%)',
+                animation: 'dataFlow 2s linear infinite'
+              }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent" />
+            </div>
+          </div>
+          
+          <div className="flex justify-between mt-2 text-xs">
+            <span className="text-gray-400">Input</span>
+            <span className="font-medium text-brand-red-400">Processing</span>
+            <span className="text-gray-400">Output</span>
           </div>
         </div>
 
-        {/* Orbiting Elements */}
-        <div 
-          className="absolute w-80 h-80 border border-white/10 rounded-full"
-          style={{ animation: 'rotate 20s linear infinite' }}
-        >
-          {/* Data Nodes */}
-          <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white/10 border-2 border-white/30 rounded-xl flex items-center justify-center backdrop-blur-sm">
-            <BarChart3 className="w-6 h-6 text-white" />
-          </div>
-          <div className="absolute -right-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/10 border-2 border-white/30 rounded-xl flex items-center justify-center backdrop-blur-sm">
-            <Folder className="w-6 h-6 text-white" />
-          </div>
-          <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-white/10 border-2 border-white/30 rounded-xl flex items-center justify-center backdrop-blur-sm">
-            <CheckCircle className="w-6 h-6 text-white" />
-          </div>
-          <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white/10 border-2 border-white/30 rounded-xl flex items-center justify-center backdrop-blur-sm">
-            <Calendar className="w-6 h-6 text-white" />
+        {/* Data Architecture Flow */}
+        <div className="flex-1 flex items-center">
+          <div className="w-full grid grid-cols-7 gap-2 items-center">
+            
+            {/* Data Sources - Left */}
+            <div className="col-span-2">
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
+                <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
+                  <Database className="w-3 h-3 mr-1" />
+                  Data Sources
+                </h4>
+                
+                <div className="space-y-1.5">
+                  <div className="bg-gray-900/50 rounded p-2 flex items-center justify-between border border-gray-700/30">
+                    <div className="flex items-center gap-1.5">
+                      <Server className="w-3.5 h-3.5 text-gray-400" />
+                      <span className="text-xs text-gray-300">APIs</span>
+                    </div>
+                    <span className="text-xs text-gray-500">12</span>
+                  </div>
+                  
+                  <div className="bg-gray-900/50 rounded p-2 flex items-center justify-between border border-gray-700/30">
+                    <div className="flex items-center gap-1.5">
+                      <Database className="w-3.5 h-3.5 text-gray-400" />
+                      <span className="text-xs text-gray-300">Databases</span>
+                    </div>
+                    <span className="text-xs text-gray-500">8</span>
+                  </div>
+                  
+                  <div className="bg-gray-900/50 rounded p-2 flex items-center justify-between border border-gray-700/30">
+                    <div className="flex items-center gap-1.5">
+                      <HardDrive className="w-3.5 h-3.5 text-gray-400" />
+                      <span className="text-xs text-gray-300">Files</span>
+                    </div>
+                    <span className="text-xs text-gray-500">CSV/JSON</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Processing Pipeline - Center */}
+            <div className="col-span-3 flex items-center justify-center">
+              <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-3 border border-brand-red-500/30 shadow-lg w-full">
+                <h4 className="text-xs font-semibold text-brand-red-400 mb-2 text-center">
+                  Processing Pipeline
+                </h4>
+                
+                <div className="flex items-center justify-between">
+                  <div className="text-center">
+                    <div className="bg-white/5 rounded-lg p-2 border border-white/10 mb-1">
+                      <GitBranch className="w-4 h-4 text-brand-red-400 mx-auto" />
+                    </div>
+                    <div className="text-xs text-gray-300">Extract</div>
+                  </div>
+                  
+                  <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700 mx-2" />
+                  
+                  <div className="text-center">
+                    <div className="bg-white/5 rounded-lg p-2 border border-white/10 mb-1">
+                      <Cpu className="w-4 h-4 text-brand-red-400 mx-auto" />
+                    </div>
+                    <div className="text-xs text-gray-300">Transform</div>
+                  </div>
+                  
+                  <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700 mx-2" />
+                  
+                  <div className="text-center">
+                    <div className="bg-white/5 rounded-lg p-2 border border-white/10 mb-1">
+                      <Layers className="w-4 h-4 text-brand-red-400 mx-auto" />
+                    </div>
+                    <div className="text-xs text-gray-300">Load</div>
+                  </div>
+                </div>
+                
+                {/* Animated dots */}
+                <div className="relative mt-2">
+                  <div className="flex justify-between">
+                    <div 
+                      className="w-1.5 h-1.5 bg-brand-red-500 rounded-full"
+                      style={{ animation: 'pipelinePulse 3s ease-in-out infinite 0s' }}
+                    />
+                    <div 
+                      className="w-1.5 h-1.5 bg-brand-red-500 rounded-full"
+                      style={{ animation: 'pipelinePulse 3s ease-in-out infinite 1s' }}
+                    />
+                    <div 
+                      className="w-1.5 h-1.5 bg-brand-red-500 rounded-full"
+                      style={{ animation: 'pipelinePulse 3s ease-in-out infinite 2s' }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Data Warehouse - Right */}
+            <div className="col-span-2">
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
+                <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
+                  <Database className="w-3 h-3 mr-1" />
+                  Data Warehouse
+                </h4>
+                
+                <div className="space-y-1.5">
+                  <div className="bg-gray-900/50 rounded p-2 border border-gray-700/30">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs text-gray-300">Structured</span>
+                      <span className="text-xs text-gray-500">85%</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                      <div className="h-full w-[85%] bg-gradient-to-r from-brand-red-500 to-brand-red-600 rounded-full" />
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-900/50 rounded p-2 border border-gray-700/30">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs text-gray-300">Semi-Structured</span>
+                      <span className="text-xs text-gray-500">12%</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                      <div className="h-full w-[12%] bg-gradient-to-r from-gray-500 to-gray-600 rounded-full" />
+                    </div>
+                  </div>
+                  
+                  <div className="bg-gray-900/50 rounded p-2 border border-gray-700/30">
+                    <div className="flex items-center justify-between mb-1">
+                      <span className="text-xs text-gray-300">Unstructured</span>
+                      <span className="text-xs text-gray-500">3%</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                      <div className="h-full w-[3%] bg-gradient-to-r from-gray-600 to-gray-700 rounded-full" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Second Orbit */}
-        <div 
-          className="absolute w-96 h-96 border border-white/5 rounded-full"
-          style={{ animation: 'rotate 30s linear infinite reverse' }}
-        />
-
-        {/* Third Orbit */}
-        <div 
-          className="absolute w-[500px] h-[500px] border border-white/5 rounded-full"
-          style={{ animation: 'rotate 40s linear infinite' }}
-        />
-
-        {/* Data Streams */}
-        {[...Array(4)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-0.5 h-24 bg-gradient-to-b from-transparent via-brand-red-500 to-transparent opacity-0"
-            style={{
-              top: `${20 + i * 15}%`,
-              left: `${20 + i * 20}%`,
-              animation: `stream 3s ease-in-out infinite ${i * 0.5}s`
-            }}
-          />
-        ))}
-
-        {/* Floating Particles */}
-        {[...Array(4)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-brand-red-500 rounded-full opacity-60"
-            style={{
-              top: `${10 + i * 20}%`,
-              left: `${10 + i * 25}%`,
-              animation: `float 10s ease-in-out infinite ${i * 2}s`
-            }}
-          />
-        ))}
+        {/* Key Metrics - Bottom Bar */}
+        <div className="grid grid-cols-4 gap-2 mt-3">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-xs text-gray-400">Latency</div>
+                <div className="text-lg font-bold text-white">1.2ms</div>
+                <div className="text-xs text-gray-500">avg</div>
+              </div>
+              <Zap className="w-4 h-4 text-yellow-500" />
+            </div>
+          </div>
+          
+          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-xs text-gray-400">Throughput</div>
+                <div className="text-lg font-bold text-white">98.7%</div>
+                <div className="text-xs text-gray-500">success</div>
+              </div>
+              <Activity className="w-4 h-4 text-green-500" />
+            </div>
+          </div>
+          
+          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-xs text-gray-400">Storage</div>
+                <div className="text-lg font-bold text-white">12.4TB</div>
+                <div className="text-xs text-gray-500">total</div>
+              </div>
+              <Database className="w-4 h-4 text-brand-red-500" />
+            </div>
+          </div>
+          
+          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+            <div className="flex items-center justify-between">
+              <div>
+                <div className="text-xs text-gray-400">Pipelines</div>
+                <div className="text-lg font-bold text-white">47</div>
+                <div className="text-xs text-gray-500">active</div>
+              </div>
+              <GitBranch className="w-4 h-4 text-blue-500" />
+            </div>
+          </div>
+        </div>
       </div>
 
       <style jsx>{`
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
+        @keyframes dataFlow {
+          0% { 
+            transform: translateX(-100%);
+          }
+          100% { 
+            transform: translateX(0);
+          }
         }
-
-        @keyframes rotate {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-
-        @keyframes gridMove {
-          0% { transform: translate(0, 0); }
-          100% { transform: translate(50px, 50px); }
-        }
-
-        @keyframes stream {
-          0%, 100% { opacity: 0; transform: translateY(0); }
-          50% { opacity: 1; transform: translateY(20px); }
-        }
-
-        @keyframes float {
-          0%, 100% { transform: translate(0, 0); opacity: 0; }
-          50% { transform: translate(30px, -30px); opacity: 0.6; }
+        
+        @keyframes pipelinePulse {
+          0%, 100% { 
+            opacity: 0.3;
+            transform: scale(1);
+          }
+          50% { 
+            opacity: 1;
+            transform: scale(1.5);
+          }
         }
       `}</style>
     </div>
