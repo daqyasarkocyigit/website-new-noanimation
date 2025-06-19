@@ -13,7 +13,7 @@ const DataEngineeringVisual: React.FC = () => {
               linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
               linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
             `,
-            backgroundSize: '30px 30px'
+            backgroundSize: '20px 20px'
           }}
         />
       </div>
@@ -62,223 +62,85 @@ const DataEngineeringVisual: React.FC = () => {
         </div>
 
         {/* Data Architecture Flow - Mobile Responsive */}
-        <div className="flex-1 flex flex-col lg:grid lg:grid-cols-7 gap-1.5 lg:items-center min-h-0">
+        <div className="flex-1 flex flex-col space-y-2 min-h-0">
           
-          {/* Mobile: Stacked Layout */}
-          <div className="lg:hidden space-y-2">
-            {/* Data Sources */}
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 border border-gray-700/50">
-              <h4 className="text-xs font-semibold text-gray-300 mb-1.5 flex items-center">
-                <Database className="w-3 h-3 mr-1" />
-                Data Sources
-              </h4>
-              <div className="grid grid-cols-3 gap-1">
-                <div className="bg-gray-900/50 rounded p-1 text-center border border-gray-700/30">
-                  <Server className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
-                  <span className="text-xs text-gray-300">APIs</span>
-                  <span className="text-xs text-gray-500 block">12</span>
-                </div>
-                <div className="bg-gray-900/50 rounded p-1 text-center border border-gray-700/30">
-                  <Database className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
-                  <span className="text-xs text-gray-300">DBs</span>
-                  <span className="text-xs text-gray-500 block">8</span>
-                </div>
-                <div className="bg-gray-900/50 rounded p-1 text-center border border-gray-700/30">
-                  <HardDrive className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
-                  <span className="text-xs text-gray-300">Files</span>
-                  <span className="text-xs text-gray-500 block">CSV</span>
-                </div>
+          {/* Data Sources */}
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 border border-gray-700/50 flex-1">
+            <h4 className="text-xs font-semibold text-gray-300 mb-1.5 flex items-center">
+              <Database className="w-3 h-3 mr-1" />
+              Data Sources
+            </h4>
+            <div className="grid grid-cols-3 gap-1">
+              <div className="bg-gray-900/50 rounded p-1 text-center border border-gray-700/30">
+                <Server className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
+                <span className="text-xs text-gray-300">APIs</span>
+                <span className="text-xs text-gray-500 block">12</span>
               </div>
-            </div>
-
-            {/* Processing Pipeline */}
-            <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2 border border-brand-red-500/30 shadow-lg">
-              <h4 className="text-xs font-semibold text-brand-red-400 mb-1.5 text-center">
-                Processing Pipeline
-              </h4>
-              <div className="flex items-center justify-between">
-                <div className="text-center">
-                  <div className="bg-white/5 rounded-lg p-1 border border-white/10 mb-1">
-                    <GitBranch className="w-3 h-3 text-brand-red-400 mx-auto" />
-                  </div>
-                  <div className="text-xs text-gray-300">Extract</div>
-                </div>
-                <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700 mx-1" />
-                <div className="text-center">
-                  <div className="bg-white/5 rounded-lg p-1 border border-white/10 mb-1">
-                    <Cpu className="w-3 h-3 text-brand-red-400 mx-auto" />
-                  </div>
-                  <div className="text-xs text-gray-300">Transform</div>
-                </div>
-                <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700 mx-1" />
-                <div className="text-center">
-                  <div className="bg-white/5 rounded-lg p-1 border border-white/10 mb-1">
-                    <Layers className="w-3 h-3 text-brand-red-400 mx-auto" />
-                  </div>
-                  <div className="text-xs text-gray-300">Load</div>
-                </div>
+              <div className="bg-gray-900/50 rounded p-1 text-center border border-gray-700/30">
+                <Database className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
+                <span className="text-xs text-gray-300">DBs</span>
+                <span className="text-xs text-gray-500 block">8</span>
               </div>
-            </div>
-
-            {/* Data Warehouse */}
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 border border-gray-700/50">
-              <h4 className="text-xs font-semibold text-gray-300 mb-1.5 flex items-center">
-                <Database className="w-3 h-3 mr-1" />
-                Data Warehouse
-              </h4>
-              <div className="space-y-1">
-                <div className="bg-gray-900/50 rounded p-1 border border-gray-700/30">
-                  <div className="flex items-center justify-between mb-0.5">
-                    <span className="text-xs text-gray-300">Structured</span>
-                    <span className="text-xs text-gray-500">85%</span>
-                  </div>
-                  <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
-                    <div className="h-full w-[85%] bg-gradient-to-r from-brand-red-500 to-brand-red-600 rounded-full" />
-                  </div>
-                </div>
-                <div className="bg-gray-900/50 rounded p-1 border border-gray-700/30">
-                  <div className="flex items-center justify-between mb-0.5">
-                    <span className="text-xs text-gray-300">Semi-Structured</span>
-                    <span className="text-xs text-gray-500">12%</span>
-                  </div>
-                  <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
-                    <div className="h-full w-[12%] bg-gradient-to-r from-gray-500 to-gray-600 rounded-full" />
-                  </div>
-                </div>
+              <div className="bg-gray-900/50 rounded p-1 text-center border border-gray-700/30">
+                <HardDrive className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
+                <span className="text-xs text-gray-300">Files</span>
+                <span className="text-xs text-gray-500 block">CSV</span>
               </div>
             </div>
           </div>
 
-          {/* Desktop: Original Layout */}
-          <div className="hidden lg:contents">
-            {/* Data Sources - Left */}
-            <div className="col-span-2">
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50 h-full">
-                <h4 className="text-xs font-semibold text-gray-300 mb-1.5 flex items-center">
-                  <Database className="w-3 h-3 mr-1" />
-                  Data Sources
-                </h4>
-                
-                <div className="space-y-1">
-                  <div className="bg-gray-900/50 rounded p-1 flex items-center justify-between border border-gray-700/30">
-                    <div className="flex items-center gap-1">
-                      <Server className="w-2.5 h-2.5 text-gray-400" />
-                      <span className="text-xs text-gray-300">APIs</span>
-                    </div>
-                    <span className="text-xs text-gray-500">12</span>
-                  </div>
-                  
-                  <div className="bg-gray-900/50 rounded p-1 flex items-center justify-between border border-gray-700/30">
-                    <div className="flex items-center gap-1">
-                      <Database className="w-2.5 h-2.5 text-gray-400" />
-                      <span className="text-xs text-gray-300">Databases</span>
-                    </div>
-                    <span className="text-xs text-gray-500">8</span>
-                  </div>
-                  
-                  <div className="bg-gray-900/50 rounded p-1 flex items-center justify-between border border-gray-700/30">
-                    <div className="flex items-center gap-1">
-                      <HardDrive className="w-2.5 h-2.5 text-gray-400" />
-                      <span className="text-xs text-gray-300">Files</span>
-                    </div>
-                    <span className="text-xs text-gray-500">CSV/JSON</span>
-                  </div>
+          {/* Processing Pipeline */}
+          <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2 border border-brand-red-500/30 shadow-lg flex-1">
+            <h4 className="text-xs font-semibold text-brand-red-400 mb-1.5 text-center">
+              Processing Pipeline
+            </h4>
+            <div className="flex items-center justify-between">
+              <div className="text-center">
+                <div className="bg-white/5 rounded-lg p-1 border border-white/10 mb-1">
+                  <GitBranch className="w-3 h-3 text-brand-red-400 mx-auto" />
                 </div>
+                <div className="text-xs text-gray-300">Extract</div>
+              </div>
+              <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700 mx-1" />
+              <div className="text-center">
+                <div className="bg-white/5 rounded-lg p-1 border border-white/10 mb-1">
+                  <Cpu className="w-3 h-3 text-brand-red-400 mx-auto" />
+                </div>
+                <div className="text-xs text-gray-300">Transform</div>
+              </div>
+              <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700 mx-1" />
+              <div className="text-center">
+                <div className="bg-white/5 rounded-lg p-1 border border-white/10 mb-1">
+                  <Layers className="w-3 h-3 text-brand-red-400 mx-auto" />
+                </div>
+                <div className="text-xs text-gray-300">Load</div>
               </div>
             </div>
+          </div>
 
-            {/* Processing Pipeline - Center */}
-            <div className="col-span-3">
-              <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2.5 border border-brand-red-500/30 shadow-lg">
-                <h4 className="text-xs font-semibold text-brand-red-400 mb-1.5 text-center">
-                  Processing Pipeline
-                </h4>
-                
-                <div className="flex items-center justify-between">
-                  <div className="text-center">
-                    <div className="bg-white/5 rounded-lg p-1.5 border border-white/10 mb-1">
-                      <GitBranch className="w-3 h-3 text-brand-red-400 mx-auto" />
-                    </div>
-                    <div className="text-xs text-gray-300">Extract</div>
-                  </div>
-                  
-                  <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700 mx-1.5" />
-                  
-                  <div className="text-center">
-                    <div className="bg-white/5 rounded-lg p-1.5 border border-white/10 mb-1">
-                      <Cpu className="w-3 h-3 text-brand-red-400 mx-auto" />
-                    </div>
-                    <div className="text-xs text-gray-300">Transform</div>
-                  </div>
-                  
-                  <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700 mx-1.5" />
-                  
-                  <div className="text-center">
-                    <div className="bg-white/5 rounded-lg p-1.5 border border-white/10 mb-1">
-                      <Layers className="w-3 h-3 text-brand-red-400 mx-auto" />
-                    </div>
-                    <div className="text-xs text-gray-300">Load</div>
-                  </div>
+          {/* Data Warehouse */}
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 border border-gray-700/50 flex-1">
+            <h4 className="text-xs font-semibold text-gray-300 mb-1.5 flex items-center">
+              <Database className="w-3 h-3 mr-1" />
+              Data Warehouse
+            </h4>
+            <div className="space-y-1">
+              <div className="bg-gray-900/50 rounded p-1 border border-gray-700/30">
+                <div className="flex items-center justify-between mb-0.5">
+                  <span className="text-xs text-gray-300">Structured</span>
+                  <span className="text-xs text-gray-500">85%</span>
                 </div>
-                
-                {/* Animated dots */}
-                <div className="relative mt-1.5">
-                  <div className="flex justify-between">
-                    <div 
-                      className="w-1 h-1 bg-brand-red-500 rounded-full"
-                      style={{ animation: 'pipelinePulse 3s ease-in-out infinite 0s' }}
-                    />
-                    <div 
-                      className="w-1 h-1 bg-brand-red-500 rounded-full"
-                      style={{ animation: 'pipelinePulse 3s ease-in-out infinite 1s' }}
-                    />
-                    <div 
-                      className="w-1 h-1 bg-brand-red-500 rounded-full"
-                      style={{ animation: 'pipelinePulse 3s ease-in-out infinite 2s' }}
-                    />
-                  </div>
+                <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
+                  <div className="h-full w-[85%] bg-gradient-to-r from-brand-red-500 to-brand-red-600 rounded-full" />
                 </div>
               </div>
-            </div>
-
-            {/* Data Warehouse - Right */}
-            <div className="col-span-2">
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50 h-full">
-                <h4 className="text-xs font-semibold text-gray-300 mb-1.5 flex items-center">
-                  <Database className="w-3 h-3 mr-1" />
-                  Data Warehouse
-                </h4>
-                
-                <div className="space-y-1">
-                  <div className="bg-gray-900/50 rounded p-1 border border-gray-700/30">
-                    <div className="flex items-center justify-between mb-0.5">
-                      <span className="text-xs text-gray-300">Structured</span>
-                      <span className="text-xs text-gray-500">85%</span>
-                    </div>
-                    <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
-                      <div className="h-full w-[85%] bg-gradient-to-r from-brand-red-500 to-brand-red-600 rounded-full" />
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gray-900/50 rounded p-1 border border-gray-700/30">
-                    <div className="flex items-center justify-between mb-0.5">
-                      <span className="text-xs text-gray-300">Semi-Structured</span>
-                      <span className="text-xs text-gray-500">12%</span>
-                    </div>
-                    <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
-                      <div className="h-full w-[12%] bg-gradient-to-r from-gray-500 to-gray-600 rounded-full" />
-                    </div>
-                  </div>
-                  
-                  <div className="bg-gray-900/50 rounded p-1 border border-gray-700/30">
-                    <div className="flex items-center justify-between mb-0.5">
-                      <span className="text-xs text-gray-300">Unstructured</span>
-                      <span className="text-xs text-gray-500">3%</span>
-                    </div>
-                    <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
-                      <div className="h-full w-[3%] bg-gradient-to-r from-gray-600 to-gray-700 rounded-full" />
-                    </div>
-                  </div>
+              <div className="bg-gray-900/50 rounded p-1 border border-gray-700/30">
+                <div className="flex items-center justify-between mb-0.5">
+                  <span className="text-xs text-gray-300">Semi-Structured</span>
+                  <span className="text-xs text-gray-500">12%</span>
+                </div>
+                <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
+                  <div className="h-full w-[12%] bg-gradient-to-r from-gray-500 to-gray-600 rounded-full" />
                 </div>
               </div>
             </div>

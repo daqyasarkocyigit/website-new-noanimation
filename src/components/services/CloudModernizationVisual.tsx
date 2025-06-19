@@ -35,7 +35,7 @@ const CloudModernizationVisual: React.FC = () => {
               linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
               linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
             `,
-            backgroundSize: '30px 30px'
+            backgroundSize: '20px 20px'
           }}
         />
       </div>
@@ -86,25 +86,25 @@ const CloudModernizationVisual: React.FC = () => {
         <div className="flex-1 flex items-center py-2 sm:py-4">
           <div className="w-full">
             {/* Mobile: Vertical Layout */}
-            <div className="lg:hidden space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               {/* On-Premise */}
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50">
-                <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 border border-gray-700/50">
+                <h4 className="text-xs font-semibold text-gray-300 mb-1.5 flex items-center">
                   <Server className="w-3 h-3 mr-1" />
                   On-Premise
                 </h4>
-                <div className="grid grid-cols-3 gap-1.5">
-                  <div className="bg-gray-900/50 rounded p-1.5 text-center border border-gray-700/30">
+                <div className="grid grid-cols-3 gap-1">
+                  <div className="bg-gray-900/50 rounded p-1 text-center border border-gray-700/30">
                     <Database className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
                     <div className="text-xs text-gray-300">Database</div>
                     <div className="text-xs text-gray-500">2.1TB</div>
                   </div>
-                  <div className="bg-gray-900/50 rounded p-1.5 text-center border border-gray-700/30">
+                  <div className="bg-gray-900/50 rounded p-1 text-center border border-gray-700/30">
                     <Server className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
                     <div className="text-xs text-gray-300">Servers</div>
                     <div className="text-xs text-gray-500">12</div>
                   </div>
-                  <div className="bg-gray-900/50 rounded p-1.5 text-center border border-gray-700/30">
+                  <div className="bg-gray-900/50 rounded p-1 text-center border border-gray-700/30">
                     <Network className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
                     <div className="text-xs text-gray-300">Storage</div>
                     <div className="text-xs text-gray-500">0.9TB</div>
@@ -120,137 +120,34 @@ const CloudModernizationVisual: React.FC = () => {
               </div>
 
               {/* Cloud Platform */}
-              <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2.5 border border-brand-red-500/30 shadow-lg">
-                <h4 className="text-xs font-semibold text-brand-red-400 mb-2 flex items-center">
+              <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2 border border-brand-red-500/30 shadow-lg">
+                <h4 className="text-xs font-semibold text-brand-red-400 mb-1.5 flex items-center">
                   <Cloud className="w-3 h-3 mr-1" />
                   Cloud Platform
                 </h4>
-                <div className="grid grid-cols-2 gap-1.5">
-                  <div className="bg-white/5 rounded p-1.5 border border-white/10">
+                <div className="grid grid-cols-2 gap-1">
+                  <div className="bg-white/5 rounded p-1 border border-white/10">
                     <div className="flex items-center gap-1">
                       <Shield className="w-3 h-3 text-brand-red-400" />
                       <div className="text-xs text-gray-300">Security</div>
                     </div>
                   </div>
-                  <div className="bg-white/5 rounded p-1.5 border border-white/10">
+                  <div className="bg-white/5 rounded p-1 border border-white/10">
                     <div className="flex items-center gap-1">
                       <Globe className="w-3 h-3 text-brand-red-400" />
                       <div className="text-xs text-gray-300">CDN</div>
                     </div>
                   </div>
-                  <div className="bg-white/5 rounded p-1.5 border border-white/10">
+                  <div className="bg-white/5 rounded p-1 border border-white/10">
                     <div className="flex items-center gap-1">
                       <Zap className="w-3 h-3 text-brand-red-400" />
                       <div className="text-xs text-gray-300">Auto-Scale</div>
                     </div>
                   </div>
-                  <div className="bg-white/5 rounded p-1.5 border border-white/10">
+                  <div className="bg-white/5 rounded p-1 border border-white/10">
                     <div className="flex items-center gap-1">
                       <Activity className="w-3 h-3 text-brand-red-400" />
                       <div className="text-xs text-gray-300">Monitor</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Desktop: Horizontal Layout */}
-            <div className="hidden lg:grid lg:grid-cols-5 gap-4 items-center">
-              
-              {/* On-Premise - Left */}
-              <div className="col-span-2">
-                <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
-                  <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
-                    <Server className="w-3 h-3 mr-1" />
-                    On-Premise
-                  </h4>
-                  
-                  <div className="space-y-1">
-                    <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                      <div className="flex items-center gap-1">
-                        <Database className="w-3 h-3 text-gray-400" />
-                        <span className="text-xs text-gray-300">Database</span>
-                      </div>
-                      <span className="text-xs text-gray-500">2.1TB</span>
-                    </div>
-                    
-                    <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                      <div className="flex items-center gap-1">
-                        <Server className="w-3 h-3 text-gray-400" />
-                        <span className="text-xs text-gray-300">Servers</span>
-                      </div>
-                      <span className="text-xs text-gray-500">12</span>
-                    </div>
-                    
-                    <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                      <div className="flex items-center gap-1">
-                        <Network className="w-3 h-3 text-gray-400" />
-                        <span className="text-xs text-gray-300">Storage</span>
-                      </div>
-                      <span className="text-xs text-gray-500">0.9TB</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Migration Arrow - Center */}
-              <div className="col-span-1 flex items-center justify-center">
-                <div className="relative">
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-900 rounded-full p-1.5 border-2 border-brand-red-500">
-                    <ChevronRight className="w-3 h-3 text-brand-red-500" />
-                  </div>
-                  {/* Animated dot */}
-                  <div 
-                    className="absolute w-1.5 h-1.5 bg-brand-red-500 rounded-full -top-0.75 left-0"
-                    style={{ animation: 'flowRight 2s linear infinite' }}
-                  />
-                </div>
-              </div>
-
-              {/* Cloud Platform - Right */}
-              <div className="col-span-2">
-                <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-3 border border-brand-red-500/30 shadow-lg">
-                  <h4 className="text-xs font-semibold text-brand-red-400 mb-2 flex items-center">
-                    <Cloud className="w-3 h-3 mr-1" />
-                    Cloud Platform
-                  </h4>
-                  
-                  <div className="grid grid-cols-2 gap-1">
-                    <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                      <div className="flex items-center gap-1">
-                        <Shield className="w-3 h-3 text-brand-red-400" />
-                        <div>
-                          <div className="text-xs text-gray-300">Security</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                      <div className="flex items-center gap-1">
-                        <Globe className="w-3 h-3 text-brand-red-400" />
-                        <div>
-                          <div className="text-xs text-gray-300">CDN</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                      <div className="flex items-center gap-1">
-                        <Zap className="w-3 h-3 text-brand-red-400" />
-                        <div>
-                          <div className="text-xs text-gray-300">Auto-Scale</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                      <div className="flex items-center gap-1">
-                        <Activity className="w-3 h-3 text-brand-red-400" />
-                        <div>
-                          <div className="text-xs text-gray-300">Monitor</div>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>

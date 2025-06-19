@@ -13,28 +13,28 @@ const AIEngineeringVisual: React.FC = () => {
               linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
               linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
             `,
-            backgroundSize: '40px 40px'
+            backgroundSize: '20px 20px'
           }}
         />
       </div>
 
       {/* Main Container */}
-      <div className="relative w-full h-full flex flex-col p-3">
+      <div className="relative w-full h-full flex flex-col p-2 sm:p-3 lg:p-4">
         
         {/* AI Model Performance Card */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2.5 border border-white/20 shadow-xl mb-2">
+        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-2.5 border border-white/20 shadow-xl mb-2">
           <div className="flex items-center justify-between mb-1.5">
             <div className="flex items-center gap-2">
               <div className="relative">
                 <div className="w-1.5 h-1.5 bg-brand-red-500 rounded-full animate-pulse" />
               </div>
               <div>
-                <h3 className="text-xs font-semibold text-white">AI Engine Status</h3>
-                <p className="text-xs text-gray-300">Neural network processing pipeline</p>
+                <h3 className="text-xs sm:text-sm font-semibold text-white">AI Engine Status</h3>
+                <p className="text-xs text-gray-300 hidden sm:block">Neural network processing pipeline</p>
               </div>
             </div>
             <div className="text-right">
-              <div className="text-xl font-bold text-white tabular-nums">
+              <div className="text-lg sm:text-xl font-bold text-white tabular-nums">
                 99.7%
               </div>
               <div className="text-xs text-gray-300 uppercase">Accuracy</div>
@@ -68,10 +68,10 @@ const AIEngineeringVisual: React.FC = () => {
         </div>
 
         {/* AI Architecture Grid */}
-        <div className="flex-1 grid grid-cols-3 gap-2 min-h-0">
+        <div className="flex-1 flex flex-col space-y-2 min-h-0">
           
           {/* Model Architecture */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50 overflow-hidden">
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 border border-gray-700/50 overflow-hidden flex-1">
             <h4 className="text-xs font-semibold text-gray-300 mb-1.5 flex items-center">
               <Network className="w-3 h-3 mr-1" />
               Model Architecture
@@ -79,7 +79,7 @@ const AIEngineeringVisual: React.FC = () => {
             
             {/* Neural Network Visualization */}
             <div className="bg-gray-900/50 rounded p-1.5 mb-1.5 border border-gray-700/30">
-              <div className="flex justify-between items-center h-12">
+              <div className="flex justify-between items-center h-8 sm:h-12">
                 {/* Input Layer */}
                 <div className="flex flex-col gap-0.5">
                   {[0, 1, 2].map((i) => (
@@ -128,18 +128,18 @@ const AIEngineeringVisual: React.FC = () => {
           </div>
 
           {/* AI Processing Core */}
-          <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2.5 border border-brand-red-500/30 shadow-lg overflow-hidden">
+          <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2 border border-brand-red-500/30 shadow-lg overflow-hidden flex-1">
             <h4 className="text-xs font-semibold text-brand-red-400 mb-1.5 flex items-center">
               <Brain className="w-3 h-3 mr-1" />
               AI Processing Core
             </h4>
             
             {/* Central AI Hub */}
-            <div className="relative bg-white/5 rounded-lg p-3 border border-white/10 mb-1.5">
+            <div className="relative bg-white/5 rounded-lg p-2 border border-white/10 mb-1.5">
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-red-500/20 to-brand-red-600/20 animate-pulse" />
+                <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-brand-red-500/20 to-brand-red-600/20 animate-pulse" />
               </div>
-              <Brain className="w-6 h-6 text-brand-red-400 mx-auto relative z-10" />
+              <Brain className="w-4 h-4 sm:w-6 sm:h-6 text-brand-red-400 mx-auto relative z-10" />
               
               {/* Orbiting Functions */}
               <div className="absolute inset-0">
@@ -153,15 +153,15 @@ const AIEngineeringVisual: React.FC = () => {
                   return (
                     <div
                       key={i}
-                      className="absolute w-3 h-3"
+                      className="absolute w-2 h-2 sm:w-3 sm:h-3"
                       style={{
                         top: '50%',
                         left: '50%',
-                        transform: `translate(-50%, -50%) rotate(${item.angle}deg) translateX(20px)`,
+                        transform: `translate(-50%, -50%) rotate(${item.angle}deg) translateX(15px)`,
                         animation: `orbit 8s linear infinite ${i * 2}s`
                       }}
                     >
-                      <Icon className="w-3 h-3 text-brand-red-400/70" />
+                      <Icon className="w-2 h-2 sm:w-3 sm:h-3 text-brand-red-400/70" />
                     </div>
                   );
                 })}
@@ -182,7 +182,7 @@ const AIEngineeringVisual: React.FC = () => {
           </div>
 
           {/* AI Applications */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50 overflow-hidden">
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 border border-gray-700/50 overflow-hidden flex-1">
             <h4 className="text-xs font-semibold text-gray-300 mb-1.5 flex items-center">
               <Sparkles className="w-3 h-3 mr-1" />
               AI Applications
@@ -227,7 +227,7 @@ const AIEngineeringVisual: React.FC = () => {
         </div>
 
         {/* AI Performance Metrics */}
-        <div className="grid grid-cols-4 gap-1.5 mt-2">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 mt-2">
           <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
@@ -288,10 +288,10 @@ const AIEngineeringVisual: React.FC = () => {
         
         @keyframes orbit {
           from {
-            transform: translate(-50%, -50%) rotate(0deg) translateX(20px) rotate(0deg);
+            transform: translate(-50%, -50%) rotate(0deg) translateX(15px) rotate(0deg);
           }
           to {
-            transform: translate(-50%, -50%) rotate(360deg) translateX(20px) rotate(-360deg);
+            transform: translate(-50%, -50%) rotate(360deg) translateX(15px) rotate(-360deg);
           }
         }
         
