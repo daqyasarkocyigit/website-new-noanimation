@@ -51,9 +51,10 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   return (
     <section id={id} className="py-12 sm:py-16 lg:py-20 scroll-mt-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`flex flex-col ${isReversed ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-8 lg:gap-16 items-center`}>
+        {/* Always use the same layout - content left, visual right */}
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
           
-          {/* Content Section */}
+          {/* Content Section - Always on the left */}
           <AnimatedSection 
             delay={0.1} 
             className="w-full lg:w-1/2 order-2 lg:order-1"
@@ -84,7 +85,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
             </ul>
           </AnimatedSection>
           
-          {/* Visual Section */}
+          {/* Visual Section - Always on the right */}
           <AnimatedSection 
             delay={0.3} 
             className="w-full lg:w-1/2 order-1 lg:order-2"
