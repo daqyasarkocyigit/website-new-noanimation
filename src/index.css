@@ -104,7 +104,7 @@
     padding-right: 2.5rem;
   }
 
-  /* Mobile navigation improvements */
+  /* Enhanced mobile navigation */
   .mobile-nav {
     @apply fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200
     transform transition-transform duration-300 ease-in-out;
@@ -127,6 +127,8 @@
   .responsive-image {
     @apply w-full h-auto object-cover;
     content-visibility: auto;
+    /* Improve loading performance */
+    loading: lazy;
   }
 
   .image-container-sm {
@@ -192,6 +194,10 @@
   }
 
   .no-tap-highlight {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .tap-highlight-none {
     -webkit-tap-highlight-color: transparent;
   }
 
@@ -279,8 +285,6 @@ img {
   content-visibility: auto;
   /* Prevent layout shift */
   height: auto;
-  /* Improve loading performance */
-  loading: lazy;
 }
 
 /* Lazy loading support */
@@ -319,6 +323,12 @@ img[loading="lazy"].loaded {
   /* Larger touch targets on mobile */
   .touch-target {
     @apply min-h-[48px] min-w-[48px];
+  }
+
+  /* Enhanced mobile menu interactions */
+  button:active,
+  .nav-link:active {
+    @apply transform scale-[0.98] transition-transform duration-75;
   }
 }
 
