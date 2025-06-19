@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle } from 'lucide-react';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -13,19 +13,54 @@ const ContactForm: React.FC = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Please enter a valid email address';
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters long';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Clear error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Simulate form submission
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
       setIsSubmitted(true);
       
       // Reset form after showing success message
@@ -39,22 +74,24 @@ const ContactForm: React.FC = () => {
         });
         setIsSubmitted(false);
       }, 5000);
-    }, 1500);
+    } catch (error) {
+      console.error('Form submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-xl p-6 md:p-8">
+    <div className="bg-white rounded-xl shadow-xl p-4 sm:p-6 md:p-8">
       {isSubmitted ? (
         <motion.div 
           className="text-center py-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
         >
           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-            </svg>
+            <CheckCircle className="w-8 h-8 text-green-500" />
           </div>
           <h3 className="text-2xl font-semibold mb-2">Message Sent!</h3>
           <p className="text-gray-600">
@@ -62,12 +99,12 @@ const ContactForm: React.FC = () => {
           </p>
         </motion.div>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <h2 className="text-2xl font-semibold mb-6">Get in Touch</h2>
+        <form onSubmit={handleSubmit} noValidate>
+          <h2 className="text-xl sm:text-2xl font-semibold mb-6">Get in Touch</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6">
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                 Your Name *
               </label>
               <input
@@ -77,12 +114,21 @@ const ContactForm: React.FC = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-electric-blue-500 focus:border-electric-blue-500 transition-colors"
+                aria-invalid={errors.name ? 'true' : 'false'}
+                aria-describedby={errors.name ? 'name-error' : undefined}
+                className={`form-input ${errors.name ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : ''}`}
+                placeholder="Enter your full name"
               />
+              {errors.name && (
+                <p id="name-error" className="mt-1 text-sm text-red-600 flex items-center">
+                  <AlertCircle size={16} className="mr-1" />
+                  {errors.name}
+                </p>
+              )}
             </div>
             
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                 Email Address *
               </label>
               <input
@@ -92,14 +138,23 @@ const ContactForm: React.FC = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-electric-blue-500 focus:border-electric-blue-500 transition-colors"
+                aria-invalid={errors.email ? 'true' : 'false'}
+                aria-describedby={errors.email ? 'email-error' : undefined}
+                className={`form-input ${errors.email ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : ''}`}
+                placeholder="your.email@company.com"
               />
+              {errors.email && (
+                <p id="email-error" className="mt-1 text-sm text-red-600 flex items-center">
+                  <AlertCircle size={16} className="mr-1" />
+                  {errors.email}
+                </p>
+              )}
             </div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6">
             <div>
-              <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
                 Company Name
               </label>
               <input
@@ -108,12 +163,13 @@ const ContactForm: React.FC = () => {
                 name="company"
                 value={formData.company}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-electric-blue-500 focus:border-electric-blue-500 transition-colors"
+                className="form-input"
+                placeholder="Your company name"
               />
             </div>
             
             <div>
-              <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-2">
                 Service of Interest
               </label>
               <select
@@ -121,7 +177,7 @@ const ContactForm: React.FC = () => {
                 name="service"
                 value={formData.service}
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-electric-blue-500 focus:border-electric-blue-500 transition-colors"
+                className="form-select"
               >
                 <option value="">Select a service</option>
                 <option value="data-engineering">Data Engineering</option>
@@ -135,7 +191,7 @@ const ContactForm: React.FC = () => {
           </div>
           
           <div className="mb-6">
-            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+            <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
               Message *
             </label>
             <textarea
@@ -145,8 +201,17 @@ const ContactForm: React.FC = () => {
               onChange={handleChange}
               required
               rows={5}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-electric-blue-500 focus:border-electric-blue-500 transition-colors"
-            ></textarea>
+              aria-invalid={errors.message ? 'true' : 'false'}
+              aria-describedby={errors.message ? 'message-error' : undefined}
+              className={`form-textarea ${errors.message ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : ''}`}
+              placeholder="Tell us about your project or requirements..."
+            />
+            {errors.message && (
+              <p id="message-error" className="mt-1 text-sm text-red-600 flex items-center">
+                <AlertCircle size={16} className="mr-1" />
+                {errors.message}
+              </p>
+            )}
           </div>
           
           <button
@@ -155,21 +220,24 @@ const ContactForm: React.FC = () => {
             className={`btn-primary w-full flex items-center justify-center ${
               isSubmitting ? 'opacity-75 cursor-not-allowed' : ''
             }`}
+            aria-describedby="submit-status"
           >
             {isSubmitting ? (
               <>
-                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
+                <div className="loading-spinner w-4 h-4 mr-2" />
                 Sending...
               </>
             ) : (
               <>
-                Send Message <Send size={16} className="ml-2" />
+                Send Message 
+                <Send size={16} className="ml-2" />
               </>
             )}
           </button>
+          
+          <p className="mt-3 text-xs text-gray-500 text-center">
+            We'll respond within 24 hours during business days.
+          </p>
         </form>
       )}
     </div>

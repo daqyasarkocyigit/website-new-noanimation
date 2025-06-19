@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5, user-scalable=yes" />
     <meta name="theme-color" content="#ffffff" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -29,11 +29,18 @@
     <meta property="twitter:description" content="Transform your business with enterprise-grade data engineering, AI solutions, and analytics consulting." />
     <meta property="twitter:image" content="https://i.imgur.com/mCWcjTw.png" />
 
+    <!-- Security Headers -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: http:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https:;" />
+    
+    <!-- Performance optimizations -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="https://i.imgur.com/mCWcjTw.png">
+    <link rel="dns-prefetch" href="https://images.pexels.com">
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    
+    <!-- PWA -->
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="https://i.imgur.com/mCWcjTw.png">
     
@@ -94,15 +101,65 @@
       }
     }
     </script>
+    
+    <!-- Critical CSS inlined for better performance -->
+    <style>
+      /* Critical above-the-fold styles */
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      .loading-fallback {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #f9fafb;
+      }
+      
+      .loading-spinner {
+        width: 2rem;
+        height: 2rem;
+        border: 2px solid #e5e7eb;
+        border-top: 2px solid #ef4444;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Fallback loading state -->
+      <div class="loading-fallback">
+        <div style="text-align: center;">
+          <div class="loading-spinner" style="margin: 0 auto 1rem;"></div>
+          <div style="color: #ef4444; font-size: 1.125rem; font-weight: 500;">Loading DAQ Consulting...</div>
+          <div style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem;">AI & Data Engineering Experts</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Fallback for users with JavaScript disabled -->
     <noscript>
-      <div style="padding: 20px; text-align: center;">
-        <h1>JavaScript Required</h1>
-        <p>Please enable JavaScript to view this website.</p>
+      <div style="padding: 20px; text-align: center; background-color: #fef2f2; border: 1px solid #fecaca; margin: 20px; border-radius: 8px;">
+        <h1 style="color: #dc2626; margin-bottom: 10px;">JavaScript Required</h1>
+        <p style="color: #7f1d1d;">Please enable JavaScript to view this website and experience all its features.</p>
+        <p style="color: #7f1d1d; font-size: 14px; margin-top: 15px;">
+          For assistance, please contact us at <a href="mailto:info@daqconsulting.com" style="color: #dc2626;">info@daqconsulting.com</a>
+        </p>
       </div>
     </noscript>
+    
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

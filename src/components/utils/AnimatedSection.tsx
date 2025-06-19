@@ -6,37 +6,77 @@ interface AnimatedSectionProps {
   children: ReactNode;
   className?: string;
   delay?: number;
+  direction?: 'up' | 'down' | 'left' | 'right' | 'fade';
 }
 
 const AnimatedSection: React.FC<AnimatedSectionProps> = ({ 
   children, 
   className = '', 
-  delay = 0 
+  delay = 0,
+  direction = 'up'
 }) => {
   const prefersReducedMotion = useReducedMotion();
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
+    rootMargin: '50px 0px',
   });
 
-  const animation = prefersReducedMotion
-    ? {
-        initial: { opacity: 0 },
-        animate: { opacity: 1 },
-        transition: { duration: 0.3 }
-      }
-    : {
-        initial: { opacity: 0, y: 30 },
-        animate: { opacity: 1, y: 0 },
-        transition: { duration: 0.8, delay }
-      };
+  const getInitialState = () => {
+    if (prefersReducedMotion) return { opacity: 0 };
+    
+    switch (direction) {
+      case 'up':
+        return { opacity: 0, y: 30 };
+      case 'down':
+        return { opacity: 0, y: -30 };
+      case 'left':
+        return { opacity: 0, x: -30 };
+      case 'right':
+        return { opacity: 0, x: 30 };
+      default:
+        return { opacity: 0 };
+    }
+  };
+
+  const getAnimateState = () => {
+    if (prefersReducedMotion) return { opacity: 1 };
+    
+    switch (direction) {
+      case 'up':
+      case 'down':
+        return { opacity: 1, y: 0 };
+      case 'left':
+      case 'right':
+        return { opacity: 1, x: 0 };
+      default:
+        return { opacity: 1 };
+    }
+  };
+
+  const animation = {
+    initial: getInitialState(),
+    animate: getAnimateState(),
+    transition: { 
+      duration: prefersReducedMotion ? 0.3 : 0.8, 
+      delay: prefersReducedMotion ? 0 : delay,
+      ease: [0.25, 0.46, 0.45, 0.94] // Custom easing for smoother animation
+    }
+  };
 
   return (
     <motion.div
       ref={ref}
       {...animation}
       animate={inView ? animation.animate : animation.initial}
-      className={className}
+      className={`${className} will-change-transform`}
+      onAnimationComplete={() => {
+        // Remove will-change after animation completes for better performance
+        const element = ref.current;
+        if (element) {
+          element.classList.add('animation-finished');
+        }
+      }}
     >
       {children}
     </motion.div>

@@ -6,7 +6,8 @@ import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="h-screen flex items-center justify-center relative overflow-hidden">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden safe-top">
+      {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 z-0"></div>
       <div 
         className="absolute top-0 left-0 w-full h-full opacity-5 z-0"
@@ -15,33 +16,36 @@ const Hero: React.FC = () => {
           backgroundSize: '30px 30px'
         }}
       ></div>
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
+      
+      <div className="container relative z-10 section-padding">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.h1 
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
             <span>Empowering </span>
-            <TypeAnimation
-              sequence={[
-                'Data-Driven Decisions',
-                2000,
-                'AI Solutions',
-                2000,
-                'Cloud Transformations',
-                2000,
-              ]}
-              wrapper="span"
-              speed={50}
-              className="text-brand-red-600"
-              repeat={Infinity}
-            />
+            <span className="block sm:inline">
+              <TypeAnimation
+                sequence={[
+                  'Data-Driven Decisions',
+                  2000,
+                  'AI Solutions',
+                  2000,
+                  'Cloud Transformations',
+                  2000,
+                ]}
+                wrapper="span"
+                speed={50}
+                className="text-brand-red-600"
+                repeat={Infinity}
+              />
+            </span>
           </motion.h1>
 
           <motion.p
-            className="text-lg md:text-xl text-cool-gray-600 leading-relaxed mb-8"
+            className="text-responsive-lg text-cool-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -51,14 +55,14 @@ const Hero: React.FC = () => {
           </motion.p>
 
           <motion.div
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <Link 
               to="/talent" 
-              className="inline-flex items-center justify-center px-8 py-3 bg-brand-red-600 hover:bg-brand-red-700 text-white text-lg font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 touch-manipulation"
+              className="btn-primary w-full sm:w-auto inline-flex items-center justify-center"
               role="button"
               aria-label="Hire Talent"
             >
@@ -66,20 +70,20 @@ const Hero: React.FC = () => {
             </Link>
             <Link 
               to="/services" 
-              className="inline-flex items-center justify-center px-8 py-3 bg-gray-200 hover:bg-gray-300 text-gray-700 text-lg font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 touch-manipulation"
+              className="btn-secondary w-full sm:w-auto inline-flex items-center justify-center"
               role="button"
               aria-label="View Our Services"
             >
-              Our Services <ArrowRight size={18} className="ml-2" />
+              Our Services 
+              <ArrowRight size={18} className="ml-2" />
             </Link>
           </motion.div>
         </div>
       </div>
 
       {/* Background Elements */}
-      
-      <div className="absolute -bottom-10 -right-10 w-72 h-72 bg-brand-red-600/10 rounded-full filter blur-3xl pointer-events-none z-0"></div>
-      <div className="absolute top-32 -left-10 w-72 h-72 bg-gray-400/10 rounded-full filter blur-3xl pointer-events-none z-0"></div>
+      <div className="absolute -bottom-10 -right-10 w-48 sm:w-72 h-48 sm:h-72 bg-brand-red-600/10 rounded-full filter blur-3xl pointer-events-none z-0"></div>
+      <div className="absolute top-32 -left-10 w-48 sm:w-72 h-48 sm:h-72 bg-gray-400/10 rounded-full filter blur-3xl pointer-events-none z-0"></div>
     </section>
   );
 };
