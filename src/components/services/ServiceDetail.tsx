@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import AnimatedSection from '../utils/AnimatedSection';
 import DataEngineeringVisual from './DataEngineeringVisual';
+import DataVisualizationVisual from './DataVisualizationVisual';
 
 interface ServiceDetailProps {
   id: string;
@@ -13,6 +14,7 @@ interface ServiceDetailProps {
   icon: React.ReactNode;
   isReversed?: boolean;
   useCustomVisual?: boolean;
+  visualType?: 'data-engineering' | 'data-visualization';
 }
 
 const ServiceDetail: React.FC<ServiceDetailProps> = ({
@@ -24,7 +26,19 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   icon,
   isReversed = false,
   useCustomVisual = false,
+  visualType,
 }) => {
+  const renderCustomVisual = () => {
+    switch (visualType) {
+      case 'data-engineering':
+        return <DataEngineeringVisual />;
+      case 'data-visualization':
+        return <DataVisualizationVisual />;
+      default:
+        return <DataEngineeringVisual />;
+    }
+  };
+
   return (
     <section id={id} className="py-20 scroll-mt-24">
       <div className="container mx-auto px-4 md:px-6">
@@ -63,7 +77,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
               
               {useCustomVisual ? (
                 <div className="w-full h-96 relative z-10">
-                  <DataEngineeringVisual />
+                  {renderCustomVisual()}
                 </div>
               ) : (
                 <img 
