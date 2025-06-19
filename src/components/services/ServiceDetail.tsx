@@ -4,6 +4,7 @@ import { Check } from 'lucide-react';
 import AnimatedSection from '../utils/AnimatedSection';
 import DataEngineeringVisual from './DataEngineeringVisual';
 import DataVisualizationVisual from './DataVisualizationVisual';
+import BusinessIntelligenceVisual from './BusinessIntelligenceVisual';
 
 interface ServiceDetailProps {
   id: string;
@@ -14,7 +15,7 @@ interface ServiceDetailProps {
   icon: React.ReactNode;
   isReversed?: boolean;
   useCustomVisual?: boolean;
-  visualType?: 'data-engineering' | 'data-visualization';
+  visualType?: 'data-engineering' | 'data-visualization' | 'business-intelligence';
 }
 
 const ServiceDetail: React.FC<ServiceDetailProps> = ({
@@ -34,6 +35,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
         return <DataEngineeringVisual />;
       case 'data-visualization':
         return <DataVisualizationVisual />;
+      case 'business-intelligence':
+        return <BusinessIntelligenceVisual />;
       default:
         return <DataEngineeringVisual />;
     }

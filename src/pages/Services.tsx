@@ -90,8 +90,9 @@ const Services: React.FC = () => {
           "Business performance analysis",
           "Competitive intelligence solutions"
         ]}
-        image="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<LineChart size={32} />}
+        useCustomVisual={true}
+        visualType="business-intelligence"
       />
 
       <ServiceDetail
