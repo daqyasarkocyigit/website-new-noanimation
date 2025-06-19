@@ -123,24 +123,6 @@ const TalentHeroVisual: React.FC = () => {
         </div>
       </div>
 
-      {/* Stats Overlay */}
-      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-gray-900 via-gray-900/90 to-transparent p-4 sm:p-6 lg:p-8">
-        <div className="flex justify-center items-center space-x-4 sm:space-x-6 lg:space-x-8">
-          <div className="text-center">
-            <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">2,847</div>
-            <div className="text-xs sm:text-sm text-gray-400">Active Talents</div>
-          </div>
-          <div className="text-center">
-            <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">98.5%</div>
-            <div className="text-xs sm:text-sm text-gray-400">Success Rate</div>
-          </div>
-          <div className="text-center">
-            <div className="text-lg sm:text-2xl lg:text-3xl font-bold text-white">1.2w</div>
-            <div className="text-xs sm:text-sm text-gray-400">Avg Deploy Time</div>
-          </div>
-        </div>
-      </div>
-
       <style jsx>{`
         @keyframes float-slow {
           0%, 100% { transform: translateY(0px); }
