@@ -49,20 +49,25 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
   };
 
   return (
-    <section id={id} className="section-padding scroll-mt-24">
-      <div className="container">
-        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-start ${isReversed ? 'lg:flex-row-reverse' : ''}`}>
-          <AnimatedSection delay={0.1} className="order-2 lg:order-1">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="text-brand-red-600">
+    <section id={id} className="py-12 sm:py-16 lg:py-20 scroll-mt-24">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center ${isReversed ? 'lg:grid-flow-col-dense' : ''}`}>
+          
+          {/* Content Section */}
+          <AnimatedSection 
+            delay={0.1} 
+            className={`${isReversed ? 'lg:col-start-2' : 'lg:col-start-1'} order-2 lg:order-1`}
+          >
+            <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 mb-6">
+              <div className="text-brand-red-600 flex-shrink-0">
                 {icon}
               </div>
-              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900">{title}</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">{title}</h2>
             </div>
             
-            <p className="text-base sm:text-lg text-cool-gray-600 mb-6 leading-relaxed">{description}</p>
+            <p className="text-base sm:text-lg lg:text-xl text-cool-gray-600 mb-8 leading-relaxed">{description}</p>
             
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {benefits.map((benefit, index) => (
                 <motion.li 
                   key={index}
@@ -73,29 +78,37 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
                   viewport={{ once: true }}
                 >
                   <Check size={20} className="text-brand-red-600 mt-1 mr-3 flex-shrink-0" />
-                  <span className="text-sm sm:text-base text-cool-gray-600">{benefit}</span>
+                  <span className="text-sm sm:text-base lg:text-lg text-cool-gray-600">{benefit}</span>
                 </motion.li>
               ))}
             </ul>
           </AnimatedSection>
           
-          <AnimatedSection delay={0.3} className={`order-1 ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}>
-            <div className="relative rounded-xl overflow-hidden shadow-2xl">
-              <div className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-16 h-16 sm:w-32 sm:h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
-              <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-16 h-16 sm:w-32 sm:h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
+          {/* Visual Section */}
+          <AnimatedSection 
+            delay={0.3} 
+            className={`${isReversed ? 'lg:col-start-1' : 'lg:col-start-2'} order-1 lg:order-2`}
+          >
+            <div className="relative">
+              {/* Background decorative elements */}
+              <div className="absolute -top-4 -right-4 sm:-top-6 sm:-right-6 w-20 h-20 sm:w-32 sm:h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
+              <div className="absolute -bottom-4 -left-4 sm:-bottom-6 sm:-left-6 w-20 h-20 sm:w-32 sm:h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
               
-              {useCustomVisual ? (
-                <div className="w-full h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 relative z-10 bg-gray-900 rounded-xl overflow-hidden">
-                  {renderCustomVisual()}
-                </div>
-              ) : (
-                <img 
-                  src={image} 
-                  alt={title} 
-                  className="w-full h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80 xl:h-96 object-cover z-10 relative rounded-xl"
-                  loading="lazy"
-                />
-              )}
+              {/* Main visual container */}
+              <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-900">
+                {useCustomVisual ? (
+                  <div className="w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] relative z-10">
+                    {renderCustomVisual()}
+                  </div>
+                ) : (
+                  <img 
+                    src={image} 
+                    alt={title} 
+                    className="w-full aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] object-cover z-10 relative"
+                    loading="lazy"
+                  />
+                )}
+              </div>
             </div>
           </AnimatedSection>
         </div>

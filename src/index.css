@@ -123,13 +123,12 @@
     @apply animate-spin rounded-full border-2 border-gray-300 border-t-brand-red-600;
   }
 
-  /* Image optimization with responsive sizing */
+  /* Enhanced responsive image containers */
   .responsive-image {
     @apply w-full h-auto object-cover;
     content-visibility: auto;
   }
 
-  /* Enhanced responsive image containers */
   .image-container-sm {
     @apply h-32 xs:h-40 sm:h-48;
   }
@@ -144,6 +143,15 @@
 
   .image-container-xl {
     @apply h-56 xs:h-64 sm:h-72 md:h-80 lg:h-96;
+  }
+
+  /* Service visual containers - optimized for mobile */
+  .service-visual-container {
+    @apply relative w-full rounded-xl overflow-hidden shadow-2xl bg-gray-900;
+  }
+
+  .service-visual-mobile {
+    @apply aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3];
   }
 
   /* Typography improvements */
@@ -197,7 +205,7 @@
     will-change: transform;
   }
 
-  /* Prevent layout shift with responsive aspect ratios */
+  /* Enhanced responsive aspect ratios */
   .aspect-ratio-16-9 {
     aspect-ratio: 16 / 9;
   }
@@ -208,6 +216,10 @@
 
   .aspect-ratio-1-1 {
     aspect-ratio: 1 / 1;
+  }
+
+  .aspect-ratio-16-10 {
+    aspect-ratio: 16 / 10;
   }
 
   /* Enhanced responsive breakpoints */
