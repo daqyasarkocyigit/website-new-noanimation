@@ -5,6 +5,7 @@ import AnimatedSection from '../utils/AnimatedSection';
 import DataEngineeringVisual from './DataEngineeringVisual';
 import DataVisualizationVisual from './DataVisualizationVisual';
 import BusinessIntelligenceVisual from './BusinessIntelligenceVisual';
+import AIEngineeringVisual from './AIEngineeringVisual';
 
 interface ServiceDetailProps {
   id: string;
@@ -15,7 +16,7 @@ interface ServiceDetailProps {
   icon: React.ReactNode;
   isReversed?: boolean;
   useCustomVisual?: boolean;
-  visualType?: 'data-engineering' | 'data-visualization' | 'business-intelligence';
+  visualType?: 'data-engineering' | 'data-visualization' | 'business-intelligence' | 'ai-engineering';
 }
 
 const ServiceDetail: React.FC<ServiceDetailProps> = ({
@@ -37,6 +38,8 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
         return <DataVisualizationVisual />;
       case 'business-intelligence':
         return <BusinessIntelligenceVisual />;
+      case 'ai-engineering':
+        return <AIEngineeringVisual />;
       default:
         return <DataEngineeringVisual />;
     }

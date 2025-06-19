@@ -122,8 +122,9 @@ const Services: React.FC = () => {
           "Computer vision applications",
           "MLOps implementation"
         ]}
-        image="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1600"
         icon={<Brain size={32} />}
+        useCustomVisual={true}
+        visualType="ai-engineering"
       />
 
       <CallToAction />
