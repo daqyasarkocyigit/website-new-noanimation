@@ -13,7 +13,7 @@ const DataVisualizationVisual: React.FC = () => {
               linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
               linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
             `,
-            backgroundSize: '20px 20px'
+            backgroundSize: '30px 30px'
           }}
         />
       </div>
@@ -60,10 +60,10 @@ const DataVisualizationVisual: React.FC = () => {
         </div>
 
         {/* Visualization Types Grid - Mobile Responsive */}
-        <div className="flex-1 flex flex-col space-y-2 sm:space-y-3">
+        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3">
           
           {/* Interactive Charts Section */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50 flex-1">
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50">
             <h4 className="text-xs font-semibold text-gray-300 mb-1.5 sm:mb-2 flex items-center">
               <BarChart3 className="w-3 h-3 mr-1" />
               Interactive Charts
@@ -71,7 +71,7 @@ const DataVisualizationVisual: React.FC = () => {
             
             {/* Bar Chart Preview */}
             <div className="bg-gray-900/50 rounded p-1.5 sm:p-2 mb-1.5 sm:mb-2 border border-gray-700/30">
-              <div className="flex items-end gap-0.5 sm:gap-1 h-8 sm:h-12 md:h-16">
+              <div className="flex items-end gap-0.5 sm:gap-1 h-12 sm:h-16">
                 {[40, 65, 35, 80, 55, 70, 45].map((height, i) => (
                   <div
                     key={i}
@@ -100,7 +100,7 @@ const DataVisualizationVisual: React.FC = () => {
           </div>
 
           {/* Real-time Dashboards */}
-          <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-brand-red-500/30 shadow-lg flex-1">
+          <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-brand-red-500/30 shadow-lg">
             <h4 className="text-xs font-semibold text-brand-red-400 mb-1.5 sm:mb-2 flex items-center">
               <Grid3x3 className="w-3 h-3 mr-1" />
               Live Dashboards
@@ -139,7 +139,7 @@ const DataVisualizationVisual: React.FC = () => {
           </div>
 
           {/* Custom Visualizations */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50 flex-1">
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50 sm:col-span-2 lg:col-span-1">
             <h4 className="text-xs font-semibold text-gray-300 mb-1.5 sm:mb-2 flex items-center">
               <Palette className="w-3 h-3 mr-1" />
               Custom Visuals
@@ -148,7 +148,7 @@ const DataVisualizationVisual: React.FC = () => {
             {/* Heatmap Preview */}
             <div className="bg-gray-900/50 rounded p-1.5 sm:p-2 mb-1.5 sm:mb-2 border border-gray-700/30">
               <div className="grid grid-cols-7 gap-0.5">
-                {[...Array(21)].map((_, i) => {
+                {[...Array(28)].map((_, i) => {
                   const intensity = Math.random();
                   return (
                     <div

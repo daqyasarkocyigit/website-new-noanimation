@@ -13,28 +13,28 @@ const BusinessIntelligenceVisual: React.FC = () => {
               linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
               linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
             `,
-            backgroundSize: '20px 20px'
+            backgroundSize: '40px 40px'
           }}
         />
       </div>
 
       {/* Main Container */}
-      <div className="relative w-full h-full flex flex-col p-2 sm:p-3 lg:p-4">
+      <div className="relative w-full h-full flex flex-col p-4">
         
         {/* BI Analytics Dashboard Card */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-white/20 shadow-xl mb-2 sm:mb-3">
+        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 shadow-xl mb-3">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <div className="relative">
                 <div className="w-2 h-2 bg-brand-red-500 rounded-full animate-pulse" />
               </div>
               <div>
-                <h3 className="text-xs sm:text-sm font-semibold text-white">Business Intelligence Hub</h3>
-                <p className="text-xs text-gray-300 hidden sm:block">Advanced analytics & insights engine</p>
+                <h3 className="text-sm font-semibold text-white">Business Intelligence Hub</h3>
+                <p className="text-xs text-gray-300">Advanced analytics & insights engine</p>
               </div>
             </div>
             <div className="text-right">
-              <div className="text-lg sm:text-2xl font-bold text-white tabular-nums">
+              <div className="text-2xl font-bold text-white tabular-nums">
                 87%
               </div>
               <div className="text-xs text-gray-300 uppercase">Accuracy</div>
@@ -42,7 +42,7 @@ const BusinessIntelligenceVisual: React.FC = () => {
           </div>
           
           {/* KPI Performance Bar */}
-          <div className="grid grid-cols-4 gap-1 sm:gap-2">
+          <div className="grid grid-cols-4 gap-2">
             <div className="text-center">
               <div className="text-xs text-gray-400 mb-1">Revenue</div>
               <div className="h-1 bg-gray-700/50 rounded-full overflow-hidden">
@@ -71,10 +71,10 @@ const BusinessIntelligenceVisual: React.FC = () => {
         </div>
 
         {/* BI Components Grid */}
-        <div className="flex-1 flex flex-col space-y-2 sm:space-y-3">
+        <div className="flex-1 grid grid-cols-3 gap-3">
           
           {/* Predictive Analytics */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50 flex-1">
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
             <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
               <TrendingUp className="w-3 h-3 mr-1" />
               Predictive Analytics
@@ -82,9 +82,9 @@ const BusinessIntelligenceVisual: React.FC = () => {
             
             {/* Trend Visualization */}
             <div className="bg-gray-900/50 rounded p-2 mb-2 border border-gray-700/30">
-              <svg width="100%" height="40" viewBox="0 0 100 40" className="sm:h-[60px]">
+              <svg width="100%" height="60" viewBox="0 0 100 60">
                 <path
-                  d="M 0,30 Q 25,15 50,20 T 100,18"
+                  d="M 0,40 Q 25,20 50,30 T 100,25"
                   stroke="url(#trendGradient)"
                   strokeWidth="2"
                   fill="none"
@@ -115,7 +115,7 @@ const BusinessIntelligenceVisual: React.FC = () => {
           </div>
 
           {/* Real-time Insights */}
-          <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-brand-red-500/30 shadow-lg flex-1">
+          <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-3 border border-brand-red-500/30 shadow-lg">
             <h4 className="text-xs font-semibold text-brand-red-400 mb-2 flex items-center">
               <BrainCircuit className="w-3 h-3 mr-1" />
               AI-Powered Insights
@@ -171,7 +171,7 @@ const BusinessIntelligenceVisual: React.FC = () => {
           </div>
 
           {/* Business Metrics */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50 flex-1">
+          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
             <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
               <BarChart3 className="w-3 h-3 mr-1" />
               Key Metrics
@@ -184,7 +184,7 @@ const BusinessIntelligenceVisual: React.FC = () => {
                   <span className="text-xs text-gray-300">ROI</span>
                   <TrendingUp className="w-3 h-3 text-green-400" />
                 </div>
-                <div className="text-base sm:text-lg font-bold text-white">3.2x</div>
+                <div className="text-lg font-bold text-white">3.2x</div>
                 <div className="text-xs text-gray-500">vs 2.1x last year</div>
               </div>
               
@@ -193,7 +193,7 @@ const BusinessIntelligenceVisual: React.FC = () => {
                   <span className="text-xs text-gray-300">Efficiency</span>
                   <Zap className="w-3 h-3 text-yellow-400" />
                 </div>
-                <div className="text-base sm:text-lg font-bold text-white">42%</div>
+                <div className="text-lg font-bold text-white">42%</div>
                 <div className="text-xs text-gray-500">time saved</div>
               </div>
               
@@ -202,7 +202,7 @@ const BusinessIntelligenceVisual: React.FC = () => {
                   <span className="text-xs text-gray-300">Accuracy</span>
                   <Target className="w-3 h-3 text-brand-red-400" />
                 </div>
-                <div className="text-base sm:text-lg font-bold text-white">98.5%</div>
+                <div className="text-lg font-bold text-white">98.5%</div>
                 <div className="text-xs text-gray-500">prediction rate</div>
               </div>
             </div>
@@ -210,48 +210,48 @@ const BusinessIntelligenceVisual: React.FC = () => {
         </div>
 
         {/* Analytics Summary */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2 mt-2 sm:mt-3">
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2.5 border border-white/10">
+        <div className="grid grid-cols-4 gap-2 mt-3">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-gray-400">Reports</div>
-                <div className="text-sm sm:text-lg font-bold text-white">156</div>
+                <div className="text-lg font-bold text-white">156</div>
                 <div className="text-xs text-gray-500">automated</div>
               </div>
-              <LineChart className="w-3 h-3 sm:w-4 sm:h-4 text-purple-500" />
+              <LineChart className="w-4 h-4 text-purple-500" />
             </div>
           </div>
           
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2.5 border border-white/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-gray-400">Insights</div>
-                <div className="text-sm sm:text-lg font-bold text-white">2.4K</div>
+                <div className="text-lg font-bold text-white">2.4K</div>
                 <div className="text-xs text-gray-500">generated</div>
               </div>
-              <BrainCircuit className="w-3 h-3 sm:w-4 sm:h-4 text-brand-red-500" />
+              <BrainCircuit className="w-4 h-4 text-brand-red-500" />
             </div>
           </div>
           
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2.5 border border-white/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-gray-400">Decisions</div>
-                <div className="text-sm sm:text-lg font-bold text-white">87%</div>
+                <div className="text-lg font-bold text-white">87%</div>
                 <div className="text-xs text-gray-500">data-driven</div>
               </div>
-              <CheckCircle className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" />
+              <CheckCircle className="w-4 h-4 text-green-500" />
             </div>
           </div>
           
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2.5 border border-white/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-gray-400">Models</div>
-                <div className="text-sm sm:text-lg font-bold text-white">34</div>
+                <div className="text-lg font-bold text-white">34</div>
                 <div className="text-xs text-gray-500">active</div>
               </div>
-              <Target className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500" />
+              <Target className="w-4 h-4 text-blue-500" />
             </div>
           </div>
         </div>
