@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Cloud, Server, Shield, Database, Globe, TrendingUp, Activity, Lock } from 'lucide-react';
+import { Cloud, Server, Shield, Database, Globe, Network, Activity, Zap, ChevronRight } from 'lucide-react';
 
 const CloudModernizationVisual: React.FC = () => {
   const [progress, setProgress] = useState(0);
@@ -25,208 +25,248 @@ const CloudModernizationVisual: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-full bg-gradient-to-br from-slate-950 via-slate-900 to-gray-950 rounded-xl overflow-hidden relative">
-      {/* Subtle Tech Pattern */}
+    <div className="w-full h-full bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 rounded-xl overflow-hidden relative">
+      {/* Advanced Grid Pattern */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 opacity-[0.02]">
-          {[...Array(20)].map((_, i) => (
-            <div
+          <div 
+            className="w-full h-full"
+            style={{
+              backgroundImage: `
+                linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px),
+                linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px)
+              `,
+              backgroundSize: '50px 50px'
+            }}
+          />
+        </div>
+        
+        {/* Animated Tech Lines */}
+        <svg className="absolute inset-0 w-full h-full">
+          <defs>
+            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="rgba(239, 68, 68, 0)" />
+              <stop offset="50%" stopColor="rgba(239, 68, 68, 0.3)" />
+              <stop offset="100%" stopColor="rgba(239, 68, 68, 0)" />
+            </linearGradient>
+          </defs>
+          {[...Array(5)].map((_, i) => (
+            <line
               key={i}
-              className="absolute h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent"
+              x1="0"
+              y1={`${20 + i * 20}%`}
+              x2="100%"
+              y2={`${20 + i * 20}%`}
+              stroke="url(#lineGradient)"
+              strokeWidth="0.5"
+              opacity="0.5"
               style={{
-                top: `${i * 5}%`,
-                left: '-100%',
-                right: '-100%',
-                animation: `scan ${20 + i}s linear infinite`,
+                animation: `linePulse ${3 + i}s ease-in-out infinite`,
                 animationDelay: `${i * 0.5}s`
               }}
             />
           ))}
-        </div>
+        </svg>
       </div>
 
       {/* Main Container */}
       <div className="relative w-full h-full flex flex-col p-8">
         
-        {/* Migration Progress Card */}
-        <div className="bg-slate-900/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-800/50 shadow-2xl">
+        {/* Migration Progress Card - Enhanced */}
+        <div className="bg-gradient-to-br from-slate-900/80 to-slate-800/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-700/30 shadow-2xl">
           <div className="flex items-center justify-between mb-4">
-            <div>
-              <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                <div className="w-2 h-2 bg-brand-red-500 rounded-full animate-pulse" />
-                Cloud Migration Progress
-              </h3>
-              <p className="text-sm text-slate-400 mt-1">Migrating infrastructure to cloud</p>
+            <div className="flex items-center gap-3">
+              <div className="relative">
+                <div className="w-3 h-3 bg-brand-red-500 rounded-full animate-pulse" />
+                <div className="absolute inset-0 w-3 h-3 bg-brand-red-500 rounded-full animate-ping" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-white">Cloud Migration Progress</h3>
+                <p className="text-sm text-slate-400">Migrating infrastructure to cloud</p>
+              </div>
             </div>
             <div className="text-right">
-              <div className="text-3xl font-bold text-white tabular-nums">
-                {progress.toString().padStart(3, '0')}%
+              <div className="text-4xl font-bold text-white tabular-nums tracking-tight">
+                {progress}%
               </div>
-              <div className="text-xs text-slate-500">Complete</div>
+              <div className="text-xs text-slate-400 uppercase tracking-wider">Complete</div>
             </div>
           </div>
           
-          {/* Progress Bar */}
-          <div className="relative w-full h-4 bg-slate-800/50 rounded-full overflow-hidden shadow-inner">
+          {/* Enhanced Progress Bar */}
+          <div className="relative w-full h-5 bg-slate-800/80 rounded-full overflow-hidden shadow-inner border border-slate-700/50">
             <div 
-              className="absolute inset-y-0 left-0 bg-gradient-to-r from-brand-red-600 via-brand-red-500 to-orange-500 rounded-full transition-all duration-300 ease-out shadow-lg"
-              style={{ width: `${progress}%` }}
+              className="absolute inset-y-0 left-0 rounded-full transition-all duration-300 ease-out"
+              style={{ 
+                width: `${progress}%`,
+                background: 'linear-gradient(90deg, #dc2626 0%, #ef4444 50%, #f97316 100%)'
+              }}
             >
-              <div className="absolute inset-0 bg-white/20 animate-pulse" />
-              <div 
-                className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-r from-transparent to-white/30"
-                style={{ animation: 'shimmer 2s linear infinite' }}
-              />
+              {/* Glossy Effect */}
+              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent" />
+              
+              {/* Animated Glow */}
+              <div className="absolute inset-0 opacity-50">
+                <div 
+                  className="h-full w-32 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                  style={{ animation: 'shimmer 2s linear infinite' }}
+                />
+              </div>
             </div>
           </div>
           
-          <div className="flex justify-between mt-3 text-sm">
-            <span className="text-slate-500">0TB</span>
-            <span className="text-brand-red-400 font-medium tabular-nums">
+          <div className="flex justify-between mt-3">
+            <span className="text-sm text-slate-500">0TB</span>
+            <span className="text-sm font-medium text-brand-red-400 tabular-nums">
               {dataTransferred.toFixed(1)}TB / 3TB
             </span>
           </div>
         </div>
 
-        {/* Cloud Infrastructure Visualization */}
+        {/* Enterprise Cloud Architecture */}
         <div className="flex-1 flex items-center justify-center relative mt-8">
-          {/* Central Cloud Platform */}
+          {/* Central Cloud Infrastructure */}
           <div className="relative">
-            {/* Modern Cloud Shape */}
-            <div className="relative w-72 h-56">
-              {/* Background Glow */}
-              <div className="absolute inset-0 bg-blue-500/20 rounded-full blur-3xl animate-pulse" />
+            {/* Main Cloud Container */}
+            <div className="relative w-80 h-64">
+              {/* Background Effects */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 rounded-3xl blur-3xl animate-pulse" />
               
-              {/* Cloud Layers */}
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-40 bg-gradient-to-t from-slate-800/90 to-slate-700/50 rounded-full shadow-2xl border border-slate-700/50" />
-              <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-56 h-32 bg-gradient-to-t from-slate-700/90 to-slate-600/50 rounded-full shadow-xl" />
-              <div className="absolute bottom-12 left-1/2 -translate-x-1/2 w-48 h-28 bg-gradient-to-t from-slate-600/90 to-slate-500/30 rounded-full flex items-center justify-center">
-                <Cloud className="w-16 h-16 text-white/30" strokeWidth={1} />
-              </div>
-            </div>
-
-            {/* Floating Service Nodes */}
-            <div className="absolute inset-0 w-96 h-96 -top-20 -left-12">
-              {[
-                { icon: Server, label: 'Compute', color: 'from-blue-600 to-blue-700', x: 0, y: -120 },
-                { icon: Database, label: 'Storage', color: 'from-emerald-600 to-emerald-700', x: 120, y: -40 },
-                { icon: Shield, label: 'Security', color: 'from-purple-600 to-purple-700', x: 80, y: 80 },
-                { icon: Globe, label: 'Network', color: 'from-amber-600 to-amber-700', x: -80, y: 80 },
-                { icon: Activity, label: 'Monitor', color: 'from-rose-600 to-rose-700', x: -120, y: -40 }
-              ].map((service, i) => {
-                const IconComponent = service.icon;
-                return (
-                  <div
-                    key={i}
-                    className="absolute top-1/2 left-1/2 group"
-                    style={{
-                      transform: `translate(calc(-50% + ${service.x}px), calc(-50% + ${service.y}px))`,
-                      animation: `float ${5 + i}s ease-in-out infinite`,
-                      animationDelay: `${i * 0.2}s`
-                    }}
-                  >
-                    <div className="relative">
-                      {/* Connection Line */}
-                      <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 pointer-events-none">
-                        <line
-                          x1="24"
-                          y1="24"
-                          x2={96 - service.x / 2.5}
-                          y2={96 - service.y / 2.5}
-                          stroke="rgba(148, 163, 184, 0.1)"
-                          strokeWidth="1"
-                        />
-                      </svg>
-                      
-                      {/* Node */}
-                      <div className={`relative w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl shadow-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:shadow-2xl border border-white/10`}>
-                        <IconComponent className="w-8 h-8 text-white/90" strokeWidth={1.5} />
-                        
-                        {/* Active Pulse */}
-                        <div className="absolute -inset-1 bg-white/20 rounded-2xl animate-ping" />
+              {/* Cloud Structure */}
+              <div className="relative w-full h-full">
+                {/* Base Layer */}
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-48 bg-gradient-to-t from-slate-800/90 via-slate-700/70 to-slate-600/30 rounded-3xl shadow-2xl border border-slate-600/20" />
+                
+                {/* Middle Layer */}
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-64 h-40 bg-gradient-to-t from-slate-700/80 via-slate-600/60 to-slate-500/20 rounded-3xl shadow-xl" />
+                
+                {/* Top Layer with Services */}
+                <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-56 h-32 bg-gradient-to-t from-slate-600/70 to-slate-500/10 rounded-3xl flex items-center justify-center">
+                  <div className="grid grid-cols-3 gap-2">
+                    {[Server, Database, Network].map((Icon, i) => (
+                      <div key={i} className="w-12 h-12 bg-slate-700/50 rounded-lg flex items-center justify-center border border-slate-600/30 backdrop-blur-sm">
+                        <Icon className="w-6 h-6 text-slate-300" strokeWidth={1.5} />
                       </div>
-                      
-                      {/* Label */}
-                      <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-medium text-slate-400 whitespace-nowrap">
-                        {service.label}
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Orbiting Services */}
+              <div className="absolute inset-0 w-[400px] h-[400px] -top-16 -left-10">
+                {[
+                  { icon: Shield, label: 'Security', color: 'from-purple-500 to-purple-600', angle: 0 },
+                  { icon: Globe, label: 'CDN', color: 'from-blue-500 to-blue-600', angle: 72 },
+                  { icon: Activity, label: 'Analytics', color: 'from-emerald-500 to-emerald-600', angle: 144 },
+                  { icon: Zap, label: 'Performance', color: 'from-amber-500 to-amber-600', angle: 216 },
+                  { icon: Server, label: 'Compute', color: 'from-rose-500 to-rose-600', angle: 288 }
+                ].map((service, i) => {
+                  const IconComponent = service.icon;
+                  const radian = (service.angle * Math.PI) / 180;
+                  const radius = 150;
+                  const x = radius * Math.cos(radian);
+                  const y = radius * Math.sin(radian);
+                  
+                  return (
+                    <div
+                      key={i}
+                      className="absolute top-1/2 left-1/2"
+                      style={{
+                        transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+                        animation: `orbit 30s linear infinite`,
+                        animationDelay: `${i * -6}s`
+                      }}
+                    >
+                      <div className="group relative">
+                        {/* Service Node */}
+                        <div className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-xl shadow-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 border border-white/20`}>
+                          <IconComponent className="w-7 h-7 text-white" strokeWidth={1.5} />
+                        </div>
+                        
+                        {/* Service Label */}
+                        <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs font-medium text-slate-400 whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+                          {service.label}
+                        </div>
+                        
+                        {/* Connection Dot */}
+                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-white rounded-full animate-pulse" />
                       </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+
+              {/* Data Flow Visualization */}
+              <svg className="absolute inset-0 w-[400px] h-[400px] -top-16 -left-10 pointer-events-none">
+                <circle
+                  cx="200"
+                  cy="200"
+                  r="150"
+                  fill="none"
+                  stroke="url(#orbitGradient)"
+                  strokeWidth="1"
+                  strokeDasharray="5,10"
+                  opacity="0.2"
+                  style={{ animation: 'dashRotate 60s linear infinite' }}
+                />
+                <defs>
+                  <linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="rgba(239, 68, 68, 0.2)" />
+                    <stop offset="50%" stopColor="rgba(59, 130, 246, 0.2)" />
+                    <stop offset="100%" stopColor="rgba(239, 68, 68, 0.2)" />
+                  </linearGradient>
+                </defs>
+              </svg>
             </div>
           </div>
         </div>
 
-        {/* Bottom Metrics */}
-        <div className="grid grid-cols-3 gap-4 mt-8">
+        {/* Enterprise Metrics Dashboard */}
+        <div className="grid grid-cols-4 gap-3">
           {[
-            { 
-              icon: TrendingUp, 
-              label: 'Reduced Costs', 
-              value: '42%',
-              color: 'from-green-600 to-emerald-600'
-            },
-            { 
-              icon: Activity, 
-              label: 'Faster Deploy', 
-              value: '3x',
-              color: 'from-blue-600 to-indigo-600'
-            },
-            { 
-              icon: Lock, 
-              label: 'Uptime', 
-              value: '99.9%',
-              color: 'from-purple-600 to-pink-600'
-            }
-          ].map((stat, i) => {
-            const IconComponent = stat.icon;
-            return (
-              <div 
-                key={i}
-                className="bg-slate-900/50 backdrop-blur-sm rounded-xl p-4 border border-slate-800/50 transform transition-all duration-300 hover:scale-105"
-                style={{
-                  animation: `slideUp 0.5s ease-out forwards`,
-                  animationDelay: `${1 + i * 0.1}s`,
-                  opacity: 0
-                }}
-              >
-                <div className="flex items-center justify-between">
-                  <div className={`w-10 h-10 bg-gradient-to-br ${stat.color} rounded-lg flex items-center justify-center shadow-lg`}>
-                    <IconComponent className="w-5 h-5 text-white" strokeWidth={2} />
-                  </div>
-                  <div className="text-right">
-                    <div className="text-xl font-bold text-white">{stat.value}</div>
-                    <div className="text-xs text-slate-500">{stat.label}</div>
-                  </div>
-                </div>
+            { label: 'Cost Reduction', value: '42%', trend: '↓ $2.1M/year', color: 'from-emerald-600 to-green-600' },
+            { label: 'Deployment Speed', value: '3.2x', trend: '↑ 68% faster', color: 'from-blue-600 to-indigo-600' },
+            { label: 'System Uptime', value: '99.99%', trend: 'SLA Exceeded', color: 'from-purple-600 to-pink-600' },
+            { label: 'Auto-Scaling', value: 'Active', trend: '24/7 Monitor', color: 'from-amber-600 to-orange-600' }
+          ].map((metric, i) => (
+            <div
+              key={i}
+              className="bg-gradient-to-br from-slate-900/60 to-slate-800/40 backdrop-blur-sm rounded-xl p-4 border border-slate-700/30 group hover:border-slate-600/50 transition-all duration-300"
+              style={{
+                animation: `metricSlide 0.5s ease-out forwards`,
+                animationDelay: `${1.2 + i * 0.1}s`,
+                opacity: 0
+              }}
+            >
+              <div className={`h-1 w-full bg-gradient-to-r ${metric.color} rounded-full mb-3 opacity-80`} />
+              <div className="text-2xl font-bold text-white">{metric.value}</div>
+              <div className="text-xs text-slate-400 mt-1">{metric.label}</div>
+              <div className="text-xs text-slate-500 mt-1 flex items-center gap-1">
+                <ChevronRight className="w-3 h-3" />
+                {metric.trend}
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
 
       <style jsx>{`
-        @keyframes scan {
+        @keyframes shimmer {
           0% { transform: translateX(-100%); }
           100% { transform: translateX(200%); }
         }
 
-        @keyframes shimmer {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
+        @keyframes orbit {
+          0% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) rotate(0deg); }
+          100% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) rotate(360deg); }
         }
 
-        @keyframes float {
-          0%, 100% { 
-            transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) translateY(0px);
-          }
-          50% { 
-            transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) translateY(-10px);
-          }
+        @keyframes dashRotate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
         }
 
-        @keyframes slideUp {
+        @keyframes metricSlide {
           to {
             opacity: 1;
             transform: translateY(0);
@@ -235,6 +275,11 @@ const CloudModernizationVisual: React.FC = () => {
             opacity: 0;
             transform: translateY(20px);
           }
+        }
+
+        @keyframes linePulse {
+          0%, 100% { opacity: 0.1; }
+          50% { opacity: 0.5; }
         }
       `}</style>
     </div>
