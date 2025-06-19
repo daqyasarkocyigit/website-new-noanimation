@@ -1,249 +1,196 @@
-import React from 'react';
-import { Users, Target, Lightbulb, Award, TrendingUp, Shield, Zap, CheckCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Brain, Zap, Shield, Sparkles, Network, TrendingUp, Users, Globe } from 'lucide-react';
 
-const AboutHeroVisual: React.FC = () => {
+const AboutHeroVisual = () => {
+  const [activeNode, setActiveNode] = useState(0);
+  const [pulseAnimation, setPulseAnimation] = useState(true);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveNode((prev) => (prev + 1) % 6);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const nodes = [
+    { icon: Brain, label: 'AI-Powered', color: 'from-purple-500 to-pink-500' },
+    { icon: Network, label: 'Connected', color: 'from-blue-500 to-cyan-500' },
+    { icon: Shield, label: 'Secure', color: 'from-green-500 to-emerald-500' },
+    { icon: Zap, label: 'Fast', color: 'from-yellow-500 to-orange-500' },
+    { icon: Globe, label: 'Global', color: 'from-indigo-500 to-purple-500' },
+    { icon: TrendingUp, label: 'Growth', color: 'from-brand-red-500 to-pink-500' }
+  ];
+
   return (
-    <div className="relative w-full h-[400px] sm:h-[450px] lg:h-[500px] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl">
-      {/* Background Grid Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div 
-          className="w-full h-full"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(239,68,68,0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(239,68,68,0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px'
-          }}
-        />
-      </div>
-
-      {/* Floating Value Icons */}
+    <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden relative rounded-xl">
+      {/* Animated background particles */}
       <div className="absolute inset-0">
-        <div className="absolute top-6 sm:top-10 left-6 sm:left-10 animate-float-slow">
-          <div className="w-12 h-12 sm:w-16 sm:h-16 bg-red-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-red-500/30">
-            <Target className="w-6 h-6 sm:w-8 sm:h-8 text-red-400" />
-          </div>
-        </div>
-        
-        <div className="absolute top-12 sm:top-20 right-12 sm:right-20 animate-float-medium" style={{ animationDelay: '1s' }}>
-          <div className="w-10 h-10 sm:w-14 sm:h-14 bg-blue-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-blue-500/30">
-            <Lightbulb className="w-5 h-5 sm:w-7 sm:h-7 text-blue-400" />
-          </div>
-        </div>
-        
-        <div className="absolute bottom-12 sm:bottom-20 left-12 sm:left-20 animate-float-medium" style={{ animationDelay: '2s' }}>
-          <div className="w-8 h-8 sm:w-12 sm:h-12 bg-purple-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-purple-500/30">
-            <Award className="w-4 h-4 sm:w-6 sm:h-6 text-purple-400" />
-          </div>
-        </div>
-        
-        <div className="absolute bottom-20 sm:bottom-32 right-8 sm:right-16 animate-float-slow" style={{ animationDelay: '0.5s' }}>
-          <div className="w-10 h-10 sm:w-14 sm:h-14 bg-green-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-green-500/30">
-            <Shield className="w-5 h-5 sm:w-7 sm:h-7 text-green-400" />
-          </div>
-        </div>
-
-        <div className="absolute top-24 sm:top-40 left-1/4 sm:left-1/3 animate-float-slow" style={{ animationDelay: '1.5s' }}>
-          <div className="w-6 h-6 sm:w-10 sm:h-10 bg-yellow-500/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-yellow-500/30">
-            <Zap className="w-3 h-3 sm:w-5 sm:h-5 text-yellow-400" />
-          </div>
-        </div>
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-white/10 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `float ${10 + Math.random() * 20}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 10}s`
+            }}
+          />
+        ))}
       </div>
 
-      {/* Central Company Values Visualization */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="relative">
-          {/* Central Hub - Company Core */}
-          <div className="relative z-10">
-            <div className="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-red-500 to-red-600 rounded-full flex items-center justify-center shadow-2xl animate-pulse-slow">
-              <Users className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 text-white" />
+      {/* Main container */}
+      <div className="relative w-full h-full flex items-center justify-center p-4">
+        <div className="w-full max-w-4xl mx-auto">
+          
+          {/* Central hub */}
+          <div className="relative">
+            {/* Center logo/brand */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+              <div className="relative">
+                <div className="w-24 h-24 md:w-32 md:h-32 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-3xl flex items-center justify-center shadow-2xl">
+                  <span className="text-white font-bold text-2xl md:text-3xl">DAQ</span>
+                </div>
+                {/* Pulse effect */}
+                <div className="absolute inset-0 rounded-3xl bg-brand-red-600/20 animate-ping" />
+              </div>
             </div>
-            <div className="absolute inset-0 rounded-full bg-red-500/30 animate-ping" />
+
+            {/* Orbiting nodes - Mobile */}
+            <div className="md:hidden relative w-64 h-64 mx-auto">
+              {nodes.slice(0, 4).map((node, index) => {
+                const Icon = node.icon;
+                const angle = (index * 90) * Math.PI / 180;
+                const radius = 100;
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius;
+                
+                return (
+                  <div
+                    key={index}
+                    className="absolute top-1/2 left-1/2"
+                    style={{
+                      transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`
+                    }}
+                  >
+                    <div className={`
+                      w-12 h-12 rounded-2xl flex items-center justify-center
+                      transition-all duration-500 cursor-pointer
+                      ${activeNode === index 
+                        ? 'bg-gradient-to-br from-brand-red-500 to-brand-red-600 shadow-lg scale-110' 
+                        : 'bg-gray-800/50 border border-gray-700'
+                      }
+                    `}>
+                      <Icon className={`w-5 h-5 ${activeNode === index ? 'text-white' : 'text-gray-400'}`} />
+                    </div>
+                    {activeNode === index && (
+                      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                        <span className="text-xs text-white font-medium">{node.label}</span>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Orbiting nodes - Desktop */}
+            <div className="hidden md:block relative w-[500px] h-[500px] mx-auto">
+              {nodes.map((node, index) => {
+                const Icon = node.icon;
+                const angle = (index * 60) * Math.PI / 180;
+                const radius = 180;
+                const x = Math.cos(angle) * radius;
+                const y = Math.sin(angle) * radius;
+                
+                return (
+                  <div
+                    key={index}
+                    className="absolute top-1/2 left-1/2"
+                    style={{
+                      transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
+                      animation: `orbit 20s linear infinite`,
+                      animationDelay: `${index * 3.33}s`
+                    }}
+                  >
+                    <div className={`
+                      w-16 h-16 rounded-2xl flex items-center justify-center
+                      transition-all duration-500 cursor-pointer backdrop-blur-sm
+                      ${activeNode === index 
+                        ? 'bg-gradient-to-br from-brand-red-500 to-brand-red-600 shadow-xl scale-110' 
+                        : 'bg-gray-800/70 border border-gray-700/50'
+                      }
+                    `}>
+                      <Icon className={`w-7 h-7 ${activeNode === index ? 'text-white' : 'text-gray-400'}`} />
+                    </div>
+                    <div className={`
+                      absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap
+                      transition-opacity duration-300
+                      ${activeNode === index ? 'opacity-100' : 'opacity-0'}
+                    `}>
+                      <span className="text-sm text-white font-medium bg-gray-900/80 px-2 py-1 rounded-lg">
+                        {node.label}
+                      </span>
+                    </div>
+                    
+                    {/* Connection lines */}
+                    <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                         width="200" height="200"
+                         style={{ transform: `translate(-50%, -50%) rotate(${-angle}rad)` }}>
+                      <line
+                        x1="32" y1="0"
+                        x2={radius - 32} y2="0"
+                        stroke={activeNode === index ? '#ef4444' : '#475569'}
+                        strokeWidth="1"
+                        strokeDasharray="4 4"
+                        opacity={activeNode === index ? 0.8 : 0.3}
+                      />
+                    </svg>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Info cards - Mobile simplified */}
+          <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gray-700/50">
+              <Users className="w-6 h-6 md:w-8 md:h-8 text-brand-red-500 mb-3" />
+              <h3 className="text-base md:text-lg font-semibold text-white mb-2">Expert Team</h3>
+              <p className="text-xs md:text-sm text-gray-400">
+                Specialized professionals in data & AI
+              </p>
+            </div>
             
-            {/* Company name overlay */}
-            <div className="absolute -bottom-8 sm:-bottom-10 left-1/2 transform -translate-x-1/2">
-              <div className="bg-gray-800/90 backdrop-blur-sm rounded-lg px-3 py-1 border border-red-500/30">
-                <span className="text-white text-xs sm:text-sm font-semibold">DAQ</span>
-              </div>
+            <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gray-700/50">
+              <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-brand-red-500 mb-3" />
+              <h3 className="text-base md:text-lg font-semibold text-white mb-2">Innovation</h3>
+              <p className="text-xs md:text-sm text-gray-400">
+                Cutting-edge solutions for your business
+              </p>
             </div>
-          </div>
-
-          {/* Orbiting Value Nodes */}
-          <div className="absolute inset-0 w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 -left-16 -top-16 sm:-left-20 sm:-top-20 lg:-left-32 lg:-top-32">
-            {/* Node 1 - Excellence */}
-            <div className="absolute top-4 sm:top-8 left-1/2 transform -translate-x-1/2 animate-orbit">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-800/80 backdrop-blur-sm rounded-full border-2 border-red-500/50 flex flex-col items-center justify-center">
-                <Award className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-red-300 mb-0.5 sm:mb-1" />
-                <span className="text-xs text-gray-400 hidden sm:block">Excellence</span>
-              </div>
-            </div>
-
-            {/* Node 2 - Innovation */}
-            <div className="absolute right-4 sm:right-8 top-1/2 transform -translate-y-1/2 animate-orbit-reverse" style={{ animationDelay: '2s' }}>
-              <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-800/80 backdrop-blur-sm rounded-full border-2 border-blue-500/50 flex flex-col items-center justify-center">
-                <Lightbulb className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-blue-300 mb-0.5 sm:mb-1" />
-                <span className="text-xs text-gray-400 hidden sm:block">Innovation</span>
-              </div>
-            </div>
-
-            {/* Node 3 - Integrity */}
-            <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-orbit" style={{ animationDelay: '4s' }}>
-              <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-800/80 backdrop-blur-sm rounded-full border-2 border-green-500/50 flex flex-col items-center justify-center">
-                <Shield className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-green-300 mb-0.5 sm:mb-1" />
-                <span className="text-xs text-gray-400 hidden sm:block">Integrity</span>
-              </div>
-            </div>
-
-            {/* Node 4 - Client Success */}
-            <div className="absolute left-4 sm:left-8 top-1/2 transform -translate-y-1/2 animate-orbit-reverse" style={{ animationDelay: '6s' }}>
-              <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gray-800/80 backdrop-blur-sm rounded-full border-2 border-purple-500/50 flex flex-col items-center justify-center">
-                <CheckCircle className="w-4 h-4 sm:w-6 sm:h-6 lg:w-8 lg:h-8 text-purple-300 mb-0.5 sm:mb-1" />
-                <span className="text-xs text-gray-400 hidden sm:block">Success</span>
-              </div>
-            </div>
-
-            {/* Connecting Lines - Company Values Network */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none">
-              <circle 
-                cx="50%" 
-                cy="50%" 
-                r="80" 
-                fill="none" 
-                stroke="rgba(239,68,68,0.2)" 
-                strokeWidth="1"
-                strokeDasharray="5,5"
-                className="animate-rotate-slow sm:r-[100] lg:r-[120]"
-              />
-              <circle 
-                cx="50%" 
-                cy="50%" 
-                r="100" 
-                fill="none" 
-                stroke="rgba(147,51,234,0.2)" 
-                strokeWidth="1"
-                strokeDasharray="3,7"
-                className="animate-rotate-reverse sm:r-[120] lg:r-[160]"
-              />
-              
-              {/* Mission rays */}
-              <g className="animate-pulse-slow">
-                <line x1="50%" y1="50%" x2="50%" y2="20%" stroke="rgba(239,68,68,0.3)" strokeWidth="1" />
-                <line x1="50%" y1="50%" x2="80%" y2="50%" stroke="rgba(59,130,246,0.3)" strokeWidth="1" />
-                <line x1="50%" y1="50%" x2="50%" y2="80%" stroke="rgba(34,197,94,0.3)" strokeWidth="1" />
-                <line x1="50%" y1="50%" x2="20%" y2="50%" stroke="rgba(147,51,234,0.3)" strokeWidth="1" />
-              </g>
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      {/* Company Stats Overlay */}
-      <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
-        <div className="bg-gray-800/80 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-white/10">
-          <div className="grid grid-cols-3 gap-4 text-center">
-            <div>
-              <div className="text-lg sm:text-xl font-bold text-white">2019</div>
-              <div className="text-xs text-gray-400">Founded</div>
-            </div>
-            <div>
-              <div className="text-lg sm:text-xl font-bold text-white">500+</div>
-              <div className="text-xs text-gray-400">Projects</div>
-            </div>
-            <div>
-              <div className="text-lg sm:text-xl font-bold text-white">98%</div>
-              <div className="text-xs text-gray-400">Success Rate</div>
+            
+            <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gray-700/50">
+              <Shield className="w-6 h-6 md:w-8 md:h-8 text-brand-red-500 mb-3" />
+              <h3 className="text-base md:text-lg font-semibold text-white mb-2">Trusted</h3>
+              <p className="text-xs md:text-sm text-gray-400">
+                Reliable partner for data transformation
+              </p>
             </div>
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes float-medium {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-15px); }
+        @keyframes float {
+          0%, 100% { transform: translateY(0) translateX(0); }
+          25% { transform: translateY(-20px) translateX(10px); }
+          50% { transform: translateY(0) translateX(-10px); }
+          75% { transform: translateY(20px) translateX(5px); }
         }
         
         @keyframes orbit {
-          from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
-          to { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
-        }
-        
-        @keyframes orbit-reverse {
-          from { transform: rotate(0deg) translateX(100px) rotate(0deg); }
-          to { transform: rotate(-360deg) translateX(100px) rotate(360deg); }
-        }
-        
-        @keyframes rotate-slow {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        
-        @keyframes rotate-reverse {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(-360deg); }
-        }
-        
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.8; }
-        }
-        
-        .animate-float-slow {
-          animation: float-slow 6s ease-in-out infinite;
-        }
-        
-        .animate-float-medium {
-          animation: float-medium 4s ease-in-out infinite;
-        }
-        
-        .animate-orbit {
-          animation: orbit 20s linear infinite;
-        }
-        
-        .animate-orbit-reverse {
-          animation: orbit-reverse 25s linear infinite;
-        }
-        
-        .animate-rotate-slow {
-          animation: rotate-slow 30s linear infinite;
-        }
-        
-        .animate-rotate-reverse {
-          animation: rotate-reverse 40s linear infinite;
-        }
-        
-        .animate-pulse-slow {
-          animation: pulse-slow 3s ease-in-out infinite;
-        }
-
-        @media (min-width: 640px) {
-          @keyframes orbit {
-            from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
-            to { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
-          }
-          
-          @keyframes orbit-reverse {
-            from { transform: rotate(0deg) translateX(120px) rotate(0deg); }
-            to { transform: rotate(-360deg) translateX(120px) rotate(360deg); }
-          }
-        }
-
-        @media (min-width: 1024px) {
-          @keyframes orbit {
-            from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
-            to { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
-          }
-          
-          @keyframes orbit-reverse {
-            from { transform: rotate(0deg) translateX(150px) rotate(0deg); }
-            to { transform: rotate(-360deg) translateX(150px) rotate(360deg); }
-          }
+          from { transform: translate(-50%, -50%) rotate(0deg) translateX(180px) rotate(0deg); }
+          to { transform: translate(-50%, -50%) rotate(360deg) translateX(180px) rotate(-360deg); }
         }
       `}</style>
     </div>
