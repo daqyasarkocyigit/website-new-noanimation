@@ -40,13 +40,13 @@ const CloudModernizationVisual: React.FC = () => {
         />
       </div>
 
-      {/* Main Container */}
-      <div className="relative w-full h-full flex flex-col p-4">
+      {/* Main Container - Adjusted padding and layout */}
+      <div className="relative w-full h-full flex flex-col p-6">
         
-        {/* Cloud Migration Progress Card - Compact */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 shadow-xl mb-3">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
+        {/* Cloud Migration Progress Card - More compact */}
+        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20 shadow-xl mb-4">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
               <div className="relative">
                 <div className="w-2 h-2 bg-brand-red-500 rounded-full animate-pulse" />
               </div>
@@ -56,7 +56,7 @@ const CloudModernizationVisual: React.FC = () => {
               </div>
             </div>
             <div className="text-right">
-              <div className="text-2xl font-bold text-white tabular-nums">
+              <div className="text-xl font-bold text-white tabular-nums">
                 {progress}%
               </div>
               <div className="text-xs text-gray-300 uppercase">Complete</div>
@@ -64,7 +64,7 @@ const CloudModernizationVisual: React.FC = () => {
           </div>
           
           {/* Progress Bar */}
-          <div className="relative w-full h-4 bg-gray-700/50 rounded-full overflow-hidden">
+          <div className="relative w-full h-3 bg-gray-700/50 rounded-full overflow-hidden mb-2">
             <div 
               className="absolute inset-y-0 left-0 rounded-full transition-all duration-300 ease-out"
               style={{ 
@@ -76,7 +76,7 @@ const CloudModernizationVisual: React.FC = () => {
             </div>
           </div>
           
-          <div className="flex justify-between mt-2 text-xs">
+          <div className="flex justify-between text-xs">
             <span className="text-gray-400">0TB</span>
             <span className="font-medium text-brand-red-400">
               {dataTransferred.toFixed(1)}TB / 3TB
@@ -84,39 +84,39 @@ const CloudModernizationVisual: React.FC = () => {
           </div>
         </div>
 
-        {/* Infrastructure Migration Flow */}
-        <div className="flex-1 flex items-center">
-          <div className="w-full grid grid-cols-7 gap-2 items-center">
+        {/* Infrastructure Migration Flow - Adjusted for better visibility */}
+        <div className="flex-1 flex items-center min-h-0">
+          <div className="w-full grid grid-cols-7 gap-3 items-center">
             
             {/* On-Premise - Left */}
             <div className="col-span-3">
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
-                <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
-                  <Server className="w-3 h-3 mr-1" />
+              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50">
+                <h4 className="text-sm font-semibold text-gray-300 mb-3 flex items-center">
+                  <Server className="w-4 h-4 mr-2" />
                   On-Premise Infrastructure
                 </h4>
                 
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   <div className="bg-gray-900/50 rounded p-2 flex items-center justify-between border border-gray-700/30">
-                    <div className="flex items-center gap-1.5">
-                      <Database className="w-3.5 h-3.5 text-gray-400" />
+                    <div className="flex items-center gap-2">
+                      <Database className="w-4 h-4 text-gray-400" />
                       <span className="text-xs text-gray-300">Legacy Database</span>
                     </div>
                     <span className="text-xs text-gray-500">2.1TB</span>
                   </div>
                   
                   <div className="bg-gray-900/50 rounded p-2 flex items-center justify-between border border-gray-700/30">
-                    <div className="flex items-center gap-1.5">
-                      <Server className="w-3.5 h-3.5 text-gray-400" />
-                      <span className="text-xs text-gray-300">Application Servers</span>
+                    <div className="flex items-center gap-2">
+                      <Server className="w-4 h-4 text-gray-400" />
+                      <span className="text-xs text-gray-300">App Servers</span>
                     </div>
                     <span className="text-xs text-gray-500">12 Units</span>
                   </div>
                   
                   <div className="bg-gray-900/50 rounded p-2 flex items-center justify-between border border-gray-700/30">
-                    <div className="flex items-center gap-1.5">
-                      <Network className="w-3.5 h-3.5 text-gray-400" />
-                      <span className="text-xs text-gray-300">Network Storage</span>
+                    <div className="flex items-center gap-2">
+                      <Network className="w-4 h-4 text-gray-400" />
+                      <span className="text-xs text-gray-300">Storage</span>
                     </div>
                     <span className="text-xs text-gray-500">0.9TB</span>
                   </div>
@@ -127,13 +127,13 @@ const CloudModernizationVisual: React.FC = () => {
             {/* Migration Arrow - Center */}
             <div className="col-span-1 flex items-center justify-center">
               <div className="relative">
-                <div className="w-12 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-900 rounded-full p-1.5 border-2 border-brand-red-500">
-                  <ChevronRight className="w-3.5 h-3.5 text-brand-red-500" />
+                <div className="w-16 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-900 rounded-full p-2 border-2 border-brand-red-500">
+                  <ChevronRight className="w-4 h-4 text-brand-red-500" />
                 </div>
                 {/* Animated dot */}
                 <div 
-                  className="absolute w-1.5 h-1.5 bg-brand-red-500 rounded-full -top-0.75 left-0"
+                  className="absolute w-2 h-2 bg-brand-red-500 rounded-full -top-1 left-0"
                   style={{ animation: 'flowRight 2s linear infinite' }}
                 />
               </div>
@@ -141,16 +141,16 @@ const CloudModernizationVisual: React.FC = () => {
 
             {/* Cloud Platform - Right */}
             <div className="col-span-3">
-              <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-3 border border-brand-red-500/30 shadow-lg">
-                <h4 className="text-xs font-semibold text-brand-red-400 mb-2 flex items-center">
-                  <Cloud className="w-3 h-3 mr-1" />
+              <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-4 border border-brand-red-500/30 shadow-lg">
+                <h4 className="text-sm font-semibold text-brand-red-400 mb-3 flex items-center">
+                  <Cloud className="w-4 h-4 mr-2" />
                   Cloud Platform
                 </h4>
                 
-                <div className="grid grid-cols-2 gap-1.5">
+                <div className="grid grid-cols-2 gap-2">
                   <div className="bg-white/5 rounded p-2 border border-white/10">
-                    <div className="flex items-center gap-1.5">
-                      <Shield className="w-3.5 h-3.5 text-brand-red-400" />
+                    <div className="flex items-center gap-2">
+                      <Shield className="w-4 h-4 text-brand-red-400" />
                       <div>
                         <div className="text-xs text-gray-300">Security</div>
                         <div className="text-xs text-gray-500">Enterprise</div>
@@ -159,8 +159,8 @@ const CloudModernizationVisual: React.FC = () => {
                   </div>
                   
                   <div className="bg-white/5 rounded p-2 border border-white/10">
-                    <div className="flex items-center gap-1.5">
-                      <Globe className="w-3.5 h-3.5 text-brand-red-400" />
+                    <div className="flex items-center gap-2">
+                      <Globe className="w-4 h-4 text-brand-red-400" />
                       <div>
                         <div className="text-xs text-gray-300">Global CDN</div>
                         <div className="text-xs text-gray-500">Active</div>
@@ -169,8 +169,8 @@ const CloudModernizationVisual: React.FC = () => {
                   </div>
                   
                   <div className="bg-white/5 rounded p-2 border border-white/10">
-                    <div className="flex items-center gap-1.5">
-                      <Zap className="w-3.5 h-3.5 text-brand-red-400" />
+                    <div className="flex items-center gap-2">
+                      <Zap className="w-4 h-4 text-brand-red-400" />
                       <div>
                         <div className="text-xs text-gray-300">Auto-Scale</div>
                         <div className="text-xs text-gray-500">Enabled</div>
@@ -179,8 +179,8 @@ const CloudModernizationVisual: React.FC = () => {
                   </div>
                   
                   <div className="bg-white/5 rounded p-2 border border-white/10">
-                    <div className="flex items-center gap-1.5">
-                      <Activity className="w-3.5 h-3.5 text-brand-red-400" />
+                    <div className="flex items-center gap-2">
+                      <Activity className="w-4 h-4 text-brand-red-400" />
                       <div>
                         <div className="text-xs text-gray-300">Monitor</div>
                         <div className="text-xs text-gray-500">24/7</div>
@@ -193,38 +193,38 @@ const CloudModernizationVisual: React.FC = () => {
           </div>
         </div>
 
-        {/* Key Metrics - Bottom Bar */}
-        <div className="grid grid-cols-3 gap-2 mt-3">
-          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+        {/* Key Metrics - Bottom Bar - More compact */}
+        <div className="grid grid-cols-3 gap-3 mt-4">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-3 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-gray-400">Cost Savings</div>
                 <div className="text-lg font-bold text-white">42%</div>
                 <div className="text-xs text-gray-500">$2.1M/year</div>
               </div>
-              <TrendingUp className="w-4 h-4 text-green-500" />
+              <TrendingUp className="w-5 h-5 text-green-500" />
             </div>
           </div>
           
-          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-3 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-gray-400">Performance</div>
                 <div className="text-lg font-bold text-white">3.2x</div>
                 <div className="text-xs text-gray-500">Faster</div>
               </div>
-              <Activity className="w-4 h-4 text-brand-red-500" />
+              <Activity className="w-5 h-5 text-brand-red-500" />
             </div>
           </div>
           
-          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-3 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-gray-400">Uptime</div>
                 <div className="text-lg font-bold text-white">99.99%</div>
                 <div className="text-xs text-gray-500">SLA</div>
               </div>
-              <Shield className="w-4 h-4 text-blue-500" />
+              <Shield className="w-5 h-5 text-blue-500" />
             </div>
           </div>
         </div>
@@ -243,7 +243,7 @@ const CloudModernizationVisual: React.FC = () => {
             opacity: 1;
           }
           100% { 
-            transform: translateX(48px);
+            transform: translateX(64px);
             opacity: 0;
           }
         }
