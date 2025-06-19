@@ -1,5 +1,5 @@
 import React from 'react';
-import { Brain, Cpu, Zap, Target, Activity, Network } from 'lucide-react';
+import { Cpu, Zap, Target, Activity, Network } from 'lucide-react';
 
 const AIEngineeringVisual: React.FC = () => {
   return (
@@ -31,37 +31,37 @@ const AIEngineeringVisual: React.FC = () => {
 
       {/* Neural Network Container */}
       <div className="relative w-full h-full flex items-center justify-center p-8">
-        {/* AI Brain Core */}
+        {/* AI Brain Core - Reduced Size */}
         <div className="relative z-10">
           <div 
-            className="w-72 h-72 relative"
+            className="w-48 h-48 relative"
             style={{
               transformStyle: 'preserve-3d',
               animation: 'brainRotate 20s linear infinite'
             }}
           >
-            {/* Core Sphere */}
+            {/* Core Sphere - Smaller */}
             <div 
               className="absolute inset-0 w-full h-full rounded-full bg-gradient-to-br from-brand-red-500 to-brand-red-600 shadow-2xl"
               style={{
                 boxShadow: `
-                  0 0 80px rgba(239, 68, 68, 0.8),
-                  inset -20px -20px 40px rgba(0,0,0,0.3),
-                  inset 20px 20px 40px rgba(255,255,255,0.3)
+                  0 0 60px rgba(239, 68, 68, 0.8),
+                  inset -15px -15px 30px rgba(0,0,0,0.3),
+                  inset 15px 15px 30px rgba(255,255,255,0.3)
                 `,
                 animation: 'corePulse 3s ease-in-out infinite'
               }}
             >
               <div className="absolute inset-0 flex items-center justify-center">
-                <Brain className="w-24 h-24 text-white" />
+                <span className="text-white text-4xl font-bold tracking-wider">AI</span>
               </div>
             </div>
 
             {/* Neural Rings */}
             {[
-              { rotation: 'rotateX(0deg) scale(1.5)', animation: 'ringRotate1 15s linear infinite' },
-              { rotation: 'rotateX(60deg) scale(1.5)', animation: 'ringRotate2 20s linear infinite reverse' },
-              { rotation: 'rotateX(120deg) scale(1.5)', animation: 'ringRotate3 25s linear infinite' }
+              { rotation: 'rotateX(0deg) scale(1.8)', animation: 'ringRotate1 15s linear infinite' },
+              { rotation: 'rotateX(60deg) scale(1.8)', animation: 'ringRotate2 20s linear infinite reverse' },
+              { rotation: 'rotateX(120deg) scale(1.8)', animation: 'ringRotate3 25s linear infinite' }
             ].map((ring, i) => (
               <div
                 key={i}
@@ -175,18 +175,18 @@ const AIEngineeringVisual: React.FC = () => {
         }
 
         @keyframes ringRotate1 {
-          0% { transform: rotateX(0deg) rotateZ(0deg) scale(1.5); }
-          100% { transform: rotateX(0deg) rotateZ(360deg) scale(1.5); }
+          0% { transform: rotateX(0deg) rotateZ(0deg) scale(1.8); }
+          100% { transform: rotateX(0deg) rotateZ(360deg) scale(1.8); }
         }
 
         @keyframes ringRotate2 {
-          0% { transform: rotateX(60deg) rotateY(0deg) scale(1.5); }
-          100% { transform: rotateX(60deg) rotateY(360deg) scale(1.5); }
+          0% { transform: rotateX(60deg) rotateY(0deg) scale(1.8); }
+          100% { transform: rotateX(60deg) rotateY(360deg) scale(1.8); }
         }
 
         @keyframes ringRotate3 {
-          0% { transform: rotateX(120deg) rotateZ(0deg) scale(1.5); }
-          100% { transform: rotateX(120deg) rotateZ(360deg) scale(1.5); }
+          0% { transform: rotateX(120deg) rotateZ(0deg) scale(1.8); }
+          100% { transform: rotateX(120deg) rotateZ(360deg) scale(1.8); }
         }
 
         @keyframes waveExpand {
