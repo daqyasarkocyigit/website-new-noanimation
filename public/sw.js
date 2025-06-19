@@ -3,6 +3,7 @@ const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/src/main.tsx',
+  '/src/App.tsx',
   '/src/index.css'
 ];
 
