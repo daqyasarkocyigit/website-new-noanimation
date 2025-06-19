@@ -1,4 +1,30 @@
-{/* Enterprise Metrics Dashboard */}
+import React from 'react';
+import { ChevronRight } from 'lucide-react';
+
+export default function CloudModernizationVisual() {
+  return (
+    <div className="relative w-full h-96 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 rounded-2xl overflow-hidden shadow-2xl">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.3),transparent_70%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(45deg,transparent_48%,rgba(59,130,246,0.1)_49%,rgba(59,130,246,0.1)_51%,transparent_52%)] bg-[length:20px_20px]" />
+      </div>
+
+      {/* Content Container */}
+      <div className="relative z-10 p-8 h-full flex flex-col justify-between">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h3 className="text-2xl font-bold text-white mb-2">Cloud Infrastructure</h3>
+            <p className="text-blue-200 text-sm">Enterprise-grade modernization in progress</p>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-3 h-3 bg-green-400 rounded-full animate-pulse shadow-lg shadow-green-400/50" />
+            <span className="text-green-300 text-sm font-medium">Live Migration</span>
+          </div>
+        </div>
+
+        {/* Enterprise Metrics Dashboard */}
         <div className="grid grid-cols-4 gap-3">
           {[
             { label: 'Cost Reduction', value: '42%', trend: '↓ $2.1M/year', color: 'from-blue-500 to-blue-600' },
@@ -25,3 +51,20 @@
             </div>
           ))}
         </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes metricSlide {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
