@@ -3,7 +3,7 @@ import { Database, Server, GitBranch, Layers, Cpu, HardDrive, Activity, Zap } fr
 
 const DataEngineeringVisual: React.FC = () => {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl overflow-hidden relative">
+    <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden relative">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-20">
         <div 
@@ -19,22 +19,22 @@ const DataEngineeringVisual: React.FC = () => {
       </div>
 
       {/* Main Container */}
-      <div className="relative w-full h-full flex flex-col p-4">
+      <div className="relative w-full h-full flex flex-col p-3">
         
         {/* Data Pipeline Status Card */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 shadow-xl mb-3">
-          <div className="flex items-center justify-between mb-2">
+        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2.5 border border-white/20 shadow-xl mb-2">
+          <div className="flex items-center justify-between mb-1.5">
             <div className="flex items-center gap-2">
               <div className="relative">
-                <div className="w-2 h-2 bg-brand-red-500 rounded-full animate-pulse" />
+                <div className="w-1.5 h-1.5 bg-brand-red-500 rounded-full animate-pulse" />
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-white">Data Pipeline Status</h3>
+                <h3 className="text-xs font-semibold text-white">Data Pipeline Status</h3>
                 <p className="text-xs text-gray-300">Processing real-time data streams</p>
               </div>
             </div>
             <div className="text-right">
-              <div className="text-2xl font-bold text-white tabular-nums">
+              <div className="text-xl font-bold text-white tabular-nums">
                 24.3K
               </div>
               <div className="text-xs text-gray-300 uppercase">Records/sec</div>
@@ -42,7 +42,7 @@ const DataEngineeringVisual: React.FC = () => {
           </div>
           
           {/* Processing Bar */}
-          <div className="relative w-full h-2 bg-gray-700/50 rounded-full overflow-hidden">
+          <div className="relative w-full h-1.5 bg-gray-700/50 rounded-full overflow-hidden">
             <div 
               className="absolute inset-y-0 left-0 rounded-full w-full"
               style={{ 
@@ -62,36 +62,36 @@ const DataEngineeringVisual: React.FC = () => {
         </div>
 
         {/* Data Architecture Flow */}
-        <div className="flex-1 grid grid-cols-7 gap-2 items-center">
+        <div className="flex-1 grid grid-cols-7 gap-1.5 items-center min-h-0">
           
           {/* Data Sources - Left */}
           <div className="col-span-2">
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
-              <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
+            <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50 h-full">
+              <h4 className="text-xs font-semibold text-gray-300 mb-1.5 flex items-center">
                 <Database className="w-3 h-3 mr-1" />
                 Data Sources
               </h4>
               
-              <div className="space-y-1.5">
-                <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                  <div className="flex items-center gap-1.5">
-                    <Server className="w-3 h-3 text-gray-400" />
+              <div className="space-y-1">
+                <div className="bg-gray-900/50 rounded p-1 flex items-center justify-between border border-gray-700/30">
+                  <div className="flex items-center gap-1">
+                    <Server className="w-2.5 h-2.5 text-gray-400" />
                     <span className="text-xs text-gray-300">APIs</span>
                   </div>
                   <span className="text-xs text-gray-500">12</span>
                 </div>
                 
-                <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                  <div className="flex items-center gap-1.5">
-                    <Database className="w-3 h-3 text-gray-400" />
+                <div className="bg-gray-900/50 rounded p-1 flex items-center justify-between border border-gray-700/30">
+                  <div className="flex items-center gap-1">
+                    <Database className="w-2.5 h-2.5 text-gray-400" />
                     <span className="text-xs text-gray-300">Databases</span>
                   </div>
                   <span className="text-xs text-gray-500">8</span>
                 </div>
                 
-                <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                  <div className="flex items-center gap-1.5">
-                    <HardDrive className="w-3 h-3 text-gray-400" />
+                <div className="bg-gray-900/50 rounded p-1 flex items-center justify-between border border-gray-700/30">
+                  <div className="flex items-center gap-1">
+                    <HardDrive className="w-2.5 h-2.5 text-gray-400" />
                     <span className="text-xs text-gray-300">Files</span>
                   </div>
                   <span className="text-xs text-gray-500">CSV/JSON</span>
@@ -102,51 +102,51 @@ const DataEngineeringVisual: React.FC = () => {
 
           {/* Processing Pipeline - Center */}
           <div className="col-span-3">
-            <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-3 border border-brand-red-500/30 shadow-lg">
-              <h4 className="text-xs font-semibold text-brand-red-400 mb-2 text-center">
+            <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2.5 border border-brand-red-500/30 shadow-lg">
+              <h4 className="text-xs font-semibold text-brand-red-400 mb-1.5 text-center">
                 Processing Pipeline
               </h4>
               
               <div className="flex items-center justify-between">
                 <div className="text-center">
-                  <div className="bg-white/5 rounded-lg p-2 border border-white/10 mb-1">
-                    <GitBranch className="w-4 h-4 text-brand-red-400 mx-auto" />
+                  <div className="bg-white/5 rounded-lg p-1.5 border border-white/10 mb-1">
+                    <GitBranch className="w-3 h-3 text-brand-red-400 mx-auto" />
                   </div>
                   <div className="text-xs text-gray-300">Extract</div>
                 </div>
                 
-                <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700 mx-2" />
+                <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700 mx-1.5" />
                 
                 <div className="text-center">
-                  <div className="bg-white/5 rounded-lg p-2 border border-white/10 mb-1">
-                    <Cpu className="w-4 h-4 text-brand-red-400 mx-auto" />
+                  <div className="bg-white/5 rounded-lg p-1.5 border border-white/10 mb-1">
+                    <Cpu className="w-3 h-3 text-brand-red-400 mx-auto" />
                   </div>
                   <div className="text-xs text-gray-300">Transform</div>
                 </div>
                 
-                <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700 mx-2" />
+                <div className="flex-1 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700 mx-1.5" />
                 
                 <div className="text-center">
-                  <div className="bg-white/5 rounded-lg p-2 border border-white/10 mb-1">
-                    <Layers className="w-4 h-4 text-brand-red-400 mx-auto" />
+                  <div className="bg-white/5 rounded-lg p-1.5 border border-white/10 mb-1">
+                    <Layers className="w-3 h-3 text-brand-red-400 mx-auto" />
                   </div>
                   <div className="text-xs text-gray-300">Load</div>
                 </div>
               </div>
               
               {/* Animated dots */}
-              <div className="relative mt-2">
+              <div className="relative mt-1.5">
                 <div className="flex justify-between">
                   <div 
-                    className="w-1.5 h-1.5 bg-brand-red-500 rounded-full"
+                    className="w-1 h-1 bg-brand-red-500 rounded-full"
                     style={{ animation: 'pipelinePulse 3s ease-in-out infinite 0s' }}
                   />
                   <div 
-                    className="w-1.5 h-1.5 bg-brand-red-500 rounded-full"
+                    className="w-1 h-1 bg-brand-red-500 rounded-full"
                     style={{ animation: 'pipelinePulse 3s ease-in-out infinite 1s' }}
                   />
                   <div 
-                    className="w-1.5 h-1.5 bg-brand-red-500 rounded-full"
+                    className="w-1 h-1 bg-brand-red-500 rounded-full"
                     style={{ animation: 'pipelinePulse 3s ease-in-out infinite 2s' }}
                   />
                 </div>
@@ -156,39 +156,39 @@ const DataEngineeringVisual: React.FC = () => {
 
           {/* Data Warehouse - Right */}
           <div className="col-span-2">
-            <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
-              <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
+            <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50 h-full">
+              <h4 className="text-xs font-semibold text-gray-300 mb-1.5 flex items-center">
                 <Database className="w-3 h-3 mr-1" />
                 Data Warehouse
               </h4>
               
-              <div className="space-y-1.5">
-                <div className="bg-gray-900/50 rounded p-1.5 border border-gray-700/30">
-                  <div className="flex items-center justify-between mb-1">
+              <div className="space-y-1">
+                <div className="bg-gray-900/50 rounded p-1 border border-gray-700/30">
+                  <div className="flex items-center justify-between mb-0.5">
                     <span className="text-xs text-gray-300">Structured</span>
                     <span className="text-xs text-gray-500">85%</span>
                   </div>
-                  <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                  <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
                     <div className="h-full w-[85%] bg-gradient-to-r from-brand-red-500 to-brand-red-600 rounded-full" />
                   </div>
                 </div>
                 
-                <div className="bg-gray-900/50 rounded p-1.5 border border-gray-700/30">
-                  <div className="flex items-center justify-between mb-1">
+                <div className="bg-gray-900/50 rounded p-1 border border-gray-700/30">
+                  <div className="flex items-center justify-between mb-0.5">
                     <span className="text-xs text-gray-300">Semi-Structured</span>
                     <span className="text-xs text-gray-500">12%</span>
                   </div>
-                  <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                  <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
                     <div className="h-full w-[12%] bg-gradient-to-r from-gray-500 to-gray-600 rounded-full" />
                   </div>
                 </div>
                 
-                <div className="bg-gray-900/50 rounded p-1.5 border border-gray-700/30">
-                  <div className="flex items-center justify-between mb-1">
+                <div className="bg-gray-900/50 rounded p-1 border border-gray-700/30">
+                  <div className="flex items-center justify-between mb-0.5">
                     <span className="text-xs text-gray-300">Unstructured</span>
                     <span className="text-xs text-gray-500">3%</span>
                   </div>
-                  <div className="w-full h-1.5 bg-gray-700 rounded-full overflow-hidden">
+                  <div className="w-full h-1 bg-gray-700 rounded-full overflow-hidden">
                     <div className="h-full w-[3%] bg-gradient-to-r from-gray-600 to-gray-700 rounded-full" />
                   </div>
                 </div>
@@ -198,48 +198,48 @@ const DataEngineeringVisual: React.FC = () => {
         </div>
 
         {/* Key Metrics - Bottom Bar */}
-        <div className="grid grid-cols-4 gap-2 mt-3">
-          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+        <div className="grid grid-cols-4 gap-1.5 mt-2">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-gray-400">Latency</div>
-                <div className="text-lg font-bold text-white">1.2ms</div>
+                <div className="text-sm font-bold text-white">1.2ms</div>
                 <div className="text-xs text-gray-500">avg</div>
               </div>
-              <Zap className="w-4 h-4 text-yellow-500" />
+              <Zap className="w-3 h-3 text-yellow-500" />
             </div>
           </div>
           
-          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-gray-400">Throughput</div>
-                <div className="text-lg font-bold text-white">98.7%</div>
+                <div className="text-sm font-bold text-white">98.7%</div>
                 <div className="text-xs text-gray-500">success</div>
               </div>
-              <Activity className="w-4 h-4 text-green-500" />
+              <Activity className="w-3 h-3 text-green-500" />
             </div>
           </div>
           
-          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-gray-400">Storage</div>
-                <div className="text-lg font-bold text-white">12.4TB</div>
+                <div className="text-sm font-bold text-white">12.4TB</div>
                 <div className="text-xs text-gray-500">total</div>
               </div>
-              <Database className="w-4 h-4 text-brand-red-500" />
+              <Database className="w-3 h-3 text-brand-red-500" />
             </div>
           </div>
           
-          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 border border-white/10">
             <div className="flex items-center justify-between">
               <div>
                 <div className="text-xs text-gray-400">Pipelines</div>
-                <div className="text-lg font-bold text-white">47</div>
+                <div className="text-sm font-bold text-white">47</div>
                 <div className="text-xs text-gray-500">active</div>
               </div>
-              <GitBranch className="w-4 h-4 text-blue-500" />
+              <GitBranch className="w-3 h-3 text-blue-500" />
             </div>
           </div>
         </div>
