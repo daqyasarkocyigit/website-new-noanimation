@@ -21,7 +21,7 @@ const TalentHeroVisual: React.FC = () => {
   ];
 
   return (
-    <div className="relative w-full h-[400px] sm:h-[450px] lg:h-[500px] bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl">
+    <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl">
       {/* Background Grid Pattern - Site colors */}
       <div className="absolute inset-0 opacity-20">
         <div 
@@ -38,7 +38,7 @@ const TalentHeroVisual: React.FC = () => {
 
       {/* Animated background particles */}
       <div className="absolute inset-0">
-        {[...Array(15)].map((_, i) => (
+        {[...Array(12)].map((_, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-white/10 rounded-full"
@@ -52,158 +52,120 @@ const TalentHeroVisual: React.FC = () => {
         ))}
       </div>
 
-      {/* Main container */}
-      <div className="relative w-full h-full flex items-center justify-center p-4">
-        <div className="w-full max-w-4xl mx-auto">
+      {/* Main container - Optimized for full visibility */}
+      <div className="relative w-full h-full flex flex-col items-center justify-center p-3 sm:p-4 lg:p-6">
+        
+        {/* Central talent hub - Responsive sizing */}
+        <div className="relative flex-1 flex items-center justify-center w-full max-w-lg lg:max-w-2xl">
           
-          {/* Central talent hub */}
-          <div className="relative">
-            {/* Center DAQ logo/brand - Site colors */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
-              <div className="relative">
-                <div className="w-20 h-20 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-3xl flex items-center justify-center shadow-2xl">
-                  <Users className="w-10 h-10 sm:w-14 sm:h-14 lg:w-16 lg:h-16 text-white" />
-                </div>
-                {/* Pulse effect - Brand red */}
-                <div className="absolute inset-0 rounded-3xl bg-brand-red-600/20 animate-ping" />
+          {/* Center DAQ logo/brand - Site colors */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+            <div className="relative">
+              <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-2xl">
+                <Users className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-white" />
               </div>
+              {/* Pulse effect - Brand red */}
+              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-brand-red-600/20 animate-ping" />
             </div>
+          </div>
 
-            {/* Orbiting talent nodes - Mobile */}
-            <div className="md:hidden relative w-64 h-64 mx-auto">
-              {talentNodes.slice(0, 4).map((node, index) => {
-                const Icon = node.icon;
-                const angle = (index * 90) * Math.PI / 180;
-                const radius = 100;
-                const x = Math.cos(angle) * radius;
-                const y = Math.sin(angle) * radius;
-                
-                return (
-                  <div
-                    key={index}
-                    className="absolute top-1/2 left-1/2"
-                    style={{
-                      transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`
-                    }}
-                  >
+          {/* Orbiting talent nodes - Mobile optimized */}
+          <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-80 lg:h-80">
+            {talentNodes.map((node, index) => {
+              const Icon = node.icon;
+              const angle = (index * 60) * Math.PI / 180;
+              const radius = window.innerWidth < 640 ? 70 : window.innerWidth < 1024 ? 85 : 120;
+              const x = Math.cos(angle) * radius;
+              const y = Math.sin(angle) * radius;
+              
+              return (
+                <div
+                  key={index}
+                  className="absolute top-1/2 left-1/2 transition-all duration-700"
+                  style={{
+                    transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`
+                  }}
+                >
+                  <div className={`
+                    relative transition-all duration-500 cursor-pointer
+                    ${activeNode === index ? 'scale-110 z-10' : 'scale-90'}
+                  `}>
                     <div className={`
-                      w-12 h-12 rounded-2xl flex items-center justify-center
-                      transition-all duration-500 cursor-pointer
+                      w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl flex items-center justify-center
                       ${activeNode === index 
-                        ? 'bg-gradient-to-br from-brand-red-500 to-brand-red-600 shadow-lg scale-110' 
-                        : 'bg-gray-800/50 border border-gray-700'
+                        ? 'bg-gradient-to-br from-brand-red-500 to-brand-red-600 shadow-lg' 
+                        : 'bg-gray-800 border border-gray-700'
                       }
                     `}>
-                      <Icon className={`w-5 h-5 ${activeNode === index ? 'text-white' : 'text-gray-400'}`} />
-                    </div>
-                    {activeNode === index && (
-                      <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                        <span className="text-xs text-white font-medium">{node.label}</span>
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
-            {/* Orbiting talent nodes - Desktop */}
-            <div className="hidden md:block relative w-[500px] h-[500px] mx-auto">
-              {talentNodes.map((node, index) => {
-                const Icon = node.icon;
-                const angle = (index * 60) * Math.PI / 180;
-                const radius = 180;
-                const x = Math.cos(angle) * radius;
-                const y = Math.sin(angle) * radius;
-                
-                return (
-                  <div
-                    key={index}
-                    className="absolute top-1/2 left-1/2"
-                    style={{
-                      transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                      animation: `orbit 20s linear infinite`,
-                      animationDelay: `${index * 3.33}s`
-                    }}
-                  >
-                    <div className={`
-                      w-16 h-16 rounded-2xl flex items-center justify-center
-                      transition-all duration-500 cursor-pointer backdrop-blur-sm
-                      ${activeNode === index 
-                        ? 'bg-gradient-to-br from-brand-red-500 to-brand-red-600 shadow-xl scale-110' 
-                        : 'bg-gray-800/70 border border-gray-700/50'
-                      }
-                    `}>
-                      <Icon className={`w-7 h-7 ${activeNode === index ? 'text-white' : 'text-gray-400'}`} />
-                    </div>
-                    <div className={`
-                      absolute -bottom-8 left-1/2 -translate-x-1/2 whitespace-nowrap
-                      transition-opacity duration-300
-                      ${activeNode === index ? 'opacity-100' : 'opacity-0'}
-                    `}>
-                      <span className="text-sm text-white font-medium bg-gray-900/80 px-2 py-1 rounded-lg">
-                        {node.label}
-                      </span>
+                      <Icon className={`w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 ${
+                        activeNode === index ? 'text-white' : 'text-gray-400'
+                      }`} />
                     </div>
                     
-                    {/* Connection lines - Brand red when active */}
-                    <svg className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                         width="200" height="200"
-                         style={{ transform: `translate(-50%, -50%) rotate(${-angle}rad)` }}>
+                    {/* Label - Only show on active */}
+                    {activeNode === index && (
+                      <div className="absolute -bottom-6 sm:-bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap">
+                        <span className="text-xs sm:text-sm text-white font-medium bg-gray-900/80 px-2 py-1 rounded-lg">
+                          {node.label}
+                        </span>
+                      </div>
+                    )}
+                    
+                    {/* Connection line */}
+                    <svg 
+                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+                      width="200" height="200"
+                    >
                       <line
-                        x1="32" y1="0"
-                        x2={radius - 32} y2="0"
-                        stroke={activeNode === index ? '#ef4444' : '#475569'}
+                        x1={window.innerWidth < 640 ? "20" : window.innerWidth < 1024 ? "24" : "28"}
+                        y1="0"
+                        x2={-x + (window.innerWidth < 640 ? 20 : window.innerWidth < 1024 ? 24 : 28)}
+                        y2={-y}
+                        stroke={activeNode === index ? '#ef4444' : '#334155'}
                         strokeWidth="1"
-                        strokeDasharray="4 4"
+                        strokeDasharray={activeNode === index ? '0' : '4 4'}
                         opacity={activeNode === index ? 0.8 : 0.3}
                       />
                     </svg>
                   </div>
-                );
-              })}
-            </div>
+                </div>
+              );
+            })}
           </div>
+        </div>
 
-          {/* Talent info cards - Site colors */}
-          <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gray-700/50">
-              <Users className="w-6 h-6 md:w-8 md:h-8 text-brand-red-500 mb-3" />
-              <h3 className="text-base md:text-lg font-semibold text-white mb-2">2,847 Experts</h3>
-              <p className="text-xs md:text-sm text-gray-400">
-                Pre-vetted professionals ready to deploy
-              </p>
-            </div>
-            
-            <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gray-700/50">
-              <Sparkles className="w-6 h-6 md:w-8 md:h-8 text-brand-red-500 mb-3" />
-              <h3 className="text-base md:text-lg font-semibold text-white mb-2">98.5% Success</h3>
-              <p className="text-xs md:text-sm text-gray-400">
-                Proven track record of successful placements
-              </p>
-            </div>
-            
-            <div className="bg-gray-800/30 backdrop-blur-sm rounded-xl p-4 md:p-6 border border-gray-700/50">
-              <Shield className="w-6 h-6 md:w-8 md:h-8 text-brand-red-500 mb-3" />
-              <h3 className="text-base md:text-lg font-semibold text-white mb-2">1.2 Week Deploy</h3>
-              <p className="text-xs md:text-sm text-gray-400">
-                Fast deployment with quality guarantee
-              </p>
-            </div>
+        {/* Bottom info cards - Compact for mobile */}
+        <div className="w-full max-w-4xl mt-6 sm:mt-8 lg:mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 flex-shrink-0">
+          <div className="bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-gray-700/50 text-center">
+            <Users className="w-5 h-5 sm:w-6 sm:h-6 text-brand-red-500 mx-auto mb-2" />
+            <h3 className="text-sm sm:text-base font-semibold text-white mb-1">2,847 Experts</h3>
+            <p className="text-xs text-gray-400">Pre-vetted professionals</p>
+          </div>
+          
+          <div className="bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-gray-700/50 text-center">
+            <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 text-brand-red-500 mx-auto mb-2" />
+            <h3 className="text-sm sm:text-base font-semibold text-white mb-1">98.5% Success</h3>
+            <p className="text-xs text-gray-400">Proven track record</p>
+          </div>
+          
+          <div className="bg-gray-800/30 backdrop-blur-sm rounded-lg p-3 sm:p-4 border border-gray-700/50 text-center sm:col-span-1 col-span-1">
+            <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-brand-red-500 mx-auto mb-2" />
+            <h3 className="text-sm sm:text-base font-semibold text-white mb-1">1.2 Week Deploy</h3>
+            <p className="text-xs text-gray-400">Fast deployment</p>
           </div>
         </div>
       </div>
 
       <style jsx>{`
         @keyframes float {
-          0%, 100% { transform: translateY(0) translateX(0); }
-          25% { transform: translateY(-15px) translateX(8px); }
-          50% { transform: translateY(0) translateX(-8px); }
-          75% { transform: translateY(15px) translateX(4px); }
-        }
-        
-        @keyframes orbit {
-          from { transform: translate(-50%, -50%) rotate(0deg) translateX(180px) rotate(0deg); }
-          to { transform: translate(-50%, -50%) rotate(360deg) translateX(180px) rotate(-360deg); }
+          0%, 100% { 
+            transform: translateY(0) translateX(0); 
+            opacity: 0.4;
+          }
+          50% { 
+            transform: translateY(-15px) translateX(8px); 
+            opacity: 0.6;
+          }
         }
       `}</style>
     </div>
