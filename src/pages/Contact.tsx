@@ -96,16 +96,6 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
               </div>
-
-              {/* Response Time Info */}
-              <div className="mt-8 p-6 bg-brand-red-50 rounded-xl border border-brand-red-100">
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">Response Times</h3>
-                <ul className="space-y-2 text-gray-600">
-                  <li>• General inquiries: Within 2 hours</li>
-                  <li>• Talent requests: Within 24 hours</li>
-                  <li>• Career applications: Within 48 hours</li>
-                </ul>
-              </div>
             </AnimatedSection>
             
             {/* Contact Form */}
