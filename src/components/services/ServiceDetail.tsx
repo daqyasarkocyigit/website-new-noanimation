@@ -95,17 +95,17 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
               <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 lg:-top-6 lg:-right-6 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
               <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 lg:-bottom-6 lg:-left-6 w-16 h-16 sm:w-24 sm:h-24 lg:w-32 lg:h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
               
-              {/* Main visual container with proper mobile sizing */}
-              <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-900 w-full">
+              {/* Main visual container with consistent sizing */}
+              <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-900 w-full aspect-[4/3]">
                 {useCustomVisual ? (
-                  <div className="w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px] relative z-10">
+                  <div className="w-full h-full relative z-10">
                     {renderCustomVisual()}
                   </div>
                 ) : (
                   <img 
                     src={image} 
                     alt={title} 
-                    className="w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px] object-cover z-10 relative"
+                    className="w-full h-full object-cover z-10 relative"
                     loading="lazy"
                   />
                 )}
