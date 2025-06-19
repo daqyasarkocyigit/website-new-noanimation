@@ -70,7 +70,7 @@ const CloudModernizationVisual: React.FC = () => {
       </div>
 
       {/* Main Container */}
-      <div className="relative w-full h-full flex flex-col p-8">
+      <div className="relative w-full h-full flex flex-col p-6">
         
         {/* Migration Progress Card - Enhanced */}
         <div className="bg-gradient-to-br from-slate-900/80 to-slate-800/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-700/30 shadow-2xl">
@@ -124,28 +124,28 @@ const CloudModernizationVisual: React.FC = () => {
         </div>
 
         {/* Enterprise Cloud Architecture */}
-        <div className="flex-1 flex items-center justify-center relative mt-8">
+        <div className="flex-1 flex items-center justify-center relative mt-4 mb-4">
           {/* Central Cloud Infrastructure */}
           <div className="relative">
             {/* Main Cloud Container */}
-            <div className="relative w-80 h-64">
+            <div className="relative w-64 h-48">
               {/* Background Effects */}
               <div className="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-purple-600/10 rounded-3xl blur-3xl animate-pulse" />
               
               {/* Cloud Structure */}
               <div className="relative w-full h-full">
                 {/* Base Layer */}
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-48 bg-gradient-to-t from-slate-800/90 via-slate-700/70 to-slate-600/30 rounded-3xl shadow-2xl border border-slate-600/20" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-56 h-36 bg-gradient-to-t from-slate-800/90 via-slate-700/70 to-slate-600/30 rounded-3xl shadow-2xl border border-slate-600/20" />
                 
                 {/* Middle Layer */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 w-64 h-40 bg-gradient-to-t from-slate-700/80 via-slate-600/60 to-slate-500/20 rounded-3xl shadow-xl" />
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-48 h-28 bg-gradient-to-t from-slate-700/80 via-slate-600/60 to-slate-500/20 rounded-3xl shadow-xl" />
                 
                 {/* Top Layer with Services */}
-                <div className="absolute bottom-16 left-1/2 -translate-x-1/2 w-56 h-32 bg-gradient-to-t from-slate-600/70 to-slate-500/10 rounded-3xl flex items-center justify-center">
-                  <div className="grid grid-cols-3 gap-2">
+                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-40 h-20 bg-gradient-to-t from-slate-600/70 to-slate-500/10 rounded-3xl flex items-center justify-center">
+                  <div className="grid grid-cols-3 gap-1">
                     {[Server, Database, Network].map((Icon, i) => (
-                      <div key={i} className="w-12 h-12 bg-slate-700/50 rounded-lg flex items-center justify-center border border-slate-600/30 backdrop-blur-sm">
-                        <Icon className="w-6 h-6 text-slate-300" strokeWidth={1.5} />
+                      <div key={i} className="w-10 h-10 bg-slate-700/50 rounded-lg flex items-center justify-center border border-slate-600/30 backdrop-blur-sm">
+                        <Icon className="w-5 h-5 text-slate-300" strokeWidth={1.5} />
                       </div>
                     ))}
                   </div>
@@ -153,7 +153,7 @@ const CloudModernizationVisual: React.FC = () => {
               </div>
 
               {/* Orbiting Services */}
-              <div className="absolute inset-0 w-[400px] h-[400px] -top-16 -left-10">
+              <div className="absolute inset-0 w-[320px] h-[320px] -top-10 -left-7">
                 {[
                   { icon: Shield, label: 'Security', color: 'from-purple-500 to-purple-600', angle: 0 },
                   { icon: Globe, label: 'CDN', color: 'from-blue-500 to-blue-600', angle: 72 },
@@ -163,7 +163,7 @@ const CloudModernizationVisual: React.FC = () => {
                 ].map((service, i) => {
                   const IconComponent = service.icon;
                   const radian = (service.angle * Math.PI) / 180;
-                  const radius = 150;
+                  const radius = 120;
                   const x = radius * Math.cos(radian);
                   const y = radius * Math.sin(radian);
                   
@@ -179,8 +179,8 @@ const CloudModernizationVisual: React.FC = () => {
                     >
                       <div className="group relative">
                         {/* Service Node */}
-                        <div className={`w-14 h-14 bg-gradient-to-br ${service.color} rounded-xl shadow-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 border border-white/20`}>
-                          <IconComponent className="w-7 h-7 text-white" strokeWidth={1.5} />
+                        <div className={`w-12 h-12 bg-gradient-to-br ${service.color} rounded-xl shadow-xl flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 border border-white/20`}>
+                          <IconComponent className="w-6 h-6 text-white" strokeWidth={1.5} />
                         </div>
                         
                         {/* Service Label */}
@@ -197,11 +197,11 @@ const CloudModernizationVisual: React.FC = () => {
               </div>
 
               {/* Data Flow Visualization */}
-              <svg className="absolute inset-0 w-[400px] h-[400px] -top-16 -left-10 pointer-events-none">
+              <svg className="absolute inset-0 w-[320px] h-[320px] -top-10 -left-7 pointer-events-none">
                 <circle
-                  cx="200"
-                  cy="200"
-                  r="150"
+                  cx="160"
+                  cy="160"
+                  r="120"
                   fill="none"
                   stroke="url(#orbitGradient)"
                   strokeWidth="1"
@@ -231,17 +231,17 @@ const CloudModernizationVisual: React.FC = () => {
           ].map((metric, i) => (
             <div
               key={i}
-              className="bg-gradient-to-br from-slate-900/60 to-slate-800/40 backdrop-blur-sm rounded-xl p-4 border border-slate-700/30 group hover:border-slate-600/50 transition-all duration-300"
+              className="bg-gradient-to-br from-slate-900/60 to-slate-800/40 backdrop-blur-sm rounded-lg p-3 border border-slate-700/30 group hover:border-slate-600/50 transition-all duration-300"
               style={{
                 animation: `metricSlide 0.5s ease-out forwards`,
                 animationDelay: `${1.2 + i * 0.1}s`,
                 opacity: 0
               }}
             >
-              <div className={`h-1 w-full bg-gradient-to-r ${metric.color} rounded-full mb-3 opacity-80`} />
-              <div className="text-2xl font-bold text-white">{metric.value}</div>
-              <div className="text-xs text-slate-400 mt-1">{metric.label}</div>
-              <div className="text-xs text-slate-500 mt-1 flex items-center gap-1">
+              <div className={`h-1 w-full bg-gradient-to-r ${metric.color} rounded-full mb-2 opacity-80`} />
+              <div className="text-xl font-bold text-white">{metric.value}</div>
+              <div className="text-xs text-slate-400">{metric.label}</div>
+              <div className="text-xs text-slate-500 flex items-center gap-1">
                 <ChevronRight className="w-3 h-3" />
                 {metric.trend}
               </div>
