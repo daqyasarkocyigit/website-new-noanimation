@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Users, ChevronRight, CheckCircle, Briefcase } from 'lucide-react';
-import TalentOptions from '../components/talent/TalentOptions';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
 
@@ -47,13 +46,19 @@ const Talent: React.FC = () => {
                   cloud architecture, AI development, and business intelligence.
                 </p>
                 
-                <div className="mt-8">
+                <div className="mt-8 flex flex-col sm:flex-row gap-4">
                   <a 
-                    href="#hire-talent" 
+                    href="/contact" 
                     className="inline-flex items-center px-6 py-3 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
                   >
-                    <span className="mr-2">Explore Options</span>
+                    <span className="mr-2">Request Talent</span>
                     <ChevronRight size={16} />
+                  </a>
+                  <a 
+                    href="/contact" 
+                    className="inline-flex items-center px-6 py-3 border border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 rounded-lg transition-colors duration-300"
+                  >
+                    Learn More
                   </a>
                 </div>
               </motion.div>
@@ -125,22 +130,68 @@ const Talent: React.FC = () => {
         </div>
       </section>
 
-      {/* Talent Options Section */}
-      <section id="hire-talent" className="py-20 bg-gray-50">
+      {/* Talent Specializations Section */}
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Our Talent Network</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Our Talent Specializations</h2>
             <p className="text-base sm:text-lg text-cool-gray-600">
-              Explore our comprehensive talent dashboard showcasing available professionals across various specializations.
+              We provide top-tier professionals across all major technology domains to meet your specific business needs.
             </p>
           </AnimatedSection>
           
-          <div className="max-w-6xl mx-auto">
-            <div className="relative rounded-xl overflow-hidden shadow-2xl">
-              <div className="w-full h-64 xs:h-80 sm:h-96 md:h-[500px] lg:h-[600px] relative z-10">
-                <TalentOptions />
-              </div>
-            </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {[
+              {
+                title: "Data Engineering",
+                description: "Build robust data pipelines and infrastructure",
+                skills: ["Python", "Apache Spark", "Kafka", "AWS/GCP/Azure"]
+              },
+              {
+                title: "AI/ML Engineering", 
+                description: "Develop and deploy machine learning solutions",
+                skills: ["TensorFlow", "PyTorch", "MLOps", "Deep Learning"]
+              },
+              {
+                title: "Cloud Architecture",
+                description: "Design scalable cloud infrastructure",
+                skills: ["AWS", "Kubernetes", "Docker", "Terraform"]
+              },
+              {
+                title: "Frontend Development",
+                description: "Create engaging user interfaces",
+                skills: ["React", "TypeScript", "Next.js", "Tailwind CSS"]
+              },
+              {
+                title: "Backend Development",
+                description: "Build robust server-side applications",
+                skills: ["Node.js", "Python", "Go", "PostgreSQL"]
+              },
+              {
+                title: "Business Intelligence",
+                description: "Transform data into actionable insights",
+                skills: ["Tableau", "Power BI", "SQL", "Data Modeling"]
+              }
+            ].map((specialization, index) => (
+              <AnimatedSection 
+                key={index} 
+                delay={0.1 * index}
+                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100"
+              >
+                <h3 className="text-lg font-semibold text-gray-900 mb-3">{specialization.title}</h3>
+                <p className="text-sm text-cool-gray-600 mb-4">{specialization.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {specialization.skills.map((skill, skillIndex) => (
+                    <span 
+                      key={skillIndex}
+                      className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full"
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
