@@ -22,34 +22,18 @@ const TalentHeroVisual: React.FC = () => {
 
   return (
     <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl relative">
-      {/* Background Grid Pattern - Neutral colors only */}
-      <div className="absolute inset-0 opacity-5">
+      {/* Minimal background pattern */}
+      <div className="absolute inset-0 opacity-3">
         <div 
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+              linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)
             `,
-            backgroundSize: '40px 40px'
+            backgroundSize: '50px 50px'
           }}
         />
-      </div>
-
-      {/* Animated background particles */}
-      <div className="absolute inset-0 z-0">
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-white/5 rounded-full"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animation: `float ${8 + Math.random() * 15}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 8}s`
-            }}
-          />
-        ))}
       </div>
 
       {/* Main container - Centered content */}
@@ -58,18 +42,18 @@ const TalentHeroVisual: React.FC = () => {
         {/* Central talent hub - Responsive sizing */}
         <div className="relative w-full max-w-lg lg:max-w-2xl">
           
-          {/* Center DAQ logo/brand - Using brand colors */}
+          {/* Center DAQ logo/brand */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
             <div className="relative">
               <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-2xl">
                 <Users className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-white" />
               </div>
-              {/* Pulse effect - Brand red */}
+              {/* Pulse effect */}
               <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-brand-red-600/20 animate-ping" />
             </div>
           </div>
 
-          {/* Orbiting talent nodes - Mobile optimized, NO CONNECTION LINES */}
+          {/* Orbiting talent nodes - NO CONNECTION LINES, CLEAN DESIGN */}
           <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 mx-auto z-20">
             {talentNodes.map((node, index) => {
               const Icon = node.icon;
@@ -86,13 +70,14 @@ const TalentHeroVisual: React.FC = () => {
                   className="absolute top-1/2 left-1/2 transition-all duration-700"
                   style={{
                     transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                    zIndex: activeNode === index ? 100 : 30
+                    zIndex: activeNode === index ? 1000 : 100
                   }}
                 >
                   <div className={`
                     relative transition-all duration-500 cursor-pointer
                     ${activeNode === index ? 'scale-110' : 'scale-90'}
                   `}>
+                    {/* Node circle */}
                     <div className={`
                       w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl flex items-center justify-center
                       ${activeNode === index 
@@ -105,20 +90,37 @@ const TalentHeroVisual: React.FC = () => {
                       }`} />
                     </div>
                     
-                    {/* Label - Enhanced readability with better contrast and background */}
+                    {/* Label with maximum visibility */}
                     {activeNode === index && (
                       <div 
-                        className="absolute -bottom-12 sm:-bottom-14 left-1/2 -translate-x-1/2 whitespace-nowrap"
-                        style={{ zIndex: 200 }}
+                        className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none"
+                        style={{ 
+                          zIndex: 2000,
+                          top: y > 0 ? '-3.5rem' : '4rem' // Position above or below based on node position
+                        }}
                       >
                         <div className="relative">
-                          {/* Strong background with border and shadow */}
-                          <div className="absolute inset-0 bg-gray-900 rounded-lg shadow-2xl border-2 border-gray-700 backdrop-blur-sm"></div>
-                          {/* Additional background layer for extra contrast */}
-                          <div className="absolute inset-0 bg-black/50 rounded-lg"></div>
-                          <span className="relative block text-sm sm:text-base text-white font-bold px-4 py-2.5 rounded-lg">
+                          {/* Multiple background layers for maximum contrast */}
+                          <div className="absolute inset-0 bg-black rounded-lg shadow-2xl"></div>
+                          <div className="absolute inset-0 bg-gray-900 rounded-lg border-2 border-white/20"></div>
+                          <div className="absolute inset-0 bg-black/80 rounded-lg backdrop-blur-sm"></div>
+                          
+                          {/* Text with maximum contrast */}
+                          <span className="relative block text-sm sm:text-base text-white font-black px-4 py-3 rounded-lg tracking-wide">
                             {node.label}
                           </span>
+                          
+                          {/* Arrow pointing to node */}
+                          <div 
+                            className="absolute left-1/2 -translate-x-1/2 w-0 h-0"
+                            style={{
+                              top: y > 0 ? '100%' : '-8px',
+                              borderLeft: '8px solid transparent',
+                              borderRight: '8px solid transparent',
+                              borderTop: y > 0 ? 'none' : '8px solid black',
+                              borderBottom: y > 0 ? '8px solid black' : 'none'
+                            }}
+                          />
                         </div>
                       </div>
                     )}
@@ -134,11 +136,11 @@ const TalentHeroVisual: React.FC = () => {
         @keyframes float {
           0%, 100% { 
             transform: translateY(0) translateX(0); 
-            opacity: 0.3;
+            opacity: 0.2;
           }
           50% { 
-            transform: translateY(-10px) translateX(5px); 
-            opacity: 0.5;
+            transform: translateY(-8px) translateX(4px); 
+            opacity: 0.4;
           }
         }
       `}</style>
