@@ -17,19 +17,19 @@ const TalentHeroVisual: React.FC = () => {
     { icon: Brain, label: 'AI/ML', color: 'from-purple-500 to-pink-500' },
     { icon: Cloud, label: 'Cloud', color: 'from-yellow-500 to-orange-500' },
     { icon: Layers, label: 'Full Stack', color: 'from-indigo-500 to-purple-500' },
-    { icon: Terminal, label: 'Backend', color: 'from-brand-red-500 to-pink-500' }
+    { icon: Terminal, label: 'Backend', color: 'from-gray-500 to-gray-600' }
   ];
 
   return (
     <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl">
-      {/* Background Grid Pattern - Site colors */}
-      <div className="absolute inset-0 opacity-20">
+      {/* Background Grid Pattern - Neutral colors only */}
+      <div className="absolute inset-0 opacity-10">
         <div 
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(239,68,68,0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(239,68,68,0.1) 1px, transparent 1px)
+              linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
             `,
             backgroundSize: '40px 40px'
           }}
@@ -58,7 +58,7 @@ const TalentHeroVisual: React.FC = () => {
         {/* Central talent hub - Responsive sizing */}
         <div className="relative w-full max-w-lg lg:max-w-2xl">
           
-          {/* Center DAQ logo/brand - Site colors */}
+          {/* Center DAQ logo/brand - Using brand colors */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
             <div className="relative">
               <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-2xl">
@@ -69,7 +69,7 @@ const TalentHeroVisual: React.FC = () => {
             </div>
           </div>
 
-          {/* Orbiting talent nodes - Mobile optimized */}
+          {/* Orbiting talent nodes - Mobile optimized, NO CONNECTION LINES */}
           <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 mx-auto">
             {talentNodes.map((node, index) => {
               const Icon = node.icon;
@@ -111,21 +111,7 @@ const TalentHeroVisual: React.FC = () => {
                       </div>
                     )}
                     
-                    {/* Connection line - Removed problematic SVG lines */}
-                    <div 
-                      className={`absolute top-1/2 left-1/2 pointer-events-none transition-opacity duration-300 ${
-                        activeNode === index ? 'opacity-60' : 'opacity-20'
-                      }`}
-                      style={{
-                        width: '2px',
-                        height: `${Math.sqrt(x * x + y * y)}px`,
-                        background: activeNode === index 
-                          ? 'linear-gradient(to bottom, #ef4444, transparent)' 
-                          : 'linear-gradient(to bottom, #475569, transparent)',
-                        transform: `translate(-50%, -50%) rotate(${Math.atan2(y, x) + Math.PI/2}rad)`,
-                        transformOrigin: 'top center'
-                      }}
-                    />
+                    {/* NO CONNECTION LINES - Completely removed */}
                   </div>
                 </div>
               );
