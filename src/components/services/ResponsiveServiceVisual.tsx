@@ -38,13 +38,13 @@ const ResponsiveServiceVisual: React.FC<ResponsiveServiceVisualProps> = memo(({ 
     return () => window.removeEventListener('resize', checkDevice);
   }, []);
 
-  // Use mobile-optimized visual for mobile devices or low-end devices
-  if (isMobile || isLowEndDevice) {
-    return <MobileOptimizedVisual type={type} />;
-  }
-
   // Use full-featured visuals for desktop with lazy loading
   const VisualComponent = React.useMemo(() => {
+    // Use mobile-optimized visual for mobile devices or low-end devices
+    if (isMobile || isLowEndDevice) {
+      return () => <MobileOptimizedVisual type={type} />;
+    }
+
     switch (type) {
       case 'data-engineering':
         return DataEngineeringVisual;
@@ -59,7 +59,12 @@ const ResponsiveServiceVisual: React.FC<ResponsiveServiceVisualProps> = memo(({ 
       default:
         return () => <MobileOptimizedVisual type={type} />;
     }
-  }, [type]);
+  }, [type, isMobile, isLowEndDevice]);
+
+  // For mobile/low-end devices, render directly without Suspense
+  if (isMobile || isLowEndDevice) {
+    return <VisualComponent />;
+  }
 
   return (
     <React.Suspense fallback={<MobileOptimizedVisual type={type} />}>
