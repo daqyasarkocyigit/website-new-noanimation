@@ -31,12 +31,14 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
     <section id={id} className="py-12 sm:py-16 lg:py-20 scroll-mt-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Mobile-first: Always stack vertically on mobile, side-by-side on desktop */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-center">
+        <div className={`flex flex-col lg:flex-row gap-8 lg:gap-16 items-center ${
+          isReversed ? 'lg:flex-row-reverse' : ''
+        }`}>
           
           {/* Content Section */}
           <AnimatedSection 
             delay={0.1} 
-            className="w-full lg:w-1/2 order-2 lg:order-1"
+            className="w-full lg:w-1/2"
           >
             <div className="flex flex-col sm:flex-row sm:items-center space-y-2 sm:space-y-0 sm:space-x-3 mb-6">
               <div className="text-brand-red-600 flex-shrink-0">
@@ -67,7 +69,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
           {/* Visual Section */}
           <AnimatedSection 
             delay={0.3} 
-            className="w-full lg:w-1/2 order-1 lg:order-2"
+            className="w-full lg:w-1/2"
           >
             <div className="relative w-full max-w-2xl mx-auto lg:max-w-none">
               {/* Background decorative elements - Responsive sizing */}

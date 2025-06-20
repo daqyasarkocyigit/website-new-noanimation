@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, BarChart3, Database, Zap } from 'lucide-react';
+import { Activity, BarChart3, Database, Zap, Brain, Cloud } from 'lucide-react';
 
 interface MobileOptimizedVisualProps {
   type: 'data-engineering' | 'data-visualization' | 'business-intelligence' | 'ai-engineering' | 'cloud-modernization';
@@ -15,7 +15,7 @@ const MobileOptimizedVisual: React.FC<MobileOptimizedVisualProps> = ({ type }) =
           primaryMetric: '24.3K',
           primaryLabel: 'records/sec',
           icon: Database,
-          color: 'brand-red',
+          color: 'red',
           bgGradient: 'from-gray-900 via-gray-800 to-gray-900',
           metrics: [
             { label: 'Latency', value: '1.2ms', icon: Zap, color: 'yellow' },
@@ -34,7 +34,7 @@ const MobileOptimizedVisual: React.FC<MobileOptimizedVisualProps> = ({ type }) =
           bgGradient: 'from-purple-900 via-gray-800 to-gray-900',
           metrics: [
             { label: 'Load Time', value: '0.8s', icon: Zap, color: 'green' },
-            { label: 'FPS', value: '60fps', icon: Activity, color: 'brand-red' },
+            { label: 'FPS', value: '60fps', icon: Activity, color: 'red' },
             { label: 'Charts', value: '87', icon: BarChart3, color: 'purple' },
           ]
         };
@@ -59,11 +59,11 @@ const MobileOptimizedVisual: React.FC<MobileOptimizedVisualProps> = ({ type }) =
           subtitle: 'Neural processing',
           primaryMetric: '99.7%',
           primaryLabel: 'accuracy',
-          icon: Activity,
+          icon: Brain,
           color: 'green',
           bgGradient: 'from-green-900 via-gray-800 to-gray-900',
           metrics: [
-            { label: 'Models', value: '247', icon: Database, color: 'brand-red' },
+            { label: 'Models', value: '247', icon: Database, color: 'red' },
             { label: 'Speed', value: '1.2ms', icon: Zap, color: 'yellow' },
             { label: 'API Calls', value: '1.2K/s', icon: Activity, color: 'green' },
           ]
@@ -74,7 +74,7 @@ const MobileOptimizedVisual: React.FC<MobileOptimizedVisualProps> = ({ type }) =
           subtitle: 'Infrastructure upgrade',
           primaryMetric: '100%',
           primaryLabel: 'complete',
-          icon: Database,
+          icon: Cloud,
           color: 'blue',
           bgGradient: 'from-blue-900 via-gray-800 to-gray-900',
           metrics: [
@@ -90,7 +90,7 @@ const MobileOptimizedVisual: React.FC<MobileOptimizedVisualProps> = ({ type }) =
           primaryMetric: '100%',
           primaryLabel: 'operational',
           icon: Activity,
-          color: 'brand-red',
+          color: 'red',
           bgGradient: 'from-gray-900 via-gray-800 to-gray-900',
           metrics: []
         };
@@ -99,6 +99,55 @@ const MobileOptimizedVisual: React.FC<MobileOptimizedVisualProps> = ({ type }) =
 
   const config = getVisualConfig();
   const IconComponent = config.icon;
+
+  const getColorClasses = (color: string) => {
+    switch (color) {
+      case 'red':
+        return {
+          bg: 'bg-red-500',
+          text: 'text-red-500',
+          gradient: 'from-red-500 to-red-600',
+          border: 'border-red-500'
+        };
+      case 'blue':
+        return {
+          bg: 'bg-blue-500',
+          text: 'text-blue-500',
+          gradient: 'from-blue-500 to-blue-600',
+          border: 'border-blue-500'
+        };
+      case 'green':
+        return {
+          bg: 'bg-green-500',
+          text: 'text-green-500',
+          gradient: 'from-green-500 to-green-600',
+          border: 'border-green-500'
+        };
+      case 'yellow':
+        return {
+          bg: 'bg-yellow-500',
+          text: 'text-yellow-500',
+          gradient: 'from-yellow-500 to-yellow-600',
+          border: 'border-yellow-500'
+        };
+      case 'purple':
+        return {
+          bg: 'bg-purple-500',
+          text: 'text-purple-500',
+          gradient: 'from-purple-500 to-purple-600',
+          border: 'border-purple-500'
+        };
+      default:
+        return {
+          bg: 'bg-gray-500',
+          text: 'text-gray-500',
+          gradient: 'from-gray-500 to-gray-600',
+          border: 'border-gray-500'
+        };
+    }
+  };
+
+  const primaryColors = getColorClasses(config.color);
 
   return (
     <div className={`w-full h-full bg-gradient-to-br ${config.bgGradient} rounded-xl overflow-hidden relative`}>
@@ -124,7 +173,7 @@ const MobileOptimizedVisual: React.FC<MobileOptimizedVisualProps> = ({ type }) =
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <div className="relative">
-                <div className={`w-2 h-2 bg-${config.color}-500 rounded-full animate-pulse`} />
+                <div className={`w-2 h-2 ${primaryColors.bg} rounded-full animate-pulse`} />
               </div>
               <div>
                 <h3 className="text-sm font-semibold text-white">{config.title}</h3>
@@ -142,7 +191,7 @@ const MobileOptimizedVisual: React.FC<MobileOptimizedVisualProps> = ({ type }) =
           {/* Progress indicator */}
           <div className="w-full h-1.5 bg-gray-700/50 rounded-full overflow-hidden">
             <div 
-              className={`h-full bg-gradient-to-r from-${config.color}-500 to-${config.color}-600 rounded-full transition-all duration-1000`}
+              className={`h-full bg-gradient-to-r ${primaryColors.gradient} rounded-full transition-all duration-1000`}
               style={{ width: '85%' }}
             />
           </div>
@@ -152,13 +201,13 @@ const MobileOptimizedVisual: React.FC<MobileOptimizedVisualProps> = ({ type }) =
         <div className="flex-1 flex items-center justify-center mb-3">
           <div className="relative">
             {/* Main icon with glow effect */}
-            <div className={`w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-${config.color}-500 to-${config.color}-600 rounded-full flex items-center justify-center shadow-2xl`}>
+            <div className={`w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br ${primaryColors.gradient} rounded-full flex items-center justify-center shadow-2xl`}>
               <IconComponent className="w-10 h-10 sm:w-12 sm:h-12 text-white" />
             </div>
             
             {/* Animated rings */}
-            <div className={`absolute inset-0 rounded-full border-2 border-${config.color}-500/30 animate-ping`} />
-            <div className={`absolute -inset-2 rounded-full border border-${config.color}-500/20 animate-pulse`} />
+            <div className={`absolute inset-0 rounded-full border-2 ${primaryColors.border}/30 animate-ping`} />
+            <div className={`absolute -inset-2 rounded-full border ${primaryColors.border}/20 animate-pulse`} />
           </div>
         </div>
 
@@ -166,6 +215,7 @@ const MobileOptimizedVisual: React.FC<MobileOptimizedVisualProps> = ({ type }) =
         <div className="grid grid-cols-3 gap-2 flex-shrink-0">
           {config.metrics.map((metric, index) => {
             const MetricIcon = metric.icon;
+            const metricColors = getColorClasses(metric.color);
             return (
               <div 
                 key={index}
@@ -173,7 +223,7 @@ const MobileOptimizedVisual: React.FC<MobileOptimizedVisualProps> = ({ type }) =
               >
                 <div className="flex items-center justify-between mb-1">
                   <div className="text-xs text-gray-400">{metric.label}</div>
-                  <MetricIcon className={`w-3 h-3 text-${metric.color}-500`} />
+                  <MetricIcon className={`w-3 h-3 ${metricColors.text}`} />
                 </div>
                 <div className="text-sm sm:text-base font-bold text-white">{metric.value}</div>
               </div>
