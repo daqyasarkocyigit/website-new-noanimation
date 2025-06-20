@@ -13,7 +13,7 @@ const TalentHeroVisual: React.FC = () => {
 
   const talentNodes = [
     { icon: Code, label: 'Frontend', color: 'from-blue-500 to-cyan-500' },
-    { icon: Database, label: 'Data Eng', color: 'from-green-500 to-emerald-500' },
+    { icon: Database, label: 'Data Engineering', color: 'from-green-500 to-emerald-500' },
     { icon: Brain, label: 'AI/ML', color: 'from-purple-500 to-pink-500' },
     { icon: Cloud, label: 'Cloud', color: 'from-yellow-500 to-orange-500' },
     { icon: Layers, label: 'Full Stack', color: 'from-indigo-500 to-purple-500' },
@@ -102,16 +102,18 @@ const TalentHeroVisual: React.FC = () => {
                       }`} />
                     </div>
                     
-                    {/* Label - Only show on active */}
+                    {/* Label - Enhanced readability with better contrast and background */}
                     {activeNode === index && (
-                      <div className="absolute -bottom-8 sm:-bottom-9 left-1/2 -translate-x-1/2 whitespace-nowrap">
-                        <span className="text-sm sm:text-base text-white font-medium bg-gray-900/80 px-3 py-1.5 rounded-lg">
-                          {node.label}
-                        </span>
+                      <div className="absolute -bottom-10 sm:-bottom-11 left-1/2 -translate-x-1/2 whitespace-nowrap z-30">
+                        <div className="relative">
+                          {/* Background with better contrast */}
+                          <div className="absolute inset-0 bg-gray-900 rounded-lg shadow-lg border border-gray-700"></div>
+                          <span className="relative block text-sm sm:text-base text-white font-semibold px-3 py-2 rounded-lg">
+                            {node.label}
+                          </span>
+                        </div>
                       </div>
                     )}
-                    
-                    {/* NO CONNECTION LINES - Completely removed */}
                   </div>
                 </div>
               );
