@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, memo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -9,7 +9,7 @@ interface AnimatedSectionProps {
   direction?: 'up' | 'down' | 'left' | 'right' | 'fade';
 }
 
-const AnimatedSection: React.FC<AnimatedSectionProps> = ({ 
+const AnimatedSection: React.FC<AnimatedSectionProps> = memo(({ 
   children, 
   className = '', 
   delay = 0,
@@ -22,26 +22,27 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     rootMargin: '50px 0px',
   });
 
+  // Skip animations if reduced motion is preferred
+  if (prefersReducedMotion) {
+    return <div ref={ref} className={className}>{children}</div>;
+  }
+
   const getInitialState = () => {
-    if (prefersReducedMotion) return { opacity: 0 };
-    
     switch (direction) {
       case 'up':
-        return { opacity: 0, y: 20 }; // Reduced from 30px for mobile
+        return { opacity: 0, y: 15 }; // Reduced movement for better performance
       case 'down':
-        return { opacity: 0, y: -20 };
+        return { opacity: 0, y: -15 };
       case 'left':
-        return { opacity: 0, x: -20 };
+        return { opacity: 0, x: -15 };
       case 'right':
-        return { opacity: 0, x: 20 };
+        return { opacity: 0, x: 15 };
       default:
         return { opacity: 0 };
     }
   };
 
   const getAnimateState = () => {
-    if (prefersReducedMotion) return { opacity: 1 };
-    
     switch (direction) {
       case 'up':
       case 'down':
@@ -58,9 +59,9 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
     initial: getInitialState(),
     animate: getAnimateState(),
     transition: { 
-      duration: prefersReducedMotion ? 0.1 : 0.6, // Reduced from 0.8s for mobile
-      delay: prefersReducedMotion ? 0 : delay,
-      ease: [0.25, 0.46, 0.45, 0.94] // Custom easing for smoother animation
+      duration: 0.4, // Reduced duration for snappier feel
+      delay: delay,
+      ease: [0.25, 0.46, 0.45, 0.94]
     }
   };
 
@@ -69,18 +70,13 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
       ref={ref}
       {...animation}
       animate={inView ? animation.animate : animation.initial}
-      className={`${className} will-change-transform`}
-      onAnimationComplete={() => {
-        // Remove will-change after animation completes for better performance
-        const element = ref.current;
-        if (element) {
-          element.classList.add('animation-finished');
-        }
-      }}
+      className={className}
     >
       {children}
     </motion.div>
   );
-};
+});
+
+AnimatedSection.displayName = 'AnimatedSection';
 
 export default AnimatedSection;

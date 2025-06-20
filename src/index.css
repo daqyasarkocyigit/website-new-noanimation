@@ -2,12 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Mobile-first approach with enhanced performance */
+/* Critical CSS - Inlined for performance */
 @layer base {
   html {
     -webkit-tap-highlight-color: transparent;
     scroll-behavior: smooth;
-    font-size: 16px; /* Prevent zoom on iOS */
+    font-size: 16px;
   }
 
   body {
@@ -17,23 +17,20 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
-    /* Prevent horizontal scroll */
     overflow-x: hidden;
   }
 
-  /* Professional focus styles - No red borders */
   *:focus {
     outline: none;
   }
 
-  /* Better text selection */
   ::selection {
     background-color: #ef4444;
     color: white;
   }
 }
 
-/* Enhanced mobile-optimized components */
+/* Optimized components with reduced complexity */
 @layer components {
   .touch-target {
     @apply min-h-[44px] min-w-[44px];
@@ -41,73 +38,22 @@
 
   .btn-primary {
     @apply touch-target px-4 py-3 text-sm md:text-base rounded-lg bg-brand-red-600 text-white font-medium 
-    transition-all duration-200 hover:bg-brand-red-700 active:scale-95 
+    transition-colors duration-200 hover:bg-brand-red-700 active:scale-95 
     disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100
-    focus:bg-brand-red-700 focus:shadow-lg;
-    position: relative;
-  }
-
-  .btn-primary::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: #dc2626;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-  }
-
-  .btn-primary:focus::after {
-    width: 100%;
+    focus:bg-brand-red-700;
   }
 
   .btn-secondary {
     @apply touch-target px-4 py-3 text-sm md:text-base rounded-lg border border-brand-red-400 
-    text-brand-red-600 font-medium transition-all duration-200 
+    text-brand-red-600 font-medium transition-colors duration-200 
     hover:bg-brand-red-50 active:scale-95
     disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100
     focus:bg-brand-red-50 focus:border-brand-red-600;
-    position: relative;
-  }
-
-  .btn-secondary::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: #ef4444;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-  }
-
-  .btn-secondary:focus::after {
-    width: 100%;
   }
 
   .nav-link {
     @apply touch-target relative text-gray-700 hover:text-brand-red-600 transition-colors duration-200
     focus:text-brand-red-600;
-    position: relative;
-  }
-
-  .nav-link::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #ef4444;
-    transition: width 0.3s ease;
-  }
-
-  .nav-link:hover::after,
-  .nav-link:focus::after {
-    width: 100%;
   }
 
   .card-hover {
@@ -115,35 +61,17 @@
     focus-within:shadow-lg focus-within:-translate-y-1;
   }
 
-  /* Section title with responsive sizing */
   .section-title {
     @apply text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight;
   }
 
-  /* Container with proper mobile padding */
   .container {
     @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
   }
 
-  /* Responsive grid layouts */
-  .grid-responsive {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8;
-  }
-
-  .grid-responsive-2 {
-    @apply grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12;
-  }
-
-  /* Mobile-optimized form inputs */
   .form-input {
     @apply w-full px-4 py-3 text-base border border-gray-300 rounded-lg 
-    transition-colors duration-200 bg-white;
-    position: relative;
-  }
-
-  .form-input:focus {
-    @apply border-brand-red-500;
-    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+    transition-colors duration-200 bg-white focus:border-brand-red-500;
   }
 
   .form-textarea {
@@ -159,78 +87,16 @@
     padding-right: 2.5rem;
   }
 
-  /* Enhanced mobile navigation */
-  .mobile-nav {
-    @apply fixed inset-x-0 top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200
-    transform transition-transform duration-300 ease-in-out;
-  }
-
-  .mobile-nav.hidden {
-    @apply -translate-y-full;
-  }
-
-  /* Loading states */
-  .skeleton {
-    @apply animate-pulse bg-gray-200 rounded;
-  }
-
   .loading-spinner {
     @apply animate-spin rounded-full border-2 border-gray-300 border-t-brand-red-600;
   }
 
-  /* Enhanced responsive image containers */
-  .responsive-image {
-    @apply w-full h-auto object-cover;
-    content-visibility: auto;
-    /* Improve loading performance */
-    loading: lazy;
-  }
-
-  .image-container-sm {
-    @apply h-32 xs:h-40 sm:h-48;
-  }
-
-  .image-container-md {
-    @apply h-40 xs:h-48 sm:h-56 md:h-64;
-  }
-
-  .image-container-lg {
-    @apply h-48 xs:h-56 sm:h-64 md:h-72 lg:h-80;
-  }
-
-  .image-container-xl {
-    @apply h-56 xs:h-64 sm:h-72 md:h-80 lg:h-96;
-  }
-
-  /* Service visual containers - optimized for mobile */
-  .service-visual-container {
-    @apply relative w-full rounded-xl overflow-hidden shadow-2xl bg-gray-900;
-  }
-
-  .service-visual-mobile {
-    @apply h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px];
-  }
-
-  /* Typography improvements */
-  .text-responsive {
-    @apply text-sm sm:text-base lg:text-lg;
-  }
-
-  .text-responsive-lg {
-    @apply text-base sm:text-lg lg:text-xl;
-  }
-
-  /* Spacing utilities */
   .section-padding {
     @apply py-12 sm:py-16 lg:py-20;
   }
-
-  .section-padding-lg {
-    @apply py-16 sm:py-20 lg:py-24;
-  }
 }
 
-/* Performance and accessibility optimizations */
+/* Performance optimizations */
 @layer utilities {
   .safe-top {
     padding-top: env(safe-area-inset-top);
@@ -238,14 +104,6 @@
 
   .safe-bottom {
     padding-bottom: env(safe-area-inset-bottom);
-  }
-
-  .safe-left {
-    padding-left: env(safe-area-inset-left);
-  }
-
-  .safe-right {
-    padding-right: env(safe-area-inset-right);
   }
 
   .tap-highlight-none {
@@ -256,64 +114,9 @@
     -webkit-overflow-scrolling: touch;
   }
 
-  /* GPU acceleration for animations */
   .gpu-accelerated {
     transform: translateZ(0);
     will-change: transform;
-  }
-
-  /* Enhanced responsive aspect ratios */
-  .aspect-ratio-16-9 {
-    aspect-ratio: 16 / 9;
-  }
-
-  .aspect-ratio-4-3 {
-    aspect-ratio: 4 / 3;
-  }
-
-  .aspect-ratio-1-1 {
-    aspect-ratio: 1 / 1;
-  }
-
-  .aspect-ratio-16-10 {
-    aspect-ratio: 16 / 10;
-  }
-
-  /* Enhanced responsive breakpoints */
-  .xs-only {
-    @apply block xs:hidden;
-  }
-
-  .sm-up {
-    @apply hidden sm:block;
-  }
-
-  .md-up {
-    @apply hidden md:block;
-  }
-
-  .lg-up {
-    @apply hidden lg:block;
-  }
-
-  /* Text truncation utilities */
-  .truncate-2 {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .truncate-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  /* Professional focus indicators - No red borders */
-  .focus-ring {
-    position: relative;
   }
 
   .focus-ring:focus::after {
@@ -325,32 +128,16 @@
     height: 2px;
     background: linear-gradient(90deg, #ef4444, #dc2626);
     border-radius: 1px;
-    animation: focusSlide 0.3s ease-out;
-  }
-
-  /* Mobile-specific utilities */
-  .mobile-only {
-    @apply block sm:hidden;
-  }
-
-  .desktop-only {
-    @apply hidden sm:block;
-  }
-
-  .tablet-up {
-    @apply hidden md:block;
   }
 }
 
-/* Enhanced image optimization */
+/* Optimized image handling */
 img {
-  @apply responsive-image;
+  @apply w-full h-auto;
   content-visibility: auto;
-  /* Prevent layout shift */
-  height: auto;
+  loading: lazy;
 }
 
-/* Lazy loading support */
 img[loading="lazy"] {
   opacity: 0;
   transition: opacity 0.3s;
@@ -360,7 +147,7 @@ img[loading="lazy"].loaded {
   opacity: 1;
 }
 
-/* Reduce motion preferences */
+/* Reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01ms !important;
@@ -383,26 +170,13 @@ img[loading="lazy"].loaded {
     @apply transform scale-[0.98] transition-transform duration-75;
   }
   
-  /* Larger touch targets on mobile */
   .touch-target {
     @apply min-h-[48px] min-w-[48px];
   }
 
-  /* Enhanced mobile menu interactions */
   button:active,
   .nav-link:active {
     @apply transform scale-[0.98] transition-transform duration-75;
-  }
-}
-
-/* High contrast mode support */
-@media (prefers-contrast: high) {
-  .btn-primary {
-    @apply border-2 border-white;
-  }
-  
-  .btn-secondary {
-    @apply border-2 border-brand-red-600;
   }
 }
 
@@ -440,104 +214,26 @@ img[loading="lazy"].loaded {
   }
 }
 
-/* Custom animations optimized for mobile */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
+/* Minimal animations for better performance */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translate3d(-20px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translate3d(20px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes focusSlide {
-  from {
-    width: 0;
-    left: 50%;
-  }
-  to {
-    width: 100%;
-    left: 0;
-  }
-}
-
-/* Utility animations */
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.6s ease-out;
+  animation: fadeIn 0.4s ease-out;
 }
 
-.animate-slide-in-left {
-  animation: slideInLeft 0.6s ease-out;
-}
-
-.animate-slide-in-right {
-  animation: slideInRight 0.6s ease-out;
-}
-
-/* Performance optimizations */
-.will-change-transform {
-  will-change: transform;
-}
-
-.will-change-opacity {
-  will-change: opacity;
-}
-
-/* Remove will-change after animation */
-.animation-finished {
-  will-change: auto;
-}
-
-/* Mobile-specific visual optimizations */
+/* Performance optimizations for mobile */
 @media (max-width: 767px) {
-  /* Reduce complexity on mobile */
   .complex-animation {
     animation: none !important;
   }
   
-  /* Simplify gradients on mobile */
   .mobile-simple-bg {
     background: #1f2937 !important;
   }
   
-  /* Optimize shadows for mobile */
   .mobile-simple-shadow {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
   }
@@ -553,13 +249,6 @@ img[loading="lazy"].loaded {
     .service-visual-content {
       padding: 0.75rem;
       font-size: 0.875rem;
-    }
-  }
-  
-  @container (min-width: 401px) and (max-width: 600px) {
-    .service-visual-content {
-      padding: 1rem;
-      font-size: 1rem;
     }
   }
 }

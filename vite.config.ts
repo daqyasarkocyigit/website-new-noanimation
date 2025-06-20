@@ -5,8 +5,13 @@ import path from 'path';
 export default defineConfig({
   plugins: [
     react({
-      // Enable React Fast Refresh
       fastRefresh: true,
+      babel: {
+        plugins: [
+          // Remove console.log in production
+          ...(process.env.NODE_ENV === 'production' ? [['transform-remove-console', { exclude: ['error', 'warn'] }]] : [])
+        ]
+      }
     })
   ],
   resolve: {
@@ -16,8 +21,15 @@ export default defineConfig({
     }
   },
   optimizeDeps: {
-    include: ['react', 'react-dom', 'react-router-dom'],
-    exclude: ['lucide-react', 'framer-motion'],
+    include: [
+      'react', 
+      'react-dom', 
+      'react-router-dom',
+      'framer-motion',
+      'lucide-react'
+    ],
+    exclude: [],
+    force: true
   },
   build: {
     rollupOptions: {
@@ -36,17 +48,25 @@ export default defineConfig({
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info', 'console.debug', 'console.warn'],
-        passes: 2
+        pure_funcs: ['console.log', 'console.info', 'console.debug'],
+        passes: 2,
+        unsafe_arrows: true,
+        unsafe_methods: true,
+        unsafe_proto: true,
+        unsafe_regexp: true,
+        unsafe_undefined: true
       },
       mangle: {
         safari10: true,
       },
+      format: {
+        comments: false
+      }
     },
     reportCompressedSize: false,
-    chunkSizeWarningLimit: 1000,
-    assetsInlineLimit: 4096,
-    sourcemap: false, // Disable in production for better performance
+    chunkSizeWarningLimit: 800,
+    assetsInlineLimit: 8192, // Increased for better caching
+    sourcemap: false,
     target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
   },
   server: {
@@ -56,7 +76,7 @@ export default defineConfig({
       'X-Frame-Options': 'DENY',
       'X-XSS-Protection': '1; mode=block',
     },
-    host: true, // Allow external connections
+    host: true,
     port: 5173,
   },
   preview: {
@@ -67,8 +87,10 @@ export default defineConfig({
       'X-XSS-Protection': '1; mode=block',
     },
   },
-  // PWA and performance optimizations
   define: {
     __DEV__: JSON.stringify(process.env.NODE_ENV === 'development'),
+  },
+  esbuild: {
+    drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
   },
 });

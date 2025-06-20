@@ -1,40 +1,21 @@
-const CACHE_NAME = 'daq-consulting-cache-v1';
+const CACHE_NAME = 'daq-consulting-cache-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/src/main.tsx',
-  '/src/App.tsx',
-  '/src/index.css'
+  '/manifest.json'
 ];
 
+// Install event - cache critical resources
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(STATIC_ASSETS);
     })
   );
+  self.skipWaiting();
 });
 
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (response) {
-        return response;
-      }
-      return fetch(event.request).then((response) => {
-        if (!response || response.status !== 200 || response.type !== 'basic') {
-          return response;
-        }
-        const responseToCache = response.clone();
-        caches.open(CACHE_NAME).then((cache) => {
-          cache.put(event.request, responseToCache);
-        });
-        return response;
-      });
-    })
-  );
-});
-
+// Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -45,6 +26,52 @@ self.addEventListener('activate', (event) => {
           }
         })
       );
+    })
+  );
+  self.clients.claim();
+});
+
+// Fetch event - serve from cache with network fallback
+self.addEventListener('fetch', (event) => {
+  // Skip non-GET requests
+  if (event.request.method !== 'GET') {
+    return;
+  }
+
+  // Skip external requests
+  if (!event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
+
+  event.respondWith(
+    caches.match(event.request).then((response) => {
+      if (response) {
+        return response;
+      }
+
+      return fetch(event.request).then((response) => {
+        // Don't cache non-successful responses
+        if (!response || response.status !== 200 || response.type !== 'basic') {
+          return response;
+        }
+
+        // Clone the response for caching
+        const responseToCache = response.clone();
+
+        caches.open(CACHE_NAME).then((cache) => {
+          // Only cache certain file types
+          if (event.request.url.match(/\.(js|css|html|png|jpg|jpeg|svg|woff|woff2)$/)) {
+            cache.put(event.request, responseToCache);
+          }
+        });
+
+        return response;
+      });
+    }).catch(() => {
+      // Return offline page for navigation requests
+      if (event.request.mode === 'navigate') {
+        return caches.match('/index.html');
+      }
     })
   );
 });

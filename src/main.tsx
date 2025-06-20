@@ -2,20 +2,21 @@ import React, { StrictMode, Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 
+// Lazy load the main App component
 const App = lazy(() => import('./App.tsx'));
 
-// Loading component with better UX
+// Optimized loading component with minimal overhead
 const LoadingFallback = () => (
   <div className="h-screen flex items-center justify-center bg-gray-50">
     <div className="text-center">
-      <div className="loading-spinner w-8 h-8 mx-auto mb-4" />
+      <div className="w-8 h-8 border-2 border-gray-300 border-t-brand-red-600 rounded-full animate-spin mx-auto mb-4" />
       <div className="text-brand-red-600 text-lg font-medium">Loading DAQ Consulting...</div>
       <div className="text-gray-500 text-sm mt-2">AI & Data Engineering Experts</div>
     </div>
   </div>
 );
 
-// Error boundary component
+// Lightweight error boundary
 class ErrorBoundary extends React.Component<
   { children: React.ReactNode },
   { hasError: boolean }
@@ -44,7 +45,7 @@ class ErrorBoundary extends React.Component<
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="btn-primary"
+              className="px-6 py-3 bg-brand-red-600 text-white rounded-lg hover:bg-brand-red-700 transition-colors"
             >
               Refresh Page
             </button>
@@ -81,10 +82,10 @@ if (!rootElement) {
   );
 }
 
-// Register service worker for better performance (optional)
+// Optimized service worker registration
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
+    navigator.serviceWorker.register('/sw.js', { scope: '/' })
       .then((registration) => {
         console.log('SW registered: ', registration);
       })
@@ -92,4 +93,26 @@ if ('serviceWorker' in navigator && import.meta.env.PROD) {
         console.log('SW registration failed: ', registrationError);
       });
   });
+}
+
+// Preload critical resources
+const preloadCriticalResources = () => {
+  const criticalResources = [
+    'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
+  ];
+  
+  criticalResources.forEach(url => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'style';
+    link.href = url;
+    document.head.appendChild(link);
+  });
+};
+
+// Initialize performance optimizations
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', preloadCriticalResources);
+} else {
+  preloadCriticalResources();
 }
