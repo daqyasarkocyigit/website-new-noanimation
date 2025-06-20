@@ -111,22 +111,21 @@ const TalentHeroVisual: React.FC = () => {
                       </div>
                     )}
                     
-                    {/* Connection line */}
-                    <svg 
-                      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                      width="200" height="200"
-                    >
-                      <line
-                        x1={window.innerWidth < 640 ? "24" : window.innerWidth < 1024 ? "28" : "32"}
-                        y1="0"
-                        x2={-x + (window.innerWidth < 640 ? 24 : window.innerWidth < 1024 ? 28 : 32)}
-                        y2={-y}
-                        stroke={activeNode === index ? '#ef4444' : '#334155'}
-                        strokeWidth="1.5"
-                        strokeDasharray={activeNode === index ? '0' : '4 4'}
-                        opacity={activeNode === index ? 0.8 : 0.3}
-                      />
-                    </svg>
+                    {/* Connection line - Removed problematic SVG lines */}
+                    <div 
+                      className={`absolute top-1/2 left-1/2 pointer-events-none transition-opacity duration-300 ${
+                        activeNode === index ? 'opacity-60' : 'opacity-20'
+                      }`}
+                      style={{
+                        width: '2px',
+                        height: `${Math.sqrt(x * x + y * y)}px`,
+                        background: activeNode === index 
+                          ? 'linear-gradient(to bottom, #ef4444, transparent)' 
+                          : 'linear-gradient(to bottom, #475569, transparent)',
+                        transform: `translate(-50%, -50%) rotate(${Math.atan2(y, x) + Math.PI/2}rad)`,
+                        transformOrigin: 'top center'
+                      }}
+                    />
                   </div>
                 </div>
               );
