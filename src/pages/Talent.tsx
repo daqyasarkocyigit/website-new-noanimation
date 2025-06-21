@@ -21,46 +21,53 @@ const Talent: React.FC = () => {
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
-            <div className="w-full lg:w-1/2 lg:pr-6">
+            <div className="w-full lg:w-1/2 lg:pr-6 relative z-20">
+              {/* Text background overlay for better contrast */}
+              <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/70 rounded-2xl -m-4 p-4 backdrop-blur-sm shadow-lg lg:hidden"></div>
+              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
+                className="relative z-30"
               >
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-gray-900 drop-shadow-sm">
                   Hire Top <span className="text-brand-red-600">Tech</span> Talent
                 </h1>
-                <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6"></div>
+                <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6 shadow-sm"></div>
               </motion.div>
               
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
+                className="relative z-30"
               >
-                <p className="text-base sm:text-lg text-cool-gray-600 leading-relaxed mb-6">
-                  Find the right professionals for your business needs. We offer flexible staffing 
-                  solutions to help you build and scale your technical teams effectively.
-                </p>
-                <p className="text-base sm:text-lg text-cool-gray-600 leading-relaxed">
-                  Our talent network includes highly skilled professionals in data engineering, 
-                  cloud architecture, AI development, and business intelligence.
-                </p>
-                
-                <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                  <a 
-                    href="/contact" 
-                    className="inline-flex items-center px-6 py-3 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg"
-                  >
-                    <span className="mr-2">Request Talent</span>
-                    <ChevronRight size={16} />
-                  </a>
-                  <a 
-                    href="/contact" 
-                    className="inline-flex items-center px-6 py-3 border border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 rounded-lg transition-colors duration-300"
-                  >
-                    Learn More
-                  </a>
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-gray-200/50 lg:bg-transparent lg:backdrop-blur-none lg:shadow-none lg:border-none lg:p-0">
+                  <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-6 font-medium">
+                    Find the right professionals for your business needs. We offer flexible staffing 
+                    solutions to help you build and scale your technical teams effectively.
+                  </p>
+                  <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-8">
+                    Our talent network includes highly skilled professionals in data engineering, 
+                    cloud architecture, AI development, and business intelligence.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a 
+                      href="/contact" 
+                      className="inline-flex items-center px-6 py-3 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-lg transition-colors duration-300 shadow-md hover:shadow-lg font-medium"
+                    >
+                      <span className="mr-2">Request Talent</span>
+                      <ChevronRight size={16} />
+                    </a>
+                    <a 
+                      href="/contact" 
+                      className="inline-flex items-center px-6 py-3 border border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 rounded-lg transition-colors duration-300 font-medium"
+                    >
+                      Learn More
+                    </a>
+                  </div>
                 </div>
               </motion.div>
             </div>
@@ -72,8 +79,9 @@ const Talent: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <div className="relative">
-                <div className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-16 h-16 sm:w-32 sm:h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
-                <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-16 h-16 sm:w-32 sm:h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
+                {/* Decorative elements with reduced opacity to not interfere with text */}
+                <div className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-16 h-16 sm:w-32 sm:h-32 bg-brand-red-600/5 rounded-full filter blur-3xl"></div>
+                <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-16 h-16 sm:w-32 sm:h-32 bg-gray-400/5 rounded-full filter blur-3xl"></div>
                 
                 <div className="relative z-10 w-full h-[400px] sm:h-[450px] lg:h-[500px]">
                   <TalentHeroVisual />
