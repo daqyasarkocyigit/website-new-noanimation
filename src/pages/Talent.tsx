@@ -1,13 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, ChevronRight, CheckCircle, Briefcase, Code, Database, Brain, Cloud, Layers, Terminal } from 'lucide-react';
+import { Users, ChevronRight, CheckCircle, Briefcase } from 'lucide-react';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
+import TalentHeroVisual from '../components/talent/TalentHeroVisual';
 
 const Talent: React.FC = () => {
   return (
     <>
-      {/* Hero Section with Dynamic Layout */}
+      {/* Hero Section with Enhanced Layout */}
       <section className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 z-0"></div>
         <div 
@@ -19,24 +20,45 @@ const Talent: React.FC = () => {
         ></div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          {/* Dynamic Grid Layout */}
-          <div className="grid grid-cols-12 gap-6 lg:gap-8 items-center min-h-[600px]">
+          <div className="flex flex-col xl:flex-row items-center justify-between gap-8 xl:gap-16">
             
-            {/* Main Heading - Top Left */}
+            {/* Enhanced Text Container with Expanded Width */}
             <motion.div 
-              className="col-span-12 lg:col-span-6 xl:col-span-5 row-start-1"
+              className="w-full xl:w-[58%] 2xl:w-[60%] relative z-20"
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.1 }}
+              transition={{ 
+                duration: 0.8, 
+                ease: [0.25, 0.46, 0.45, 0.94],
+                staggerChildren: 0.2
+              }}
             >
-              <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 lg:p-8 shadow-xl border border-white/60">
+              {/* Animated Background Overlay for Mobile */}
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/75 rounded-2xl -m-6 p-6 backdrop-blur-sm shadow-xl border border-white/50 xl:hidden"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+              />
+              
+              {/* Main Heading with Staggered Animation */}
+              <motion.div
+                className="relative z-30 mb-8"
+                variants={{
+                  hidden: { opacity: 0, y: 30 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                initial="hidden"
+                animate="visible"
+                transition={{ duration: 0.7, delay: 0.2 }}
+              >
                 <motion.h1 
-                  className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-gray-900 leading-tight"
+                  className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-gray-900 leading-tight"
                   style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
                 >
                   <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.3 }}
                   >
                     Hire Top{' '}
@@ -50,8 +72,8 @@ const Talent: React.FC = () => {
                     Tech
                   </motion.span>
                   <motion.span
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.7 }}
                   >
                     {' '}Talent
@@ -64,196 +86,114 @@ const Talent: React.FC = () => {
                   animate={{ width: 80 }}
                   transition={{ duration: 0.8, delay: 0.9 }}
                 />
-              </div>
-            </motion.div>
-
-            {/* Frontend Icon & Text - Top Right */}
-            <motion.div 
-              className="col-span-6 lg:col-span-3 xl:col-span-3 row-start-1 lg:row-start-1"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/50 text-center">
-                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Code className="w-6 h-6 text-blue-600" />
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 mb-1">Frontend</h3>
-                <p className="text-xs text-gray-600">React, TypeScript</p>
-              </div>
-            </motion.div>
-
-            {/* Data Engineering Icon & Text - Top Far Right */}
-            <motion.div 
-              className="col-span-6 lg:col-span-3 xl:col-span-4 row-start-2 lg:row-start-1"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/50">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
-                    <Database className="w-6 h-6 text-green-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-900">Data Engineering</h3>
-                    <p className="text-xs text-gray-600">Python, Spark, Kafka</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Main Description - Center Left */}
-            <motion.div 
-              className="col-span-12 lg:col-span-6 xl:col-span-5 row-start-3 lg:row-start-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-            >
-              <div className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 lg:p-8 shadow-xl border border-white/60">
-                <p className="text-base lg:text-lg text-gray-800 leading-relaxed mb-6 font-medium">
-                  Find the right professionals for your business needs. We offer flexible staffing 
-                  solutions to help you build and scale your technical teams effectively.
-                </p>
-                <p className="text-base lg:text-lg text-gray-700 leading-relaxed mb-6">
-                  Our talent network includes highly skilled professionals in data engineering, 
-                  cloud architecture, AI development, and business intelligence.
-                </p>
-                
-                {/* Action Buttons */}
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <motion.a 
-                    href="/contact" 
-                    className="inline-flex items-center justify-center px-6 py-3 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+              </motion.div>
+              
+              {/* Content Container with Enhanced Styling */}
+              <motion.div
+                className="relative z-30"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                initial="hidden"
+                animate="visible"
+                transition={{ duration: 0.7, delay: 0.4 }}
+              >
+                <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 lg:p-8 shadow-xl border border-white/60 xl:bg-transparent xl:backdrop-blur-none xl:shadow-none xl:border-none xl:p-0">
+                  
+                  {/* Description Text with Smooth Reveal */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="mb-8"
                   >
-                    <span className="mr-2">Request Talent</span>
-                    <ChevronRight size={16} />
-                  </motion.a>
-                  <motion.a 
-                    href="/contact" 
-                    className="inline-flex items-center justify-center px-6 py-3 border-2 border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 rounded-xl transition-all duration-300 font-semibold"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    <p className="text-base sm:text-lg lg:text-xl text-gray-800 leading-relaxed mb-6 font-medium">
+                      Find the right professionals for your business needs. We offer flexible staffing 
+                      solutions to help you build and scale your technical teams effectively.
+                    </p>
+                    <p className="text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed">
+                      Our talent network includes highly skilled professionals in data engineering, 
+                      cloud architecture, AI development, and business intelligence.
+                    </p>
+                  </motion.div>
+                  
+                  {/* Action Buttons with Staggered Animation */}
+                  <motion.div 
+                    className="flex flex-col sm:flex-row gap-4"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.8 }}
                   >
-                    Learn More
-                  </motion.a>
+                    <motion.a 
+                      href="/contact" 
+                      className="inline-flex items-center justify-center px-8 py-4 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold text-lg transform hover:-translate-y-1"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <span className="mr-2">Request Talent</span>
+                      <ChevronRight size={18} />
+                    </motion.a>
+                    <motion.a 
+                      href="/contact" 
+                      className="inline-flex items-center justify-center px-8 py-4 border-2 border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 rounded-xl transition-all duration-300 font-semibold text-lg transform hover:-translate-y-1"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      Learn More
+                    </motion.a>
+                  </motion.div>
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
-
-            {/* AI/ML Icon & Text - Center */}
+            
+            {/* Visual Container with Improved Positioning */}
             <motion.div 
-              className="col-span-6 lg:col-span-3 xl:col-span-3 row-start-4 lg:row-start-2"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1.0 }}
+              className="w-full xl:w-[42%] 2xl:w-[40%] relative"
+              initial={{ opacity: 0, x: 30, scale: 0.9 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: 0.3,
+                ease: [0.25, 0.46, 0.45, 0.94]
+              }}
             >
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/50 text-center">
-                <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Brain className="w-6 h-6 text-purple-600" />
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 mb-1">AI/ML</h3>
-                <p className="text-xs text-gray-600">TensorFlow, PyTorch</p>
-              </div>
-            </motion.div>
-
-            {/* Cloud Icon & Text - Center Right */}
-            <motion.div 
-              className="col-span-6 lg:col-span-3 xl:col-span-4 row-start-4 lg:row-start-2"
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
-            >
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/50">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
-                    <Cloud className="w-6 h-6 text-yellow-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-900">Cloud Architecture</h3>
-                    <p className="text-xs text-gray-600">AWS, Kubernetes, Docker</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Full Stack Icon & Text - Bottom Left */}
-            <motion.div 
-              className="col-span-6 lg:col-span-3 xl:col-span-3 row-start-5 lg:row-start-3"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.4 }}
-            >
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/50">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center">
-                    <Layers className="w-6 h-6 text-indigo-600" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-semibold text-gray-900">Full Stack</h3>
-                    <p className="text-xs text-gray-600">End-to-end development</p>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Backend Icon & Text - Bottom Center */}
-            <motion.div 
-              className="col-span-6 lg:col-span-3 xl:col-span-3 row-start-5 lg:row-start-3"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.6 }}
-            >
-              <div className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/50 text-center">
-                <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <Terminal className="w-6 h-6 text-gray-600" />
-                </div>
-                <h3 className="text-sm font-semibold text-gray-900 mb-1">Backend</h3>
-                <p className="text-xs text-gray-600">Node.js, Python, Go</p>
-              </div>
-            </motion.div>
-
-            {/* Central Talent Hub - Bottom Right */}
-            <motion.div 
-              className="col-span-12 lg:col-span-6 xl:col-span-6 row-start-6 lg:row-start-3"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 1.8 }}
-            >
-              <div className="bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl p-8 shadow-2xl text-white text-center relative overflow-hidden">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                  <div 
-                    className="w-full h-full"
-                    style={{
-                      backgroundImage: `
-                        linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)
-                      `,
-                      backgroundSize: '20px 20px'
-                    }}
-                  />
-                </div>
+              <div className="relative">
+                {/* Subtle Decorative Elements */}
+                <motion.div 
+                  className="absolute -top-6 -right-6 w-24 h-24 sm:w-32 sm:h-32 bg-brand-red-600/5 rounded-full filter blur-3xl"
+                  animate={{ 
+                    scale: [1, 1.1, 1],
+                    opacity: [0.3, 0.5, 0.3]
+                  }}
+                  transition={{ 
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                />
+                <motion.div 
+                  className="absolute -bottom-6 -left-6 w-24 h-24 sm:w-32 sm:h-32 bg-gray-400/5 rounded-full filter blur-3xl"
+                  animate={{ 
+                    scale: [1.1, 1, 1.1],
+                    opacity: [0.2, 0.4, 0.2]
+                  }}
+                  transition={{ 
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1
+                  }}
+                />
                 
-                <div className="relative z-10">
-                  <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <Users className="w-8 h-8 text-white" />
-                  </div>
-                  <h3 className="text-2xl font-bold mb-2">2,847</h3>
-                  <p className="text-white/90 mb-4">Available Experts</p>
-                  <div className="grid grid-cols-2 gap-4 text-sm">
-                    <div>
-                      <div className="text-lg font-bold">98.5%</div>
-                      <div className="text-white/80">Success Rate</div>
-                    </div>
-                    <div>
-                      <div className="text-lg font-bold">1.2w</div>
-                      <div className="text-white/80">Avg Deploy</div>
-                    </div>
-                  </div>
-                </div>
+                {/* Main Visual with Enhanced Container */}
+                <motion.div 
+                  className="relative z-10 w-full h-[400px] sm:h-[450px] lg:h-[500px] xl:h-[550px] rounded-2xl overflow-hidden shadow-2xl"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <TalentHeroVisual />
+                </motion.div>
               </div>
             </motion.div>
           </div>
