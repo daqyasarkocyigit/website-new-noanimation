@@ -23,13 +23,13 @@ const TalentHeroVisual: React.FC = () => {
   return (
     <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl relative">
       {/* Minimal background pattern */}
-      <div className="absolute inset-0 opacity-3">
+      <div className="absolute inset-0 opacity-5">
         <div 
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)
+              linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
             `,
             backgroundSize: '50px 50px'
           }}
@@ -79,10 +79,10 @@ const TalentHeroVisual: React.FC = () => {
                   `}>
                     {/* Node circle */}
                     <div className={`
-                      w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl flex items-center justify-center
+                      w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl flex items-center justify-center transition-all duration-300
                       ${activeNode === index 
-                        ? 'bg-gradient-to-br from-brand-red-500 to-brand-red-600 shadow-lg' 
-                        : 'bg-gray-800 border border-gray-700'
+                        ? 'bg-gradient-to-br from-brand-red-500 to-brand-red-600 shadow-lg shadow-brand-red-500/30' 
+                        : 'bg-gray-800/80 border border-gray-600'
                       }
                     `}>
                       <Icon className={`w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 ${
@@ -100,13 +100,13 @@ const TalentHeroVisual: React.FC = () => {
                         }}
                       >
                         <div className="relative">
-                          {/* Multiple background layers for maximum contrast */}
-                          <div className="absolute inset-0 bg-black rounded-lg shadow-2xl"></div>
-                          <div className="absolute inset-0 bg-gray-900 rounded-lg border-2 border-white/20"></div>
-                          <div className="absolute inset-0 bg-black/80 rounded-lg backdrop-blur-sm"></div>
+                          {/* Strong background for maximum contrast */}
+                          <div className="absolute inset-0 bg-gray-900 rounded-lg shadow-2xl blur-sm"></div>
+                          <div className="absolute inset-0 bg-gray-800 rounded-lg"></div>
+                          <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg border border-gray-600"></div>
                           
                           {/* Text with maximum contrast */}
-                          <span className="relative block text-sm sm:text-base text-white font-black px-4 py-3 rounded-lg tracking-wide">
+                          <span className="relative block text-sm sm:text-base text-white font-bold px-4 py-2 rounded-lg">
                             {node.label}
                           </span>
                           
@@ -117,8 +117,8 @@ const TalentHeroVisual: React.FC = () => {
                               top: y > 0 ? '100%' : '-8px',
                               borderLeft: '8px solid transparent',
                               borderRight: '8px solid transparent',
-                              borderTop: y > 0 ? 'none' : '8px solid black',
-                              borderBottom: y > 0 ? '8px solid black' : 'none'
+                              borderTop: y > 0 ? 'none' : '8px solid rgb(31, 41, 55)',
+                              borderBottom: y > 0 ? '8px solid rgb(31, 41, 55)' : 'none'
                             }}
                           />
                         </div>
