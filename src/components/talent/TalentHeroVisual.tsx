@@ -98,8 +98,6 @@ const TalentHeroVisual: React.FC = () => {
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl flex items-center justify-center shadow-2xl mx-auto">
               <Users className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
             </div>
-            {/* Pulse effect */}
-            <div className="absolute inset-0 rounded-2xl bg-brand-red-600/20 animate-ping" />
           </div>
           
           <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
@@ -154,8 +152,7 @@ const TalentHeroVisual: React.FC = () => {
                 shadow-lg
               `}
               style={{ 
-                width: `${((currentIndex + 1) / roles.length) * 100}%`,
-                boxShadow: '0 0 20px rgba(239, 68, 68, 0.4)'
+                width: `${((currentIndex + 1) / roles.length) * 100}%`
               }}
             />
           </div>
@@ -174,27 +171,8 @@ const TalentHeroVisual: React.FC = () => {
                   : 'bg-gray-600/50 hover:bg-gray-500/70 border border-gray-500/30'
                 }
               `}
-              style={{
-                boxShadow: index === currentIndex ? '0 0 15px rgba(239, 68, 68, 0.5)' : 'none'
-              }}
             />
           ))}
-        </div>
-
-        {/* Stats Section */}
-        <div className="grid grid-cols-3 gap-4 mt-12 sm:mt-16 w-full max-w-md">
-          <div className="text-center p-3 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
-            <div className="text-lg sm:text-xl font-bold text-white">2.8K+</div>
-            <div className="text-xs text-gray-400">Professionals</div>
-          </div>
-          <div className="text-center p-3 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
-            <div className="text-lg sm:text-xl font-bold text-white">98.5%</div>
-            <div className="text-xs text-gray-400">Success Rate</div>
-          </div>
-          <div className="text-center p-3 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
-            <div className="text-lg sm:text-xl font-bold text-white">1.2w</div>
-            <div className="text-xs text-gray-400">Avg Deploy</div>
-          </div>
         </div>
       </div>
 
