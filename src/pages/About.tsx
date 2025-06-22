@@ -3,12 +3,11 @@ import { motion } from 'framer-motion';
 import { CheckCircle, Award, Lightbulb, Target, TrendingUp, Shield, Zap } from 'lucide-react';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
-import AboutHeroVisual from '../components/about/AboutHeroVisual';
 
 const About: React.FC = () => {
   return (
     <>
-      {/* Hero Section with Gradient Background */}
+      {/* Hero Section - Simplified without visual */}
       <section className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 z-0"></div>
         <div 
@@ -20,47 +19,29 @@ const About: React.FC = () => {
         ></div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-12">
-            <div className="w-full lg:w-1/2 lg:pr-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
-                  About <span className="text-brand-red-600">DAQ</span> Consulting
-                </h1>
-                <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6"></div>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                <p className="text-base sm:text-lg text-cool-gray-600 leading-relaxed mb-6">
-                  DAQ Consulting is a premier data solutions provider dedicated to helping organizations harness the power of their data. With our expertise in data engineering, business intelligence, and cloud technologies, we enable companies to transform raw data into valuable insights that drive strategic decision-making.
-                </p>
-                <p className="text-base sm:text-lg text-cool-gray-600 leading-relaxed">
-                  Our mission is to empower organizations to unlock the full potential of their data through advanced analytics, cloud modernization, and AI. We work closely with our clients to understand their unique challenges and deliver tailored solutions that address their specific needs.
-                </p>
-              </motion.div>
-            </div>
-            
-            <motion.div 
-              className="w-full lg:w-1/2 relative"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              <div className="relative">
-                <div className="absolute -top-3 -right-3 sm:-top-6 sm:-right-6 w-16 h-16 sm:w-32 sm:h-32 bg-brand-red-600/10 rounded-full filter blur-3xl"></div>
-                <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-16 h-16 sm:w-32 sm:h-32 bg-gray-400/10 rounded-full filter blur-3xl"></div>
-                
-                <div className="relative z-10">
-                  <AboutHeroVisual />
-                </div>
-              </div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
+                About <span className="text-brand-red-600">DAQ</span> Consulting
+              </h1>
+              <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6 mx-auto"></div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <p className="text-base sm:text-lg lg:text-xl text-cool-gray-600 leading-relaxed mb-6">
+                DAQ Consulting is a premier data solutions provider dedicated to helping organizations harness the power of their data. With our expertise in data engineering, business intelligence, and cloud technologies, we enable companies to transform raw data into valuable insights that drive strategic decision-making.
+              </p>
+              <p className="text-base sm:text-lg lg:text-xl text-cool-gray-600 leading-relaxed">
+                Our mission is to empower organizations to unlock the full potential of their data through advanced analytics, cloud modernization, and AI. We work closely with our clients to understand their unique challenges and deliver tailored solutions that address their specific needs.
+              </p>
             </motion.div>
           </div>
         </div>

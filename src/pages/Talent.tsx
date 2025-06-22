@@ -3,12 +3,11 @@ import { motion } from 'framer-motion';
 import { Users, ChevronRight, CheckCircle, Briefcase, Database, Cloud, Brain, Zap, BarChart3 } from 'lucide-react';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
-import TalentHeroVisual from '../components/talent/TalentHeroVisual';
 
 const Talent: React.FC = () => {
   return (
     <>
-      {/* Hero Section with Enhanced Layout */}
+      {/* Hero Section - Simplified without visual */}
       <section className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 z-0"></div>
         <div 
@@ -20,187 +19,63 @@ const Talent: React.FC = () => {
         ></div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="flex flex-col xl:flex-row items-center justify-between gap-8 xl:gap-16">
-            
-            {/* Enhanced Text Container with Expanded Width */}
-            <motion.div 
-              className="w-full xl:w-[58%] 2xl:w-[60%] relative z-20"
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ 
-                duration: 0.8, 
-                ease: [0.25, 0.46, 0.45, 0.94],
-                staggerChildren: 0.2
-              }}
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
             >
-              {/* Animated Background Overlay for Mobile */}
-              <motion.div 
-                className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/90 to-white/75 rounded-2xl -m-6 p-6 backdrop-blur-sm shadow-xl border border-white/50 xl:hidden"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-              />
-              
-              {/* Main Heading with Staggered Animation */}
-              <motion.div
-                className="relative z-30 mb-8"
-                variants={{
-                  hidden: { opacity: 0, y: 30 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-                initial="hidden"
-                animate="visible"
-                transition={{ duration: 0.7, delay: 0.2 }}
-              >
-                <motion.h1 
-                  className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-gray-900 leading-tight"
-                  style={{ textShadow: '0 2px 4px rgba(0,0,0,0.1)' }}
-                >
-                  <motion.span
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                  >
-                    Hire Top{' '}
-                  </motion.span>
-                  <motion.span 
-                    className="text-brand-red-600"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, delay: 0.5 }}
-                  >
-                    Data
-                  </motion.span>
-                  <motion.span
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.7 }}
-                  >
-                    {' '}Experts
-                  </motion.span>
-                </motion.h1>
-                
-                <motion.div 
-                  className="w-20 h-1.5 bg-brand-red-600 rounded-full shadow-sm"
-                  initial={{ width: 0 }}
-                  animate={{ width: 80 }}
-                  transition={{ duration: 0.8, delay: 0.9 }}
-                />
-              </motion.div>
-              
-              {/* Content Container with Enhanced Styling */}
-              <motion.div
-                className="relative z-30"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-                initial="hidden"
-                animate="visible"
-                transition={{ duration: 0.7, delay: 0.4 }}
-              >
-                <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 lg:p-8 shadow-xl border border-white/60 xl:bg-transparent xl:backdrop-blur-none xl:shadow-none xl:border-none xl:p-0">
-                  
-                  {/* Description Text with Smooth Reveal */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                    className="mb-8"
-                  >
-                    <p className="text-base sm:text-lg lg:text-xl text-gray-800 leading-relaxed mb-6 font-medium">
-                      Find the right data professionals for your business needs. We specialize in Azure Data Platform, 
-                      Microsoft Fabric, and Databricks solutions to help you build modern data architectures.
-                    </p>
-                    <p className="text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed">
-                      Our talent network includes certified Azure architects, data engineers, Databricks specialists, 
-                      and analytics professionals who can guide your data transformation journey.
-                    </p>
-                  </motion.div>
-                  
-                  {/* Action Buttons with Staggered Animation */}
-                  <motion.div 
-                    className="flex flex-col sm:flex-row gap-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
-                  >
-                    <motion.a 
-                      href="/contact" 
-                      className="inline-flex items-center justify-center px-8 py-4 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold text-lg transform hover:-translate-y-1"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      <span className="mr-2">Request Talent</span>
-                      <ChevronRight size={18} />
-                    </motion.a>
-                    <motion.a 
-                      href="/contact" 
-                      className="inline-flex items-center justify-center px-8 py-4 border-2 border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 rounded-xl transition-all duration-300 font-semibold text-lg transform hover:-translate-y-1"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      Learn More
-                    </motion.a>
-                  </motion.div>
-                </div>
-              </motion.div>
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-gray-900 leading-tight">
+                Hire Top <span className="text-brand-red-600">Data</span> Experts
+              </h1>
+              <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6 mx-auto"></div>
             </motion.div>
             
-            {/* Visual Container with Improved Positioning */}
-            <motion.div 
-              className="w-full xl:w-[42%] 2xl:w-[40%] relative"
-              initial={{ opacity: 0, x: 30, scale: 0.9 }}
-              animate={{ opacity: 1, x: 0, scale: 1 }}
-              transition={{ 
-                duration: 0.8, 
-                delay: 0.3,
-                ease: [0.25, 0.46, 0.45, 0.94]
-              }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-8"
             >
-              <div className="relative">
-                {/* Subtle Decorative Elements */}
-                <motion.div 
-                  className="absolute -top-6 -right-6 w-24 h-24 sm:w-32 sm:h-32 bg-brand-red-600/5 rounded-full filter blur-3xl"
-                  animate={{ 
-                    scale: [1, 1.1, 1],
-                    opacity: [0.3, 0.5, 0.3]
-                  }}
-                  transition={{ 
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
-                <motion.div 
-                  className="absolute -bottom-6 -left-6 w-24 h-24 sm:w-32 sm:h-32 bg-gray-400/5 rounded-full filter blur-3xl"
-                  animate={{ 
-                    scale: [1.1, 1, 1.1],
-                    opacity: [0.2, 0.4, 0.2]
-                  }}
-                  transition={{ 
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1
-                  }}
-                />
-                
-                {/* Main Visual with Enhanced Container */}
-                <motion.div 
-                  className="relative z-10 w-full h-[400px] sm:h-[450px] lg:h-[500px] xl:h-[550px] rounded-2xl overflow-hidden shadow-2xl"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <TalentHeroVisual />
-                </motion.div>
-              </div>
+              <p className="text-base sm:text-lg lg:text-xl text-gray-800 leading-relaxed mb-6 font-medium">
+                Find the right data professionals for your business needs. We specialize in Azure Data Platform, 
+                Microsoft Fabric, and Databricks solutions to help you build modern data architectures.
+              </p>
+              <p className="text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed">
+                Our talent network includes certified Azure architects, data engineers, Databricks specialists, 
+                and analytics professionals who can guide your data transformation journey.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <motion.a 
+                href="/contact" 
+                className="inline-flex items-center justify-center px-8 py-4 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold text-lg transform hover:-translate-y-1"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className="mr-2">Request Talent</span>
+                <ChevronRight size={18} />
+              </motion.a>
+              <motion.a 
+                href="/contact" 
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 rounded-xl transition-all duration-300 font-semibold text-lg transform hover:-translate-y-1"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Learn More
+              </motion.a>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Benefits Section with Enhanced Animation */}
+      {/* Benefits Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-4xl mx-auto mb-16">
