@@ -109,12 +109,12 @@ const Talent: React.FC = () => {
                     className="mb-8"
                   >
                     <p className="text-base sm:text-lg lg:text-xl text-gray-800 leading-relaxed mb-6 font-medium">
-                      Find the right data professionals for your business needs. We specialize in Azure Data Platform 
-                      and Microsoft Fabric solutions to help you build modern data architectures.
+                      Find the right data professionals for your business needs. We specialize in Azure Data Platform, 
+                      Microsoft Fabric, and Databricks solutions to help you build modern data architectures.
                     </p>
                     <p className="text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed">
-                      Our talent network includes certified Azure architects, data engineers, and analytics specialists 
-                      who can guide your data transformation journey.
+                      Our talent network includes certified Azure architects, data engineers, Databricks specialists, 
+                      and analytics professionals who can guide your data transformation journey.
                     </p>
                   </motion.div>
                   
@@ -224,13 +224,13 @@ const Talent: React.FC = () => {
             {[
               {
                 icon: <Users size={28} />,
-                title: "Certified Azure Experts",
-                description: "All our professionals are Microsoft certified with proven experience in Azure Data Platform services."
+                title: "Certified Azure & Databricks Experts",
+                description: "All our professionals are Microsoft and Databricks certified with proven experience in modern data platforms."
               },
               {
                 icon: <Briefcase size={28} />,
                 title: "Modern Data Architecture",
-                description: "Specialists in Data Lakes, Lakehouses, Medallion Architecture, and Real-time Intelligence solutions."
+                description: "Specialists in Data Lakes, Lakehouses, Medallion Architecture, Unity Catalog, and Real-time Intelligence solutions."
               },
               {
                 icon: <CheckCircle size={28} />,
@@ -264,7 +264,7 @@ const Talent: React.FC = () => {
           <AnimatedSection className="text-center max-w-4xl mx-auto mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6">Our Data Expertise</h2>
             <p className="text-base sm:text-lg lg:text-xl text-cool-gray-600 leading-relaxed">
-              We provide certified professionals specializing in Microsoft Azure Data Platform and modern data architectures 
+              We provide certified professionals specializing in Microsoft Azure Data Platform, Databricks, and modern data architectures 
               to transform your business with data-driven insights.
             </p>
           </AnimatedSection>
@@ -354,7 +354,7 @@ const Talent: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            {/* Databricks Expertise - Now with Azure colors */}
+            {/* Databricks Expertise - Enhanced with more details */}
             <motion.div
               className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
               initial={{ opacity: 0, y: 30 }}
@@ -364,13 +364,13 @@ const Talent: React.FC = () => {
               whileHover={{ scale: 1.02 }}
             >
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center mr-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-orange-600 to-red-600 rounded-xl flex items-center justify-center mr-4">
                   <Zap className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Databricks Expertise</h3>
+                <h3 className="text-2xl font-bold text-gray-900">Databricks Platform</h3>
               </div>
               <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
-                Advanced Databricks implementation and migration services for unified analytics and data lakehouse architecture
+                Advanced Databricks implementation, Unity Catalog migration, and lakehouse architecture for unified analytics and AI
               </p>
               <div className="grid grid-cols-2 gap-3">
                 {[
@@ -385,7 +385,7 @@ const Talent: React.FC = () => {
                 ].map((skill, skillIndex) => (
                   <motion.span 
                     key={skillIndex}
-                    className="px-3 py-2 bg-gray-100 text-gray-800 text-sm rounded-lg font-medium border border-gray-200"
+                    className="px-3 py-2 bg-orange-50 text-orange-800 text-sm rounded-lg font-medium border border-orange-200"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
@@ -397,7 +397,7 @@ const Talent: React.FC = () => {
               </div>
             </motion.div>
 
-            {/* Power BI - New Section */}
+            {/* Power BI */}
             <motion.div
               className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
               initial={{ opacity: 0, y: 30 }}
