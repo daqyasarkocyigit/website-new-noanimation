@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Critical CSS - Inlined for performance */
+/* Critical CSS - Optimized for performance */
 @layer base {
   html {
     -webkit-tap-highlight-color: transparent;
@@ -18,6 +18,7 @@
     -moz-osx-font-smoothing: grayscale;
     line-height: 1.6;
     overflow-x: hidden;
+    font-display: swap;
   }
 
   *:focus {
@@ -27,6 +28,16 @@
   ::selection {
     background-color: #ef4444;
     color: white;
+  }
+
+  /* Optimize font loading */
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 }
 
@@ -129,6 +140,23 @@
     background: linear-gradient(90deg, #ef4444, #dc2626);
     border-radius: 1px;
   }
+
+  /* Skeleton loading animations */
+  .skeleton {
+    @apply bg-gray-200 animate-pulse rounded;
+  }
+
+  .skeleton-text {
+    @apply skeleton h-4 w-full mb-2;
+  }
+
+  .skeleton-title {
+    @apply skeleton h-6 w-3/4 mb-4;
+  }
+
+  .skeleton-avatar {
+    @apply skeleton w-12 h-12 rounded-full;
+  }
 }
 
 /* Optimized image handling */
@@ -143,7 +171,8 @@ img[loading="lazy"] {
   transition: opacity 0.3s;
 }
 
-img[loading="lazy"].loaded {
+img[loading="lazy"].loaded,
+img[loading="eager"] {
   opacity: 1;
 }
 
@@ -214,14 +243,20 @@ img[loading="lazy"].loaded {
   }
 }
 
-/* Minimal animations for better performance */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Critical loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.4s ease-out;
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 /* Performance optimizations for mobile */
@@ -251,4 +286,14 @@ img[loading="lazy"].loaded {
       font-size: 0.875rem;
     }
   }
+}
+
+/* Critical path optimization */
+.above-fold {
+  content-visibility: visible;
+}
+
+.below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
 }

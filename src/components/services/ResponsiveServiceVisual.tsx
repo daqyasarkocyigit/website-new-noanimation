@@ -1,77 +1,110 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useState, useEffect, memo, useMemo } from 'react';
 import MobileOptimizedVisual from './MobileOptimizedVisual';
 
-// Lazy load desktop visuals only when needed
-const DataEngineeringVisual = React.lazy(() => import('./DataEngineeringVisual'));
-const DataVisualizationVisual = React.lazy(() => import('./DataVisualizationVisual'));
-const BusinessIntelligenceVisual = React.lazy(() => import('./BusinessIntelligenceVisual'));
-const AIEngineeringVisual = React.lazy(() => import('./AIEngineeringVisual'));
-const CloudModernizationVisual = React.lazy(() => import('./CloudModernizationVisual'));
+// Lazy load desktop visuals only when needed with better error handling
+const loadDesktopVisual = (type: string) => {
+  switch (type) {
+    case 'data-engineering':
+      return import('./DataEngineeringVisual').catch(() => ({ default: () => <MobileOptimizedVisual type="data-engineering" /> }));
+    case 'data-visualization':
+      return import('./DataVisualizationVisual').catch(() => ({ default: () => <MobileOptimizedVisual type="data-visualization" /> }));
+    case 'business-intelligence':
+      return import('./BusinessIntelligenceVisual').catch(() => ({ default: () => <MobileOptimizedVisual type="business-intelligence" /> }));
+    case 'ai-engineering':
+      return import('./AIEngineeringVisual').catch(() => ({ default: () => <MobileOptimizedVisual type="ai-engineering" /> }));
+    case 'cloud-modernization':
+      return import('./CloudModernizationVisual').catch(() => ({ default: () => <MobileOptimizedVisual type="cloud-modernization" /> }));
+    default:
+      return Promise.resolve({ default: () => <MobileOptimizedVisual type={type as any} /> });
+  }
+};
 
 interface ResponsiveServiceVisualProps {
   type: 'data-engineering' | 'data-visualization' | 'business-intelligence' | 'ai-engineering' | 'cloud-modernization';
 }
 
 const ResponsiveServiceVisual: React.FC<ResponsiveServiceVisualProps> = memo(({ type }) => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(true); // Default to mobile for faster initial render
   const [isLowEndDevice, setIsLowEndDevice] = useState(false);
+  const [DesktopComponent, setDesktopComponent] = useState<React.ComponentType | null>(null);
+
+  // Memoize device detection
+  const deviceInfo = useMemo(() => {
+    if (typeof window === 'undefined') return { isMobile: true, isLowEnd: false };
+    
+    const width = window.innerWidth;
+    const isMobileWidth = width < 768;
+    
+    // Enhanced low-end device detection
+    const isLowEnd = 
+      navigator.hardwareConcurrency <= 2 || 
+      (navigator as any).deviceMemory <= 2 ||
+      /Android.*Chrome\/[0-5]/.test(navigator.userAgent) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      navigator.connection?.effectiveType === 'slow-2g' ||
+      navigator.connection?.effectiveType === '2g';
+
+    return { isMobile: isMobileWidth, isLowEnd };
+  }, []);
 
   useEffect(() => {
     const checkDevice = () => {
-      const width = window.innerWidth;
-      const isMobileWidth = width < 768;
-      
-      // Check for low-end device indicators
-      const isLowEnd = 
-        navigator.hardwareConcurrency <= 2 || 
-        (navigator as any).deviceMemory <= 2 ||
-        /Android.*Chrome\/[0-5]/.test(navigator.userAgent) ||
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      setIsMobile(isMobileWidth);
+      const { isMobile: mobile, isLowEnd } = deviceInfo;
+      setIsMobile(mobile);
       setIsLowEndDevice(isLowEnd);
     };
 
     checkDevice();
-    window.addEventListener('resize', checkDevice);
     
-    return () => window.removeEventListener('resize', checkDevice);
-  }, []);
+    const debouncedResize = debounce(checkDevice, 250);
+    window.addEventListener('resize', debouncedResize);
+    
+    return () => window.removeEventListener('resize', debouncedResize);
+  }, [deviceInfo]);
 
-  // Use full-featured visuals for desktop with lazy loading
-  const VisualComponent = React.useMemo(() => {
-    // Use mobile-optimized visual for mobile devices or low-end devices
-    if (isMobile || isLowEndDevice) {
-      return () => <MobileOptimizedVisual type={type} />;
+  // Load desktop component only when needed
+  useEffect(() => {
+    if (!isMobile && !isLowEndDevice && !DesktopComponent) {
+      // Use requestIdleCallback for non-critical loading
+      const loadComponent = () => {
+        loadDesktopVisual(type).then(module => {
+          setDesktopComponent(() => module.default);
+        });
+      };
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadComponent, { timeout: 2000 });
+      } else {
+        setTimeout(loadComponent, 100);
+      }
     }
+  }, [isMobile, isLowEndDevice, type, DesktopComponent]);
 
-    switch (type) {
-      case 'data-engineering':
-        return DataEngineeringVisual;
-      case 'data-visualization':
-        return DataVisualizationVisual;
-      case 'business-intelligence':
-        return BusinessIntelligenceVisual;
-      case 'ai-engineering':
-        return AIEngineeringVisual;
-      case 'cloud-modernization':
-        return CloudModernizationVisual;
-      default:
-        return () => <MobileOptimizedVisual type={type} />;
-    }
-  }, [type, isMobile, isLowEndDevice]);
-
-  // For mobile/low-end devices, render directly without Suspense
+  // Always use mobile-optimized visual for mobile/low-end devices
   if (isMobile || isLowEndDevice) {
-    return <VisualComponent />;
+    return <MobileOptimizedVisual type={type} />;
   }
 
-  return (
-    <React.Suspense fallback={<MobileOptimizedVisual type={type} />}>
-      <VisualComponent />
-    </React.Suspense>
-  );
+  // Use desktop component if loaded, otherwise fallback to mobile
+  if (DesktopComponent) {
+    return (
+      <React.Suspense fallback={<MobileOptimizedVisual type={type} />}>
+        <DesktopComponent />
+      </React.Suspense>
+    );
+  }
+
+  return <MobileOptimizedVisual type={type} />;
 });
+
+// Debounce utility
+function debounce<T extends (...args: any[]) => any>(func: T, wait: number): T {
+  let timeout: NodeJS.Timeout;
+  return ((...args: any[]) => {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(null, args), wait);
+  }) as T;
+}
 
 ResponsiveServiceVisual.displayName = 'ResponsiveServiceVisual';
 

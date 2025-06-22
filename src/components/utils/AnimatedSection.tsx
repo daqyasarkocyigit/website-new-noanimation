@@ -1,4 +1,4 @@
-import React, { ReactNode, memo } from 'react';
+import React, { ReactNode, memo, useMemo } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
@@ -22,54 +22,64 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = memo(({
     rootMargin: '50px 0px',
   });
 
+  // Memoize animation variants
+  const variants = useMemo(() => {
+    if (prefersReducedMotion) {
+      return {
+        initial: { opacity: 1 },
+        animate: { opacity: 1 }
+      };
+    }
+
+    const getInitialState = () => {
+      switch (direction) {
+        case 'up':
+          return { opacity: 0, y: 20 };
+        case 'down':
+          return { opacity: 0, y: -20 };
+        case 'left':
+          return { opacity: 0, x: -20 };
+        case 'right':
+          return { opacity: 0, x: 20 };
+        default:
+          return { opacity: 0 };
+      }
+    };
+
+    const getAnimateState = () => {
+      switch (direction) {
+        case 'up':
+        case 'down':
+          return { opacity: 1, y: 0 };
+        case 'left':
+        case 'right':
+          return { opacity: 1, x: 0 };
+        default:
+          return { opacity: 1 };
+      }
+    };
+
+    return {
+      initial: getInitialState(),
+      animate: getAnimateState()
+    };
+  }, [direction, prefersReducedMotion]);
+
   // Skip animations if reduced motion is preferred
   if (prefersReducedMotion) {
     return <div ref={ref} className={className}>{children}</div>;
   }
 
-  const getInitialState = () => {
-    switch (direction) {
-      case 'up':
-        return { opacity: 0, y: 15 }; // Reduced movement for better performance
-      case 'down':
-        return { opacity: 0, y: -15 };
-      case 'left':
-        return { opacity: 0, x: -15 };
-      case 'right':
-        return { opacity: 0, x: 15 };
-      default:
-        return { opacity: 0 };
-    }
-  };
-
-  const getAnimateState = () => {
-    switch (direction) {
-      case 'up':
-      case 'down':
-        return { opacity: 1, y: 0 };
-      case 'left':
-      case 'right':
-        return { opacity: 1, x: 0 };
-      default:
-        return { opacity: 1 };
-    }
-  };
-
-  const animation = {
-    initial: getInitialState(),
-    animate: getAnimateState(),
-    transition: { 
-      duration: 0.4, // Reduced duration for snappier feel
-      delay: delay,
-      ease: [0.25, 0.46, 0.45, 0.94]
-    }
-  };
-
   return (
     <motion.div
       ref={ref}
-      {...animation}
-      animate={inView ? animation.animate : animation.initial}
+      initial={variants.initial}
+      animate={inView ? variants.animate : variants.initial}
+      transition={{ 
+        duration: 0.5,
+        delay: delay,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }}
       className={className}
     >
       {children}
