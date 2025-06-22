@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, ChevronRight, CheckCircle, Briefcase, Database, Cloud, Brain } from 'lucide-react';
+import { Users, ChevronRight, CheckCircle, Briefcase, Database, Cloud, Brain, Zap } from 'lucide-react';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
 import TalentHeroVisual from '../components/talent/TalentHeroVisual';
@@ -280,7 +280,7 @@ const Talent: React.FC = () => {
               whileHover={{ scale: 1.02 }}
             >
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center mr-4">
                   <Cloud className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Azure Data Platform</h3>
@@ -299,7 +299,7 @@ const Talent: React.FC = () => {
                 ].map((skill, skillIndex) => (
                   <motion.span 
                     key={skillIndex}
-                    className="px-3 py-2 bg-blue-50 text-blue-700 text-sm rounded-lg font-medium border border-blue-100"
+                    className="px-3 py-2 bg-gray-100 text-gray-800 text-sm rounded-lg font-medium border border-gray-200"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
@@ -321,7 +321,7 @@ const Talent: React.FC = () => {
               whileHover={{ scale: 1.02 }}
             >
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center mr-4">
                   <Database className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Microsoft Fabric</h3>
@@ -340,7 +340,7 @@ const Talent: React.FC = () => {
                 ].map((skill, skillIndex) => (
                   <motion.span 
                     key={skillIndex}
-                    className="px-3 py-2 bg-purple-50 text-purple-700 text-sm rounded-lg font-medium border border-purple-100"
+                    className="px-3 py-2 bg-gray-100 text-gray-800 text-sm rounded-lg font-medium border border-gray-200"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
@@ -353,20 +353,63 @@ const Talent: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Data Architecture Guidance */}
+          {/* Databricks Specialization */}
           <motion.div
-            className="bg-gradient-to-br from-brand-red-50 to-orange-50 p-8 rounded-2xl shadow-lg border border-brand-red-100"
+            className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1 mb-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-xl flex items-center justify-center mr-4">
+                <Zap className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Databricks Expertise</h3>
+            </div>
+            <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
+              Advanced Databricks implementation and migration services for unified analytics and data lakehouse architecture
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+              {[
+                "Unity Catalog Migration",
+                "Delta Lake",
+                "MLflow",
+                "Databricks SQL",
+                "Auto Loader",
+                "Structured Streaming",
+                "Databricks Connect",
+                "Cluster Management"
+              ].map((skill, skillIndex) => (
+                <motion.span 
+                  key={skillIndex}
+                  className="px-3 py-2 bg-brand-red-50 text-brand-red-700 text-sm rounded-lg font-medium border border-brand-red-200"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  {skill}
+                </motion.span>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Data Architecture Guidance */}
+          <motion.div
+            className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl shadow-lg border border-gray-700"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
           >
             <div className="text-center mb-8">
-              <div className="w-16 h-16 bg-gradient-to-br from-brand-red-500 to-brand-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Brain className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Data Architecture Guidance</h3>
-              <p className="text-base text-cool-gray-600 leading-relaxed max-w-3xl mx-auto">
+              <h3 className="text-2xl font-bold text-white mb-4">Data Architecture Guidance</h3>
+              <p className="text-base text-gray-300 leading-relaxed max-w-3xl mx-auto">
                 We help you navigate the world of data architectures, align business strategy with data strategy, 
                 design end-to-end analytics solutions, & deliver a better experience with data.
               </p>
@@ -385,14 +428,14 @@ const Talent: React.FC = () => {
               ].map((concept, conceptIndex) => (
                 <motion.div
                   key={conceptIndex}
-                  className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-all duration-300"
+                  className="bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-700 text-center hover:bg-gray-700 transition-all duration-300"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: conceptIndex * 0.05 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <span className="text-sm font-medium text-gray-700">{concept}</span>
+                  <span className="text-sm font-medium text-gray-200">{concept}</span>
                 </motion.div>
               ))}
             </div>
