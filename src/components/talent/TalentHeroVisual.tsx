@@ -6,12 +6,12 @@ const TalentHeroVisual: React.FC = () => {
   const [isTransitioning, setIsTransitioning] = useState(false);
 
   const roles = [
-    { name: 'Backend', gradient: 'from-brand-red-600 to-brand-red-700' },
-    { name: 'Full Stack', gradient: 'from-orange-500 to-red-500' },
-    { name: 'Cloud', gradient: 'from-blue-500 to-indigo-600' },
-    { name: 'AI/ML', gradient: 'from-purple-500 to-pink-600' },
-    { name: 'Data Engineering', gradient: 'from-green-500 to-emerald-600' },
-    { name: 'Frontend', gradient: 'from-cyan-500 to-blue-500' }
+    { name: 'Azure Architect', gradient: 'from-blue-500 to-blue-600' },
+    { name: 'Data Engineer', gradient: 'from-brand-red-600 to-brand-red-700' },
+    { name: 'Fabric Specialist', gradient: 'from-purple-500 to-purple-600' },
+    { name: 'Analytics Expert', gradient: 'from-green-500 to-emerald-600' },
+    { name: 'AI Engineer', gradient: 'from-orange-500 to-red-500' },
+    { name: 'Data Architect', gradient: 'from-cyan-500 to-blue-500' }
   ];
 
   useEffect(() => {
@@ -84,9 +84,9 @@ const TalentHeroVisual: React.FC = () => {
 
       {/* Neural Network Effect */}
       <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-brand-red-500 rounded-full animate-ping" />
-        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-brand-red-500 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-1/4 left-3/4 w-1 h-1 bg-brand-red-500 rounded-full animate-ping" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-brand-red-500 rounded-full animate-pulse" />
+        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-brand-red-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/4 left-3/4 w-1 h-1 bg-brand-red-500 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
 
       {/* Main Content Container */}
@@ -101,9 +101,9 @@ const TalentHeroVisual: React.FC = () => {
           </div>
           
           <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
-            Hire Top <span className="text-brand-red-400">Tech</span> Talent
+            Hire Top <span className="text-brand-red-400">Data</span> Experts
           </h2>
-          <p className="text-sm text-gray-300">Exceptional professionals for extraordinary projects</p>
+          <p className="text-sm text-gray-300">Azure & Microsoft Fabric specialists</p>
         </div>
 
         {/* Role Showcase */}
@@ -127,7 +127,7 @@ const TalentHeroVisual: React.FC = () => {
               >
                 <h3 
                   className={`
-                    text-3xl sm:text-4xl lg:text-5xl font-bold text-center whitespace-nowrap
+                    text-2xl sm:text-3xl lg:text-4xl font-bold text-center whitespace-nowrap
                     bg-gradient-to-r ${role.gradient} bg-clip-text text-transparent
                   `}
                   style={{

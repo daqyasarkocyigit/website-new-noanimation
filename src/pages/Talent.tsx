@@ -69,14 +69,14 @@ const Talent: React.FC = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: 0.5 }}
                   >
-                    Tech
+                    Data
                   </motion.span>
                   <motion.span
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.7 }}
                   >
-                    {' '}Talent
+                    {' '}Experts
                   </motion.span>
                 </motion.h1>
                 
@@ -109,12 +109,12 @@ const Talent: React.FC = () => {
                     className="mb-8"
                   >
                     <p className="text-base sm:text-lg lg:text-xl text-gray-800 leading-relaxed mb-6 font-medium">
-                      Find the right professionals for your business needs. We offer flexible staffing 
-                      solutions to help you build and scale your technical teams effectively.
+                      Find the right data professionals for your business needs. We specialize in Azure Data Platform 
+                      and Microsoft Fabric solutions to help you build modern data architectures.
                     </p>
                     <p className="text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed">
-                      Our talent network includes highly skilled professionals in data engineering, 
-                      cloud architecture, AI development, and business intelligence.
+                      Our talent network includes certified Azure architects, data engineers, and analytics specialists 
+                      who can guide your data transformation journey.
                     </p>
                   </motion.div>
                   
@@ -215,7 +215,7 @@ const Talent: React.FC = () => {
             </motion.span>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6">The DAQ Talent Advantage</h2>
             <p className="text-base sm:text-lg lg:text-xl text-cool-gray-600 leading-relaxed">
-              Our talent solutions are designed to provide you with the highest quality professionals
+              Our talent solutions are designed to provide you with the highest quality data professionals
               while minimizing your recruitment and management overhead.
             </p>
           </AnimatedSection>
@@ -224,18 +224,18 @@ const Talent: React.FC = () => {
             {[
               {
                 icon: <Users size={28} />,
-                title: "Pre-Vetted Talent Pool",
-                description: "All our professionals undergo rigorous technical assessments and background checks."
+                title: "Certified Azure Experts",
+                description: "All our professionals are Microsoft certified with proven experience in Azure Data Platform services."
               },
               {
                 icon: <Briefcase size={28} />,
-                title: "Industry Expertise",
-                description: "Specialists with experience in finance, healthcare, retail, and more."
+                title: "Modern Data Architecture",
+                description: "Specialists in Data Lakes, Lakehouses, Medallion Architecture, and Real-time Intelligence solutions."
               },
               {
                 icon: <CheckCircle size={28} />,
-                title: "Satisfaction Guarantee",
-                description: "We stand behind our placements with a comprehensive satisfaction guarantee."
+                title: "End-to-End Solutions",
+                description: "From strategy alignment to implementation, we deliver complete data transformation experiences."
               }
             ].map((item, index) => (
               <motion.div
@@ -258,77 +258,145 @@ const Talent: React.FC = () => {
         </div>
       </section>
 
-      {/* Talent Specializations Section with Enhanced Grid */}
+      {/* Talent Specializations Section with Azure Focus */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6">Our Talent Specializations</h2>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6">Our Data Expertise</h2>
             <p className="text-base sm:text-lg lg:text-xl text-cool-gray-600 leading-relaxed">
-              We provide top-tier professionals across all major technology domains to meet your specific business needs.
+              We provide certified professionals specializing in Microsoft Azure Data Platform and modern data architectures 
+              to transform your business with data-driven insights.
             </p>
           </AnimatedSection>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Data Engineering",
-                description: "Build robust data pipelines and infrastructure",
-                skills: ["Python", "Apache Spark", "Kafka", "AWS/GCP/Azure"]
-              },
-              {
-                title: "AI/ML Engineering", 
-                description: "Develop and deploy machine learning solutions",
-                skills: ["TensorFlow", "PyTorch", "MLOps", "Deep Learning"]
-              },
-              {
-                title: "Cloud Architecture",
-                description: "Design scalable cloud infrastructure",
-                skills: ["AWS", "Kubernetes", "Docker", "Terraform"]
-              },
-              {
-                title: "Frontend Development",
-                description: "Create engaging user interfaces",
-                skills: ["React", "TypeScript", "Next.js", "Tailwind CSS"]
-              },
-              {
-                title: "Backend Development",
-                description: "Build robust server-side applications",
-                skills: ["Node.js", "Python", "Go", "PostgreSQL"]
-              },
-              {
-                title: "Business Intelligence",
-                description: "Transform data into actionable insights",
-                skills: ["Tableau", "Power BI", "SQL", "Data Modeling"]
-              }
-            ].map((specialization, index) => (
-              <motion.div
-                key={index}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-              >
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{specialization.title}</h3>
-                <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">{specialization.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {specialization.skills.map((skill, skillIndex) => (
-                    <motion.span 
-                      key={skillIndex}
-                      className="px-3 py-1.5 bg-gray-100 text-gray-700 text-sm rounded-full font-medium"
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
-                      viewport={{ once: true }}
-                    >
-                      {skill}
-                    </motion.span>
-                  ))}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            {/* Azure Data Platform */}
+            <motion.div
+              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4">
+                  <span className="text-white font-bold text-lg">Az</span>
                 </div>
-              </motion.div>
-            ))}
+                <h3 className="text-2xl font-bold text-gray-900">Azure Data Platform</h3>
+              </div>
+              <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
+                Architecting & designing data solutions using Azure Data Platform services (Platform-as-a-Service)
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  "Synapse Analytics",
+                  "Data Lake Gen2", 
+                  "Purview",
+                  "SQL Database",
+                  "Databricks",
+                  "Data Factory"
+                ].map((skill, skillIndex) => (
+                  <motion.span 
+                    key={skillIndex}
+                    className="px-3 py-2 bg-blue-50 text-blue-700 text-sm rounded-lg font-medium border border-blue-100"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Microsoft Fabric */}
+            <motion.div
+              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
+                  <span className="text-white font-bold text-lg">Fb</span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900">Microsoft Fabric</h3>
+              </div>
+              <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
+                Architecting & designing data solutions using the Microsoft Fabric analytics platform (Software-as-a-Service)
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  "Lakehouse",
+                  "Warehouse",
+                  "Realtime Intelligence", 
+                  "Digital Twin",
+                  "AI Integration",
+                  "Administration & Governance"
+                ].map((skill, skillIndex) => (
+                  <motion.span 
+                    key={skillIndex}
+                    className="px-3 py-2 bg-purple-50 text-purple-700 text-sm rounded-lg font-medium border border-purple-100"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
           </div>
+
+          {/* Data Architecture Guidance */}
+          <motion.div
+            className="bg-gradient-to-br from-brand-red-50 to-orange-50 p-8 rounded-2xl shadow-lg border border-brand-red-100"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 bg-gradient-to-br from-brand-red-500 to-brand-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <span className="text-white font-bold text-xl">🎯</span>
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">Data Architecture Guidance</h3>
+              <p className="text-base text-cool-gray-600 leading-relaxed max-w-3xl mx-auto">
+                We help you navigate the world of data architectures, align business strategy with data strategy, 
+                design end-to-end analytics solutions, & deliver a better experience with data.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              {[
+                "Modern Data Warehouse",
+                "Data Lakes", 
+                "Lakehouses",
+                "Medallion Architecture",
+                "Real-time Intelligence",
+                "Data Architecture",
+                "Data Mesh",
+                "Generative AI"
+              ].map((concept, conceptIndex) => (
+                <motion.div
+                  key={conceptIndex}
+                  className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-all duration-300"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: conceptIndex * 0.05 }}
+                  viewport={{ once: true }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <span className="text-sm font-medium text-gray-700">{concept}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
