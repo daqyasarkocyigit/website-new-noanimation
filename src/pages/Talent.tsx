@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, ChevronRight, CheckCircle, Briefcase, Database, Cloud, Brain, Zap } from 'lucide-react';
+import { Users, ChevronRight, CheckCircle, Briefcase, Database, Cloud, Brain, Zap, BarChart3 } from 'lucide-react';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
 import TalentHeroVisual from '../components/talent/TalentHeroVisual';
@@ -353,55 +353,100 @@ const Talent: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Databricks Specialization */}
-          <motion.div
-            className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1 mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
-          >
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-xl flex items-center justify-center mr-4">
-                <Zap className="w-6 h-6 text-white" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            {/* Databricks Expertise - Now with Azure colors */}
+            <motion.div
+              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center mr-4">
+                  <Zap className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900">Databricks Expertise</h3>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Databricks Expertise</h3>
-            </div>
-            <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
-              Advanced Databricks implementation and migration services for unified analytics and data lakehouse architecture
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-              {[
-                "Unity Catalog Migration",
-                "Delta Lake",
-                "MLflow",
-                "Databricks SQL",
-                "Auto Loader",
-                "Structured Streaming",
-                "Databricks Connect",
-                "Cluster Management"
-              ].map((skill, skillIndex) => (
-                <motion.span 
-                  key={skillIndex}
-                  className="px-3 py-2 bg-brand-red-50 text-brand-red-700 text-sm rounded-lg font-medium border border-brand-red-200"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  {skill}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
+              <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
+                Advanced Databricks implementation and migration services for unified analytics and data lakehouse architecture
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  "Unity Catalog Migration",
+                  "Delta Lake",
+                  "MLflow",
+                  "Databricks SQL",
+                  "Auto Loader",
+                  "Structured Streaming",
+                  "Databricks Connect",
+                  "Cluster Management"
+                ].map((skill, skillIndex) => (
+                  <motion.span 
+                    key={skillIndex}
+                    className="px-3 py-2 bg-gray-100 text-gray-800 text-sm rounded-lg font-medium border border-gray-200"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Power BI - New Section */}
+            <motion.div
+              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="flex items-center mb-6">
+                <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center mr-4">
+                  <BarChart3 className="w-6 h-6 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900">Power BI</h3>
+              </div>
+              <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
+                Business intelligence and data visualization solutions using Microsoft Power BI platform
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  "Dashboard Development",
+                  "Data Modeling",
+                  "DAX Optimization",
+                  "Power Query",
+                  "Report Automation",
+                  "Premium Features",
+                  "Embedded Analytics",
+                  "Performance Tuning"
+                ].map((skill, skillIndex) => (
+                  <motion.span 
+                    key={skillIndex}
+                    className="px-3 py-2 bg-gray-100 text-gray-800 text-sm rounded-lg font-medium border border-gray-200"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
 
           {/* Data Architecture Guidance */}
           <motion.div
             className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl shadow-lg border border-gray-700"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
             <div className="text-center mb-8">
