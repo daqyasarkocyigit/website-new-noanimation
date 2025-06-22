@@ -7,7 +7,7 @@ const TalentHeroVisual: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveNode((prev) => (prev + 1) % 6);
-    }, 2000);
+    }, 2500); // Slightly slower for better readability
     return () => clearInterval(interval);
   }, []);
 
@@ -37,30 +37,30 @@ const TalentHeroVisual: React.FC = () => {
       </div>
 
       {/* Main container - Centered content */}
-      <div className="relative w-full h-full flex items-center justify-center p-3 sm:p-4 lg:p-6 z-10">
+      <div className="relative w-full h-full flex items-center justify-center p-4 sm:p-6 lg:p-8 z-10">
         
         {/* Central talent hub - Responsive sizing */}
-        <div className="relative w-full max-w-lg lg:max-w-2xl">
+        <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-2xl">
           
           {/* Center DAQ logo/brand */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
             <div className="relative">
-              <div className="w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl sm:rounded-3xl flex items-center justify-center shadow-2xl">
-                <Users className="w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 text-white" />
+              <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl flex items-center justify-center shadow-2xl">
+                <Users className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-white" />
               </div>
               {/* Pulse effect */}
-              <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-brand-red-600/20 animate-ping" />
+              <div className="absolute inset-0 rounded-2xl bg-brand-red-600/20 animate-ping" />
             </div>
           </div>
 
-          {/* Orbiting talent nodes - NO CONNECTION LINES, CLEAN DESIGN */}
-          <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 mx-auto z-20">
+          {/* Orbiting talent nodes - FIXED POSITIONING AND TEXT VISIBILITY */}
+          <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-72 lg:h-72 mx-auto z-20">
             {talentNodes.map((node, index) => {
               const Icon = node.icon;
               const angle = (index * 60) * Math.PI / 180;
               const radius = typeof window !== 'undefined' 
-                ? (window.innerWidth < 640 ? 85 : window.innerWidth < 1024 ? 100 : 130)
-                : 100;
+                ? (window.innerWidth < 640 ? 70 : window.innerWidth < 1024 ? 85 : 110)
+                : 85;
               const x = Math.cos(angle) * radius;
               const y = Math.sin(angle) * radius;
               
@@ -79,48 +79,66 @@ const TalentHeroVisual: React.FC = () => {
                   `}>
                     {/* Node circle */}
                     <div className={`
-                      w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-xl flex items-center justify-center transition-all duration-300
+                      w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl flex items-center justify-center transition-all duration-300
                       ${activeNode === index 
                         ? 'bg-gradient-to-br from-brand-red-500 to-brand-red-600 shadow-lg shadow-brand-red-500/30' 
                         : 'bg-gray-800/80 border border-gray-600'
                       }
                     `}>
-                      <Icon className={`w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 ${
+                      <Icon className={`w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 ${
                         activeNode === index ? 'text-white' : 'text-gray-400'
                       }`} />
                     </div>
                     
-                    {/* Label with maximum visibility */}
+                    {/* FIXED LABEL POSITIONING - NO OVERLAP */}
                     {activeNode === index && (
                       <div 
-                        className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none"
+                        className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap pointer-events-none z-[2000]"
                         style={{ 
-                          zIndex: 2000,
-                          top: y > 0 ? '-3.5rem' : '4rem' // Position above or below based on node position
+                          // Position labels outside the visual container to prevent overlap
+                          top: y < -30 ? '-4rem' : y > 30 ? '3.5rem' : (x < 0 ? '-0.5rem' : '-0.5rem'),
+                          left: y >= -30 && y <= 30 ? (x < 0 ? '-6rem' : '3rem') : '50%',
+                          transform: y >= -30 && y <= 30 ? 'translateY(-50%)' : 'translateX(-50%)'
                         }}
                       >
                         <div className="relative">
-                          {/* Strong background for maximum contrast */}
-                          <div className="absolute inset-0 bg-gray-900 rounded-lg shadow-2xl blur-sm"></div>
-                          <div className="absolute inset-0 bg-gray-800 rounded-lg"></div>
+                          {/* Multiple background layers for maximum contrast */}
+                          <div className="absolute inset-0 bg-black rounded-lg shadow-2xl blur-sm opacity-80"></div>
+                          <div className="absolute inset-0 bg-gray-900 rounded-lg shadow-xl"></div>
                           <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg border border-gray-600"></div>
                           
-                          {/* Text with maximum contrast */}
-                          <span className="relative block text-sm sm:text-base text-white font-bold px-4 py-2 rounded-lg">
+                          {/* Text with maximum contrast and larger size */}
+                          <span className="relative block text-xs sm:text-sm lg:text-base text-white font-bold px-3 py-2 rounded-lg">
                             {node.label}
                           </span>
                           
-                          {/* Arrow pointing to node */}
-                          <div 
-                            className="absolute left-1/2 -translate-x-1/2 w-0 h-0"
-                            style={{
-                              top: y > 0 ? '100%' : '-8px',
-                              borderLeft: '8px solid transparent',
-                              borderRight: '8px solid transparent',
-                              borderTop: y > 0 ? 'none' : '8px solid rgb(31, 41, 55)',
-                              borderBottom: y > 0 ? '8px solid rgb(31, 41, 55)' : 'none'
-                            }}
-                          />
+                          {/* Arrow pointing to node - only for side labels */}
+                          {y >= -30 && y <= 30 && (
+                            <div 
+                              className="absolute top-1/2 -translate-y-1/2 w-0 h-0"
+                              style={{
+                                left: x < 0 ? '100%' : '-8px',
+                                borderTop: '6px solid transparent',
+                                borderBottom: '6px solid transparent',
+                                borderLeft: x < 0 ? 'none' : '8px solid rgb(31, 41, 55)',
+                                borderRight: x < 0 ? '8px solid rgb(31, 41, 55)' : 'none'
+                              }}
+                            />
+                          )}
+                          
+                          {/* Arrow for top/bottom labels */}
+                          {(y < -30 || y > 30) && (
+                            <div 
+                              className="absolute left-1/2 -translate-x-1/2 w-0 h-0"
+                              style={{
+                                top: y < -30 ? '100%' : '-8px',
+                                borderLeft: '6px solid transparent',
+                                borderRight: '6px solid transparent',
+                                borderTop: y < -30 ? 'none' : '8px solid rgb(31, 41, 55)',
+                                borderBottom: y < -30 ? '8px solid rgb(31, 41, 55)' : 'none'
+                              }}
+                            />
+                          )}
                         </div>
                       </div>
                     )}
@@ -128,6 +146,20 @@ const TalentHeroVisual: React.FC = () => {
                 </div>
               );
             })}
+          </div>
+
+          {/* Additional visual indicators at the bottom */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-30">
+            {talentNodes.map((_, index) => (
+              <div
+                key={index}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  activeNode === index 
+                    ? 'bg-brand-red-500 scale-125' 
+                    : 'bg-gray-600'
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>
