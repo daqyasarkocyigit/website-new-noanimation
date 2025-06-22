@@ -38,47 +38,30 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'router': ['react-router-dom'],
-          'animations': ['framer-motion', 'react-intersection-observer'],
-          'ui': ['lucide-react', 'react-type-animation'],
-          'home': ['./src/pages/Home.tsx', './src/components/home/Hero.tsx'],
-          'services': ['./src/pages/Services.tsx'],
-          'about': ['./src/pages/About.tsx'],
-          'contact': ['./src/pages/Contact.tsx'],
-          'talent': ['./src/pages/Talent.tsx']
+          'vendor': ['react', 'react-dom', 'react-router-dom'],
+          'ui': ['framer-motion', 'lucide-react', 'react-intersection-observer', 'react-type-animation']
         },
       },
     },
-    cssCodeSplit: true,
+    cssCodeSplit: false,
     minify: 'terser',
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
         pure_funcs: ['console.log', 'console.info', 'console.debug'],
-        passes: 3,
-        unsafe_arrows: true,
-        unsafe_methods: true,
-        unsafe_proto: true,
-        unsafe_regexp: true,
-        unsafe_undefined: true,
-        reduce_vars: true,
-        collapse_vars: true,
-        hoist_funs: true,
-        hoist_vars: true
+        passes: 2
       },
       mangle: {
-        safari10: true,
-        toplevel: true
+        safari10: true
       },
       format: {
         comments: false
       }
     },
     reportCompressedSize: false,
-    chunkSizeWarningLimit: 500,
-    assetsInlineLimit: 4096,
+    chunkSizeWarningLimit: 1000,
+    assetsInlineLimit: 8192,
     sourcemap: false,
     target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari13.1'],
   },

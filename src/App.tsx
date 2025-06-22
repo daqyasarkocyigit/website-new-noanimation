@@ -1,61 +1,19 @@
-import React, { lazy, Suspense, memo } from 'react';
+import React, { memo } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/utils/ScrollToTop';
 import CookieConsent from './components/utils/CookieConsent';
 
-// Lazy load all pages with preloading strategy
-const Home = lazy(() => 
-  import('./pages/Home').then(module => {
-    // Preload likely next pages
-    import('./pages/Services');
-    import('./pages/About');
-    return module;
-  })
-);
-
-const Services = lazy(() => 
-  import('./pages/Services').then(module => {
-    // Preload service visuals
-    import('./components/services/ResponsiveServiceVisual');
-    return module;
-  })
-);
-
-const About = lazy(() => import('./pages/About'));
-const Contact = lazy(() => import('./pages/Contact'));
-const Talent = lazy(() => import('./pages/Talent'));
-
-// Lazy load legal pages (less priority)
-const Privacy = lazy(() => import('./pages/Privacy'));
-const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
-const Terms = lazy(() => import('./pages/Terms'));
-
-// Optimized page loading component with skeleton
-const PageLoader = memo(() => (
-  <div className="min-h-screen flex items-center justify-center bg-gray-50">
-    <div className="text-center max-w-md mx-auto p-6">
-      {/* Skeleton loader */}
-      <div className="space-y-4 animate-pulse">
-        <div className="h-8 bg-gray-200 rounded w-3/4 mx-auto" />
-        <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto" />
-        <div className="space-y-2">
-          <div className="h-3 bg-gray-200 rounded" />
-          <div className="h-3 bg-gray-200 rounded w-5/6 mx-auto" />
-        </div>
-      </div>
-      
-      {/* Loading indicator */}
-      <div className="mt-6">
-        <div className="w-6 h-6 border-2 border-gray-300 border-t-brand-red-600 rounded-full animate-spin mx-auto" />
-        <p className="text-sm text-gray-500 mt-2">Loading page...</p>
-      </div>
-    </div>
-  </div>
-));
-
-PageLoader.displayName = 'PageLoader';
+// Import pages directly for faster loading
+import Home from './pages/Home';
+import Services from './pages/Services';
+import About from './pages/About';
+import Contact from './pages/Contact';
+import Talent from './pages/Talent';
+import Privacy from './pages/Privacy';
+import CookiePolicy from './pages/CookiePolicy';
+import Terms from './pages/Terms';
 
 // Error boundary for route-level errors
 class RouteErrorBoundary extends React.Component<
@@ -99,17 +57,6 @@ class RouteErrorBoundary extends React.Component<
   }
 }
 
-// Memoized route wrapper
-const RouteWrapper = memo(({ children }: { children: React.ReactNode }) => (
-  <RouteErrorBoundary>
-    <Suspense fallback={<PageLoader />}>
-      {children}
-    </Suspense>
-  </RouteErrorBoundary>
-));
-
-RouteWrapper.displayName = 'RouteWrapper';
-
 function App() {
   return (
     <BrowserRouter>
@@ -119,44 +66,44 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={
-              <RouteWrapper>
+              <RouteErrorBoundary>
                 <Home />
-              </RouteWrapper>
+              </RouteErrorBoundary>
             } />
             <Route path="/services" element={
-              <RouteWrapper>
+              <RouteErrorBoundary>
                 <Services />
-              </RouteWrapper>
+              </RouteErrorBoundary>
             } />
             <Route path="/about" element={
-              <RouteWrapper>
+              <RouteErrorBoundary>
                 <About />
-              </RouteWrapper>
+              </RouteErrorBoundary>
             } />
             <Route path="/contact" element={
-              <RouteWrapper>
+              <RouteErrorBoundary>
                 <Contact />
-              </RouteWrapper>
+              </RouteErrorBoundary>
             } />
             <Route path="/talent" element={
-              <RouteWrapper>
+              <RouteErrorBoundary>
                 <Talent />
-              </RouteWrapper>
+              </RouteErrorBoundary>
             } />
             <Route path="/privacy" element={
-              <RouteWrapper>
+              <RouteErrorBoundary>
                 <Privacy />
-              </RouteWrapper>
+              </RouteErrorBoundary>
             } />
             <Route path="/cookie-policy" element={
-              <RouteWrapper>
+              <RouteErrorBoundary>
                 <CookiePolicy />
-              </RouteWrapper>
+              </RouteErrorBoundary>
             } />
             <Route path="/terms" element={
-              <RouteWrapper>
+              <RouteErrorBoundary>
                 <Terms />
-              </RouteWrapper>
+              </RouteErrorBoundary>
             } />
             {/* 404 Route */}
             <Route path="*" element={

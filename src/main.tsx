@@ -1,42 +1,7 @@
-import React, { StrictMode, Suspense, lazy } from 'react';
+import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
-
-// Lazy load the main App component with preload
-const App = lazy(() => 
-  import('./App.tsx').then(module => {
-    // Preload critical components
-    import('./components/home/Hero');
-    import('./components/layout/Navbar');
-    import('./components/layout/Footer');
-    return module;
-  })
-);
-
-// Optimized loading component with skeleton
-const LoadingFallback = () => (
-  <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-    <div className="text-center max-w-md mx-auto p-6">
-      {/* Logo skeleton */}
-      <div className="w-16 h-16 bg-gray-200 rounded-xl mx-auto mb-4 animate-pulse" />
-      
-      {/* Loading spinner */}
-      <div className="w-8 h-8 border-2 border-gray-300 border-t-brand-red-600 rounded-full animate-spin mx-auto mb-4" />
-      
-      {/* Text skeleton */}
-      <div className="space-y-2">
-        <div className="h-4 bg-gray-200 rounded animate-pulse" />
-        <div className="h-3 bg-gray-200 rounded w-3/4 mx-auto animate-pulse" />
-      </div>
-      
-      {/* Fallback text */}
-      <div className="mt-4">
-        <div className="text-brand-red-600 text-lg font-medium">Loading DAQ Consulting...</div>
-        <div className="text-gray-500 text-sm mt-1">AI & Data Engineering Experts</div>
-      </div>
-    </div>
-  </div>
-);
+import App from './App';
 
 // Enhanced error boundary with retry functionality
 class ErrorBoundary extends React.Component<
@@ -54,14 +19,6 @@ class ErrorBoundary extends React.Component<
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error('Application error:', error, errorInfo);
-    
-    // Report to analytics if available
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'exception', {
-        description: error.toString(),
-        fatal: true
-      });
-    }
   }
 
   handleRetry = () => {
@@ -104,15 +61,6 @@ class ErrorBoundary extends React.Component<
                 Refresh Page
               </button>
             </div>
-            
-            {this.state.error && (
-              <details className="mt-4 text-left">
-                <summary className="text-sm text-gray-500 cursor-pointer">Error details</summary>
-                <pre className="text-xs text-gray-400 mt-2 p-2 bg-gray-100 rounded overflow-auto">
-                  {this.state.error.toString()}
-                </pre>
-              </details>
-            )}
           </div>
         </div>
       );
@@ -121,18 +69,6 @@ class ErrorBoundary extends React.Component<
     return this.props.children;
   }
 }
-
-// Performance monitoring
-const reportWebVitals = (metric: any) => {
-  if (typeof gtag !== 'undefined') {
-    gtag('event', metric.name, {
-      value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
-      event_category: 'Web Vitals',
-      event_label: metric.id,
-      non_interaction: true,
-    });
-  }
-};
 
 // Initialize app
 const initializeApp = async () => {
@@ -154,29 +90,16 @@ const initializeApp = async () => {
     return;
   }
 
-  // Create root and render
+  // Create root and render immediately
   const root = createRoot(rootElement);
   
   root.render(
     <StrictMode>
       <ErrorBoundary>
-        <Suspense fallback={<LoadingFallback />}>
-          <App />
-        </Suspense>
+        <App />
       </ErrorBoundary>
     </StrictMode>
   );
-
-  // Report web vitals
-  if (import.meta.env.PROD) {
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(reportWebVitals);
-      getFID(reportWebVitals);
-      getFCP(reportWebVitals);
-      getLCP(reportWebVitals);
-      getTTFB(reportWebVitals);
-    });
-  }
 };
 
 // Enhanced service worker registration
@@ -190,88 +113,14 @@ const registerServiceWorker = async () => {
       
       console.log('SW registered: ', registration);
       
-      // Check for updates
-      registration.addEventListener('updatefound', () => {
-        const newWorker = registration.installing;
-        if (newWorker) {
-          newWorker.addEventListener('statechange', () => {
-            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-              // New content available
-              if (confirm('New version available! Refresh to update?')) {
-                window.location.reload();
-              }
-            }
-          });
-        }
-      });
-      
     } catch (error) {
       console.log('SW registration failed: ', error);
     }
   }
 };
 
-// Preload critical resources
-const preloadCriticalResources = () => {
-  const criticalResources = [
-    { href: 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap', as: 'style' },
-    { href: 'https://i.imgur.com/mCWcjTw.png', as: 'image' }
-  ];
-  
-  criticalResources.forEach(resource => {
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.as = resource.as;
-    link.href = resource.href;
-    if (resource.as === 'style') {
-      link.onload = () => {
-        link.rel = 'stylesheet';
-      };
-    }
-    document.head.appendChild(link);
-  });
-};
-
-// Resource hints for better performance
-const addResourceHints = () => {
-  const hints = [
-    { rel: 'dns-prefetch', href: 'https://fonts.googleapis.com' },
-    { rel: 'dns-prefetch', href: 'https://fonts.gstatic.com' },
-    { rel: 'dns-prefetch', href: 'https://images.pexels.com' },
-    { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-    { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' }
-  ];
-  
-  hints.forEach(hint => {
-    const link = document.createElement('link');
-    link.rel = hint.rel;
-    link.href = hint.href;
-    if (hint.crossorigin) link.crossOrigin = hint.crossorigin;
-    document.head.appendChild(link);
-  });
-};
-
-// Initialize everything
-const bootstrap = async () => {
-  // Add resource hints immediately
-  addResourceHints();
-  
-  // Preload critical resources
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', preloadCriticalResources);
-  } else {
-    preloadCriticalResources();
-  }
-  
-  // Register service worker
-  window.addEventListener('load', registerServiceWorker);
-  
-  // Initialize app
-  await initializeApp();
-};
-
-// Start the application
-bootstrap().catch(error => {
+// Start the application immediately
+initializeApp().catch(error => {
   console.error('Failed to bootstrap application:', error);
   
   // Fallback error display
@@ -287,3 +136,6 @@ bootstrap().catch(error => {
     </div>
   `;
 });
+
+// Register service worker after app loads
+window.addEventListener('load', registerServiceWorker);

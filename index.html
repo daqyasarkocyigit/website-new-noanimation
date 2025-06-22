@@ -34,7 +34,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="preload" as="image" href="https://i.imgur.com/mCWcjTw.png">
-    <link rel="dns-prefetch" href="https://images.pexels.com">
     
     <!-- PWA -->
     <link rel="manifest" href="/manifest.json">
@@ -110,40 +109,16 @@
         -moz-osx-font-smoothing: grayscale;
       }
       
-      .loading-fallback {
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #f9fafb;
+      /* Immediate loading state */
+      #root {
+        min-height: 100vh;
       }
       
-      .loading-spinner {
-        width: 2rem;
-        height: 2rem;
-        border: 2px solid #e5e7eb;
-        border-top: 2px solid #ef4444;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-      
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
+      /* Remove loading fallback since we're loading directly */
     </style>
   </head>
   <body>
-    <div id="root">
-      <!-- Fallback loading state -->
-      <div class="loading-fallback">
-        <div style="text-align: center;">
-          <div class="loading-spinner" style="margin: 0 auto 1rem;"></div>
-          <div style="color: #ef4444; font-size: 1.125rem; font-weight: 500;">Loading DAQ Consulting...</div>
-          <div style="color: #6b7280; font-size: 0.875rem; margin-top: 0.5rem;">AI & Data Engineering Experts</div>
-        </div>
-      </div>
-    </div>
+    <div id="root"></div>
     
     <!-- Fallback for users with JavaScript disabled -->
     <noscript>
