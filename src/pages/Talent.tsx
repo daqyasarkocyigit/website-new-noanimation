@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, ChevronRight, CheckCircle, Briefcase } from 'lucide-react';
+import { Users, ChevronRight, CheckCircle, Briefcase, Database, Cloud, Brain } from 'lucide-react';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
 import TalentHeroVisual from '../components/talent/TalentHeroVisual';
@@ -281,7 +281,7 @@ const Talent: React.FC = () => {
             >
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mr-4">
-                  <span className="text-white font-bold text-lg">Az</span>
+                  <Cloud className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Azure Data Platform</h3>
               </div>
@@ -322,7 +322,7 @@ const Talent: React.FC = () => {
             >
               <div className="flex items-center mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mr-4">
-                  <span className="text-white font-bold text-lg">Fb</span>
+                  <Database className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold text-gray-900">Microsoft Fabric</h3>
               </div>
@@ -363,7 +363,7 @@ const Talent: React.FC = () => {
           >
             <div className="text-center mb-8">
               <div className="w-16 h-16 bg-gradient-to-br from-brand-red-500 to-brand-red-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">🎯</span>
+                <Brain className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-bold text-gray-900 mb-4">Data Architecture Guidance</h3>
               <p className="text-base text-cool-gray-600 leading-relaxed max-w-3xl mx-auto">
