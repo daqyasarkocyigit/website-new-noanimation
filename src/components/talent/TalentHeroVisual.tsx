@@ -1,175 +1,216 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Code, Database, Cloud, Brain, Layers, GitBranch, Terminal, Sparkles, Shield } from 'lucide-react';
+import { Users } from 'lucide-react';
 
 const TalentHeroVisual: React.FC = () => {
-  const [activeNode, setActiveNode] = useState(0);
-  
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveNode((prev) => (prev + 1) % 6);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, []);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const talentNodes = [
-    { icon: Code, label: 'Frontend', color: 'from-blue-500 to-cyan-500' },
-    { icon: Database, label: 'Data Eng.', color: 'from-green-500 to-emerald-500' }, // Shortened
-    { icon: Brain, label: 'AI/ML', color: 'from-purple-500 to-pink-500' },
-    { icon: Cloud, label: 'Cloud', color: 'from-yellow-500 to-orange-500' },
-    { icon: Layers, label: 'Full Stack', color: 'from-indigo-500 to-purple-500' },
-    { icon: Terminal, label: 'Backend', color: 'from-gray-500 to-gray-600' }
+  const roles = [
+    { name: 'Backend', gradient: 'from-brand-red-600 to-brand-red-700' },
+    { name: 'Full Stack', gradient: 'from-orange-500 to-red-500' },
+    { name: 'Cloud', gradient: 'from-blue-500 to-indigo-600' },
+    { name: 'AI/ML', gradient: 'from-purple-500 to-pink-600' },
+    { name: 'Data Engineering', gradient: 'from-green-500 to-emerald-600' },
+    { name: 'Frontend', gradient: 'from-cyan-500 to-blue-500' }
   ];
 
-  // REDUCED RADIUS - Labels stay inside the visual
-  const getNodePosition = (index: number) => {
-    const angle = (index * 60) * Math.PI / 180;
-    // MUCH SMALLER RADIUS to keep everything inside
-    const radius = typeof window !== 'undefined' 
-      ? (window.innerWidth < 640 ? 60 : window.innerWidth < 1024 ? 70 : 80)
-      : 70;
-    const x = Math.cos(angle) * radius;
-    const y = Math.sin(angle) * radius;
-    return { x, y };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextRole();
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [currentIndex]);
+
+  const nextRole = () => {
+    if (isTransitioning) return;
+    
+    setIsTransitioning(true);
+    
+    setTimeout(() => {
+      setCurrentIndex((prev) => (prev + 1) % roles.length);
+      setIsTransitioning(false);
+    }, 300);
   };
 
-  // COMPACT LABEL POSITIONING - All inside the container
-  const getLabelPosition = (index: number, nodeX: number, nodeY: number) => {
-    const positions = [
-      // Frontend (top) - label above
-      { top: '-2.5rem', left: '50%', transform: 'translateX(-50%)' },
-      // Data Eng. (right) - label to the right but inside
-      { top: '50%', left: '3rem', transform: 'translateY(-50%)' },
-      // AI/ML (bottom-right) - label below
-      { top: '2.5rem', left: '0rem', transform: 'translateX(-25%)' },
-      // Cloud (bottom-left) - label below
-      { top: '2.5rem', left: '0rem', transform: 'translateX(-75%)' },
-      // Full Stack (left) - label to the left but inside
-      { top: '50%', left: '-3rem', transform: 'translate(-100%, -50%)' },
-      // Backend (top) - label above
-      { top: '-2.5rem', left: '50%', transform: 'translateX(-50%)' }
-    ];
+  const navigateToRole = (index: number) => {
+    if (isTransitioning || index === currentIndex) return;
     
-    return positions[index];
+    setIsTransitioning(true);
+    
+    setTimeout(() => {
+      setCurrentIndex(index);
+      setIsTransitioning(false);
+    }, 300);
+  };
+
+  // Generate particles for background effect
+  const generateParticles = () => {
+    return Array.from({ length: 12 }, (_, i) => (
+      <div
+        key={i}
+        className="absolute w-1 h-1 bg-brand-red-500/30 rounded-full animate-pulse"
+        style={{
+          left: `${Math.random() * 100}%`,
+          top: `${Math.random() * 100}%`,
+          animationDelay: `${Math.random() * 3}s`,
+          animationDuration: `${2 + Math.random() * 2}s`
+        }}
+      />
+    ));
   };
 
   return (
     <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl relative">
-      {/* Minimal background pattern */}
-      <div className="absolute inset-0 opacity-5">
+      
+      {/* Background Pattern - Site Compatible */}
+      <div className="absolute inset-0 opacity-10">
         <div 
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)
+              linear-gradient(rgba(239,68,68,0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(239,68,68,0.1) 1px, transparent 1px)
             `,
-            backgroundSize: '50px 50px'
+            backgroundSize: '40px 40px'
           }}
         />
       </div>
 
-      {/* Main container - INCREASED PADDING to contain labels */}
-      <div className="relative w-full h-full flex items-center justify-center p-12 sm:p-16 lg:p-20 z-10">
-        
-        {/* Central talent hub - SMALLER container to fit labels inside */}
-        <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
-          
-          {/* Center DAQ logo/brand */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
-            <div className="relative">
-              <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl flex items-center justify-center shadow-2xl">
-                <Users className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
-              </div>
-              {/* Pulse effect */}
-              <div className="absolute inset-0 rounded-2xl bg-brand-red-600/20 animate-ping" />
-            </div>
-          </div>
+      {/* Floating Particles */}
+      <div className="absolute inset-0 pointer-events-none">
+        {generateParticles()}
+      </div>
 
-          {/* Orbiting talent nodes - COMPACT LAYOUT */}
-          <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 mx-auto z-20">
-            {talentNodes.map((node, index) => {
-              const Icon = node.icon;
-              const { x, y } = getNodePosition(index);
-              const labelPos = getLabelPosition(index, x, y);
-              
-              return (
-                <div
-                  key={index}
-                  className="absolute top-1/2 left-1/2 transition-all duration-700"
+      {/* Neural Network Effect */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-brand-red-500 rounded-full animate-ping" />
+        <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-brand-red-500 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/4 left-3/4 w-1 h-1 bg-brand-red-500 rounded-full animate-ping" style={{ animationDelay: '2s' }} />
+      </div>
+
+      {/* Main Content Container */}
+      <div className="relative w-full h-full flex flex-col justify-center items-center p-6 sm:p-8 lg:p-12 z-10">
+        
+        {/* Brand Section */}
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="relative mb-6">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl flex items-center justify-center shadow-2xl mx-auto">
+              <Users className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
+            </div>
+            {/* Pulse effect */}
+            <div className="absolute inset-0 rounded-2xl bg-brand-red-600/20 animate-ping" />
+          </div>
+          
+          <h2 className="text-xl sm:text-2xl font-bold text-white mb-2">
+            Hire Top <span className="text-brand-red-400">Tech</span> Talent
+          </h2>
+          <p className="text-sm text-gray-300">Exceptional professionals for extraordinary projects</p>
+        </div>
+
+        {/* Role Showcase */}
+        <div className="relative h-24 sm:h-32 flex items-center justify-center mb-12 sm:mb-16">
+          <div className="relative">
+            {roles.map((role, index) => (
+              <div
+                key={index}
+                className={`
+                  absolute inset-0 flex items-center justify-center transition-all duration-700 ease-in-out
+                  ${index === currentIndex 
+                    ? 'opacity-100 transform translate-y-0 scale-100' 
+                    : isTransitioning && index === (currentIndex - 1 + roles.length) % roles.length
+                      ? 'opacity-0 transform -translate-y-8 scale-95'
+                      : 'opacity-0 transform translate-y-8 scale-95'
+                  }
+                `}
+                style={{
+                  filter: index === currentIndex ? 'drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5))' : 'none'
+                }}
+              >
+                <h3 
+                  className={`
+                    text-3xl sm:text-4xl lg:text-5xl font-bold text-center whitespace-nowrap
+                    bg-gradient-to-r ${role.gradient} bg-clip-text text-transparent
+                  `}
                   style={{
-                    transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px))`,
-                    zIndex: activeNode === index ? 1000 : 100
+                    backgroundClip: 'text',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
                   }}
                 >
-                  <div className={`
-                    relative transition-all duration-500 cursor-pointer
-                    ${activeNode === index ? 'scale-110' : 'scale-90'}
-                  `}>
-                    {/* Node circle - SMALLER SIZE */}
-                    <div className={`
-                      w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-lg flex items-center justify-center transition-all duration-300
-                      ${activeNode === index 
-                        ? 'bg-gradient-to-br from-brand-red-500 to-brand-red-600 shadow-lg shadow-brand-red-500/30' 
-                        : 'bg-gray-800/80 border border-gray-600'
-                      }
-                    `}>
-                      <Icon className={`w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 ${
-                        activeNode === index ? 'text-white' : 'text-gray-400'
-                      }`} />
-                    </div>
-                    
-                    {/* COMPACT LABELS - ALWAYS INSIDE THE VISUAL */}
-                    {activeNode === index && (
-                      <div 
-                        className="absolute whitespace-nowrap pointer-events-none z-[2000]"
-                        style={labelPos}
-                      >
-                        <div className="relative">
-                          {/* Strong background for contrast */}
-                          <div className="absolute inset-0 bg-black rounded shadow-xl blur-sm opacity-95"></div>
-                          <div className="absolute inset-0 bg-gray-900 rounded shadow-lg border border-gray-700"></div>
-                          
-                          {/* SMALLER FONT - Fits better inside */}
-                          <span className="relative block text-xs text-white font-bold px-2 py-1 rounded">
-                            {node.label}
-                          </span>
-                          
-                          {/* Simple arrow pointing to node */}
-                          <div 
-                            className="absolute w-0 h-0"
-                            style={{
-                              top: index === 0 || index === 5 ? '100%' : // Top nodes - arrow down
-                                   index === 1 || index === 2 ? '-4px' : // Right nodes - arrow up
-                                   index === 3 || index === 4 ? '-4px' : '-4px', // Left nodes - arrow up
-                              left: '50%',
-                              transform: 'translateX(-50%)',
-                              borderTop: index === 0 || index === 5 ? 'none' : '4px solid rgb(31, 41, 55)',
-                              borderBottom: index === 0 || index === 5 ? '4px solid rgb(31, 41, 55)' : 'none',
-                              borderLeft: '4px solid transparent',
-                              borderRight: '4px solid transparent'
-                            }}
-                          />
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+                  {role.name}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Progress Bar */}
+        <div className="w-full max-w-xs mb-8">
+          <div className="h-2 bg-gray-700/50 rounded-full overflow-hidden backdrop-blur-sm border border-gray-600/30">
+            <div 
+              className={`
+                h-full bg-gradient-to-r ${roles[currentIndex].gradient} rounded-full transition-all duration-700 ease-out
+                shadow-lg
+              `}
+              style={{ 
+                width: `${((currentIndex + 1) / roles.length) * 100}%`,
+                boxShadow: '0 0 20px rgba(239, 68, 68, 0.4)'
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Navigation Dots */}
+        <div className="flex gap-3 items-center">
+          {roles.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => navigateToRole(index)}
+              className={`
+                w-3 h-3 rounded-full transition-all duration-500 cursor-pointer
+                ${index === currentIndex 
+                  ? 'bg-gradient-to-r from-brand-red-500 to-brand-red-600 scale-125 shadow-lg' 
+                  : 'bg-gray-600/50 hover:bg-gray-500/70 border border-gray-500/30'
+                }
+              `}
+              style={{
+                boxShadow: index === currentIndex ? '0 0 15px rgba(239, 68, 68, 0.5)' : 'none'
+              }}
+            />
+          ))}
+        </div>
+
+        {/* Stats Section */}
+        <div className="grid grid-cols-3 gap-4 mt-12 sm:mt-16 w-full max-w-md">
+          <div className="text-center p-3 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
+            <div className="text-lg sm:text-xl font-bold text-white">2.8K+</div>
+            <div className="text-xs text-gray-400">Professionals</div>
+          </div>
+          <div className="text-center p-3 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
+            <div className="text-lg sm:text-xl font-bold text-white">98.5%</div>
+            <div className="text-xs text-gray-400">Success Rate</div>
+          </div>
+          <div className="text-center p-3 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10">
+            <div className="text-lg sm:text-xl font-bold text-white">1.2w</div>
+            <div className="text-xs text-gray-400">Avg Deploy</div>
           </div>
         </div>
       </div>
 
+      {/* Hologram Scan Effect */}
+      <div 
+        className="absolute top-0 left-0 w-full h-full pointer-events-none z-20"
+        style={{
+          background: 'linear-gradient(90deg, transparent 0%, rgba(239, 68, 68, 0.05) 50%, transparent 100%)',
+          animation: 'hologramScan 8s linear infinite'
+        }}
+      />
+
       <style jsx>{`
-        @keyframes float {
-          0%, 100% { 
-            transform: translateY(0) translateX(0); 
-            opacity: 0.2;
-          }
-          50% { 
-            transform: translateY(-8px) translateX(4px); 
-            opacity: 0.4;
-          }
+        @keyframes hologramScan {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
         }
       `}</style>
     </div>
