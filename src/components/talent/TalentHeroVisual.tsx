@@ -13,51 +13,43 @@ const TalentHeroVisual: React.FC = () => {
 
   const talentNodes = [
     { icon: Code, label: 'Frontend', color: 'from-blue-500 to-cyan-500' },
-    { icon: Database, label: 'Data Engineering', color: 'from-green-500 to-emerald-500' },
+    { icon: Database, label: 'Data Eng.', color: 'from-green-500 to-emerald-500' }, // Shortened
     { icon: Brain, label: 'AI/ML', color: 'from-purple-500 to-pink-500' },
     { icon: Cloud, label: 'Cloud', color: 'from-yellow-500 to-orange-500' },
     { icon: Layers, label: 'Full Stack', color: 'from-indigo-500 to-purple-500' },
     { icon: Terminal, label: 'Backend', color: 'from-gray-500 to-gray-600' }
   ];
 
-  // Optimized positioning for perfect alignment and readability
-  const getLabelPosition = (index: number) => {
+  // REDUCED RADIUS - Labels stay inside the visual
+  const getNodePosition = (index: number) => {
+    const angle = (index * 60) * Math.PI / 180;
+    // MUCH SMALLER RADIUS to keep everything inside
+    const radius = typeof window !== 'undefined' 
+      ? (window.innerWidth < 640 ? 60 : window.innerWidth < 1024 ? 70 : 80)
+      : 70;
+    const x = Math.cos(angle) * radius;
+    const y = Math.sin(angle) * radius;
+    return { x, y };
+  };
+
+  // COMPACT LABEL POSITIONING - All inside the container
+  const getLabelPosition = (index: number, nodeX: number, nodeY: number) => {
     const positions = [
-      // Frontend (top)
-      { top: '-3.5rem', left: '50%', transform: 'translateX(-50%)' },
-      // Data Engineering (right) - FIXED POSITIONING
-      { top: '50%', left: '5rem', transform: 'translateY(-50%)' },
-      // AI/ML (bottom-right)
-      { top: '3.5rem', left: '2rem', transform: 'none' },
-      // Cloud (bottom-left)
-      { top: '3.5rem', left: '-2rem', transform: 'translateX(-100%)' },
-      // Full Stack (left)
-      { top: '50%', left: '-5rem', transform: 'translate(-100%, -50%)' },
-      // Backend (top)
-      { top: '-3.5rem', left: '50%', transform: 'translateX(-50%)' }
+      // Frontend (top) - label above
+      { top: '-2.5rem', left: '50%', transform: 'translateX(-50%)' },
+      // Data Eng. (right) - label to the right but inside
+      { top: '50%', left: '3rem', transform: 'translateY(-50%)' },
+      // AI/ML (bottom-right) - label below
+      { top: '2.5rem', left: '0rem', transform: 'translateX(-25%)' },
+      // Cloud (bottom-left) - label below
+      { top: '2.5rem', left: '0rem', transform: 'translateX(-75%)' },
+      // Full Stack (left) - label to the left but inside
+      { top: '50%', left: '-3rem', transform: 'translate(-100%, -50%)' },
+      // Backend (top) - label above
+      { top: '-2.5rem', left: '50%', transform: 'translateX(-50%)' }
     ];
     
     return positions[index];
-  };
-
-  // Optimized arrow positioning
-  const getArrowPosition = (index: number) => {
-    const arrows = [
-      // Frontend - arrow down
-      { top: '100%', left: '50%', transform: 'translateX(-50%)', borderTop: 'none', borderBottom: '6px solid rgb(31, 41, 55)', borderLeft: '5px solid transparent', borderRight: '5px solid transparent' },
-      // Data Engineering - arrow left
-      { top: '50%', left: '-6px', transform: 'translateY(-50%)', borderLeft: '6px solid rgb(31, 41, 55)', borderTop: '5px solid transparent', borderBottom: '5px solid transparent' },
-      // AI/ML - arrow up-left
-      { top: '-6px', left: '20%', transform: 'translateX(-50%)', borderTop: '6px solid rgb(31, 41, 55)', borderLeft: '5px solid transparent', borderRight: '5px solid transparent' },
-      // Cloud - arrow up-right
-      { top: '-6px', left: '80%', transform: 'translateX(-50%)', borderTop: '6px solid rgb(31, 41, 55)', borderLeft: '5px solid transparent', borderRight: '5px solid transparent' },
-      // Full Stack - arrow right
-      { top: '50%', left: '100%', transform: 'translateY(-50%)', borderRight: '6px solid rgb(31, 41, 55)', borderTop: '5px solid transparent', borderBottom: '5px solid transparent' },
-      // Backend - arrow down
-      { top: '100%', left: '50%', transform: 'translateX(-50%)', borderTop: 'none', borderBottom: '6px solid rgb(31, 41, 55)', borderLeft: '5px solid transparent', borderRight: '5px solid transparent' }
-    ];
-    
-    return arrows[index];
   };
 
   return (
@@ -76,36 +68,29 @@ const TalentHeroVisual: React.FC = () => {
         />
       </div>
 
-      {/* Main container - Centered content with more space */}
-      <div className="relative w-full h-full flex items-center justify-center p-8 sm:p-10 lg:p-16 z-10">
+      {/* Main container - INCREASED PADDING to contain labels */}
+      <div className="relative w-full h-full flex items-center justify-center p-12 sm:p-16 lg:p-20 z-10">
         
-        {/* Central talent hub - Larger container for better spacing */}
-        <div className="relative w-full max-w-md sm:max-w-lg lg:max-w-xl xl:max-w-2xl">
+        {/* Central talent hub - SMALLER container to fit labels inside */}
+        <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-md">
           
           {/* Center DAQ logo/brand */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
             <div className="relative">
-              <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl flex items-center justify-center shadow-2xl">
-                <Users className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-white" />
+              <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl flex items-center justify-center shadow-2xl">
+                <Users className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
               </div>
               {/* Pulse effect */}
               <div className="absolute inset-0 rounded-2xl bg-brand-red-600/20 animate-ping" />
             </div>
           </div>
 
-          {/* Orbiting talent nodes - EXPANDED RADIUS FOR BETTER SPACING */}
-          <div className="relative w-56 h-56 sm:w-64 sm:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 mx-auto z-20">
+          {/* Orbiting talent nodes - COMPACT LAYOUT */}
+          <div className="relative w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56 mx-auto z-20">
             {talentNodes.map((node, index) => {
               const Icon = node.icon;
-              const angle = (index * 60) * Math.PI / 180;
-              const radius = typeof window !== 'undefined' 
-                ? (window.innerWidth < 640 ? 85 : window.innerWidth < 1024 ? 100 : window.innerWidth < 1280 ? 120 : 140)
-                : 100;
-              const x = Math.cos(angle) * radius;
-              const y = Math.sin(angle) * radius;
-              
-              const labelPos = getLabelPosition(index);
-              const arrowPos = getArrowPosition(index);
+              const { x, y } = getNodePosition(index);
+              const labelPos = getLabelPosition(index, x, y);
               
               return (
                 <div
@@ -120,39 +105,49 @@ const TalentHeroVisual: React.FC = () => {
                     relative transition-all duration-500 cursor-pointer
                     ${activeNode === index ? 'scale-110' : 'scale-90'}
                   `}>
-                    {/* Node circle */}
+                    {/* Node circle - SMALLER SIZE */}
                     <div className={`
-                      w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-xl flex items-center justify-center transition-all duration-300
+                      w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-lg flex items-center justify-center transition-all duration-300
                       ${activeNode === index 
                         ? 'bg-gradient-to-br from-brand-red-500 to-brand-red-600 shadow-lg shadow-brand-red-500/30' 
                         : 'bg-gray-800/80 border border-gray-600'
                       }
                     `}>
-                      <Icon className={`w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 ${
+                      <Icon className={`w-3 h-3 sm:w-4 sm:h-4 lg:w-5 lg:h-5 ${
                         activeNode === index ? 'text-white' : 'text-gray-400'
                       }`} />
                     </div>
                     
-                    {/* PERFECTLY ALIGNED LABELS - SMALLER FONT, BETTER POSITIONING */}
+                    {/* COMPACT LABELS - ALWAYS INSIDE THE VISUAL */}
                     {activeNode === index && (
                       <div 
                         className="absolute whitespace-nowrap pointer-events-none z-[2000]"
                         style={labelPos}
                       >
                         <div className="relative">
-                          {/* Enhanced background for maximum contrast */}
-                          <div className="absolute inset-0 bg-black rounded-md shadow-2xl blur-sm opacity-90"></div>
-                          <div className="absolute inset-0 bg-gray-900 rounded-md shadow-xl border border-gray-700"></div>
+                          {/* Strong background for contrast */}
+                          <div className="absolute inset-0 bg-black rounded shadow-xl blur-sm opacity-95"></div>
+                          <div className="absolute inset-0 bg-gray-900 rounded shadow-lg border border-gray-700"></div>
                           
-                          {/* SMALLER FONT SIZE for better fit */}
-                          <span className="relative block text-xs sm:text-sm text-white font-bold px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-md">
+                          {/* SMALLER FONT - Fits better inside */}
+                          <span className="relative block text-xs text-white font-bold px-2 py-1 rounded">
                             {node.label}
                           </span>
                           
-                          {/* Custom arrow for each position */}
+                          {/* Simple arrow pointing to node */}
                           <div 
                             className="absolute w-0 h-0"
-                            style={arrowPos}
+                            style={{
+                              top: index === 0 || index === 5 ? '100%' : // Top nodes - arrow down
+                                   index === 1 || index === 2 ? '-4px' : // Right nodes - arrow up
+                                   index === 3 || index === 4 ? '-4px' : '-4px', // Left nodes - arrow up
+                              left: '50%',
+                              transform: 'translateX(-50%)',
+                              borderTop: index === 0 || index === 5 ? 'none' : '4px solid rgb(31, 41, 55)',
+                              borderBottom: index === 0 || index === 5 ? '4px solid rgb(31, 41, 55)' : 'none',
+                              borderLeft: '4px solid transparent',
+                              borderRight: '4px solid transparent'
+                            }}
                           />
                         </div>
                       </div>
@@ -162,8 +157,6 @@ const TalentHeroVisual: React.FC = () => {
               );
             })}
           </div>
-
-          {/* REMOVED: Progress indicators (6 dots) completely removed */}
         </div>
       </div>
 
