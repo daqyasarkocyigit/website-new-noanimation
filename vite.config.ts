@@ -17,7 +17,8 @@ export default defineConfig({
   resolve: {
     alias: {
       'react': path.resolve('./node_modules/react'),
-      'react-dom': path.resolve('./node_modules/react-dom')
+      'react-dom': path.resolve('./node_modules/react-dom'),
+      'react-router-dom': path.resolve('./node_modules/react-router-dom')
     }
   },
   optimizeDeps: {
