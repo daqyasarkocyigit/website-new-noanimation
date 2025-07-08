@@ -24,7 +24,7 @@ export const dataEngineeringCaseStudies: CaseStudyData[] = [
   {
     id: 'grocery-retailer-analytics',
     title: 'Modernizing Analytics for a Leading Grocery Retailer',
-    image: '/azure-minimal-architecture.svg',
+    image: 'https://i.imgur.com/nLYo7PE.png',
     industry: 'Retail',
     duration: '10 weeks',
     teamSize: '5 specialists',
