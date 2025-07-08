@@ -1,0 +1,252 @@
+<svg viewBox="0 0 1400 820" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1400" height="820" fill="#ffffff"/>
+  
+  <!-- Header with company branding -->
+  <rect x="0" y="0" width="1400" height="60" fill="#f8f9fa"/>
+  <text x="50" y="35" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="600" fill="#dc2626">DAQ</text>
+  <text x="700" y="35" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="500" fill="#374151">
+    Azure Data Pipeline Architecture - Medallion Architecture with Unity Catalog
+  </text>
+  
+  <!-- Azure logo placeholder -->
+  <circle cx="320" cy="30" r="12" fill="#0078d4"/>
+  <text x="340" y="35" font-family="Inter, Arial, sans-serif" font-size="14" fill="#0078d4">Azure</text>
+  
+  <!-- Main container boxes with professional styling -->
+  <!-- Data Sources -->
+  <g id="data-sources">
+    <rect x="50" y="90" width="220" height="320" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" rx="8"/>
+    <rect x="50" y="90" width="220" height="45" fill="#f8f9fa" stroke="#e5e7eb" stroke-width="2" rx="8 8 0 0"/>
+    <text x="160" y="118" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#374151">DATA SOURCES</text>
+    
+    <!-- Source Systems with professional styling -->
+    <rect x="70" y="150" width="180" height="55" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="75" y="155" width="20" height="20" fill="#6b7280" rx="3"/>
+    <text x="105" y="175" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="500" fill="#111827">SQL Server</text>
+    <text x="105" y="190" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">(On-premises)</text>
+    
+    <rect x="70" y="215" width="180" height="55" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="75" y="220" width="20" height="20" fill="#6b7280" rx="3"/>
+    <text x="105" y="240" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="500" fill="#111827">ERP Systems</text>
+    <text x="105" y="255" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">(SAP, Oracle)</text>
+    
+    <rect x="70" y="280" width="180" height="55" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="75" y="285" width="20" height="20" fill="#6b7280" rx="3"/>
+    <text x="105" y="305" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="500" fill="#111827">External APIs</text>
+    <text x="105" y="320" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">(REST/SOAP)</text>
+    
+    <rect x="70" y="345" width="180" height="55" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="75" y="350" width="20" height="20" fill="#6b7280" rx="3"/>
+    <text x="105" y="370" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="500" fill="#111827">Flat Files</text>
+    <text x="105" y="385" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">(CSV, Excel)</text>
+  </g>
+  
+  <!-- Ingest -->
+  <g id="ingest">
+    <rect x="300" y="90" width="220" height="320" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" rx="8"/>
+    <rect x="300" y="90" width="220" height="45" fill="#f8f9fa" stroke="#e5e7eb" stroke-width="2" rx="8 8 0 0"/>
+    <text x="410" y="118" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#374151">INGEST</text>
+    
+    <!-- Azure Data Factory -->
+    <rect x="320" y="150" width="180" height="110" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="325" y="155" width="20" height="20" fill="#0078d4" rx="3"/>
+    <text x="355" y="175" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">Azure Data Factory</text>
+    <text x="330" y="195" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• Master Pipeline</text>
+    <text x="330" y="210" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• Bronze Ingestion</text>
+    <text x="330" y="225" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• Metadata-driven</text>
+    <text x="330" y="240" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• Self-hosted IR</text>
+    
+    <!-- Control Database -->
+    <rect x="320" y="280" width="180" height="110" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="325" y="285" width="20" height="20" fill="#374151" rx="3"/>
+    <text x="355" y="305" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">Control Database</text>
+    <text x="330" y="325" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• Tables Config</text>
+    <text x="330" y="340" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• Processing Status</text>
+    <text x="330" y="355" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• UC Metadata</text>
+  </g>
+  
+  <!-- Process & Store -->
+  <g id="process-store">
+    <rect x="550" y="90" width="420" height="320" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" rx="8"/>
+    <rect x="550" y="90" width="420" height="45" fill="#f8f9fa" stroke="#e5e7eb" stroke-width="2" rx="8 8 0 0"/>
+    <text x="760" y="118" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#374151">PROCESS &amp; STORE</text>
+    
+    <!-- Databricks -->
+    <rect x="570" y="150" width="380" height="85" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="575" y="155" width="20" height="20" fill="#dc2626" rx="3"/>
+    <text x="605" y="175" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">Azure Databricks</text>
+    <text x="580" y="195" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• bronze_to_silver.py notebook</text>
+    <text x="580" y="210" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• Delta operations &amp; ACID transactions</text>
+    <text x="580" y="225" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• Data quality &amp; deduplication</text>
+    
+    <!-- Storage Layers with professional medallion colors -->
+    <rect x="570" y="255" width="115" height="130" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="570" y="255" width="115" height="30" fill="#8b5a2b" stroke="#8b5a2b" rx="6 6 0 0"/>
+    <text x="627" y="275" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Bronze</text>
+    <text x="627" y="300" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">Raw Data</text>
+    <text x="627" y="315" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">Parquet</text>
+    <text x="627" y="330" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">Partitioned</text>
+    <text x="627" y="345" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">by Date</text>
+    
+    <rect x="695" y="255" width="115" height="130" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="695" y="255" width="115" height="30" fill="#9ca3af" stroke="#9ca3af" rx="6 6 0 0"/>
+    <text x="752" y="275" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Silver</text>
+    <text x="752" y="300" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">Cleaned</text>
+    <text x="752" y="315" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">Delta Lake</text>
+    <text x="752" y="330" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">Validated</text>
+    <text x="752" y="345" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">Deduplicated</text>
+    
+    <rect x="820" y="255" width="115" height="130" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="820" y="255" width="115" height="30" fill="#d4af37" stroke="#d4af37" rx="6 6 0 0"/>
+    <text x="877" y="275" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="600" fill="#ffffff">Gold</text>
+    <text x="877" y="300" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">Business</text>
+    <text x="877" y="315" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">KPIs</text>
+    <text x="877" y="330" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">Aggregated</text>
+    <text x="877" y="345" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">Analytics</text>
+    
+    <!-- Azure Data Lake Storage -->
+    <rect x="570" y="390" width="380" height="15" fill="#f3f4f6" stroke="#d1d5db" stroke-width="1" rx="3"/>
+    <text x="760" y="400" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">Azure Data Lake Storage Gen2</text>
+  </g>
+  
+  <!-- Serve -->
+  <g id="serve">
+    <rect x="1000" y="90" width="200" height="320" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" rx="8"/>
+    <rect x="1000" y="90" width="200" height="45" fill="#f8f9fa" stroke="#e5e7eb" stroke-width="2" rx="8 8 0 0"/>
+    <text x="1100" y="118" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#374151">SERVE</text>
+    
+    <!-- Unity Catalog -->
+    <rect x="1020" y="150" width="160" height="95" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="1025" y="155" width="20" height="20" fill="#dc2626" rx="3"/>
+    <text x="1055" y="175" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="600" fill="#111827">Unity Catalog</text>
+    <text x="1030" y="195" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• main.bronze_raw</text>
+    <text x="1030" y="210" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• main.silver_prod</text>
+    <text x="1030" y="225" font-family="Inter, Arial, sans-serif" font-size="10" fill="#6b7280">• main.gold_analytics</text>
+    
+    <!-- Consumption -->
+    <rect x="1020" y="265" width="160" height="45" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="1025" y="270" width="20" height="20" fill="#f59e0b" rx="3"/>
+    <text x="1055" y="285" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="500" fill="#111827">Power BI</text>
+    
+    <rect x="1020" y="325" width="160" height="45" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="1025" y="330" width="20" height="20" fill="#0078d4" rx="3"/>
+    <text x="1055" y="345" font-family="Inter, Arial, sans-serif" font-size="12" font-weight="500" fill="#111827">Synapse Analytics</text>
+  </g>
+  
+  <!-- Governance -->
+  <g id="governance">
+    <rect x="1230" y="90" width="140" height="320" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" rx="8"/>
+    <rect x="1230" y="90" width="140" height="45" fill="#f8f9fa" stroke="#e5e7eb" stroke-width="2" rx="8 8 0 0"/>
+    <text x="1300" y="118" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#374151">GOVERNANCE</text>
+    
+    <rect x="1240" y="150" width="120" height="50" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="1245" y="155" width="15" height="15" fill="#0078d4" rx="2"/>
+    <text x="1270" y="170" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="500" fill="#111827">Azure Key Vault</text>
+    <text x="1270" y="185" font-family="Inter, Arial, sans-serif" font-size="9" fill="#6b7280">Secrets</text>
+    
+    <rect x="1240" y="210" width="120" height="50" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="1245" y="215" width="15" height="15" fill="#0078d4" rx="2"/>
+    <text x="1270" y="230" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="500" fill="#111827">Azure AD</text>
+    <text x="1270" y="245" font-family="Inter, Arial, sans-serif" font-size="9" fill="#6b7280">RBAC</text>
+    
+    <rect x="1240" y="270" width="120" height="50" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="1245" y="275" width="15" height="15" fill="#dc2626" rx="2"/>
+    <text x="1270" y="290" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="500" fill="#111827">Data Lineage</text>
+    <text x="1270" y="305" font-family="Inter, Arial, sans-serif" font-size="9" fill="#6b7280">Unity Catalog</text>
+    
+    <rect x="1240" y="330" width="120" height="50" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="1245" y="335" width="15" height="15" fill="#10b981" rx="2"/>
+    <text x="1270" y="350" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="500" fill="#111827">Monitoring</text>
+    <text x="1270" y="365" font-family="Inter, Arial, sans-serif" font-size="9" fill="#6b7280">App Insights</text>
+  </g>
+  
+  <!-- CI/CD Pipeline -->
+  <g id="cicd">
+    <rect x="50" y="440" width="1320" height="100" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" rx="8"/>
+    <rect x="50" y="440" width="1320" height="35" fill="#f8f9fa" stroke="#e5e7eb" stroke-width="2" rx="8 8 0 0"/>
+    <text x="710" y="462" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#374151">CI/CD PIPELINE - AZURE DEVOPS</text>
+    
+    <!-- Pipeline stages -->
+    <rect x="100" y="490" width="200" height="35" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="105" y="495" width="15" height="15" fill="#6b7280" rx="2"/>
+    <text x="130" y="510" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">Development ADF</text>
+    
+    <rect x="350" y="490" width="200" height="35" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="355" y="495" width="15" height="15" fill="#6b7280" rx="2"/>
+    <text x="380" y="510" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">adf_publish Branch</text>
+    
+    <rect x="600" y="490" width="200" height="35" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="605" y="495" width="15" height="15" fill="#f59e0b" rx="2"/>
+    <text x="630" y="510" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">Test Environment</text>
+    
+    <rect x="850" y="490" width="200" height="35" fill="#ffffff" stroke="#d1d5db" stroke-width="1" rx="6"/>
+    <rect x="855" y="495" width="15" height="15" fill="#dc2626" rx="2"/>
+    <text x="880" y="510" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">Approval Gates</text>
+    
+    <rect x="1100" y="490" width="200" height="35" fill="#374151" stroke="#374151" stroke-width="1" rx="6"/>
+    <rect x="1105" y="495" width="15" height="15" fill="#ffffff" rx="2"/>
+    <text x="1130" y="510" font-family="Inter, Arial, sans-serif" font-size="11" fill="#ffffff">Production ADF</text>
+  </g>
+  
+  <!-- Key Features -->
+  <g id="features">
+    <rect x="50" y="565" width="1320" height="180" fill="#ffffff" stroke="#e5e7eb" stroke-width="2" rx="8"/>
+    <rect x="50" y="565" width="1320" height="35" fill="#f8f9fa" stroke="#e5e7eb" stroke-width="2" rx="8 8 0 0"/>
+    <text x="710" y="587" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" fill="#374151">KEY ARCHITECTURE FEATURES</text>
+    
+    <!-- Three columns of features -->
+    <g id="column1">
+      <text x="80" y="625" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Metadata-driven pipeline orchestration</text>
+      <text x="80" y="645" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Delta Lake ACID transactions</text>
+      <text x="80" y="665" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Unity Catalog centralized governance</text>
+      <text x="80" y="685" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• External locations (ABFSS paths)</text>
+      <text x="80" y="705" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Self-hosted Integration Runtime</text>
+      <text x="80" y="725" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• External &amp; Managed table support</text>
+    </g>
+    
+    <g id="column2">
+      <text x="500" y="625" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Parallel processing with batch control</text>
+      <text x="500" y="645" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Automated data quality validation</text>
+      <text x="500" y="665" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Comprehensive error handling</text>
+      <text x="500" y="685" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Row-level security support</text>
+      <text x="500" y="705" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Incremental &amp; full load patterns</text>
+      <text x="500" y="725" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• SET/UNSET MANAGED conversions</text>
+    </g>
+    
+    <g id="column3">
+      <text x="920" y="625" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• ARM template deployment</text>
+      <text x="920" y="645" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Environment-specific configurations</text>
+      <text x="920" y="665" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Automated trigger management</text>
+      <text x="920" y="685" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Zero-downtime deployments</text>
+      <text x="920" y="705" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Production approval workflows</text>
+      <text x="920" y="725" font-family="Inter, Arial, sans-serif" font-size="11" fill="#111827">• Intelligent table type selection</text>
+    </g>
+  </g>
+  
+  <!-- Footer -->
+  <rect x="0" y="760" width="1400" height="60" fill="#f8f9fa"/>
+  <text x="710" y="790" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="11" fill="#6b7280">
+    © 2025 DAQ Consulting - Enterprise Analytics Architecture
+  </text>
+  
+  <!-- Flow arrows with professional styling -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="2.5" orient="auto">
+      <path d="M0,0 L0,5 L8,2.5 z" fill="#6b7280"/>
+    </marker>
+  </defs>
+  
+  <!-- Data flow connections -->
+  <path d="M 270 252 L 300 252" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 520 252 L 550 252" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 685 320 L 695 320" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 810 320 L 820 320" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  <path d="M 935 320 L 1000 320" stroke="#6b7280" stroke-width="2" marker-end="url(#arrow)"/>
+  
+  <!-- CI/CD flow -->
+  <path d="M 300 507 L 350 507" stroke="#6b7280" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 550 507 L 600 507" stroke="#6b7280" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 800 507 L 850 507" stroke="#6b7280" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 1050 507 L 1100 507" stroke="#6b7280" stroke-width="1" marker-end="url(#arrow)"/>
+</svg>
