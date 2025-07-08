@@ -128,26 +128,18 @@ export const dataEngineeringCaseStudies: CaseStudyData[] = [
       {
         title: 'Performance Optimization',
         content: 'Implemented caching strategies and data partitioning to ensure consistent performance during peak usage periods.'
-      }
-    ],
-    results: [
-      'Report loading times reduced from minutes to seconds',
-      'Eliminated timeout errors during peak usage',
-      'Enabled support for hundreds of concurrent users',
-      'Achieved consistent sub-second query response times',
-      'Reduced infrastructure costs by 40%',
-      'Automated data refresh cycles replacing manual processes'
-    ],
-    technologies: [
-      'Azure Data Factory',
-      'Azure Databricks',
-      'Delta Lake',
-      'Synapse Serverless SQL Pool',
-      'Power BI',
-      'Azure Data Lake Storage'
-    ]
-  }
-];
+      },
+      {
+        title: 'Technology Stack',
+        content: 'Implemented modern cloud services:',
+        subsections: [
+          {
+            title: 'Ingestion',
+            content: 'Azure Data Factory with metadata-driven pipelines'
+          },
+          {
+            title: 'Processing',
+            content: 'Azure Databricks with Delta Lake optimization'
           },
           {
             title: 'Serving',
