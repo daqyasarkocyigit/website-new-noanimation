@@ -2,8 +2,14 @@ import React from 'react';
 
 const AzureArchitectureDiagram: React.FC = () => {
   return (
-    <div className="w-full h-full bg-white rounded-lg overflow-hidden">
-      <svg viewBox="0 0 1400 820" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
+    <div className="w-full bg-white rounded-lg overflow-hidden">
+      <div className="w-full overflow-x-auto">
+        <svg 
+          viewBox="0 0 1400 820" 
+          xmlns="http://www.w3.org/2000/svg" 
+          className="w-full h-auto min-w-[800px] lg:min-w-[1200px]"
+          preserveAspectRatio="xMidYMid meet"
+        >
         {/* Background */}
         <rect width="1400" height="820" fill="#f5f5f5"/>
         
@@ -222,6 +228,7 @@ const AzureArchitectureDiagram: React.FC = () => {
         <path d="M 800 500 L 850 500" stroke="#666" strokeWidth="1" markerEnd="url(#arrow)"/>
         <path d="M 1050 500 L 1100 500" stroke="#666" strokeWidth="1" markerEnd="url(#arrow)"/>
       </svg>
+      </div>
     </div>
   );
 };

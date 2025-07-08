@@ -53,10 +53,10 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
     >
       {/* Header */}
       {(image || ArchitectureDiagram) && (
-        <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden bg-gray-50">
+        <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] overflow-hidden bg-gray-50">
           {ArchitectureDiagram ? (
-            <div className="w-full h-full flex items-center justify-center bg-white p-4">
-              <div className="w-full h-full max-w-6xl">
+            <div className="w-full h-full flex items-center justify-center bg-white p-2 sm:p-4">
+              <div className="w-full h-full">
                 <ArchitectureDiagram />
               </div>
             </div>
