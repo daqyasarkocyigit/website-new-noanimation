@@ -43,7 +43,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
 
   return (
     <motion.div
-      className="bg-white border border-gray-200 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden"
+      className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay }}
@@ -51,7 +51,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
     >
       {/* Header */}
       {image && (
-        <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden bg-gray-100">
+        <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden bg-gray-50">
           <img 
             src={image} 
             alt={title}
@@ -65,34 +65,35 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
               console.log('Image loaded successfully:', image);
             }}
           />
-          {/* Fallback görsel yüklenemezse */}
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-200" style={{ zIndex: -1 }}>
-            <div className="text-center text-gray-500">
+          {/* Fallback if image fails to load */}
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-100" style={{ zIndex: -1 }}>
+            <div className="text-center text-gray-400">
               <svg className="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
               </svg>
               <p className="text-sm">Architecture Diagram</p>
             </div>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+          {/* Minimal overlay - much more subtle */}
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent" />
           <div className="absolute bottom-4 left-4 right-4">
             <div className="flex items-center gap-2 mb-2">
-              <span className="px-3 py-1 bg-white/90 text-gray-800 text-xs font-medium rounded-full">
+              <span className="px-3 py-1 bg-white text-gray-700 text-xs font-medium rounded border border-gray-200">
                 {industry}
               </span>
-              <span className="px-3 py-1 bg-brand-red-600/90 text-white text-xs font-medium rounded-full">
+              <span className="px-3 py-1 bg-gray-900 text-white text-xs font-medium rounded">
                 Case Study
               </span>
             </div>
             <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{title}</h3>
             <div className="flex flex-wrap gap-4 text-sm text-white/90">
               <div className="flex items-center gap-1">
-                <Clock size={16} className="text-white/80" />
+                <Clock size={16} className="text-white/70" />
                 <span>{duration}</span>
               </div>
               {teamSize && (
                 <div className="flex items-center gap-1">
-                  <Users size={16} className="text-white/80" />
+                  <Users size={16} className="text-white/70" />
                   <span>{teamSize}</span>
                 </div>
               )}
@@ -100,15 +101,16 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
           </div>
         </div>
       )}
+      
       <div className="p-6 border-b border-gray-100">
         {!image && (
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
-                <span className="px-3 py-1 bg-brand-red-100 text-brand-red-700 text-xs font-medium rounded-full">
+                <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">
                   {industry}
                 </span>
-                <span className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
+                <span className="px-3 py-1 bg-gray-900 text-white text-xs font-medium rounded">
                   Case Study
                 </span>
               </div>
@@ -135,7 +137,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
         {/* Challenge Preview */}
         <div>
           <h4 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
-            <Target size={18} className="text-brand-red-600" />
+            <Target size={18} className="text-gray-600" />
             Challenge
           </h4>
           <p className="text-gray-700 leading-relaxed">{challenge}</p>
@@ -144,7 +146,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
         {/* Expand/Collapse Button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="mt-4 flex items-center gap-2 text-brand-red-600 hover:text-brand-red-700 font-medium transition-colors"
+          className="mt-4 flex items-center gap-2 text-gray-900 hover:text-gray-700 font-medium transition-colors border border-gray-300 px-4 py-2 rounded hover:bg-gray-50"
         >
           <span>{isExpanded ? 'Show Less' : 'Read Full Case Study'}</span>
           {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -165,7 +167,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
               {/* Solution */}
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                  <Lightbulb size={18} className="text-blue-600" />
+                  <Lightbulb size={18} className="text-gray-600" />
                   Solution
                 </h4>
                 <div className="prose prose-gray max-w-none">
@@ -188,7 +190,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
                     {section.subsections && (
                       <div className="space-y-4">
                         {section.subsections.map((subsection, subIndex) => (
-                          <div key={subIndex} className="bg-gray-50 p-4 rounded-lg border-l-4 border-brand-red-600">
+                          <div key={subIndex} className="bg-gray-50 p-4 rounded border-l-4 border-gray-900">
                             <h5 className="font-semibold text-gray-900 mb-2">{subsection.title}</h5>
                             <p className="text-gray-700 text-sm leading-relaxed">{subsection.content}</p>
                           </div>
@@ -202,19 +204,19 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
               {/* Results */}
               <div>
                 <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                  <TrendingUp size={18} className="text-green-600" />
+                  <TrendingUp size={18} className="text-gray-600" />
                   Results & Impact
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {results.map((result, index) => (
                     <motion.div
                       key={index}
-                      className="flex items-start gap-3 p-3 bg-green-50 rounded-lg border border-green-200"
+                      className="flex items-start gap-3 p-4 bg-gray-50 rounded border border-gray-200"
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                     >
-                      <CheckCircle size={16} className="text-green-600 mt-0.5 flex-shrink-0" />
+                      <CheckCircle size={16} className="text-gray-600 mt-0.5 flex-shrink-0" />
                       <span className="text-gray-700 text-sm">{result}</span>
                     </motion.div>
                   ))}
@@ -225,14 +227,14 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
               {keySuccessFactors && (
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                    <Award size={18} className="text-purple-600" />
+                    <Award size={18} className="text-gray-600" />
                     Key Success Factors
                   </h4>
                   <div className="space-y-3">
                     {keySuccessFactors.map((factor, index) => (
                       <motion.div
                         key={index}
-                        className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-600"
+                        className="bg-gray-50 p-4 rounded border-l-4 border-gray-900"
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -248,7 +250,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
               {conclusion && (
                 <div>
                   <h4 className="text-lg font-semibold text-gray-900 mb-3">Conclusion</h4>
-                  <div className="bg-gray-900 text-white p-6 rounded-lg">
+                  <div className="bg-gray-900 text-white p-6 rounded border">
                     <p className="leading-relaxed">{conclusion}</p>
                   </div>
                 </div>
@@ -261,7 +263,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
                   {technologies.map((tech, index) => (
                     <motion.span
                       key={index}
-                      className="px-4 py-2 bg-gray-900 text-white text-sm rounded-lg font-medium"
+                      className="px-4 py-2 bg-gray-100 text-gray-800 text-sm rounded border border-gray-200 font-medium"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}
