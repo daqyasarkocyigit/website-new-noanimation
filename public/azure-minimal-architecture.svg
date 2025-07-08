@@ -1,0 +1,184 @@
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="700" fill="#ffffff"/>
+  
+  <!-- Header -->
+  <text x="600" y="40" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="400" fill="#323130">
+    Azure Data Pipeline Architecture - Medallion Architecture with Unity Catalog
+  </text>
+  
+  <!-- Main Architecture Flow -->
+  
+  <!-- Data Sources -->
+  <g id="sources">
+    <rect x="50" y="80" width="150" height="200" fill="#ffffff" stroke="#d2d0ce" stroke-width="1" rx="4"/>
+    <rect x="50" y="80" width="150" height="30" fill="#f3f2f1" rx="4"/>
+    <text x="125" y="100" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#323130">Data Sources</text>
+    
+    <rect x="60" y="120" width="130" height="35" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="125" y="140" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#605e5c">SQL Server</text>
+    <text x="125" y="150" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#8a8886">(On-premises)</text>
+    
+    <rect x="60" y="165" width="130" height="35" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="125" y="185" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#605e5c">ERP Systems</text>
+    <text x="125" y="195" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#8a8886">(SAP, Oracle)</text>
+    
+    <rect x="60" y="210" width="130" height="35" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="125" y="230" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#605e5c">External APIs</text>
+    <text x="125" y="240" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#8a8886">(REST/SOAP)</text>
+    
+    <rect x="60" y="255" width="130" height="20" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="125" y="267" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#605e5c">Flat Files (CSV)</text>
+  </g>
+  
+  <!-- Ingestion -->
+  <g id="ingestion">
+    <rect x="250" y="80" width="150" height="200" fill="#ffffff" stroke="#d2d0ce" stroke-width="1" rx="4"/>
+    <rect x="250" y="80" width="150" height="30" fill="#f3f2f1" rx="4"/>
+    <text x="325" y="100" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#323130">Ingestion</text>
+    
+    <rect x="260" y="130" width="130" height="60" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="325" y="150" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="500" fill="#323130">Azure Data Factory</text>
+    <text x="325" y="165" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Master Pipeline</text>
+    <text x="325" y="175" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Metadata-driven</text>
+    <text x="325" y="185" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Self-hosted IR</text>
+    
+    <rect x="260" y="210" width="130" height="50" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="325" y="230" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="500" fill="#323130">Control Database</text>
+    <text x="325" y="245" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Tables Config</text>
+    <text x="325" y="255" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Processing Status</text>
+  </g>
+  
+  <!-- Processing -->
+  <g id="processing">
+    <rect x="450" y="80" width="400" height="200" fill="#ffffff" stroke="#d2d0ce" stroke-width="1" rx="4"/>
+    <rect x="450" y="80" width="400" height="30" fill="#f3f2f1" rx="4"/>
+    <text x="650" y="100" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#323130">Process &amp; Store</text>
+    
+    <!-- Databricks -->
+    <rect x="460" y="125" width="380" height="40" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="650" y="140" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="500" fill="#323130">Azure Databricks</text>
+    <text x="650" y="155" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">bronze_to_silver.py | Data quality &amp; ACID transactions</text>
+    
+    <!-- Medallion Layers -->
+    <g id="medallion">
+      <rect x="470" y="180" width="110" height="80" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+      <rect x="470" y="180" width="110" height="20" fill="#8a5a2b" rx="2"/>
+      <text x="525" y="193" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="500" fill="#ffffff">Bronze</text>
+      <text x="525" y="210" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Raw Data</text>
+      <text x="525" y="220" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Parquet</text>
+      <text x="525" y="230" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Partitioned by Date</text>
+      <text x="525" y="250" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">main.bronze_raw</text>
+      
+      <rect x="590" y="180" width="110" height="80" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+      <rect x="590" y="180" width="110" height="20" fill="#8a8a8a" rx="2"/>
+      <text x="645" y="193" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="500" fill="#ffffff">Silver</text>
+      <text x="645" y="210" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Cleaned</text>
+      <text x="645" y="220" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Delta Lake</text>
+      <text x="645" y="230" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Validated</text>
+      <text x="645" y="250" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">main.silver_prod</text>
+      
+      <rect x="710" y="180" width="110" height="80" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+      <rect x="710" y="180" width="110" height="20" fill="#b8860b" rx="2"/>
+      <text x="765" y="193" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="500" fill="#ffffff">Gold</text>
+      <text x="765" y="210" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Business KPIs</text>
+      <text x="765" y="220" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Aggregated</text>
+      <text x="765" y="230" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Analytics</text>
+      <text x="765" y="250" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">main.gold_analytics</text>
+    </g>
+  </g>
+  
+  <!-- Consumption -->
+  <g id="consumption">
+    <rect x="900" y="80" width="150" height="200" fill="#ffffff" stroke="#d2d0ce" stroke-width="1" rx="4"/>
+    <rect x="900" y="80" width="150" height="30" fill="#f3f2f1" rx="4"/>
+    <text x="975" y="100" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#323130">Consumption</text>
+    
+    <rect x="910" y="130" width="130" height="40" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="975" y="145" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="500" fill="#323130">Unity Catalog</text>
+    <text x="975" y="160" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Centralized Governance</text>
+    
+    <rect x="910" y="185" width="130" height="30" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="975" y="203" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#605e5c">Power BI</text>
+    
+    <rect x="910" y="225" width="130" height="30" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="975" y="243" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#605e5c">Synapse Analytics</text>
+  </g>
+  
+  <!-- Data Lake Storage -->
+  <rect x="450" y="300" width="400" height="25" fill="#f3f2f1" stroke="#d2d0ce" stroke-width="1" rx="2"/>
+  <text x="650" y="317" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#605e5c">Azure Data Lake Storage Gen2</text>
+  
+  <!-- CI/CD Pipeline -->
+  <g id="cicd">
+    <rect x="50" y="380" width="1000" height="80" fill="#ffffff" stroke="#d2d0ce" stroke-width="1" rx="4"/>
+    <rect x="50" y="380" width="1000" height="25" fill="#f3f2f1" rx="4"/>
+    <text x="550" y="397" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#323130">CI/CD Pipeline - Azure DevOps</text>
+    
+    <rect x="80" y="420" width="150" height="25" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="155" y="435" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Development ADF</text>
+    
+    <rect x="250" y="420" width="150" height="25" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="325" y="435" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">adf_publish Branch</text>
+    
+    <rect x="420" y="420" width="150" height="25" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="495" y="435" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Test Environment</text>
+    
+    <rect x="590" y="420" width="150" height="25" fill="#faf9f8" stroke="#edebe9" stroke-width="1" rx="2"/>
+    <text x="665" y="435" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#605e5c">Approval Gates</text>
+    
+    <rect x="760" y="420" width="150" height="25" fill="#323130" stroke="#323130" stroke-width="1" rx="2"/>
+    <text x="835" y="435" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="9" fill="#ffffff">Production ADF</text>
+  </g>
+  
+  <!-- Key Features -->
+  <g id="features">
+    <rect x="50" y="490" width="1000" height="140" fill="#ffffff" stroke="#d2d0ce" stroke-width="1" rx="4"/>
+    <rect x="50" y="490" width="1000" height="25" fill="#f3f2f1" rx="4"/>
+    <text x="550" y="507" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#323130">Key Architecture Features</text>
+    
+    <!-- Three columns of features -->
+    <text x="80" y="540" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Metadata-driven pipeline orchestration</text>
+    <text x="80" y="555" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Delta Lake ACID transactions</text>
+    <text x="80" y="570" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Unity Catalog centralized governance</text>
+    <text x="80" y="585" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• External locations (ABFSS paths)</text>
+    <text x="80" y="600" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Self-hosted Integration Runtime</text>
+    
+    <text x="380" y="540" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Parallel processing with batch control</text>
+    <text x="380" y="555" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Automated data quality validation</text>
+    <text x="380" y="570" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Comprehensive error handling</text>
+    <text x="380" y="585" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Row-level security support</text>
+    <text x="380" y="600" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Incremental &amp; full load patterns</text>
+    
+    <text x="680" y="540" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• ARM template deployment</text>
+    <text x="680" y="555" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Environment-specific configurations</text>
+    <text x="680" y="570" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Automated trigger management</text>
+    <text x="680" y="585" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Zero-downtime deployments</text>
+    <text x="680" y="600" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#323130">• Production approval workflows</text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="550" y="670" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" fill="#8a8886">
+    © 2025 DAQ Consulting - Enterprise Analytics Architecture
+  </text>
+  
+  <!-- Flow arrows -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#8a8886"/>
+    </marker>
+  </defs>
+  
+  <!-- Data flow -->
+  <path d="M 200 180 L 250 180" stroke="#8a8886" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 400 180 L 450 180" stroke="#8a8886" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 580 220 L 590 220" stroke="#8a8886" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 700 220 L 710 220" stroke="#8a8886" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 850 180 L 900 180" stroke="#8a8886" stroke-width="1" marker-end="url(#arrow)"/>
+  
+  <!-- CI/CD arrows -->
+  <path d="M 230 432 L 250 432" stroke="#8a8886" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 400 432 L 420 432" stroke="#8a8886" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 570 432 L 590 432" stroke="#8a8886" stroke-width="1" marker-end="url(#arrow)"/>
+  <path d="M 740 432 L 760 432" stroke="#8a8886" stroke-width="1" marker-end="url(#arrow)"/>
+</svg>
