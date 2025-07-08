@@ -24,7 +24,7 @@ export const dataEngineeringCaseStudies: CaseStudyData[] = [
   {
     id: 'grocery-retailer-analytics',
     title: 'Modernizing Analytics for a Leading Grocery Retailer',
-    image: 'https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    image: '/Madallion Architecture DAQ Consulting.png',
     industry: 'Retail',
     duration: '10 weeks',
     teamSize: '5 specialists',
