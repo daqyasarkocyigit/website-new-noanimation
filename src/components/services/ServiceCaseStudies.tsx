@@ -46,11 +46,14 @@ const ServiceCaseStudies: React.FC<ServiceCaseStudiesProps> = ({ title, caseStud
               title={caseStudy.title}
               challenge={caseStudy.challenge}
               solution={caseStudy.solution}
+              detailedSections={caseStudy.detailedSections}
               results={caseStudy.results}
               technologies={caseStudy.technologies}
               industry={caseStudy.industry}
               duration={caseStudy.duration}
               teamSize={caseStudy.teamSize}
+              conclusion={caseStudy.conclusion}
+              keySuccessFactors={caseStudy.keySuccessFactors}
               delay={index * 0.1}
             />
           ))}

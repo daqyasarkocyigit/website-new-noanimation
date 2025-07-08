@@ -1,29 +1,41 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, ChevronUp, Clock, Users, TrendingUp, CheckCircle } from 'lucide-react';
+import { ChevronDown, ChevronUp, Clock, Users, TrendingUp, CheckCircle, Target, Lightbulb, Award } from 'lucide-react';
+
+interface DetailedSection {
+  title: string;
+  content: string;
+  subsections?: { title: string; content: string; }[];
+}
 
 interface CaseStudyProps {
   title: string;
   challenge: string;
   solution: string;
+  detailedSections?: DetailedSection[];
   results: string[];
   technologies: string[];
   industry: string;
   duration: string;
   teamSize?: string;
   delay?: number;
+  conclusion?: string;
+  keySuccessFactors?: string[];
 }
 
 const CaseStudy: React.FC<CaseStudyProps> = ({
   title,
   challenge,
   solution,
+  detailedSections,
   results,
   technologies,
   industry,
   duration,
   teamSize,
-  delay = 0
+  delay = 0,
+  conclusion,
+  keySuccessFactors
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -66,7 +78,13 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
         </div>
 
         {/* Challenge Preview */}
-        <p className="text-gray-700 leading-relaxed">{challenge}</p>
+        <div>
+          <h4 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
+            <Target size={18} className="text-brand-red-600" />
+            Challenge
+          </h4>
+          <p className="text-gray-700 leading-relaxed">{challenge}</p>
+        </div>
         
         {/* Expand/Collapse Button */}
         <button
@@ -88,46 +106,107 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
             transition={{ duration: 0.3 }}
             className="overflow-hidden"
           >
-            <div className="p-6 space-y-6">
+            <div className="p-6 space-y-8">
               {/* Solution */}
               <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-brand-red-600 rounded-full"></div>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                  <Lightbulb size={18} className="text-blue-600" />
                   Solution
                 </h4>
-                <p className="text-gray-700 leading-relaxed">{solution}</p>
+                <div className="prose prose-gray max-w-none">
+                  <p className="text-gray-700 leading-relaxed mb-4">{solution}</p>
+                </div>
               </div>
+
+              {/* Detailed Sections */}
+              {detailedSections && detailedSections.map((section, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                >
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">{section.title}</h4>
+                  <div className="prose prose-gray max-w-none">
+                    <p className="text-gray-700 leading-relaxed mb-4">{section.content}</p>
+                    
+                    {section.subsections && (
+                      <div className="space-y-4">
+                        {section.subsections.map((subsection, subIndex) => (
+                          <div key={subIndex} className="bg-gray-50 p-4 rounded-lg border-l-4 border-brand-red-600">
+                            <h5 className="font-semibold text-gray-900 mb-2">{subsection.title}</h5>
+                            <p className="text-gray-700 text-sm leading-relaxed">{subsection.content}</p>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
 
               {/* Results */}
               <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
                   <TrendingUp size={18} className="text-green-600" />
-                  Key Results
+                  Results & Impact
                 </h4>
-                <ul className="space-y-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {results.map((result, index) => (
-                    <motion.li
+                    <motion.div
                       key={index}
-                      className="flex items-start gap-3"
+                      className="flex items-start gap-3 p-3 bg-green-50 rounded-lg border border-green-200"
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                     >
                       <CheckCircle size={16} className="text-green-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-gray-700">{result}</span>
-                    </motion.li>
+                      <span className="text-gray-700 text-sm">{result}</span>
+                    </motion.div>
                   ))}
-                </ul>
+                </div>
               </div>
+
+              {/* Key Success Factors */}
+              {keySuccessFactors && (
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <Award size={18} className="text-purple-600" />
+                    Key Success Factors
+                  </h4>
+                  <div className="space-y-3">
+                    {keySuccessFactors.map((factor, index) => (
+                      <motion.div
+                        key={index}
+                        className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-600"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                      >
+                        <p className="text-gray-700 text-sm leading-relaxed">{factor}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Conclusion */}
+              {conclusion && (
+                <div>
+                  <h4 className="text-lg font-semibold text-gray-900 mb-3">Conclusion</h4>
+                  <div className="bg-gray-900 text-white p-6 rounded-lg">
+                    <p className="leading-relaxed">{conclusion}</p>
+                  </div>
+                </div>
+              )}
 
               {/* Technologies */}
               <div>
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">Technologies Used</h4>
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">Technologies Used</h4>
                 <div className="flex flex-wrap gap-2">
                   {technologies.map((tech, index) => (
                     <motion.span
                       key={index}
-                      className="px-3 py-1 bg-gray-100 text-gray-700 text-sm rounded-full font-medium"
+                      className="px-4 py-2 bg-gray-900 text-white text-sm rounded-lg font-medium"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: index * 0.05 }}

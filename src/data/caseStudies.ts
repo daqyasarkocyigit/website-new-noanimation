@@ -3,11 +3,20 @@ export interface CaseStudyData {
   title: string;
   challenge: string;
   solution: string;
+  detailedSections?: DetailedSection[];
   results: string[];
   technologies: string[];
   industry: string;
   duration: string;
   teamSize?: string;
+  conclusion?: string;
+  keySuccessFactors?: string[];
+}
+
+interface DetailedSection {
+  title: string;
+  content: string;
+  subsections?: { title: string; content: string; }[];
 }
 
 export const dataEngineeringCaseStudies: CaseStudyData[] = [
@@ -18,7 +27,83 @@ export const dataEngineeringCaseStudies: CaseStudyData[] = [
     duration: '10 weeks',
     teamSize: '5 specialists',
     challenge: 'A major grocery retail chain was experiencing significant performance issues with their business intelligence infrastructure. Their Power BI reports, which connected directly to a Dedicated SQL Pool via DirectQuery, became increasingly slow during peak business hours—particularly during Monday morning executive reviews when hundreds of users accessed dashboards simultaneously.',
-    solution: 'We implemented a modern data architecture using our proven metadata-driven ingestion framework, transforming their analytics infrastructure through a medallion architecture with Bronze, Silver, and Gold layers. We used Azure Data Factory for orchestration, Azure Databricks for processing, Delta Lake for storage, and Synapse Serverless SQL Pool for serving data to Power BI.',
+    solution: 'We implemented a modern data architecture using our proven metadata-driven ingestion framework, transforming their analytics infrastructure through the following approach:',
+    detailedSections: [
+      {
+        title: 'Metadata-Driven Data Ingestion',
+        content: 'Instead of building individual pipelines for each data source, we deployed a configuration-based framework that automatically generates data pipelines based on metadata definitions. This approach enabled rapid onboarding of new data sources and consistent processing patterns across all tables.'
+      },
+      {
+        title: 'Medallion Architecture Implementation',
+        content: 'We structured the data lake into three distinct layers:',
+        subsections: [
+          {
+            title: 'Bronze Layer',
+            content: 'Raw data ingestion maintaining source system formats'
+          },
+          {
+            title: 'Silver Layer', 
+            content: 'Cleansed and standardized data with business rules applied'
+          },
+          {
+            title: 'Gold Layer',
+            content: 'Pre-aggregated, analytics-ready datasets optimized for reporting'
+          }
+        ]
+      },
+      {
+        title: 'Technology Stack Transformation',
+        content: 'The complete technology transformation included:',
+        subsections: [
+          {
+            title: 'Orchestration',
+            content: 'Azure Data Factory with metadata-driven patterns'
+          },
+          {
+            title: 'Processing',
+            content: 'Azure Databricks for scalable data transformations'
+          },
+          {
+            title: 'Storage',
+            content: 'Delta Lake format on Azure Data Lake Storage'
+          },
+          {
+            title: 'Serving',
+            content: 'Synapse Serverless SQL Pool for on-demand compute'
+          },
+          {
+            title: 'Reporting',
+            content: 'Power BI using Import mode instead of DirectQuery'
+          }
+        ]
+      },
+      {
+        title: 'Implementation Approach',
+        content: 'The project followed a phased approach over 10 weeks:',
+        subsections: [
+          {
+            title: 'Foundation Phase',
+            content: 'Established the metadata framework and control tables that drive the entire ingestion process. This eliminated the need for repetitive pipeline development.'
+          },
+          {
+            title: 'Data Ingestion Phase',
+            content: 'Implemented parallel processing pipelines capable of handling millions of daily transactions from POS systems, inventory management, and supply chain applications.'
+          },
+          {
+            title: 'Transformation Phase',
+            content: 'Built automated data quality checks and business logic transformations in the Silver layer, ensuring consistent and reliable data for analytics.'
+          },
+          {
+            title: 'Optimization Phase',
+            content: 'Created pre-aggregated Gold layer tables specifically designed for Power BI consumption, dramatically reducing query complexity and improving performance.'
+          },
+          {
+            title: 'Migration Phase',
+            content: 'Converted Power BI reports from DirectQuery to Import mode, leveraging the optimized Gold layer tables for superior performance.'
+          }
+        ]
+      }
+    ],
     results: [
       'Report loading times reduced from minutes to seconds',
       'Eliminated timeout errors during peak usage',
@@ -27,6 +112,13 @@ export const dataEngineeringCaseStudies: CaseStudyData[] = [
       'Reduced infrastructure costs by 40%',
       'Automated data refresh cycles replacing manual processes'
     ],
+    keySuccessFactors: [
+      'Metadata-Driven Approach: The configuration-based framework enabled rapid scaling and consistent processing patterns, significantly reducing development time and maintenance effort.',
+      'Separation of Compute and Storage: Moving from an always-on Dedicated SQL Pool to on-demand Serverless SQL Pool optimized resource utilization and reduced costs.',
+      'Pre-Aggregation Strategy: Gold layer optimizations eliminated repeated calculations in Power BI, delivering consistent performance regardless of user load.',
+      'Modern Architecture: The lakehouse pattern provided flexibility to handle structured and semi-structured data while maintaining enterprise-grade governance and security.'
+    ],
+    conclusion: 'This transformation demonstrates how modern cloud-native architectures can address performance challenges while providing a foundation for future growth. By implementing a metadata-driven medallion architecture, the grocery retailer now has a scalable, cost-effective analytics platform that delivers consistent performance even during peak usage periods. The success of this project highlights the importance of choosing the right architectural patterns and technologies to meet both current needs and future requirements in enterprise analytics.',
     technologies: [
       'Azure Data Factory',
       'Azure Databricks',
