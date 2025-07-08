@@ -24,7 +24,7 @@ export const dataEngineeringCaseStudies: CaseStudyData[] = [
   {
     id: 'grocery-retailer-analytics',
     title: 'Modernizing Analytics for a Leading Grocery Retailer',
-    image: 'https://i.imgur.com/nLYo7PE.png',
+    image: 'https://images.pexels.com/photos/7567443/pexels-photo-7567443.jpeg?auto=compress&cs=tinysrgb&w=1600',
     industry: 'Retail',
     duration: '10 weeks',
     teamSize: '5 specialists',

@@ -51,13 +51,29 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
     >
       {/* Header */}
       {image && (
-        <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden">
+        <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden bg-gray-100">
           <img 
             src={image} 
             alt={title}
             className="w-full h-full object-cover object-center"
             loading="lazy"
+            onError={(e) => {
+              console.error('Image failed to load:', image);
+              e.currentTarget.style.display = 'none';
+            }}
+            onLoad={() => {
+              console.log('Image loaded successfully:', image);
+            }}
           />
+          {/* Fallback görsel yüklenemezse */}
+          <div className="absolute inset-0 flex items-center justify-center bg-gray-200" style={{ zIndex: -1 }}>
+            <div className="text-center text-gray-500">
+              <svg className="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+              </svg>
+              <p className="text-sm">Architecture Diagram</p>
+            </div>
+          </div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
           <div className="absolute bottom-4 left-4 right-4">
             <div className="flex items-center gap-2 mb-2">
