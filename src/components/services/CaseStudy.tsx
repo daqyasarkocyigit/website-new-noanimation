@@ -11,6 +11,7 @@ interface DetailedSection {
 interface CaseStudyProps {
   title: string;
   image?: string;
+  architectureDiagram?: React.ComponentType;
   challenge: string;
   solution: string;
   detailedSections?: DetailedSection[];
@@ -27,6 +28,7 @@ interface CaseStudyProps {
 const CaseStudy: React.FC<CaseStudyProps> = ({
   title,
   image,
+  architectureDiagram: ArchitectureDiagram,
   challenge,
   solution,
   detailedSections,
@@ -50,32 +52,42 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
       viewport={{ once: true }}
     >
       {/* Header */}
-      {image && (
+      {(image || ArchitectureDiagram) && (
         <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden bg-gray-50">
-          <img 
-            src={image} 
-            alt={title}
-            className="w-full h-full object-cover object-center"
-            loading="lazy"
-            onError={(e) => {
-              console.error('Image failed to load:', image);
-              e.currentTarget.style.display = 'none';
-            }}
-            onLoad={() => {
-              console.log('Image loaded successfully:', image);
-            }}
-          />
-          {/* Fallback if image fails to load */}
-          <div className="absolute inset-0 flex items-center justify-center bg-gray-100" style={{ zIndex: -1 }}>
-            <div className="text-center text-gray-400">
-              <svg className="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-              </svg>
-              <p className="text-sm">Architecture Diagram</p>
+          {ArchitectureDiagram ? (
+            <div className="w-full h-full flex items-center justify-center bg-white p-4">
+              <div className="w-full h-full max-w-6xl">
+                <ArchitectureDiagram />
+              </div>
             </div>
-          </div>
+          ) : image ? (
+            <>
+              <img 
+                src={image} 
+                alt={title}
+                className="w-full h-full object-cover object-center"
+                loading="lazy"
+                onError={(e) => {
+                  console.error('Image failed to load:', image);
+                  e.currentTarget.style.display = 'none';
+                }}
+                onLoad={() => {
+                  console.log('Image loaded successfully:', image);
+                }}
+              />
+              {/* Fallback if image fails to load */}
+              <div className="absolute inset-0 flex items-center justify-center bg-gray-100" style={{ zIndex: -1 }}>
+                <div className="text-center text-gray-400">
+                  <svg className="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                  </svg>
+                  <p className="text-sm">Architecture Diagram</p>
+                </div>
+              </div>
+            </>
+          ) : null}
           {/* Minimal overlay - much more subtle */}
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent" />
           <div className="absolute bottom-4 left-4 right-4">
             <div className="flex items-center gap-2 mb-2">
               <span className="px-3 py-1 bg-white text-gray-700 text-xs font-medium rounded border border-gray-200">
@@ -103,7 +115,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
       )}
       
       <div className="p-6 border-b border-gray-100">
-        {!image && (
+        {!(image || ArchitectureDiagram) && (
           <div className="flex items-start justify-between mb-4">
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-2">
@@ -119,7 +131,7 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
           </div>
         )}
         
-        {!image && (
+        {!(image || ArchitectureDiagram) && (
           <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
             <div className="flex items-center gap-1">
               <Clock size={16} className="text-gray-400" />

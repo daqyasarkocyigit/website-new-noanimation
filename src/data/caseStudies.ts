@@ -1,7 +1,10 @@
+import AzureArchitectureDiagram from '../components/architecture/AzureArchitectureDiagram';
+
 export interface CaseStudyData {
   id: string;
   title: string;
   image?: string;
+  architectureDiagram?: React.ComponentType;
   challenge: string;
   solution: string;
   detailedSections?: DetailedSection[];
@@ -24,7 +27,7 @@ export const dataEngineeringCaseStudies: CaseStudyData[] = [
   {
     id: 'grocery-retailer-analytics',
     title: 'Modernizing Analytics for a Leading Grocery Retailer',
-    image: 'https://i.imgur.com/nLYo7PE.png',
+    architectureDiagram: AzureArchitectureDiagram,
     industry: 'Retail',
     duration: '10 weeks',
     teamSize: '5 specialists',
