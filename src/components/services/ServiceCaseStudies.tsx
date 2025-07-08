@@ -44,6 +44,7 @@ const ServiceCaseStudies: React.FC<ServiceCaseStudiesProps> = ({ title, caseStud
             <CaseStudy
               key={caseStudy.id}
               title={caseStudy.title}
+              image={caseStudy.image}
               challenge={caseStudy.challenge}
               solution={caseStudy.solution}
               detailedSections={caseStudy.detailedSections}

@@ -10,6 +10,7 @@ interface DetailedSection {
 
 interface CaseStudyProps {
   title: string;
+  image?: string;
   challenge: string;
   solution: string;
   detailedSections?: DetailedSection[];
@@ -25,6 +26,7 @@ interface CaseStudyProps {
 
 const CaseStudy: React.FC<CaseStudyProps> = ({
   title,
+  image,
   challenge,
   solution,
   detailedSections,
@@ -48,8 +50,90 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
       viewport={{ once: true }}
     >
       {/* Header */}
+      {image && (
+        <div className="relative h-64 sm:h-80 lg:h-96 overflow-hidden">
+          <img 
+            src={image} 
+            alt={title}
+            className="w-full h-full object-cover object-center"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+          <div className="absolute bottom-4 left-4 right-4">
+            <div className="flex items-center gap-2 mb-2">
+              <span className="px-3 py-1 bg-white/90 text-gray-800 text-xs font-medium rounded-full">
+                {industry}
+              </span>
+              <span className="px-3 py-1 bg-brand-red-600/90 text-white text-xs font-medium rounded-full">
+                Case Study
+              </span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{title}</h3>
+            <div className="flex flex-wrap gap-4 text-sm text-white/90">
+              <div className="flex items-center gap-1">
+                <Clock size={16} className="text-white/80" />
+                <span>{duration}</span>
+              </div>
+              {teamSize && (
+                <div className="flex items-center gap-1">
+                  <Users size={16} className="text-white/80" />
+                  <span>{teamSize}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
       <div className="p-6 border-b border-gray-100">
-        <div className="flex items-start justify-between mb-4">
+        {!image && (
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="px-3 py-1 bg-brand-red-100 text-brand-red-700 text-xs font-medium rounded-full">
+                  {industry}
+                </span>
+                <span className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
+                  Case Study
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
+            </div>
+          </div>
+        )}
+        
+        {!image && (
+          <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
+            <div className="flex items-center gap-1">
+              <Clock size={16} className="text-gray-400" />
+              <span>{duration}</span>
+            </div>
+            {teamSize && (
+              <div className="flex items-center gap-1">
+                <Users size={16} className="text-gray-400" />
+                <span>{teamSize}</span>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Challenge Preview */}
+        <div>
+          <h4 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
+            <Target size={18} className="text-brand-red-600" />
+            Challenge
+          </h4>
+          <p className="text-gray-700 leading-relaxed">{challenge}</p>
+        </div>
+        
+        {/* Expand/Collapse Button */}
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="mt-4 flex items-center gap-2 text-brand-red-600 hover:text-brand-red-700 font-medium transition-colors"
+        >
+          <span>{isExpanded ? 'Show Less' : 'Read Full Case Study'}</span>
+          {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+        </button>
+      </div>
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-2">
               <span className="px-3 py-1 bg-brand-red-100 text-brand-red-700 text-xs font-medium rounded-full">

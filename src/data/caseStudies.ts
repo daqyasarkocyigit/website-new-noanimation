@@ -1,6 +1,7 @@
 export interface CaseStudyData {
   id: string;
   title: string;
+  image?: string;
   challenge: string;
   solution: string;
   detailedSections?: DetailedSection[];
@@ -23,6 +24,7 @@ export const dataEngineeringCaseStudies: CaseStudyData[] = [
   {
     id: 'grocery-retailer-analytics',
     title: 'Modernizing Analytics for a Leading Grocery Retailer',
+    image: 'https://i.imgur.com/nLYo7PE.png',
     industry: 'Retail',
     duration: '10 weeks',
     teamSize: '5 specialists',
