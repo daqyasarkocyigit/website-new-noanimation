@@ -25,52 +25,129 @@ interface DetailedSection {
 
 export const dataEngineeringCaseStudies: CaseStudyData[] = [
   {
-    id: 'grocery-retailer-analytics',
-    title: 'Modernizing Analytics for a Leading Grocery Retailer',
+    id: 'enterprise-analytics-transformation',
+    title: 'Enterprise Analytics Transformation with Medallion Architecture',
     architectureDiagram: AzureArchitectureDiagram,
     industry: 'Retail',
-    duration: '10 weeks',
-    teamSize: '5 specialists',
-    challenge: 'A major grocery retail chain was experiencing significant performance issues with their business intelligence infrastructure. Their Power BI reports, which connected directly to a Dedicated SQL Pool via DirectQuery, became increasingly slow during peak business hours—particularly during Monday morning executive reviews when hundreds of users accessed dashboards simultaneously.',
-    solution: 'We implemented a modern data architecture using our proven metadata-driven ingestion framework, transforming their analytics infrastructure through the following approach:',
+    duration: '12 weeks',
+    challenge: 'A major grocery retail chain was experiencing critical performance issues with their business intelligence infrastructure. Their Power BI reports, connecting directly to a Dedicated SQL Pool via DirectQuery, became increasingly slow during peak business hours—particularly during Monday morning executive reviews when hundreds of users accessed dashboards simultaneously. The existing architecture presented several critical limitations: no auto-scaling capability in Dedicated SQL Pool, query timeouts during concurrent usage, high infrastructure costs for 24/7 operations, extended report loading times impacting business decisions, manual data integration processes, and lack of data lineage and governance.',
+    solution: 'We implemented our proven Azure Data Pipeline Architecture with Unity Catalog, transforming their analytics infrastructure through a comprehensive metadata-driven approach.',
     detailedSections: [
       {
-        title: 'Metadata-Driven Data Ingestion',
-        content: 'Instead of building individual pipelines for each data source, we deployed a configuration-based framework that automatically generates data pipelines based on metadata definitions. This approach enabled rapid onboarding of new data sources and consistent processing patterns across all tables.'
+        title: 'Metadata-Driven Pipeline Architecture',
+        content: 'Leveraging Azure Data Factory with control database, we implemented a configuration-based framework that automatically generates data pipelines based on metadata definitions stored in Azure SQL Database. This eliminated the need for repetitive pipeline development and enabled rapid scaling across hundreds of tables.'
       },
       {
-        title: 'Medallion Architecture Implementation',
-        content: 'We structured the data lake into three distinct layers:',
+        title: 'Medallion Architecture with Unity Catalog',
+        content: 'We structured the data lake into three distinct layers with full Unity Catalog governance:',
         subsections: [
           {
             title: 'Bronze Layer',
-            content: 'Raw data ingestion maintaining source system formats'
+            content: 'Raw data ingestion in Parquet format, maintaining exact copies from source systems'
           },
           {
-            title: 'Silver Layer', 
-            content: 'Cleansed and standardized data with business rules applied'
+            title: 'Silver Layer',
+            content: 'Cleaned and validated data in Delta Lake format with ACID transactions'
           },
           {
             title: 'Gold Layer',
-            content: 'Pre-aggregated, analytics-ready datasets optimized for reporting'
+            content: 'Pre-aggregated business KPIs optimized for Power BI consumption'
           }
         ]
       },
       {
-        title: 'Technology Stack Transformation',
-        content: 'The complete technology transformation included:',
+        title: 'Technology Stack Implementation',
+        content: 'Complete technology stack with modern cloud-native services:',
         subsections: [
           {
-            title: 'Orchestration',
-            content: 'Azure Data Factory with metadata-driven patterns'
+            title: 'Data Sources',
+            content: 'SQL Server (on-premises ERP systems), External APIs (supplier integrations), Flat files (legacy system exports)'
           },
           {
-            title: 'Processing',
-            content: 'Azure Databricks for scalable data transformations'
+            title: 'Processing & Orchestration',
+            content: 'Azure Data Factory with Self-hosted Integration Runtime, Azure Databricks for scalable transformations, Delta Lake on Azure Data Lake Storage Gen2, Unity Catalog for centralized governance'
           },
           {
-            title: 'Storage',
-            content: 'Delta Lake format on Azure Data Lake Storage'
+            title: 'Serving & Security',
+            content: 'Synapse Serverless SQL Pool for on-demand compute, Azure Key Vault for secrets management, Azure AD integration for RBAC, Power BI with Import mode'
+          }
+        ]
+      },
+      {
+        title: 'CI/CD Pipeline',
+        content: 'Robust deployment pipeline using Azure DevOps with automated ARM template deployment, environment-specific configurations, and zero-downtime production deployments.'
+      }
+    ],
+    results: [
+      'Report Loading: Reduced from minutes to seconds',
+      'Concurrent Users: Scaled from 50 to 500+ simultaneous users',
+      'Query Performance: 95% reduction in average query time',
+      'Data Freshness: Near real-time updates every 15 minutes',
+      '70% cost reduction by moving from Dedicated to Serverless SQL Pool',
+      'Eliminated idle compute costs through on-demand processing',
+      'Reduced development time by 80% for new data sources',
+      'Zero manual interventions with self-healing pipelines',
+      '100% automated deployments through CI/CD',
+      'Complete audit trail via Unity Catalog lineage',
+      'Proactive monitoring with Application Insights'
+    ],
+    keySuccessFactors: [
+      'Metadata-Driven Approach: Configuration-based pipeline generation without code changes, centralized error handling and automated retry mechanisms, consistent processing patterns across all data sources.',
+      'Unity Catalog Integration: Centralized data governance and access control, automatic lineage tracking for compliance, support for both external and managed tables with intelligent selection.',
+      'Delta Lake Advantages: ACID transactions ensuring data consistency, time travel capabilities for historical analysis, automatic optimization and compaction.',
+      'Modern CI/CD: ARM template automation, environment-specific variable management, production approval workflows with zero downtime.'
+    ],
+    conclusion: 'This transformation demonstrates how modern cloud-native architectures can address enterprise-scale performance challenges while reducing costs and improving agility. By implementing our metadata-driven medallion architecture with Unity Catalog, the grocery retailer achieved a scalable, cost-effective analytics platform that delivers consistent performance even during peak usage periods. The architecture now supports 10x user growth, provides 70% infrastructure savings, and enables new data sources to be onboarded in hours rather than weeks—establishing a foundation for continued innovation and growth.',
+    technologies: [
+      'Azure Data Factory',
+      'Azure Databricks',
+      'Delta Lake',
+      'Unity Catalog',
+      'Synapse Serverless SQL Pool',
+      'Power BI',
+      'Azure DevOps',
+      'Azure Data Lake Storage Gen2',
+      'Azure Key Vault',
+      'Azure AD',
+      'ARM Templates'
+    ]
+  },
+  {
+    id: 'grocery-retailer-simple',
+    title: 'Modernizing Analytics for Regional Grocery Chain',
+    architectureDiagram: AzureArchitectureDiagram,
+    industry: 'Retail',
+    duration: '8 weeks',
+    challenge: 'A regional grocery chain was experiencing performance issues with their Power BI reports during peak business hours. Their existing DirectQuery connections to SQL Server were causing timeouts and slow response times.',
+    solution: 'We implemented a streamlined data architecture using Azure Data Factory and Delta Lake to improve performance and reliability.',
+    detailedSections: [
+      {
+        title: 'Data Pipeline Modernization',
+        content: 'Replaced direct database connections with optimized data pipelines that pre-process and aggregate data for faster reporting.'
+      },
+      {
+        title: 'Performance Optimization',
+        content: 'Implemented caching strategies and data partitioning to ensure consistent performance during peak usage periods.'
+      }
+    ],
+    results: [
+      'Report loading times reduced from minutes to seconds',
+      'Eliminated timeout errors during peak usage',
+      'Enabled support for hundreds of concurrent users',
+      'Achieved consistent sub-second query response times',
+      'Reduced infrastructure costs by 40%',
+      'Automated data refresh cycles replacing manual processes'
+    ],
+    technologies: [
+      'Azure Data Factory',
+      'Azure Databricks',
+      'Delta Lake',
+      'Synapse Serverless SQL Pool',
+      'Power BI',
+      'Azure Data Lake Storage'
+    ]
+  }
+];
           },
           {
             title: 'Serving',
