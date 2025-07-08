@@ -134,51 +134,6 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
           {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </button>
       </div>
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="px-3 py-1 bg-brand-red-100 text-brand-red-700 text-xs font-medium rounded-full">
-                {industry}
-              </span>
-              <span className="px-3 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full">
-                Case Study
-              </span>
-            </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
-          </div>
-        </div>
-        
-        {/* Meta Info */}
-        <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
-          <div className="flex items-center gap-1">
-            <Clock size={16} className="text-gray-400" />
-            <span>{duration}</span>
-          </div>
-          {teamSize && (
-            <div className="flex items-center gap-1">
-              <Users size={16} className="text-gray-400" />
-              <span>{teamSize}</span>
-            </div>
-          )}
-        </div>
-
-        {/* Challenge Preview */}
-        <div>
-          <h4 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
-            <Target size={18} className="text-brand-red-600" />
-            Challenge
-          </h4>
-          <p className="text-gray-700 leading-relaxed">{challenge}</p>
-        </div>
-        
-        {/* Expand/Collapse Button */}
-        <button
-          onClick={() => setIsExpanded(!isExpanded)}
-          className="mt-4 flex items-center gap-2 text-brand-red-600 hover:text-brand-red-700 font-medium transition-colors"
-        >
-          <span>{isExpanded ? 'Show Less' : 'Read Full Case Study'}</span>
-          {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-        </button>
-      </div>
 
       {/* Expandable Content */}
       <AnimatePresence>
