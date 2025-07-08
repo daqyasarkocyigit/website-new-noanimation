@@ -11,6 +11,8 @@ import Services from './pages/Services';
 import About from './pages/About';
 import Contact from './pages/Contact';
 import Talent from './pages/Talent';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Privacy from './pages/Privacy';
 import CookiePolicy from './pages/CookiePolicy';
 import Terms from './pages/Terms';
@@ -88,6 +90,16 @@ function App() {
             <Route path="/talent" element={
               <RouteErrorBoundary>
                 <Talent />
+              </RouteErrorBoundary>
+            } />
+            <Route path="/blog" element={
+              <RouteErrorBoundary>
+                <Blog />
+              </RouteErrorBoundary>
+            } />
+            <Route path="/blog/:slug" element={
+              <RouteErrorBoundary>
+                <BlogPost />
               </RouteErrorBoundary>
             } />
             <Route path="/privacy" element={
