@@ -51,104 +51,79 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
       transition={{ duration: 0.6, delay }}
       viewport={{ once: true }}
     >
-      {/* Header */}
-      {(image || ArchitectureDiagram) && (
-        <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] overflow-hidden bg-gray-50">
-          {ArchitectureDiagram ? (
-            <div className="w-full h-full flex items-center justify-center bg-white p-2 sm:p-4">
-              <div className="w-full h-full">
-                <ArchitectureDiagram />
-              </div>
+      {/* 1. BAŞLIK - Title Section */}
+      <div className="p-6 border-b border-gray-100">
+        <div className="flex items-center gap-2 mb-4">
+          <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">
+            {industry}
+          </span>
+          <span className="px-3 py-1 bg-gray-900 text-white text-xs font-medium rounded">
+            Case Study
+          </span>
+        </div>
+        
+        <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">{title}</h3>
+        
+        <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+          <div className="flex items-center gap-1">
+            <Clock size={16} className="text-gray-400" />
+            <span>{duration}</span>
+          </div>
+          {teamSize && (
+            <div className="flex items-center gap-1">
+              <Users size={16} className="text-gray-400" />
+              <span>{teamSize}</span>
             </div>
-          ) : image ? (
-            <>
-              <img 
-                src={image} 
-                alt={title}
-                className="w-full h-full object-cover object-center"
-                loading="lazy"
-                onError={(e) => {
-                  console.error('Image failed to load:', image);
-                  e.currentTarget.style.display = 'none';
-                }}
-                onLoad={() => {
-                  console.log('Image loaded successfully:', image);
-                }}
-              />
-              {/* Fallback if image fails to load */}
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-100" style={{ zIndex: -1 }}>
-                <div className="text-center text-gray-400">
-                  <svg className="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
-                  </svg>
-                  <p className="text-sm">Architecture Diagram</p>
+          )}
+        </div>
+      </div>
+
+      {/* 2. ARCHITECTURE DIAGRAM */}
+      {(ArchitectureDiagram || image) && (
+        <div className="relative bg-gray-50 border-b border-gray-100">
+          <div className="p-4">
+            <h4 className="text-lg font-semibold text-gray-900 mb-4 text-center">Architecture Overview</h4>
+          </div>
+          
+          <div className="relative min-h-[300px] sm:min-h-[400px] lg:min-h-[500px] overflow-hidden">
+            {ArchitectureDiagram ? (
+              <div className="w-full h-full flex items-center justify-center bg-white p-2 sm:p-4">
+                <div className="w-full h-full">
+                  <ArchitectureDiagram />
                 </div>
               </div>
-            </>
-          ) : null}
-          {/* Minimal overlay - much more subtle */}
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-900/60 via-transparent to-transparent" />
-          <div className="absolute bottom-4 left-4 right-4">
-            <div className="flex items-center gap-2 mb-2">
-              <span className="px-3 py-1 bg-white text-gray-700 text-xs font-medium rounded border border-gray-200">
-                {industry}
-              </span>
-              <span className="px-3 py-1 bg-gray-900 text-white text-xs font-medium rounded">
-                Case Study
-              </span>
-            </div>
-            <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">{title}</h3>
-            <div className="flex flex-wrap gap-4 text-sm text-white/90">
-              <div className="flex items-center gap-1">
-                <Clock size={16} className="text-white/70" />
-                <span>{duration}</span>
-              </div>
-              {teamSize && (
-                <div className="flex items-center gap-1">
-                  <Users size={16} className="text-white/70" />
-                  <span>{teamSize}</span>
+            ) : image ? (
+              <>
+                <img 
+                  src={image} 
+                  alt={title}
+                  className="w-full h-full object-cover object-center"
+                  loading="lazy"
+                  onError={(e) => {
+                    console.error('Image failed to load:', image);
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+                {/* Fallback if image fails to load */}
+                <div className="absolute inset-0 flex items-center justify-center bg-gray-100" style={{ zIndex: -1 }}>
+                  <div className="text-center text-gray-400">
+                    <svg className="w-16 h-16 mx-auto mb-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clipRule="evenodd" />
+                    </svg>
+                    <p className="text-sm">Architecture Diagram</p>
+                  </div>
                 </div>
-              )}
-            </div>
+              </>
+            ) : null}
           </div>
         </div>
       )}
-      
-      <div className="p-6 border-b border-gray-100">
-        {!(image || ArchitectureDiagram) && (
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex-1">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-medium rounded border border-gray-200">
-                  {industry}
-                </span>
-                <span className="px-3 py-1 bg-gray-900 text-white text-xs font-medium rounded">
-                  Case Study
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
-            </div>
-          </div>
-        )}
-        
-        {!(image || ArchitectureDiagram) && (
-          <div className="flex flex-wrap gap-4 text-sm text-gray-600 mb-4">
-            <div className="flex items-center gap-1">
-              <Clock size={16} className="text-gray-400" />
-              <span>{duration}</span>
-            </div>
-            {teamSize && (
-              <div className="flex items-center gap-1">
-                <Users size={16} className="text-gray-400" />
-                <span>{teamSize}</span>
-              </div>
-            )}
-          </div>
-        )}
 
+      {/* 3. DETAYLAR - Details Section */}
+      <div className="p-6 border-b border-gray-100">
         {/* Challenge Preview */}
         <div>
-          <h4 className="text-lg font-semibold text-gray-900 mb-2 flex items-center gap-2">
+          <h4 className="text-lg font-semibold text-gray-900 mb-3 flex items-center gap-2">
             <Target size={18} className="text-gray-600" />
             Challenge
           </h4>
@@ -158,9 +133,9 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
         {/* Expand/Collapse Button */}
         <button
           onClick={() => setIsExpanded(!isExpanded)}
-          className="mt-4 flex items-center gap-2 text-gray-900 hover:text-gray-700 font-medium transition-colors border border-gray-300 px-4 py-2 rounded hover:bg-gray-50"
+          className="mt-6 flex items-center gap-2 text-gray-900 hover:text-gray-700 font-medium transition-colors border border-gray-300 px-4 py-2 rounded hover:bg-gray-50 w-full justify-center"
         >
-          <span>{isExpanded ? 'Show Less' : 'Read Full Case Study'}</span>
+          <span>{isExpanded ? 'Show Less Details' : 'Read Full Case Study'}</span>
           {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
         </button>
       </div>
