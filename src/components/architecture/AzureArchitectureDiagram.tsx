@@ -13,30 +13,6 @@ const AzureArchitectureDiagram: React.FC = () => {
         {/* Background */}
         <rect width="1400" height="820" fill="#f5f5f5"/>
         
-        {/* Company Logo - Top Left Corner */}
-        <g id="company-logo">
-          {/* Logo Background */}
-          <rect x="20" y="20" width="180" height="60" fill="#ffffff" stroke="#d0d0d0" strokeWidth="1" rx="8" opacity="0.95"/>
-          
-          {/* DAQ Text */}
-          <text x="35" y="45" fontFamily="Arial, sans-serif" fontSize="18" fontWeight="700" fill="#ef4444">
-            DAQ
-          </text>
-          
-          {/* Separator Line */}
-          <rect x="75" y="38" width="2" height="12" fill="#ef4444" opacity="0.8" rx="1"/>
-          
-          {/* Consulting Text */}
-          <text x="85" y="45" fontFamily="Arial, sans-serif" fontSize="18" fontWeight="600" fill="#374151">
-            Consulting
-          </text>
-          
-          {/* Tagline */}
-          <text x="35" y="62" fontFamily="Arial, sans-serif" fontSize="9" fill="#6b7280">
-            Enterprise Analytics Architecture
-          </text>
-        </g>
-        
         {/* Title */}
         <text x="700" y="40" textAnchor="middle" fontFamily="Arial, sans-serif" fontSize="22" fontWeight="500" fill="#333">
           Azure Data Pipeline Architecture - Medallion Architecture with Unity Catalog
