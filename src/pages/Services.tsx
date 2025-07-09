@@ -3,14 +3,6 @@ import { Database, BarChart, LineChart, Cloud, Brain } from 'lucide-react';
 import ServiceDetail from '../components/services/ServiceDetail';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
-import ServiceCaseStudies from '../components/services/ServiceCaseStudies';
-import {
-  dataEngineeringCaseStudies,
-  dataVisualizationCaseStudies,
-  businessIntelligenceCaseStudies,
-  cloudModernizationCaseStudies,
-  aiEngineeringCaseStudies
-} from '../data/caseStudies';
 import { motion } from 'framer-motion';
 
 const Services: React.FC = () => {
@@ -70,11 +62,6 @@ const Services: React.FC = () => {
         visualType="data-engineering"
       />
 
-      <ServiceCaseStudies 
-        title="Data Engineering" 
-        caseStudies={dataEngineeringCaseStudies} 
-      />
-
       <ServiceDetail
         id="data-visualization"
         title="Data Visualization"
@@ -92,11 +79,6 @@ const Services: React.FC = () => {
         visualType="data-visualization"
       />
 
-      <ServiceCaseStudies 
-        title="Data Visualization" 
-        caseStudies={dataVisualizationCaseStudies} 
-      />
-
       <ServiceDetail
         id="business-intelligence"
         title="Business Intelligence & Analytics"
@@ -111,11 +93,6 @@ const Services: React.FC = () => {
         icon={<LineChart size={32} />}
         useCustomVisual={true}
         visualType="business-intelligence"
-      />
-
-      <ServiceCaseStudies 
-        title="Business Intelligence" 
-        caseStudies={businessIntelligenceCaseStudies} 
       />
 
       <ServiceDetail
@@ -135,11 +112,6 @@ const Services: React.FC = () => {
         visualType="cloud-modernization"
       />
 
-      <ServiceCaseStudies 
-        title="Cloud Modernization" 
-        caseStudies={cloudModernizationCaseStudies} 
-      />
-
       <ServiceDetail
         id="ai-engineering"
         title="AI Engineering"
@@ -154,11 +126,6 @@ const Services: React.FC = () => {
         icon={<Brain size={32} />}
         useCustomVisual={true}
         visualType="ai-engineering"
-      />
-
-      <ServiceCaseStudies 
-        title="AI Engineering" 
-        caseStudies={aiEngineeringCaseStudies} 
       />
 
       <CallToAction />
