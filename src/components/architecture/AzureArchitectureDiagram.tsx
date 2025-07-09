@@ -15,9 +15,25 @@ const AzureArchitectureDiagram: React.FC = () => {
         
         {/* Company Logo - Top Left Corner */}
         <g id="company-logo">
+          {/* Logo Background */}
+          <rect x="20" y="20" width="200" height="70" fill="#ffffff" stroke="#e5e7eb" strokeWidth="1" rx="8" opacity="0.96"/>
+          
           {/* DAQ Text */}
-          <text x="30" y="50" fontFamily="Inter, Arial, sans-serif" fontSize="28" fontWeight="800" fill="#ef4444">
+          <text x="35" y="48" fontFamily="Inter, Arial, sans-serif" fontSize="20" fontWeight="800" fill="#ef4444">
             DAQ
+          </text>
+          
+          {/* Separator Line */}
+          <rect x="78" y="40" width="2" height="16" fill="#ef4444" opacity="0.6" rx="1"/>
+          
+          {/* Consulting Text */}
+          <text x="88" y="48" fontFamily="Inter, Arial, sans-serif" fontSize="20" fontWeight="600" fill="#374151">
+            Consulting
+          </text>
+          
+          {/* Tagline */}
+          <text x="35" y="66" fontFamily="Inter, Arial, sans-serif" fontSize="11" fill="#6b7280">
+            AI &amp; Data Engineering Experts
           </text>
         </g>
         
