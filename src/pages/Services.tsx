@@ -4,13 +4,6 @@ import ServiceDetail from '../components/services/ServiceDetail';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
 import DataEngineeringSuccessStories from '../components/services/DataEngineeringSuccessStories';
-import ServiceCaseStudies from '../components/services/ServiceCaseStudies';
-import { 
-  dataVisualizationCaseStudies, 
-  businessIntelligenceCaseStudies, 
-  cloudModernizationCaseStudies, 
-  aiEngineeringCaseStudies 
-} from '../data/caseStudies';
 import { motion } from 'framer-motion';
 
 const Services: React.FC = () => {
