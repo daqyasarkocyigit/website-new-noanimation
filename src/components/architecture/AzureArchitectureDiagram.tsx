@@ -16,24 +16,24 @@ const AzureArchitectureDiagram: React.FC = () => {
         {/* Company Logo - Top Left Corner */}
         <g id="company-logo">
           {/* Logo Background */}
-          <rect x="20" y="20" width="200" height="70" fill="#ffffff" stroke="#e5e7eb" strokeWidth="1" rx="8" opacity="0.96"/>
+          <rect x="20" y="20" width="180" height="60" fill="#ffffff" stroke="#d0d0d0" strokeWidth="1" rx="8" opacity="0.95"/>
           
           {/* DAQ Text */}
-          <text x="35" y="48" fontFamily="Inter, Arial, sans-serif" fontSize="20" fontWeight="800" fill="#ef4444">
+          <text x="35" y="45" fontFamily="Arial, sans-serif" fontSize="18" fontWeight="700" fill="#ef4444">
             DAQ
           </text>
           
           {/* Separator Line */}
-          <rect x="78" y="40" width="2" height="16" fill="#ef4444" opacity="0.6" rx="1"/>
+          <rect x="75" y="38" width="2" height="12" fill="#ef4444" opacity="0.8" rx="1"/>
           
           {/* Consulting Text */}
-          <text x="88" y="48" fontFamily="Inter, Arial, sans-serif" fontSize="20" fontWeight="600" fill="#374151">
+          <text x="85" y="45" fontFamily="Arial, sans-serif" fontSize="18" fontWeight="600" fill="#374151">
             Consulting
           </text>
           
           {/* Tagline */}
-          <text x="35" y="66" fontFamily="Inter, Arial, sans-serif" fontSize="11" fill="#6b7280">
-            AI &amp; Data Engineering Experts
+          <text x="35" y="62" fontFamily="Arial, sans-serif" fontSize="9" fill="#6b7280">
+            Enterprise Analytics Architecture
           </text>
         </g>
         
