@@ -16,7 +16,7 @@ import { motion } from 'framer-motion';
 const Services: React.FC = () => {
   return (
     <>
-      {/* Hero Section with Gradient Background */}
+      {/* Hero Section */}
       <section className="pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 z-0"></div>
         <div 
@@ -53,106 +53,120 @@ const Services: React.FC = () => {
         </div>
       </section>
 
-      {/* Services Details */}
+      {/* Data Engineering Service */}
       <ServiceDetail
         id="data-engineering"
         title="Data Engineering"
-        description="Build robust data pipelines and infrastructure to collect, process, and store your data efficiently."
+        description="Build robust data pipelines and infrastructure to collect, process, and store your data efficiently. Our data engineering solutions provide the foundation for all your analytics and AI initiatives."
         benefits={[
-          "Scalable data pipeline development",
+          "Scalable data pipeline development and orchestration",
           "Data warehouse design and implementation",
-          "ETL/ELT process optimization",
+          "ETL/ELT process optimization and automation",
           "Real-time data processing solutions",
-          "Data quality and governance frameworks"
+          "Data quality and governance frameworks",
+          "Cloud-native architecture design",
+          "Metadata-driven pipeline development"
         ]}
         icon={<Database size={32} />}
-        useCustomVisual={true}
-        visualType="data-engineering"
+        image="https://images.pexels.com/photos/590016/pexels-photo-590016.jpeg?auto=compress&cs=tinysrgb&w=1600"
       />
 
+      {/* Data Engineering Success Stories */}
       <DataEngineeringSuccessStories />
 
+      {/* Data Visualization Service */}
       <ServiceDetail
         id="data-visualization"
         title="Data Visualization"
-        description="Transform complex data into intuitive visualizations that tell a compelling story and drive insights."
+        description="Transform complex data into intuitive visualizations that tell a compelling story and drive insights. Our visualization solutions make data accessible and actionable for all stakeholders."
         benefits={[
           "Interactive dashboard development",
           "Custom visualization solutions",
           "Real-time data monitoring",
           "Business metrics tracking",
-          "Automated reporting systems"
+          "Automated reporting systems",
+          "Mobile-responsive dashboards",
+          "Self-service analytics platforms"
         ]}
         icon={<BarChart size={32} />}
         isReversed
-        useCustomVisual={true}
-        visualType="data-visualization"
+        image="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=1600"
       />
 
+      {/* Data Visualization Success Stories */}
       <ServiceCaseStudies 
         title="Data Visualization" 
         caseStudies={dataVisualizationCaseStudies} 
       />
 
+      {/* Business Intelligence Service */}
       <ServiceDetail
         id="business-intelligence"
         title="Business Intelligence & Analytics"
-        description="Leverage your data to gain actionable insights, identify trends, and make data-driven decisions."
+        description="Leverage your data to gain actionable insights, identify trends, and make data-driven decisions. Our BI solutions provide comprehensive analytics capabilities for modern businesses."
         benefits={[
           "Advanced analytics implementation",
-          "Predictive modeling",
+          "Predictive modeling and forecasting",
           "KPI development and tracking",
           "Business performance analysis",
-          "Competitive intelligence solutions"
+          "Competitive intelligence solutions",
+          "Self-service BI platforms",
+          "Data-driven decision support systems"
         ]}
         icon={<LineChart size={32} />}
-        useCustomVisual={true}
-        visualType="business-intelligence"
+        image="https://images.pexels.com/photos/590020/pexels-photo-590020.jpeg?auto=compress&cs=tinysrgb&w=1600"
       />
 
+      {/* Business Intelligence Success Stories */}
       <ServiceCaseStudies 
         title="Business Intelligence" 
         caseStudies={businessIntelligenceCaseStudies} 
       />
 
+      {/* Cloud Modernization Service */}
       <ServiceDetail
         id="cloud-modernization"
         title="Cloud Modernization"
-        description="Migrate and optimize your data infrastructure on modern cloud platforms for scalability and cost efficiency."
+        description="Migrate and optimize your data infrastructure on modern cloud platforms for scalability and cost efficiency. Our cloud solutions provide the flexibility and performance your business needs."
         benefits={[
-          "Cloud migration strategy",
-          "Infrastructure optimization",
-          "Multi-cloud solutions",
-          "Cloud cost optimization",
-          "Security and compliance"
+          "Cloud migration strategy and execution",
+          "Infrastructure optimization and cost management",
+          "Multi-cloud and hybrid cloud solutions",
+          "Cloud cost optimization strategies",
+          "Security and compliance implementation",
+          "Disaster recovery and backup solutions",
+          "Performance monitoring and optimization"
         ]}
         icon={<Cloud size={32} />}
         isReversed
-        useCustomVisual={true}
-        visualType="cloud-modernization"
+        image="https://images.pexels.com/photos/590018/pexels-photo-590018.jpeg?auto=compress&cs=tinysrgb&w=1600"
       />
 
+      {/* Cloud Modernization Success Stories */}
       <ServiceCaseStudies 
         title="Cloud Modernization" 
         caseStudies={cloudModernizationCaseStudies} 
       />
 
+      {/* AI Engineering Service */}
       <ServiceDetail
         id="ai-engineering"
         title="AI Engineering"
-        description="Implement advanced machine learning and AI solutions to automate processes and unlock predictive capabilities."
+        description="Implement advanced machine learning and AI solutions to automate processes and unlock predictive capabilities. Our AI engineering services help you harness the power of artificial intelligence."
         benefits={[
-          "Machine learning model development",
-          "AI solution architecture",
-          "Natural language processing",
-          "Computer vision applications",
-          "MLOps implementation"
+          "Machine learning model development and deployment",
+          "AI solution architecture and implementation",
+          "Natural language processing applications",
+          "Computer vision and image recognition",
+          "MLOps implementation and automation",
+          "Predictive analytics and forecasting",
+          "AI-powered automation solutions"
         ]}
         icon={<Brain size={32} />}
-        useCustomVisual={true}
-        visualType="ai-engineering"
+        image="https://images.pexels.com/photos/590024/pexels-photo-590024.jpeg?auto=compress&cs=tinysrgb&w=1600"
       />
 
+      {/* AI Engineering Success Stories */}
       <ServiceCaseStudies 
         title="AI Engineering" 
         caseStudies={aiEngineeringCaseStudies} 
