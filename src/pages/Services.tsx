@@ -3,14 +3,7 @@ import { Database, BarChart, LineChart, Cloud, Brain } from 'lucide-react';
 import ServiceDetail from '../components/services/ServiceDetail';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
-import ServiceCaseStudies from '../components/services/ServiceCaseStudies';
-import {
-  dataEngineeringCaseStudies,
-  dataVisualizationCaseStudies,
-  businessIntelligenceCaseStudies,
-  cloudModernizationCaseStudies,
-  aiEngineeringCaseStudies
-} from '../data/caseStudies';
+import DataEngineeringSuccessStories from '../components/services/DataEngineeringSuccessStories';
 import { motion } from 'framer-motion';
 
 const Services: React.FC = () => {
@@ -70,10 +63,7 @@ const Services: React.FC = () => {
         visualType="data-engineering"
       />
 
-      <ServiceCaseStudies 
-        title="Data Engineering" 
-        caseStudies={dataEngineeringCaseStudies} 
-      />
+      <DataEngineeringSuccessStories />
 
       <ServiceDetail
         id="data-visualization"

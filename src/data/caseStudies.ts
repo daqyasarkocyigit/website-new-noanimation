@@ -1,4 +1,3 @@
-import AzureArchitectureDiagram from '../components/architecture/AzureArchitectureDiagram';
 
 export interface CaseStudyData {
   id: string;
@@ -27,7 +26,6 @@ export const dataEngineeringCaseStudies: CaseStudyData[] = [
   {
     id: 'enterprise-analytics-transformation',
     title: 'Enterprise Analytics Transformation with Medallion Architecture',
-    architectureDiagram: AzureArchitectureDiagram,
     industry: 'Retail',
     duration: '12 weeks',
     challenge: 'A major grocery retail chain was experiencing critical performance issues with their business intelligence infrastructure. Their Power BI reports, connecting directly to a Dedicated SQL Pool via DirectQuery, became increasingly slow during peak business hours—particularly during Monday morning executive reviews when hundreds of users accessed dashboards simultaneously. The existing architecture presented several critical limitations: no auto-scaling capability in Dedicated SQL Pool, query timeouts during concurrent usage, high infrastructure costs for 24/7 operations, extended report loading times impacting business decisions, manual data integration processes, and lack of data lineage and governance.',
