@@ -64,6 +64,18 @@ const CaseStudy: React.FC<CaseStudyProps> = ({
         
         <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">{title}</h3>
         
+        <div className="flex flex-wrap gap-4 text-sm text-gray-600">
+          <div className="flex items-center gap-1">
+            <Clock size={16} className="text-gray-400" />
+            <span>{duration}</span>
+          </div>
+          {teamSize && (
+            <div className="flex items-center gap-1">
+              <Users size={16} className="text-gray-400" />
+              <span>{teamSize}</span>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* 2. ARCHITECTURE DIAGRAM */}

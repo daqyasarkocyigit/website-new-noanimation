@@ -16,7 +16,7 @@ const AzureArchitectureDiagram: React.FC = () => {
         {/* Company Logo - Top Left Corner */}
         <g id="company-logo">
           {/* DAQ Text */}
-          <text x="30" y="40" fontFamily="Inter, Arial, sans-serif" fontSize="18" fontWeight="700" fill="#ef4444">
+          <text x="30" y="50" fontFamily="Inter, Arial, sans-serif" fontSize="28" fontWeight="800" fill="#ef4444">
             DAQ
           </text>
         </g>
