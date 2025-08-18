@@ -316,6 +316,49 @@ const Talent: React.FC = () => {
             </motion.div>
           </div>
 
+          {/* Microsoft Power Platform */}
+          <motion.div
+            className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center mr-4">
+                <Zap className="w-6 h-6 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900">Microsoft Power Platform</h3>
+            </div>
+            <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
+              Low-code/no-code solutions using Microsoft Power Platform to accelerate digital transformation and business process automation
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                "Power Apps",
+                "Power Automate", 
+                "Power Virtual Agents",
+                "Power Pages",
+                "Dataverse",
+                "AI Builder",
+                "Solution Architecture",
+                "Canvas & Model Apps"
+              ].map((skill, skillIndex) => (
+                <motion.span 
+                  key={skillIndex}
+                  className="px-3 py-2 bg-purple-50 text-purple-800 text-sm rounded-lg font-medium border border-purple-200"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                  viewport={{ once: true }}
+                >
+                  {skill}
+                </motion.span>
+              ))}
+            </div>
+          </motion.div>
+
           {/* Data Architecture Guidance */}
           <motion.div
             className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl shadow-lg border border-gray-700"
