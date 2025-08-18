@@ -1,319 +1,74 @@
-import React, { useEffect, useState } from 'react';
-import { Cloud, Server, Shield, Database, Globe, Network, Activity, Zap, ChevronRight, TrendingUp } from 'lucide-react';
+import React from 'react';
+import { Server, Cloud, Shield, TrendingUp } from 'lucide-react';
 
 const CloudModernizationVisual: React.FC = () => {
-  const [progress, setProgress] = useState(0);
-  const [dataTransferred, setDataTransferred] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return prev + 1;
-      });
-      
-      setDataTransferred((prev) => {
-        if (prev >= 3) return 3;
-        return prev + 0.03;
-      });
-    }, 80);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl overflow-hidden relative">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div 
-          className="w-full h-full"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: '30px 30px'
-          }}
-        />
-      </div>
-
-      {/* Main Container - Mobile Optimized */}
-      <div className="relative w-full h-full flex flex-col justify-between p-2 sm:p-3 lg:p-4">
+    <div className="w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden relative flex items-center justify-center p-4">
+      
+      {/* Main Container */}
+      <div className="w-full max-w-2xl">
         
-        {/* Cloud Migration Progress Card */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-white/20 shadow-xl">
-          <div className="flex items-center justify-between mb-1.5 sm:mb-2">
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-brand-red-500 rounded-full animate-pulse" />
-              <div>
-                <h3 className="text-xs sm:text-sm font-semibold text-white">Cloud Migration Progress</h3>
-                <p className="text-xs text-gray-300 hidden sm:block">Infrastructure migration</p>
-              </div>
-            </div>
-            <div className="text-right">
-              <div className="text-lg sm:text-xl font-bold text-white tabular-nums">
-                {progress}%
-              </div>
-              <div className="text-xs text-gray-300 uppercase">Complete</div>
-            </div>
-          </div>
+        {/* Simple 3-Step Process */}
+        <div className="flex items-center justify-center gap-4 mb-6">
           
-          {/* Progress Bar */}
-          <div className="relative w-full h-1.5 sm:h-2 bg-gray-700/50 rounded-full overflow-hidden mb-1.5 sm:mb-2">
-            <div 
-              className="absolute inset-y-0 left-0 rounded-full transition-all duration-300 ease-out"
-              style={{ 
-                width: `${progress}%`,
-                background: 'linear-gradient(90deg, #ef4444 0%, #dc2626 100%)'
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent" />
+          {/* Step 1: On-Premises */}
+          <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200 text-center min-w-[120px] hover:shadow-lg transition-shadow duration-300">
+            <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <Server className="w-5 h-5 text-gray-600" />
             </div>
+            <h4 className="text-sm font-semibold text-gray-900 mb-1">On-Premises</h4>
+            <p className="text-xs text-gray-500">Legacy Systems</p>
           </div>
-          
-          <div className="flex justify-between text-xs">
-            <span className="text-gray-400">0TB</span>
-            <span className="font-medium text-brand-red-400">
-              {dataTransferred.toFixed(1)}TB / 3TB
-            </span>
+
+          {/* Arrow */}
+          <div className="text-brand-red-600 flex-shrink-0">
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </div>
+
+          {/* Step 2: Migration */}
+          <div className="bg-brand-red-50 p-4 rounded-lg shadow-md border border-brand-red-100 text-center min-w-[120px] hover:shadow-lg transition-shadow duration-300">
+            <div className="w-10 h-10 bg-brand-red-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <Shield className="w-5 h-5 text-brand-red-700" />
+            </div>
+            <h4 className="text-sm font-semibold text-gray-900 mb-1">Migration</h4>
+            <p className="text-xs text-gray-500">Secure Transfer</p>
+          </div>
+
+          {/* Arrow */}
+          <div className="text-brand-red-600 flex-shrink-0">
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </div>
+
+          {/* Step 3: Cloud Platform */}
+          <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200 text-center min-w-[120px] hover:shadow-lg transition-shadow duration-300">
+            <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <Cloud className="w-5 h-5 text-gray-600" />
+            </div>
+            <h4 className="text-sm font-semibold text-gray-900 mb-1">Cloud</h4>
+            <p className="text-xs text-gray-500">Modern Platform</p>
           </div>
         </div>
 
-        {/* Infrastructure Migration Flow - Mobile Responsive */}
-        <div className="flex-1 flex items-center py-2 sm:py-4">
-          <div className="w-full">
-            {/* Mobile: Vertical Layout */}
-            <div className="lg:hidden space-y-3">
-              {/* On-Premise */}
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50">
-                <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
-                  <Server className="w-3 h-3 mr-1" />
-                  On-Premise
-                </h4>
-                <div className="grid grid-cols-3 gap-1.5">
-                  <div className="bg-gray-900/50 rounded p-1.5 text-center border border-gray-700/30">
-                    <Database className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
-                    <div className="text-xs text-gray-300">Database</div>
-                    <div className="text-xs text-gray-500">2.1TB</div>
-                  </div>
-                  <div className="bg-gray-900/50 rounded p-1.5 text-center border border-gray-700/30">
-                    <Server className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
-                    <div className="text-xs text-gray-300">Servers</div>
-                    <div className="text-xs text-gray-500">12</div>
-                  </div>
-                  <div className="bg-gray-900/50 rounded p-1.5 text-center border border-gray-700/30">
-                    <Network className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
-                    <div className="text-xs text-gray-300">Storage</div>
-                    <div className="text-xs text-gray-500">0.9TB</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Migration Arrow */}
-              <div className="flex justify-center">
-                <div className="bg-gray-900 rounded-full p-2 border-2 border-brand-red-500">
-                  <ChevronRight className="w-4 h-4 text-brand-red-500 rotate-90" />
-                </div>
-              </div>
-
-              {/* Cloud Platform */}
-              <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2.5 border border-brand-red-500/30 shadow-lg">
-                <h4 className="text-xs font-semibold text-brand-red-400 mb-2 flex items-center">
-                  <Cloud className="w-3 h-3 mr-1" />
-                  Cloud Platform
-                </h4>
-                <div className="grid grid-cols-2 gap-1.5">
-                  <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                    <div className="flex items-center gap-1">
-                      <Shield className="w-3 h-3 text-brand-red-400" />
-                      <div className="text-xs text-gray-300">Security</div>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                    <div className="flex items-center gap-1">
-                      <Globe className="w-3 h-3 text-brand-red-400" />
-                      <div className="text-xs text-gray-300">CDN</div>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                    <div className="flex items-center gap-1">
-                      <Zap className="w-3 h-3 text-brand-red-400" />
-                      <div className="text-xs text-gray-300">Auto-Scale</div>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                    <div className="flex items-center gap-1">
-                      <Activity className="w-3 h-3 text-brand-red-400" />
-                      <div className="text-xs text-gray-300">Monitor</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Desktop: Horizontal Layout */}
-            <div className="hidden lg:grid lg:grid-cols-5 gap-4 items-center">
-              
-              {/* On-Premise - Left */}
-              <div className="col-span-2">
-                <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
-                  <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
-                    <Server className="w-3 h-3 mr-1" />
-                    On-Premise
-                  </h4>
-                  
-                  <div className="space-y-1">
-                    <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                      <div className="flex items-center gap-1">
-                        <Database className="w-3 h-3 text-gray-400" />
-                        <span className="text-xs text-gray-300">Database</span>
-                      </div>
-                      <span className="text-xs text-gray-500">2.1TB</span>
-                    </div>
-                    
-                    <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                      <div className="flex items-center gap-1">
-                        <Server className="w-3 h-3 text-gray-400" />
-                        <span className="text-xs text-gray-300">Servers</span>
-                      </div>
-                      <span className="text-xs text-gray-500">12</span>
-                    </div>
-                    
-                    <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                      <div className="flex items-center gap-1">
-                        <Network className="w-3 h-3 text-gray-400" />
-                        <span className="text-xs text-gray-300">Storage</span>
-                      </div>
-                      <span className="text-xs text-gray-500">0.9TB</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Migration Arrow - Center */}
-              <div className="col-span-1 flex items-center justify-center">
-                <div className="relative">
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-900 rounded-full p-1.5 border-2 border-brand-red-500">
-                    <ChevronRight className="w-3 h-3 text-brand-red-500" />
-                  </div>
-                  {/* Animated dot */}
-                  <div 
-                    className="absolute w-1.5 h-1.5 bg-brand-red-500 rounded-full -top-0.75 left-0"
-                    style={{ animation: 'flowRight 2s linear infinite' }}
-                  />
-                </div>
-              </div>
-
-              {/* Cloud Platform - Right */}
-              <div className="col-span-2">
-                <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-3 border border-brand-red-500/30 shadow-lg">
-                  <h4 className="text-xs font-semibold text-brand-red-400 mb-2 flex items-center">
-                    <Cloud className="w-3 h-3 mr-1" />
-                    Cloud Platform
-                  </h4>
-                  
-                  <div className="grid grid-cols-2 gap-1">
-                    <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                      <div className="flex items-center gap-1">
-                        <Shield className="w-3 h-3 text-brand-red-400" />
-                        <div>
-                          <div className="text-xs text-gray-300">Security</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                      <div className="flex items-center gap-1">
-                        <Globe className="w-3 h-3 text-brand-red-400" />
-                        <div>
-                          <div className="text-xs text-gray-300">CDN</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                      <div className="flex items-center gap-1">
-                        <Zap className="w-3 h-3 text-brand-red-400" />
-                        <div>
-                          <div className="text-xs text-gray-300">Auto-Scale</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                      <div className="flex items-center gap-1">
-                        <Activity className="w-3 h-3 text-brand-red-400" />
-                        <div>
-                          <div className="text-xs text-gray-300">Monitor</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Simple Key Metrics */}
+        <div className="grid grid-cols-3 gap-3 max-w-md mx-auto">
+          <div className="text-center p-3 bg-white rounded-lg shadow-md border border-gray-100">
+            <div className="text-lg font-bold text-gray-900">42%</div>
+            <div className="text-xs text-gray-500">Cost Savings</div>
           </div>
-        </div>
-
-        {/* Key Metrics - Bottom section */}
-        <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Cost Savings</div>
-                <div className="text-sm font-bold text-white">42%</div>
-                <div className="text-xs text-gray-500">$2.1M/year</div>
-              </div>
-              <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" />
-            </div>
+          <div className="text-center p-3 bg-white rounded-lg shadow-md border border-gray-100">
+            <div className="text-lg font-bold text-gray-900">3.2x</div>
+            <div className="text-xs text-gray-500">Performance</div>
           </div>
-          
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Performance</div>
-                <div className="text-sm font-bold text-white">3.2x</div>
-                <div className="text-xs text-gray-500">Faster</div>
-              </div>
-              <Activity className="w-3 h-3 sm:w-4 sm:h-4 text-brand-red-500" />
-            </div>
-          </div>
-          
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Uptime</div>
-                <div className="text-sm font-bold text-white">99.99%</div>
-                <div className="text-xs text-gray-500">SLA</div>
-              </div>
-              <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500" />
-            </div>
+          <div className="text-center p-3 bg-white rounded-lg shadow-md border border-gray-100">
+            <div className="text-lg font-bold text-gray-900">99.99%</div>
+            <div className="text-xs text-gray-500">Uptime</div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes flowRight {
-          0% { 
-            transform: translateX(0);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          90% {
-            opacity: 1;
-          }
-          100% { 
-            transform: translateX(48px);
-            opacity: 0;
-          }
-        }
-      `}</style>
     </div>
   );
 };

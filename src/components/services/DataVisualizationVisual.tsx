@@ -1,257 +1,74 @@
 import React from 'react';
-import { BarChart3, PieChart, TrendingUp, Activity, LineChart, Eye, Palette, Grid3x3 } from 'lucide-react';
+import { BarChart3, LineChart, PieChart, Activity } from 'lucide-react';
 
 const DataVisualizationVisual: React.FC = () => {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl overflow-hidden relative">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
-        <div 
-          className="w-full h-full"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: '30px 30px'
-          }}
-        />
-      </div>
-
-      {/* Main Container - Optimized for full visibility */}
-      <div className="relative w-full h-full flex flex-col p-2 sm:p-3 lg:p-4">
+    <div className="w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden relative flex items-center justify-center p-4">
+      
+      {/* Main Container */}
+      <div className="w-full max-w-2xl">
         
-        {/* Dashboard Performance Card */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-white/20 shadow-xl mb-2 sm:mb-3 flex-shrink-0">
-          <div className="flex items-center justify-between mb-1.5 sm:mb-2">
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <div className="relative">
-                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-brand-red-500 rounded-full animate-pulse" />
-              </div>
-              <div>
-                <h3 className="text-xs sm:text-sm font-semibold text-white">Dashboard Analytics</h3>
-                <p className="text-xs text-gray-300 hidden sm:block">Real-time visualization performance</p>
-              </div>
-            </div>
-            <div className="text-right">
-              <div className="text-lg sm:text-2xl font-bold text-white tabular-nums">
-                15.2K
-              </div>
-              <div className="text-xs text-gray-300 uppercase">Active Users</div>
-            </div>
-          </div>
+        {/* Simple 3-Step Process */}
+        <div className="flex items-center justify-center gap-4 mb-6">
           
-          {/* Live Update Indicator */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="flex-1 flex items-center gap-1.5 sm:gap-2">
-              <Activity className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-brand-red-400" />
-              <div className="flex-1 h-1.5 bg-gray-700/50 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-gradient-to-r from-brand-red-500 to-brand-red-600 rounded-full"
-                  style={{ 
-                    width: '72%',
-                    animation: 'liveUpdate 3s ease-in-out infinite'
-                  }}
-                />
-              </div>
-              <span className="text-xs text-gray-400">72% CPU</span>
+          {/* Step 1: Data Sources */}
+          <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200 text-center min-w-[120px] hover:shadow-lg transition-shadow duration-300">
+            <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <BarChart3 className="w-5 h-5 text-gray-600" />
             </div>
+            <h4 className="text-sm font-semibold text-gray-900 mb-1">Raw Data</h4>
+            <p className="text-xs text-gray-500">Complex Datasets</p>
+          </div>
+
+          {/* Arrow */}
+          <div className="text-brand-red-600 flex-shrink-0">
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </div>
+
+          {/* Step 2: Processing */}
+          <div className="bg-brand-red-50 p-4 rounded-lg shadow-md border border-brand-red-100 text-center min-w-[120px] hover:shadow-lg transition-shadow duration-300">
+            <div className="w-10 h-10 bg-brand-red-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <PieChart className="w-5 h-5 text-brand-red-700" />
+            </div>
+            <h4 className="text-sm font-semibold text-gray-900 mb-1">Transform</h4>
+            <p className="text-xs text-gray-500">Visual Processing</p>
+          </div>
+
+          {/* Arrow */}
+          <div className="text-brand-red-600 flex-shrink-0">
+            <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </div>
+
+          {/* Step 3: Dashboard */}
+          <div className="bg-white p-4 rounded-lg shadow-md border border-gray-200 text-center min-w-[120px] hover:shadow-lg transition-shadow duration-300">
+            <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+              <LineChart className="w-5 h-5 text-gray-600" />
+            </div>
+            <h4 className="text-sm font-semibold text-gray-900 mb-1">Dashboards</h4>
+            <p className="text-xs text-gray-500">Visual Insights</p>
           </div>
         </div>
 
-        {/* Visualization Types Grid - Optimized for mobile */}
-        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 min-h-0">
-          
-          {/* Interactive Charts Section */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50 flex flex-col">
-            <h4 className="text-xs font-semibold text-gray-300 mb-1.5 sm:mb-2 flex items-center flex-shrink-0">
-              <BarChart3 className="w-3 h-3 mr-1" />
-              Interactive Charts
-            </h4>
-            
-            {/* Bar Chart Preview */}
-            <div className="bg-gray-900/50 rounded p-1.5 sm:p-2 mb-1.5 sm:mb-2 border border-gray-700/30 flex-shrink-0">
-              <div className="flex items-end gap-0.5 sm:gap-1 h-10 sm:h-12 lg:h-14">
-                {[40, 65, 35, 80, 55, 70, 45].map((height, i) => (
-                  <div
-                    key={i}
-                    className="flex-1 bg-gradient-to-t from-brand-red-600 to-brand-red-400 rounded-t-sm transition-all duration-300"
-                    style={{
-                      height: `${height}%`,
-                      animation: `barGrow 1s ease-out ${i * 0.1}s backwards`
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="text-xs text-gray-500 mt-1 text-center">Weekly Trends</div>
-            </div>
-            
-            {/* Metrics */}
-            <div className="grid grid-cols-2 gap-1 sm:gap-1.5 flex-shrink-0">
-              <div className="bg-gray-900/50 rounded p-1 sm:p-1.5 text-center border border-gray-700/30">
-                <div className="text-xs text-gray-400">Charts</div>
-                <div className="text-sm font-bold text-white">24</div>
-              </div>
-              <div className="bg-gray-900/50 rounded p-1 sm:p-1.5 text-center border border-gray-700/30">
-                <div className="text-xs text-gray-400">Updates/s</div>
-                <div className="text-sm font-bold text-white">120</div>
-              </div>
-            </div>
+        {/* Simple Key Metrics */}
+        <div className="grid grid-cols-3 gap-3 max-w-md mx-auto">
+          <div className="text-center p-3 bg-white rounded-lg shadow-md border border-gray-100">
+            <div className="text-lg font-bold text-gray-900">0.8s</div>
+            <div className="text-xs text-gray-500">Load Time</div>
           </div>
-
-          {/* Real-time Dashboards */}
-          <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-brand-red-500/30 shadow-lg flex flex-col">
-            <h4 className="text-xs font-semibold text-brand-red-400 mb-1.5 sm:mb-2 flex items-center flex-shrink-0">
-              <Grid3x3 className="w-3 h-3 mr-1" />
-              Live Dashboards
-            </h4>
-            
-            {/* Dashboard Grid */}
-            <div className="grid grid-cols-2 gap-1.5 sm:gap-2 mb-1.5 sm:mb-2 flex-shrink-0">
-              <div className="bg-white/5 rounded p-1.5 sm:p-2 border border-white/10">
-                <PieChart className="w-4 h-4 sm:w-5 sm:h-5 text-brand-red-400 mx-auto mb-0.5 sm:mb-1" />
-                <div className="text-xs text-gray-300 text-center">Analytics</div>
-              </div>
-              <div className="bg-white/5 rounded p-1.5 sm:p-2 border border-white/10">
-                <LineChart className="w-4 h-4 sm:w-5 sm:h-5 text-brand-red-400 mx-auto mb-0.5 sm:mb-1" />
-                <div className="text-xs text-gray-300 text-center">Metrics</div>
-              </div>
-              <div className="bg-white/5 rounded p-1.5 sm:p-2 border border-white/10">
-                <TrendingUp className="w-4 h-4 sm:w-5 sm:h-5 text-brand-red-400 mx-auto mb-0.5 sm:mb-1" />
-                <div className="text-xs text-gray-300 text-center">KPIs</div>
-              </div>
-              <div className="bg-white/5 rounded p-1.5 sm:p-2 border border-white/10">
-                <Eye className="w-4 h-4 sm:w-5 sm:h-5 text-brand-red-400 mx-auto mb-0.5 sm:mb-1" />
-                <div className="text-xs text-gray-300 text-center">Monitor</div>
-              </div>
-            </div>
-            
-            {/* Live Indicator */}
-            <div className="bg-white/5 rounded p-1 sm:p-1.5 border border-white/10 flex-shrink-0">
-              <div className="flex items-center justify-between">
-                <span className="text-xs text-gray-300">Live Refresh</span>
-                <div className="flex items-center gap-1">
-                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-xs text-green-400">Active</span>
-                </div>
-              </div>
-            </div>
+          <div className="text-center p-3 bg-white rounded-lg shadow-md border border-gray-100">
+            <div className="text-lg font-bold text-gray-900">60fps</div>
+            <div className="text-xs text-gray-500">Smooth</div>
           </div>
-
-          {/* Custom Visualizations */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-gray-700/50 sm:col-span-2 lg:col-span-1 flex flex-col">
-            <h4 className="text-xs font-semibold text-gray-300 mb-1.5 sm:mb-2 flex items-center flex-shrink-0">
-              <Palette className="w-3 h-3 mr-1" />
-              Custom Visuals
-            </h4>
-            
-            {/* Heatmap Preview */}
-            <div className="bg-gray-900/50 rounded p-1.5 sm:p-2 mb-1.5 sm:mb-2 border border-gray-700/30 flex-shrink-0">
-              <div className="grid grid-cols-7 gap-0.5">
-                {[...Array(21)].map((_, i) => {
-                  const intensity = Math.random();
-                  return (
-                    <div
-                      key={i}
-                      className="aspect-square rounded-sm"
-                      style={{
-                        backgroundColor: `rgba(239, 68, 68, ${intensity})`,
-                        animation: `heatPulse 3s ease-in-out infinite ${i * 0.05}s`
-                      }}
-                    />
-                  );
-                })}
-              </div>
-              <div className="text-xs text-gray-500 mt-1 text-center">Activity Heatmap</div>
-            </div>
-            
-            {/* Customization Options */}
-            <div className="space-y-1 flex-shrink-0">
-              <div className="bg-gray-900/50 rounded p-1 sm:p-1.5 flex items-center justify-between border border-gray-700/30">
-                <span className="text-xs text-gray-300">Color Themes</span>
-                <span className="text-xs text-gray-500">12</span>
-              </div>
-              <div className="bg-gray-900/50 rounded p-1 sm:p-1.5 flex items-center justify-between border border-gray-700/30">
-                <span className="text-xs text-gray-300">Chart Types</span>
-                <span className="text-xs text-gray-500">18</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Key Performance Metrics - Fixed at bottom */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2 mt-2 sm:mt-3 flex-shrink-0">
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2.5 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Load Time</div>
-                <div className="text-sm sm:text-lg font-bold text-white">0.8s</div>
-                <div className="text-xs text-gray-500">avg</div>
-              </div>
-              <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" />
-            </div>
-          </div>
-          
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2.5 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">FPS</div>
-                <div className="text-sm sm:text-lg font-bold text-white">60fps</div>
-                <div className="text-xs text-gray-500">smooth</div>
-              </div>
-              <Activity className="w-3 h-3 sm:w-4 sm:h-4 text-brand-red-500" />
-            </div>
-          </div>
-          
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2.5 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Data Points</div>
-                <div className="text-sm sm:text-lg font-bold text-white">1.2M</div>
-                <div className="text-xs text-gray-500">rendered</div>
-              </div>
-              <Grid3x3 className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500" />
-            </div>
-          </div>
-          
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2.5 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Dashboards</div>
-                <div className="text-sm sm:text-lg font-bold text-white">87</div>
-                <div className="text-xs text-gray-500">active</div>
-              </div>
-              <Eye className="w-3 h-3 sm:w-4 sm:h-4 text-purple-500" />
-            </div>
+          <div className="text-center p-3 bg-white rounded-lg shadow-md border border-gray-100">
+            <div className="text-lg font-bold text-gray-900">1.2M</div>
+            <div className="text-xs text-gray-500">Data Points</div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes barGrow {
-          from {
-            height: 0;
-          }
-        }
-        
-        @keyframes heatPulse {
-          0%, 100% {
-            opacity: 0.3;
-          }
-          50% {
-            opacity: 1;
-          }
-        }
-        
-        @keyframes liveUpdate {
-          0%, 100% {
-            width: 72%;
-          }
-          50% {
-            width: 85%;
-          }
-        }
-      `}</style>
     </div>
   );
 };
