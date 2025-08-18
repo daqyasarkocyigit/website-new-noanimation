@@ -20,14 +20,37 @@ const Navbar: React.FC = () => {
       }
     };
 
+    // Click outside detection for services dropdown
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      const servicesButton = document.querySelector('[aria-label="Services menu"]');
+      const servicesDropdown = document.querySelector('[role="menu"][aria-label="Services submenu"]');
+      
+      if (servicesOpen && servicesButton && servicesDropdown) {
+        if (!servicesButton.contains(target) && !servicesDropdown.contains(target)) {
+          setServicesOpen(false);
+        }
+      }
+    };
+
+    // Escape key detection
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && servicesOpen) {
+        setServicesOpen(false);
+      }
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleResize);
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [servicesOpen]);
 
   // Enhanced mobile menu management
   useEffect(() => {
@@ -119,7 +142,17 @@ const Navbar: React.FC = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8" role="navigation">
-            <div className="relative group">
+            <div 
+              className="relative group"
+              onMouseLeave={() => {
+                // Auto close after mouse leave with small delay
+                setTimeout(() => setServicesOpen(false), 300);
+              }}
+              onMouseEnter={() => {
+                // Clear any pending auto-close when mouse enters
+                setServicesOpen(true);
+              }}
+            >
               <button 
                 className="flex items-center text-gray-700 hover:text-brand-red-600 font-medium group relative overflow-hidden transition-colors duration-200 focus-ring rounded-lg px-3 py-2"
                 onClick={() => setServicesOpen(!servicesOpen)}
