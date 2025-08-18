@@ -317,47 +317,91 @@ const Talent: React.FC = () => {
           </div>
 
           {/* Microsoft Power Platform */}
-          <motion.div
-            className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
-          >
-            <div className="flex items-center mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-600 to-purple-700 rounded-xl flex items-center justify-center mr-4">
-                <Zap className="w-6 h-6 text-white" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Microsoft Power Platform */}
+            <motion.div
+              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center mr-3">
+                  <Zap className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">Microsoft Power Platform</h3>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900">Microsoft Power Platform</h3>
-            </div>
-            <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
-              Low-code/no-code solutions using Microsoft Power Platform to accelerate digital transformation and business process automation
-            </p>
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                "Power Apps",
-                "Power Automate", 
-                "Power Virtual Agents",
-                "Power Pages",
-                "Dataverse",
-                "AI Builder",
-                "Solution Architecture",
-                "Canvas & Model Apps"
-              ].map((skill, skillIndex) => (
-                <motion.span 
-                  key={skillIndex}
-                  className="px-3 py-2 bg-purple-50 text-purple-800 text-sm rounded-lg font-medium border border-purple-200"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
-                  viewport={{ once: true }}
-                >
-                  {skill}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
+              <p className="text-sm text-cool-gray-600 mb-4 leading-relaxed">
+                Low-code/no-code solutions to accelerate digital transformation and business process automation
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  "Power Apps",
+                  "Power Automate", 
+                  "Power Virtual Agents",
+                  "Power Pages",
+                  "Dataverse",
+                  "AI Builder",
+                  "Solution Architecture",
+                  "Canvas & Model Apps"
+                ].map((skill, skillIndex) => (
+                  <motion.span 
+                    key={skillIndex}
+                    className="px-3 py-1.5 bg-purple-50 text-purple-700 text-xs rounded-md font-medium border border-purple-100"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Additional Service - AI & Machine Learning */}
+            <motion.div
+              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              viewport={{ once: true }}
+            >
+              <div className="flex items-center mb-4">
+                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center mr-3">
+                  <Brain className="w-5 h-5 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900">AI & Machine Learning</h3>
+              </div>
+              <p className="text-sm text-cool-gray-600 mb-4 leading-relaxed">
+                Advanced AI and machine learning solutions for predictive analytics and automation
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  "Azure OpenAI",
+                  "ML.NET", 
+                  "Cognitive Services",
+                  "Bot Framework",
+                  "Custom Vision",
+                  "Language Understanding",
+                  "MLOps Pipeline",
+                  "Model Deployment"
+                ].map((skill, skillIndex) => (
+                  <motion.span 
+                    key={skillIndex}
+                    className="px-3 py-1.5 bg-blue-50 text-blue-700 text-xs rounded-md font-medium border border-blue-100"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
+                    viewport={{ once: true }}
+                  >
+                    {skill}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
 
           {/* Data Architecture Guidance */}
           <motion.div
