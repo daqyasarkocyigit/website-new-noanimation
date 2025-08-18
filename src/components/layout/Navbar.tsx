@@ -101,20 +101,44 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex flex-col items-start group focus-ring rounded-lg p-2 -m-2" 
+            className="flex items-center gap-3 group focus-ring rounded-lg p-2 -m-2" 
             aria-label="DAQ Consulting Home"
             onClick={closeMenu}
           >
-            <span className="flex items-center space-x-1 md:space-x-3">
-              <span className="text-lg md:text-2xl transition-transform duration-200 group-hover:scale-105">
-                <span className="text-brand-red-600 drop-shadow-md tracking-wider font-black">DAQ</span>
-                <span className="inline-block w-0.5 h-4 md:h-6 bg-brand-red-600 rounded-full opacity-80 mx-1.5 md:mx-2 shadow-sm"></span>
-                <span className="text-gray-800 font-bold tracking-wide">Consulting</span>
+            {/* Innovative Logo Icon */}
+            <div className="relative">
+              <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:rotate-3 group-hover:scale-105">
+                {/* Abstract Data/AI Icon */}
+                <svg className="w-6 h-6 md:w-7 md:h-7 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" fill="currentColor" fillOpacity="0.3"/>
+                  <path d="M12 6V18M6 12H18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                  <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                </svg>
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 bg-brand-red-600 rounded-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300 blur-sm"></div>
+              </div>
+              {/* Innovation indicator */}
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-yellow-400 rounded-full border-2 border-white shadow-sm animate-pulse"></div>
+            </div>
+            
+            {/* Text Logo */}
+            <div className="flex flex-col">
+              <div className="flex items-center space-x-2">
+                <span className="text-lg md:text-2xl font-black text-gray-900 tracking-tight group-hover:text-brand-red-600 transition-colors duration-300">
+                  DAQ
+                </span>
+                <div className="flex flex-col">
+                  <div className="w-0.5 h-3 bg-brand-red-600 rounded-full"></div>
+                  <div className="w-0.5 h-3 bg-gray-400 rounded-full mt-0.5"></div>
+                </div>
+                <span className="text-lg md:text-2xl font-semibold text-gray-700 tracking-wide">
+                  Consulting
+                </span>
+              </div>
+              <span className="text-xs text-gray-500 font-medium tracking-wide mt-0.5 group-hover:text-brand-red-500 transition-colors duration-300">
+                AI & Data Engineering
               </span>
-            </span>
-            <span className="text-xs text-gray-600 mt-0.5 tracking-wide font-medium group-hover:text-brand-red-600 transition-colors duration-200">
-              AI & Data Engineering Experts
-            </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
