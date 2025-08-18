@@ -5,6 +5,9 @@ import { ArrowRight, CheckCircle, Clock } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [currentService, setCurrentService] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   
   const services = [
     'Azure Solutions',
@@ -66,11 +69,40 @@ const Hero: React.FC = () => {
 
   // Rotate services every 3 seconds
   useEffect(() => {
-    const serviceInterval = setInterval(() => {
-      setCurrentService((prev) => (prev + 1) % services.length);
-    }, 3000);
-    return () => clearInterval(serviceInterval);
-  }, []);
+    const currentText = services[currentService];
+    let timeout: NodeJS.Timeout;
+
+    if (isPaused) {
+      // Pause after completing a word
+      timeout = setTimeout(() => {
+        setIsPaused(false);
+        setIsDeleting(true);
+      }, 2000);
+    } else if (isDeleting) {
+      // Deleting characters
+      if (displayText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayText(displayText.slice(0, -1));
+        }, 100);
+      } else {
+        // Move to next service
+        setIsDeleting(false);
+        setCurrentService((prev) => (prev + 1) % services.length);
+      }
+    } else {
+      // Typing characters
+      if (displayText.length < currentText.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(currentText.slice(0, displayText.length + 1));
+        }, 150);
+      } else {
+        // Pause when word is complete
+        setIsPaused(true);
+      }
+    }
+
+    return () => clearTimeout(timeout);
+  }, [currentService, displayText, isDeleting, isPaused, services]);
 
   return (
     <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
@@ -103,18 +135,10 @@ const Hero: React.FC = () => {
                 <span className="text-gray-900">We deliver </span>
                 <br />
                 <div className="relative inline-block">
-                  <AnimatePresence mode="wait">
-                    <motion.span
-                      key={currentService}
-                      className="text-[#FF3333]"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      {services[currentService]}
-                    </motion.span>
-                  </AnimatePresence>
+                  <span className="text-[#FF3333]">
+                    {displayText}
+                    <span className="animate-pulse">|</span>
+                  </span>
                 </div>
               </h1>
             </div>
