@@ -234,7 +234,7 @@ const Hero: React.FC = () => {
               <div 
                 className="hidden sm:block absolute inset-x-6 top-0 flex flex-col"
                 style={{
-                  animation: 'continuousScroll 30s linear infinite'
+                  animation: 'continuousScroll 12s linear infinite'
                 }}
               >
                 {/* First Set of Stories */}
