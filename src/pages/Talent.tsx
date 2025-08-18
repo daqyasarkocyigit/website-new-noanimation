@@ -379,14 +379,14 @@ const Talent: React.FC = () => {
               </p>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  "ChatGPT & GPT-4",
-                  "Claude & Anthropic", 
-                  "LangChain & RAG",
-                  "AI Agents & AutoGen",
-                  "Vector Databases",
-                  "Prompt Engineering",
-                  "LLMOps & Fine-tuning",
-                  "Hugging Face & Transformers"
+                  "Agent AI",
+                  "Conversational AI", 
+                  "RAG Systems",
+                  "AI Orchestration",
+                  "Vector Search",
+                  "Knowledge Mining",
+                  "MLOps & AutoML",
+                  "Computer Vision"
                 ].map((skill, skillIndex) => (
                   <motion.span 
                     key={skillIndex}
