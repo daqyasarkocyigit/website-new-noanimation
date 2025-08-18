@@ -173,15 +173,66 @@ const Hero: React.FC = () => {
           >
             {/* Continuous Success Stories Feed */}
             <div 
-              className="relative p-6 rounded-2xl border border-white/20 h-[500px] overflow-hidden mx-auto max-w-lg"
+              className="relative p-6 rounded-2xl border border-white/20 overflow-hidden mx-auto max-w-lg
+                h-[500px] lg:h-[500px]
+                sm:h-[300px]"
               style={{
                 backdropFilter: 'blur(20px)',
                 background: 'rgba(255,255,255,0.3)',
               }}
             >
-              {/* Scrolling Feed Container */}
+              {/* Mobile Horizontal Scroll */}
+              <div className="block sm:hidden">
+                <div 
+                  className="flex gap-4 h-full"
+                  style={{
+                    animation: 'horizontalScroll 30s linear infinite'
+                  }}
+                >
+                  {/* First Set - Horizontal Cards */}
+                  {successStories.slice(0, 4).map((story, index) => (
+                    <div
+                      key={`mobile-${index}`}
+                      className="flex-shrink-0 w-64 bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/10"
+                    >
+                      <div className="mb-2">
+                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
+                          {story.type}
+                        </span>
+                      </div>
+                      <h4 className="text-sm font-medium text-gray-800 mb-2 leading-tight">
+                        {story.title}
+                      </h4>
+                      <p className="text-xs text-gray-600 leading-relaxed">
+                        {story.description}
+                      </p>
+                    </div>
+                  ))}
+                  {/* Duplicate for seamless loop */}
+                  {successStories.slice(0, 4).map((story, index) => (
+                    <div
+                      key={`mobile-dup-${index}`}
+                      className="flex-shrink-0 w-64 bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/10"
+                    >
+                      <div className="mb-2">
+                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
+                          {story.type}
+                        </span>
+                      </div>
+                      <h4 className="text-sm font-medium text-gray-800 mb-2 leading-tight">
+                        {story.title}
+                      </h4>
+                      <p className="text-xs text-gray-600 leading-relaxed">
+                        {story.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Desktop Vertical Scroll */}
               <div 
-                className="absolute inset-x-6 top-0 flex flex-col"
+                className="hidden sm:block absolute inset-x-6 top-0 flex flex-col"
                 style={{
                   animation: 'continuousScroll 40s linear infinite'
                 }}
@@ -243,15 +294,28 @@ const Hero: React.FC = () => {
 
               {/* Gradient Overlays for Smooth Fade */}
               <div 
-                className="absolute top-0 left-0 right-0 h-16 pointer-events-none z-10"
+                className="absolute top-0 left-0 right-0 h-16 pointer-events-none z-10 hidden sm:block"
                 style={{
                   background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
                 }}
               />
               <div 
-                className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
+                className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10 hidden sm:block"
                 style={{
                   background: 'linear-gradient(0deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
+                }}
+              />
+              {/* Mobile Horizontal Gradient Overlays */}
+              <div 
+                className="absolute top-0 bottom-0 left-0 w-16 pointer-events-none z-10 sm:hidden"
+                style={{
+                  background: 'linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
+                }}
+              />
+              <div 
+                className="absolute top-0 bottom-0 right-0 w-16 pointer-events-none z-10 sm:hidden"
+                style={{
+                  background: 'linear-gradient(-90deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
                 }}
               />
             </div>
@@ -271,6 +335,15 @@ const Hero: React.FC = () => {
           }
           100% {
             transform: translateY(-50%);
+          }
+        }
+        
+        @keyframes horizontalScroll {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
           }
         }
         
