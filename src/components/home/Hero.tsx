@@ -154,7 +154,6 @@ const Hero: React.FC = () => {
             >
               <div className="flex items-center gap-2 mb-6">
                 <div className="w-3 h-3 bg-[#FF3333] rounded-full animate-pulse"></div>
-                <h3 className="text-lg font-semibold text-gray-800">Live Project Updates</h3>
               </div>
 
               <div className="space-y-4 max-h-96 overflow-hidden">
