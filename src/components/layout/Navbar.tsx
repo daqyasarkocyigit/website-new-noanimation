@@ -101,18 +101,18 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex flex-col items-start group focus-ring rounded-lg p-2 -m-2" 
-            aria-label="DAQ Consulting Home"
+            className="flex flex-col items-start group focus-ring rounded-lg p-3 -m-3 transition-all duration-200 hover:bg-gray-50/50" 
+            aria-label="DAQ Consulting - Navigate to homepage"
             onClick={closeMenu}
           >
             <span className="flex items-center space-x-1 md:space-x-3">
-              <span className="text-lg md:text-2xl transition-transform duration-200 group-hover:scale-105">
-                <span className="text-brand-red-600 drop-shadow-md tracking-wider font-black">DAQ</span>
-                <span className="inline-block w-0.5 h-4 md:h-6 bg-brand-red-600 rounded-full opacity-80 mx-1.5 md:mx-2 shadow-sm"></span>
-                <span className="text-gray-800 font-bold tracking-wide">Consulting</span>
+              <span className="text-lg md:text-2xl transition-all duration-300 group-hover:scale-105">
+                <span className="text-brand-red-600 drop-shadow-sm tracking-wider font-black">DAQ</span>
+                <span className="inline-block w-0.5 h-4 md:h-6 bg-brand-red-600 rounded-full opacity-90 mx-1.5 md:mx-2 shadow-sm transition-opacity duration-300 group-hover:opacity-100"></span>
+                <span className="text-gray-800 font-bold tracking-wide transition-colors duration-300 group-hover:text-gray-900">Consulting</span>
               </span>
             </span>
-            <span className="text-xs text-gray-600 mt-0.5 tracking-wide font-medium group-hover:text-brand-red-600 transition-colors duration-200">
+            <span className="text-xs text-gray-600 mt-1 tracking-wide font-medium group-hover:text-brand-red-600 transition-colors duration-300 leading-tight">
               AI & Data Engineering Experts
             </span>
           </Link>
