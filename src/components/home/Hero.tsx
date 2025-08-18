@@ -5,7 +5,6 @@ import { ArrowRight, CheckCircle, Clock } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [currentService, setCurrentService] = useState(0);
-  const [currentUpdate, setCurrentUpdate] = useState(0);
   
   const services = [
     'Azure Solutions',
@@ -50,6 +49,18 @@ const Hero: React.FC = () => {
       description: 'Transformed business intelligence capabilities for manufacturing leader',
       time: '45 minutes ago',
       type: 'Business Intelligence'
+    },
+    {
+      title: 'Implemented Delta Lake optimization for petabyte-scale data',
+      description: 'Achieved 10x performance improvement for global e-commerce platform',
+      time: '52 minutes ago',
+      type: 'Data Engineering'
+    },
+    {
+      title: 'Deployed MLflow pipeline for automated model deployment',
+      description: 'Streamlined ML operations for financial services company',
+      time: '1 hour ago',
+      type: 'MLOps'
     }
   ];
 
@@ -59,14 +70,6 @@ const Hero: React.FC = () => {
       setCurrentService((prev) => (prev + 1) % services.length);
     }, 3000);
     return () => clearInterval(serviceInterval);
-  }, []);
-
-  // Add new updates every 5 seconds
-  useEffect(() => {
-    const updateInterval = setInterval(() => {
-      setCurrentUpdate((prev) => (prev + 1) % successStories.length);
-    }, 5000);
-    return () => clearInterval(updateInterval);
   }, []);
 
   return (
@@ -137,59 +140,106 @@ const Hero: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right Side - Embedded Live Feed */}
+          {/* Right Side - Continuous News Feed */}
           <motion.div 
             className="relative lg:justify-self-end"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Live Feed - Embedded in Background */}
+            {/* Continuous Success Stories Feed */}
             <div 
-              className="relative p-8 rounded-2xl border border-white/20"
+              className="relative p-8 rounded-2xl border border-white/20 h-[500px] overflow-hidden"
               style={{
                 backdropFilter: 'blur(20px)',
                 background: 'rgba(255,255,255,0.3)',
               }}
             >
-
-              <div className="space-y-4 max-h-[400px] overflow-hidden">
-                <AnimatePresence>
-                  {successStories.slice(0, 4).map((story, index) => (
-                    <motion.div
-                      key={`story-${currentUpdate}-${index}`}
-                      className="flex items-start gap-3 p-4 rounded-xl"
-                      style={{
-                        background: 'rgba(255,255,255,0.2)',
-                        backdropFilter: 'blur(10px)',
-                      }}
-                      initial={{ opacity: 0, y: -30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 30 }}
-                      transition={{ duration: 0.3, delay: index * 0.1 }}
-                    >
-                      <CheckCircle size={20} className="text-[#FF3333] mt-0.5 flex-shrink-0" />
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-xs font-medium text-[#FF3333] bg-[#FF3333]/10 px-2 py-1 rounded-full">
-                            {story.type}
-                          </span>
-                          <div className="flex items-center gap-1 text-xs text-gray-500">
-                            <Clock size={12} />
-                            {story.time}
-                          </div>
+              {/* Scrolling Feed Container */}
+              <div 
+                className="absolute inset-x-8 top-0 flex flex-col"
+                style={{
+                  animation: 'continuousScroll 40s linear infinite'
+                }}
+              >
+                {/* First Set of Stories */}
+                {successStories.map((story, index) => (
+                  <div
+                    key={`first-${index}`}
+                    className="flex items-start gap-3 p-4 mb-4 rounded-xl"
+                    style={{
+                      background: 'rgba(255,255,255,0.2)',
+                      backdropFilter: 'blur(10px)',
+                      minHeight: '120px'
+                    }}
+                  >
+                    <CheckCircle size={20} className="text-[#FF3333] mt-0.5 flex-shrink-0" />
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-medium text-[#FF3333] bg-[#FF3333]/10 px-2 py-1 rounded-full">
+                          {story.type}
+                        </span>
+                        <div className="flex items-center gap-1 text-xs text-gray-500">
+                          <Clock size={12} />
+                          {story.time}
                         </div>
-                        <h4 className="text-sm font-medium text-gray-800 mb-1">
-                          {story.title}
-                        </h4>
-                        <p className="text-xs text-gray-600">
-                          {story.description}
-                        </p>
                       </div>
-                    </motion.div>
-                  ))}
-                </AnimatePresence>
+                      <h4 className="text-sm font-medium text-gray-800 mb-1">
+                        {story.title}
+                      </h4>
+                      <p className="text-xs text-gray-600">
+                        {story.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                
+                {/* Second Set of Stories (duplicate for seamless loop) */}
+                {successStories.map((story, index) => (
+                  <div
+                    key={`second-${index}`}
+                    className="flex items-start gap-3 p-4 mb-4 rounded-xl"
+                    style={{
+                      background: 'rgba(255,255,255,0.2)',
+                      backdropFilter: 'blur(10px)',
+                      minHeight: '120px'
+                    }}
+                  >
+                    <CheckCircle size={20} className="text-[#FF3333] mt-0.5 flex-shrink-0" />
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-xs font-medium text-[#FF3333] bg-[#FF3333]/10 px-2 py-1 rounded-full">
+                          {story.type}
+                        </span>
+                        <div className="flex items-center gap-1 text-xs text-gray-500">
+                          <Clock size={12} />
+                          {story.time}
+                        </div>
+                      </div>
+                      <h4 className="text-sm font-medium text-gray-800 mb-1">
+                        {story.title}
+                      </h4>
+                      <p className="text-xs text-gray-600">
+                        {story.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
+
+              {/* Gradient Overlays for Smooth Fade */}
+              <div 
+                className="absolute top-0 left-0 right-0 h-16 pointer-events-none z-10"
+                style={{
+                  background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
+                }}
+              />
+              <div 
+                className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
+                style={{
+                  background: 'linear-gradient(0deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
+                }}
+              />
             </div>
 
             {/* Floating Elements */}
@@ -198,6 +248,24 @@ const Hero: React.FC = () => {
           </motion.div>
         </div>
       </div>
+
+      {/* CSS Animation */}
+      <style jsx>{`
+        @keyframes continuousScroll {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-50%);
+          }
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+          .animate-scroll {
+            animation: none !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };
