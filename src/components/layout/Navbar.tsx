@@ -106,16 +106,14 @@ const Navbar: React.FC = () => {
             onClick={closeMenu}
           >
             <span className="flex items-center space-x-1 md:space-x-3">
-              <span className="text-lg md:text-2xl transition-all duration-300 group-hover:scale-105 font-mono">
-                <span className="text-gray-600 font-normal">&lt;</span>
-                <span className="text-brand-red-600 drop-shadow-sm tracking-wide font-bold">DAQ</span>
-                <span className="text-blue-600 font-normal">/</span>
-                <span className="text-gray-600 font-normal">&gt;</span>
-                <span className="text-gray-800 font-bold tracking-wide ml-2 transition-colors duration-300 group-hover:text-gray-900">Consulting</span>
+              <span className="text-lg md:text-2xl transition-all duration-300 group-hover:scale-105">
+                <span className="text-gray-900 font-bold tracking-wide">DAQ</span>
+                <span className="inline-block w-2 h-0.5 bg-brand-red-600 rounded-full mx-2 mb-1 transition-all duration-300 group-hover:w-3"></span>
+                <span className="text-gray-700 font-semibold tracking-wide transition-colors duration-300 group-hover:text-gray-900">Consulting</span>
               </span>
             </span>
             <span className="text-xs text-gray-600 mt-1 tracking-wide font-medium group-hover:text-brand-red-600 transition-colors duration-300 leading-tight">
-              Programming & Software Development Consultancy
+              Data • Analytics • Intelligence
             </span>
           </Link>
 
