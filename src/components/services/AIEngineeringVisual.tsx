@@ -287,7 +287,7 @@ const AIEngineeringVisual: React.FC = () => {
                   <div className="text-xs text-slate-600">Uptime</div>
                 </div>
                 <div className="p-3 bg-slate-50 rounded-lg text-center">
-                  <div className="text-lg font-bold text-slate-900">{"< 50ms"}</div>
+                  <div className="text-lg font-bold text-slate-900">< 50ms</div>
                   <div className="text-xs text-slate-600">Latency</div>
                 </div>
               </div>
