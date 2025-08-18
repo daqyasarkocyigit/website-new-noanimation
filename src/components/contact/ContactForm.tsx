@@ -117,7 +117,7 @@ ${formData.message}
         </motion.div>
       ) : (
         <form onSubmit={handleSubmit} noValidate>
-          <h2 className="text-xl sm:text-2xl font-semibold mb-6">Get in Touch</h2>
+          <h2 className="text-heading-3 mb-6">Get in Touch</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6">
             <div>

@@ -25,7 +25,7 @@ const About: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-gray-900">
+              <h1 className="text-heading-1 mb-4">
                 About <span className="text-brand-red-600">DAQ</span> Consulting
               </h1>
               <div className="w-16 h-1 bg-brand-red-600 rounded-full mb-4 mx-auto"></div>
@@ -36,10 +36,10 @@ const About: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <p className="text-sm sm:text-base lg:text-lg text-cool-gray-600 leading-relaxed mb-4">
+              <p className="text-body-large text-cool-gray-600 mb-4">
                 DAQ Consulting is a premier data solutions provider dedicated to helping organizations harness the power of their data. With our expertise in data engineering, business intelligence, and cloud technologies, we enable companies to transform raw data into valuable insights that drive strategic decision-making.
               </p>
-              <p className="text-sm sm:text-base lg:text-lg text-cool-gray-600 leading-relaxed">
+              <p className="text-body-large text-cool-gray-600">
                 Our mission is to empower organizations to unlock the full potential of their data through advanced analytics, cloud modernization, and AI. We work closely with our clients to understand their unique challenges and deliver tailored solutions that address their specific needs.
               </p>
             </motion.div>
@@ -52,8 +52,8 @@ const About: React.FC = () => {
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-3 py-1 text-sm font-medium bg-gray-100 text-gray-700 rounded-full mb-4">OUR APPROACH</span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">How We Drive Transformation</h2>
-            <p className="text-base sm:text-lg text-cool-gray-600">
+            <h2 className="text-heading-1 mb-6">How We Drive Transformation</h2>
+            <p className="text-body-large text-cool-gray-600">
               We combine deep technical expertise with business acumen to deliver solutions that create real impact.
               Our proven methodology ensures consistent results across all projects.
             </p>
@@ -90,8 +90,8 @@ const About: React.FC = () => {
                 <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center mb-6">
                   <span className="text-gray-700">{item.icon}</span>
                 </div>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">{item.title}</h3>
-                <p className="text-sm sm:text-base text-cool-gray-600">{item.description}</p>
+                <h3 className="text-heading-4 mb-4">{item.title}</h3>
+                <p className="text-body-base text-cool-gray-600">{item.description}</p>
               </AnimatedSection>
             ))}
           </div>
@@ -103,8 +103,8 @@ const About: React.FC = () => {
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-3 py-1 text-sm font-medium bg-gray-100 text-gray-700 rounded-full mb-4">OUR FOUNDATION</span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Mission & Values</h2>
-            <p className="text-base sm:text-lg text-cool-gray-600">
+            <h2 className="text-heading-1 mb-6">Mission & Values</h2>
+            <p className="text-body-large text-cool-gray-600">
               We're guided by a set of core principles that inform everything we do,
               from how we work with clients to how we build our solutions.
             </p>
@@ -115,8 +115,8 @@ const About: React.FC = () => {
               <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center mb-6">
                 <Lightbulb size={24} className="text-gray-700" />
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Our Vision</h3>
-              <p className="text-sm sm:text-base text-cool-gray-600 leading-relaxed">
+              <h3 className="text-heading-4 mb-4">Our Vision</h3>
+              <p className="text-body-base text-cool-gray-600">
                 To create a world where every business decision is informed by data and
                 enhanced by artificial intelligence, enabling organizations to achieve their
                 fullest potential.
@@ -127,8 +127,8 @@ const About: React.FC = () => {
               <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center mb-6">
                 <Target size={24} className="text-gray-700" />
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Our Mission</h3>
-              <p className="text-sm sm:text-base text-cool-gray-600 leading-relaxed">
+              <h3 className="text-heading-4 mb-4">Our Mission</h3>
+              <p className="text-body-base text-cool-gray-600">
                 To deliver transformative data and AI solutions that solve real business
                 problems, drive measurable results, and create lasting value for our clients
                 through innovation and excellence.
@@ -139,8 +139,8 @@ const About: React.FC = () => {
               <div className="w-14 h-14 rounded-full bg-cool-gray-50 flex items-center justify-center mb-6">
                 <Award size={24} className="text-cool-gray-700" />
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-4">Our Values</h3>
-              <ul className="text-sm sm:text-base text-cool-gray-600 space-y-3">
+              <h3 className="text-heading-4 mb-4">Our Values</h3>
+              <ul className="text-body-base text-cool-gray-600 space-y-3">
                 {[
                   { icon: <CheckCircle size={16} />, text: "Excellence in everything we do" },
                   { icon: <CheckCircle size={16} />, text: "Innovation that drives real results" },

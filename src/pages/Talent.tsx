@@ -25,7 +25,7 @@ const Talent: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-gray-900 leading-tight">
+              <h1 className="text-display-1 mb-4">
                 Hire Top <span className="text-brand-red-600">Data</span> Experts
               </h1>
               <div className="w-16 h-1 bg-brand-red-600 rounded-full mb-4 mx-auto"></div>
@@ -37,11 +37,11 @@ const Talent: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-8"
             >
-              <p className="text-sm sm:text-base lg:text-lg text-gray-800 leading-relaxed mb-4 font-medium">
+              <p className="text-body-large text-gray-800 mb-4 font-medium">
                 Find the right data professionals for your business needs. We specialize in Azure Data Platform, 
                 Microsoft Fabric, and Databricks solutions to help you build modern data architectures.
               </p>
-              <p className="text-sm sm:text-base lg:text-lg text-gray-700 leading-relaxed">
+              <p className="text-body-large text-gray-700">
                 Our talent network includes certified Azure architects, data engineers, Databricks specialists, 
                 and analytics professionals who can guide your data transformation journey.
               </p>
@@ -88,8 +88,8 @@ const Talent: React.FC = () => {
             >
               WHY CHOOSE US
             </motion.span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6">The DAQ Talent Advantage</h2>
-            <p className="text-base sm:text-lg lg:text-xl text-cool-gray-600 leading-relaxed">
+            <h2 className="text-display-1 mb-6">The DAQ Talent Advantage</h2>
+            <p className="text-body-large text-cool-gray-600">
               Our talent solutions are designed to provide you with the highest quality data professionals
               while minimizing your recruitment and management overhead.
             </p>
@@ -125,8 +125,8 @@ const Talent: React.FC = () => {
                 <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center mb-6">
                   <span className="text-gray-700">{item.icon}</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{item.title}</h3>
-                <p className="text-base text-cool-gray-600 leading-relaxed">{item.description}</p>
+                <h3 className="text-heading-4 mb-4">{item.title}</h3>
+                <p className="text-body-base text-cool-gray-600">{item.description}</p>
               </motion.div>
             ))}
           </div>
@@ -137,8 +137,8 @@ const Talent: React.FC = () => {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6">Our Data Expertise</h2>
-            <p className="text-base sm:text-lg lg:text-xl text-cool-gray-600 leading-relaxed">
+            <h2 className="text-display-1 mb-6">Our Data Expertise</h2>
+            <p className="text-body-large text-cool-gray-600">
               We provide certified professionals specializing in Microsoft Azure Data Platform, Databricks, and modern data architectures 
               to transform your business with data-driven insights.
             </p>
@@ -158,9 +158,9 @@ const Talent: React.FC = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center mr-4">
                   <Cloud className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Azure Data Platform</h3>
+                <h3 className="text-heading-2">Azure Data Platform</h3>
               </div>
-              <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
+              <p className="text-body-base text-cool-gray-600 mb-6">
                 Architecting & designing data solutions using Azure Data Platform services (Platform-as-a-Service)
               </p>
               <div className="grid grid-cols-2 gap-3">
@@ -199,9 +199,9 @@ const Talent: React.FC = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center mr-4">
                   <Database className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Microsoft Fabric</h3>
+                <h3 className="text-heading-2">Microsoft Fabric</h3>
               </div>
-              <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
+              <p className="text-body-base text-cool-gray-600 mb-6">
                 Architecting & designing data solutions using the Microsoft Fabric analytics platform (Software-as-a-Service)
               </p>
               <div className="grid grid-cols-2 gap-3">
@@ -242,9 +242,9 @@ const Talent: React.FC = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-orange-600 to-red-600 rounded-xl flex items-center justify-center mr-4">
                   <Zap className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Databricks Platform</h3>
+                <h3 className="text-heading-2">Databricks Platform</h3>
               </div>
-              <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
+              <p className="text-body-base text-cool-gray-600 mb-6">
                 Advanced Databricks implementation, Unity Catalog migration, and lakehouse architecture for unified analytics and AI
               </p>
               <div className="grid grid-cols-2 gap-3">
@@ -285,9 +285,9 @@ const Talent: React.FC = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center mr-4">
                   <BarChart3 className="w-6 h-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">Power BI</h3>
+                <h3 className="text-heading-2">Power BI</h3>
               </div>
-              <p className="text-base text-cool-gray-600 mb-6 leading-relaxed">
+              <p className="text-body-base text-cool-gray-600 mb-6">
                 Business intelligence and data visualization solutions using Microsoft Power BI platform
               </p>
               <div className="grid grid-cols-2 gap-3">
@@ -330,9 +330,9 @@ const Talent: React.FC = () => {
                 <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center mr-3">
                   <Zap className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900">Microsoft Power Platform</h3>
+                <h3 className="text-heading-4">Microsoft Power Platform</h3>
               </div>
-              <p className="text-sm text-cool-gray-600 mb-4 leading-relaxed">
+              <p className="text-body-small text-cool-gray-600 mb-4">
                 Low-code/no-code solutions to accelerate digital transformation and business process automation
               </p>
               <div className="grid grid-cols-2 gap-2">
@@ -372,9 +372,9 @@ const Talent: React.FC = () => {
                 <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center mr-3">
                   <Brain className="w-5 h-5 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900">AI & Machine Learning</h3>
+                <h3 className="text-heading-4">AI & Machine Learning</h3>
               </div>
-              <p className="text-sm text-cool-gray-600 mb-4 leading-relaxed">
+              <p className="text-body-small text-cool-gray-600 mb-4">
                 Advanced AI and machine learning solutions for predictive analytics and automation
               </p>
               <div className="grid grid-cols-2 gap-2">
@@ -415,8 +415,8 @@ const Talent: React.FC = () => {
               <div className="w-16 h-16 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl flex items-center justify-center mx-auto mb-4">
                 <Brain className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">Data Architecture Guidance</h3>
-              <p className="text-base text-gray-300 leading-relaxed max-w-3xl mx-auto">
+              <h3 className="text-heading-2 text-white mb-4">Data Architecture Guidance</h3>
+              <p className="text-body-large text-gray-300 max-w-3xl mx-auto">
                 We help you navigate the world of data architectures, align business strategy with data strategy, 
                 design end-to-end analytics solutions, & deliver a better experience with data.
               </p>
@@ -442,7 +442,7 @@ const Talent: React.FC = () => {
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <span className="text-sm font-medium text-gray-200">{concept}</span>
+                  <span className="text-body-small font-medium text-gray-200">{concept}</span>
                 </motion.div>
               ))}
             </div>

@@ -25,7 +25,7 @@ const Contact: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-gray-900">
+              <h1 className="text-heading-1 mb-4">
                 Contact <span className="text-brand-red-600">Us</span>
               </h1>
               <div className="w-16 h-1 bg-brand-red-600 rounded-full mb-4 mx-auto"></div>
@@ -36,10 +36,10 @@ const Contact: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <p className="text-sm sm:text-base text-cool-gray-600 leading-relaxed mb-4">
+              <p className="text-body-base text-cool-gray-600 mb-4">
                 We're here to help you unlock the power of your data. Reach out to us with your questions, projects, or talent needs.
               </p>
-              <p className="text-sm sm:text-base text-cool-gray-600 leading-relaxed">
+              <p className="text-body-base text-cool-gray-600">
                 Our team of experts is ready to discuss how we can transform your data challenges into opportunities for growth and innovation.
               </p>
             </motion.div>
@@ -54,7 +54,7 @@ const Contact: React.FC = () => {
             
             {/* Contact Information */}
             <AnimatedSection delay={0.1}>
-              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8">Contact Information</h2>
+              <h2 className="text-heading-2 mb-8">Contact Information</h2>
               
               <div className="space-y-6">
                 <div className="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow">
@@ -62,8 +62,8 @@ const Contact: React.FC = () => {
                     <Mail size={24} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">General Inquiries</h3>
-                    <p className="text-gray-600 mb-2">For general questions and project discussions</p>
+                    <h3 className="text-heading-4 mb-2">General Inquiries</h3>
+                    <p className="text-body-base text-gray-600 mb-2">For general questions and project discussions</p>
                     <a href="mailto:info@daqconsulting.com" className="text-brand-red-600 hover:text-brand-red-700 transition-colors font-medium">
                       info@daqconsulting.com
                     </a>
@@ -75,8 +75,8 @@ const Contact: React.FC = () => {
                     <Briefcase size={24} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Talent & Hiring</h3>
-                    <p className="text-gray-600 mb-2">Looking to hire top talent for your team?</p>
+                    <h3 className="text-heading-4 mb-2">Talent & Hiring</h3>
+                    <p className="text-body-base text-gray-600 mb-2">Looking to hire top talent for your team?</p>
                     <a href="mailto:talent@daqconsulting.com" className="text-brand-red-600 hover:text-brand-red-700 transition-colors font-medium">
                       talent@daqconsulting.com
                     </a>
@@ -88,8 +88,8 @@ const Contact: React.FC = () => {
                     <User size={24} />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Careers</h3>
-                    <p className="text-gray-600 mb-2">Interested in joining our team?</p>
+                    <h3 className="text-heading-4 mb-2">Careers</h3>
+                    <p className="text-body-base text-gray-600 mb-2">Interested in joining our team?</p>
                     <a href="mailto:careers@daqconsulting.com" className="text-brand-red-600 hover:text-brand-red-700 transition-colors font-medium">
                       careers@daqconsulting.com
                     </a>
@@ -110,8 +110,8 @@ const Contact: React.FC = () => {
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
-            <p className="text-base sm:text-lg text-gray-600">
+            <h2 className="text-heading-1 mb-6">Frequently Asked Questions</h2>
+            <p className="text-body-large text-gray-600">
               Find quick answers to common questions about our services and processes.
             </p>
           </AnimatedSection>
@@ -148,8 +148,8 @@ const Contact: React.FC = () => {
                 delay={0.1 * index}
                 className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
               >
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.q}</h3>
-                <p className="text-gray-600">{faq.a}</p>
+                <h3 className="text-heading-4 mb-3">{faq.q}</h3>
+                <p className="text-body-base text-gray-600">{faq.a}</p>
               </AnimatedSection>
             ))}
           </div>
