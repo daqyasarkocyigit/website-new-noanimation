@@ -44,10 +44,10 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
               <div className="text-brand-red-600 flex-shrink-0">
                 {icon}
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">{title}</h2>
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">{title}</h2>
             </div>
             
-            <p className="text-base sm:text-lg lg:text-xl text-cool-gray-600 mb-8 leading-relaxed">{description}</p>
+            <p className="text-sm sm:text-base lg:text-lg text-cool-gray-600 mb-6 leading-relaxed">{description}</p>
             
             <ul className="space-y-4">
               {benefits.map((benefit, index) => (
@@ -60,7 +60,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
                   viewport={{ once: true }}
                 >
                   <Check size={20} className="text-brand-red-600 mt-1 mr-3 flex-shrink-0 min-w-[20px]" />
-                  <span className="text-sm sm:text-base lg:text-lg text-cool-gray-600">{benefit}</span>
+                  <span className="text-sm sm:text-base text-cool-gray-600">{benefit}</span>
                 </motion.li>
               ))}
             </ul>

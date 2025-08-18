@@ -25,10 +25,10 @@ const Contact: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-gray-900">
                 Contact <span className="text-brand-red-600">Us</span>
               </h1>
-              <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6 mx-auto"></div>
+              <div className="w-16 h-1 bg-brand-red-600 rounded-full mb-4 mx-auto"></div>
             </motion.div>
             
             <motion.div
@@ -36,10 +36,10 @@ const Contact: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <p className="text-base sm:text-lg text-cool-gray-600 leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-cool-gray-600 leading-relaxed mb-4">
                 We're here to help you unlock the power of your data. Reach out to us with your questions, projects, or talent needs.
               </p>
-              <p className="text-base sm:text-lg text-cool-gray-600 leading-relaxed">
+              <p className="text-sm sm:text-base text-cool-gray-600 leading-relaxed">
                 Our team of experts is ready to discuss how we can transform your data challenges into opportunities for growth and innovation.
               </p>
             </motion.div>

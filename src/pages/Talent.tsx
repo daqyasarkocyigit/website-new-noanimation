@@ -25,10 +25,10 @@ const Talent: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-gray-900 leading-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-gray-900 leading-tight">
                 Hire Top <span className="text-brand-red-600">Data</span> Experts
               </h1>
-              <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6 mx-auto"></div>
+              <div className="w-16 h-1 bg-brand-red-600 rounded-full mb-4 mx-auto"></div>
             </motion.div>
             
             <motion.div
@@ -37,11 +37,11 @@ const Talent: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mb-8"
             >
-              <p className="text-base sm:text-lg lg:text-xl text-gray-800 leading-relaxed mb-6 font-medium">
+              <p className="text-sm sm:text-base lg:text-lg text-gray-800 leading-relaxed mb-4 font-medium">
                 Find the right data professionals for your business needs. We specialize in Azure Data Platform, 
                 Microsoft Fabric, and Databricks solutions to help you build modern data architectures.
               </p>
-              <p className="text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed">
+              <p className="text-sm sm:text-base lg:text-lg text-gray-700 leading-relaxed">
                 Our talent network includes certified Azure architects, data engineers, Databricks specialists, 
                 and analytics professionals who can guide your data transformation journey.
               </p>

@@ -12,7 +12,7 @@ const CallToAction: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <AnimatedSection className="text-center max-w-3xl mx-auto">
           <motion.h2 
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+            className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -21,7 +21,7 @@ const CallToAction: React.FC = () => {
           </motion.h2>
           
           <motion.p
-            className="text-lg md:text-xl text-cool-gray-600 mb-8"
+            className="text-base md:text-lg text-cool-gray-600 mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -37,7 +37,7 @@ const CallToAction: React.FC = () => {
           >
             <Link 
               to="/contact" 
-              className="inline-block px-8 py-4 rounded-lg bg-brand-red-600 hover:bg-brand-red-700 text-white font-semibold text-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+              className="inline-block px-6 py-3 rounded-lg bg-brand-red-600 hover:bg-brand-red-700 text-white font-semibold text-base shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
             >
               Get in Touch
             </Link>

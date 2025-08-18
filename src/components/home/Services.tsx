@@ -46,7 +46,7 @@ const Services: React.FC = () => {
       <div className="container mx-auto px-4 md:px-6">
         <AnimatedSection className="mb-12 text-center">
           <h2 className="section-title mx-auto">Our Services</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <p className="text-base text-gray-600 max-w-3xl mx-auto">
             We offer comprehensive data and AI solutions to help your business make better decisions,
             streamline operations, and unlock new opportunities.
           </p>

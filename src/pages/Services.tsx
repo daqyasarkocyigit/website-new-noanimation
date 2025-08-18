@@ -26,14 +26,14 @@ const Services: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 text-gray-900">
                 Our <span className="text-brand-red-600">Services</span>
               </h1>
-              <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6 mx-auto"></div>
+              <div className="w-16 h-1 bg-brand-red-600 rounded-full mb-4 mx-auto"></div>
             </motion.div>
             
             <motion.p
-              className="text-base sm:text-lg lg:text-xl text-cool-gray-600"
+              className="text-sm sm:text-base lg:text-lg text-cool-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}

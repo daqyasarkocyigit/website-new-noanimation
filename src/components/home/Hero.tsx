@@ -131,7 +131,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">
                 <span className="text-gray-900">We deliver </span>
                 <br />
                 <div className="relative inline-block">
@@ -143,21 +143,21 @@ const Hero: React.FC = () => {
               </h1>
             </div>
 
-            <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
+            <p className="text-base sm:text-lg text-gray-600 leading-relaxed max-w-lg">
               Transform your business with enterprise-grade data platforms, AI solutions, and cloud modernization services.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 to="/contact" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-[#FF3333] hover:bg-[#e02d2d] text-white rounded-lg transition-all duration-300 font-semibold text-lg shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#FF3333] hover:bg-[#e02d2d] text-white rounded-lg transition-all duration-300 font-semibold text-base shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
                 Start Your Project
-                <ArrowRight size={20} className="ml-2" />
+                <ArrowRight size={18} className="ml-2" />
               </Link>
               <Link 
                 to="/services" 
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#FF3333] text-[#FF3333] hover:bg-[#FF3333] hover:text-white rounded-lg transition-all duration-300 font-semibold text-lg transform hover:-translate-y-1"
+                className="inline-flex items-center justify-center px-6 py-3 border-2 border-[#FF3333] text-[#FF3333] hover:bg-[#FF3333] hover:text-white rounded-lg transition-all duration-300 font-semibold text-base transform hover:-translate-y-1"
               >
                 View Services
               </Link>
