@@ -55,27 +55,27 @@
 @layer components {
   /* Typography System - Based on Homepage Design */
   .text-display-1 {
-    @apply text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 leading-tight;
-  }
-  
-  .text-display-2 {
-    @apply text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 leading-tight;
-  }
-  
-  .text-heading-1 {
-    @apply text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight;
-  }
-  
-  .text-heading-2 {
     @apply text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight;
   }
   
+  .text-display-2 {
+    @apply text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 leading-tight;
+  }
+  
+  .text-heading-1 {
+    @apply text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight;
+  }
+  
+  .text-heading-2 {
+    @apply text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 leading-tight;
+  }
+  
   .text-heading-3 {
-    @apply text-lg sm:text-xl lg:text-2xl font-semibold text-gray-900 leading-tight;
+    @apply text-base sm:text-lg lg:text-xl font-semibold text-gray-900 leading-tight;
   }
   
   .text-heading-4 {
-    @apply text-base sm:text-lg lg:text-xl font-semibold text-gray-900 leading-tight;
+    @apply text-sm sm:text-base lg:text-lg font-semibold text-gray-900 leading-tight;
   }
   
   .text-body-large {

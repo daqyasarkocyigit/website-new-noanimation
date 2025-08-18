@@ -131,7 +131,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <div>
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold leading-tight">
+              <h1 className="text-heading-1">
                 <span className="text-gray-900">We deliver </span>
                 <br />
                 <div className="relative inline-block">
