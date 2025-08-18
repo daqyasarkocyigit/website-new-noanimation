@@ -1,257 +1,226 @@
-import React, { useEffect, useState } from 'react';
-import { Cloud, Server, Shield, Database, Globe, Network, Activity, Zap, ChevronRight, TrendingUp } from 'lucide-react';
+import React from 'react';
+import { Cloud, Server, Shield, Database, Globe, Network, Activity, Zap, ChevronRight, TrendingUp, ArrowRight } from 'lucide-react';
 
 const CloudModernizationVisual: React.FC = () => {
-  const [progress, setProgress] = useState(0);
-  const [dataTransferred, setDataTransferred] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
-          return 100;
-        }
-        return prev + 1;
-      });
-      
-      setDataTransferred((prev) => {
-        if (prev >= 3) return 3;
-        return prev + 0.03;
-      });
-    }, 80);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl overflow-hidden relative">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
+    <div className="w-full h-full bg-gradient-to-br from-slate-50 via-white to-slate-100 rounded-xl overflow-hidden relative border border-slate-200/50 shadow-xl">
+      {/* Subtle Grid Background */}
+      <div className="absolute inset-0 opacity-[0.02]">
         <div 
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+              linear-gradient(rgba(71,85,105,1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(71,85,105,1) 1px, transparent 1px)
             `,
-            backgroundSize: '30px 30px'
+            backgroundSize: '20px 20px'
           }}
         />
       </div>
 
-      {/* Main Container - Mobile Optimized */}
-      <div className="relative w-full h-full flex flex-col justify-between p-2 sm:p-3 lg:p-4">
+      {/* Main Container */}
+      <div className="relative w-full h-full flex flex-col p-6">
         
-        {/* Cloud Migration Progress Card */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-2 sm:p-3 border border-white/20 shadow-xl">
-          <div className="flex items-center justify-between mb-1.5 sm:mb-2">
-            <div className="flex items-center gap-1.5 sm:gap-2">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-brand-red-500 rounded-full animate-pulse" />
+        {/* Header */}
+        <div className="bg-white rounded-lg p-4 shadow-sm border border-slate-200/80 mb-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-sky-600 rounded-lg flex items-center justify-center">
+                <Cloud className="w-4 h-4 text-white" />
+              </div>
               <div>
-                <h3 className="text-xs sm:text-sm font-semibold text-white">Cloud Migration Progress</h3>
-                <p className="text-xs text-gray-300 hidden sm:block">Infrastructure migration</p>
+                <h3 className="text-lg font-semibold text-slate-900">Cloud Migration Hub</h3>
+                <p className="text-sm text-slate-600">Enterprise Infrastructure Modernization</p>
               </div>
             </div>
             <div className="text-right">
-              <div className="text-lg sm:text-xl font-bold text-white tabular-nums">
-                {progress}%
-              </div>
-              <div className="text-xs text-gray-300 uppercase">Complete</div>
+              <div className="text-2xl font-bold text-slate-900 tabular-nums">100%</div>
+              <div className="text-xs text-slate-500 uppercase tracking-wide">Migration Complete</div>
             </div>
-          </div>
-          
-          {/* Progress Bar */}
-          <div className="relative w-full h-1.5 sm:h-2 bg-gray-700/50 rounded-full overflow-hidden mb-1.5 sm:mb-2">
-            <div 
-              className="absolute inset-y-0 left-0 rounded-full transition-all duration-300 ease-out"
-              style={{ 
-                width: `${progress}%`,
-                background: 'linear-gradient(90deg, #ef4444 0%, #dc2626 100%)'
-              }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-b from-white/20 to-transparent" />
-            </div>
-          </div>
-          
-          <div className="flex justify-between text-xs">
-            <span className="text-gray-400">0TB</span>
-            <span className="font-medium text-brand-red-400">
-              {dataTransferred.toFixed(1)}TB / 3TB
-            </span>
           </div>
         </div>
 
-        {/* Infrastructure Migration Flow - Mobile Responsive */}
-        <div className="flex-1 flex items-center py-2 sm:py-4">
-          <div className="w-full">
-            {/* Mobile: Vertical Layout */}
-            <div className="lg:hidden space-y-3">
-              {/* On-Premise */}
-              <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-2.5 border border-gray-700/50">
-                <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
-                  <Server className="w-3 h-3 mr-1" />
-                  On-Premise
-                </h4>
-                <div className="grid grid-cols-3 gap-1.5">
-                  <div className="bg-gray-900/50 rounded p-1.5 text-center border border-gray-700/30">
-                    <Database className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
-                    <div className="text-xs text-gray-300">Database</div>
-                    <div className="text-xs text-gray-500">2.1TB</div>
+        {/* Migration Benefits */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-6">
+          <div className="bg-white rounded-lg p-4 shadow-sm border border-slate-200/80">
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center">
+                <TrendingUp className="w-4 h-4 text-green-600" />
+              </div>
+              <span className="text-xs text-green-600 font-medium">Saved</span>
+            </div>
+            <div className="text-xl font-bold text-slate-900">42%</div>
+            <div className="text-xs text-slate-600 mb-1">Cost Reduction</div>
+            <div className="text-xs text-green-600 font-medium">$2.1M annually</div>
+          </div>
+
+          <div className="bg-white rounded-lg p-4 shadow-sm border border-slate-200/80">
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                <Activity className="w-4 h-4 text-blue-600" />
+              </div>
+              <span className="text-xs text-blue-600 font-medium">Improved</span>
+            </div>
+            <div className="text-xl font-bold text-slate-900">3.2x</div>
+            <div className="text-xs text-slate-600 mb-1">Performance</div>
+            <div className="text-xs text-blue-600 font-medium">Faster processing</div>
+          </div>
+
+          <div className="bg-white rounded-lg p-4 shadow-sm border border-slate-200/80">
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-8 h-8 bg-purple-50 rounded-lg flex items-center justify-center">
+                <Shield className="w-4 h-4 text-purple-600" />
+              </div>
+              <span className="text-xs text-purple-600 font-medium">Enhanced</span>
+            </div>
+            <div className="text-xl font-bold text-slate-900">99.99%</div>
+            <div className="text-xs text-slate-600 mb-1">Uptime SLA</div>
+            <div className="text-xs text-purple-600 font-medium">Enterprise grade</div>
+          </div>
+
+          <div className="bg-white rounded-lg p-4 shadow-sm border border-slate-200/80">
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center">
+                <Zap className="w-4 h-4 text-orange-600" />
+              </div>
+              <span className="text-xs text-orange-600 font-medium">Automatic</span>
+            </div>
+            <div className="text-xl font-bold text-slate-900">Auto</div>
+            <div className="text-xs text-slate-600 mb-1">Scaling</div>
+            <div className="text-xs text-orange-600 font-medium">Dynamic resources</div>
+          </div>
+        </div>
+
+        {/* Migration Journey */}
+        <div className="flex-1">
+          <div className="bg-white rounded-lg p-6 shadow-sm border border-slate-200/80 h-full">
+            <h4 className="text-base font-semibold text-slate-900 mb-6 text-center">Migration Architecture</h4>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 items-center h-full">
+              
+              {/* On-Premises */}
+              <div className="bg-slate-50 rounded-lg p-5 border border-slate-200">
+                <div className="text-center mb-4">
+                  <div className="w-12 h-12 bg-slate-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <Server className="w-6 h-6 text-slate-600" />
                   </div>
-                  <div className="bg-gray-900/50 rounded p-1.5 text-center border border-gray-700/30">
-                    <Server className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
-                    <div className="text-xs text-gray-300">Servers</div>
-                    <div className="text-xs text-gray-500">12</div>
+                  <h5 className="text-sm font-semibold text-slate-900">On-Premises</h5>
+                  <p className="text-xs text-slate-600">Legacy Infrastructure</p>
+                </div>
+                
+                <div className="space-y-3">
+                  <div className="bg-white rounded-md p-3 border border-slate-200">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Database className="w-3 h-3 text-slate-500" />
+                      <span className="text-xs font-medium text-slate-700">SQL Servers</span>
+                    </div>
+                    <div className="text-xs text-slate-500">12 physical servers</div>
                   </div>
-                  <div className="bg-gray-900/50 rounded p-1.5 text-center border border-gray-700/30">
-                    <Network className="w-3 h-3 text-gray-400 mx-auto mb-0.5" />
-                    <div className="text-xs text-gray-300">Storage</div>
-                    <div className="text-xs text-gray-500">0.9TB</div>
+                  
+                  <div className="bg-white rounded-md p-3 border border-slate-200">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Network className="w-3 h-3 text-slate-500" />
+                      <span className="text-xs font-medium text-slate-700">Storage</span>
+                    </div>
+                    <div className="text-xs text-slate-500">2.1TB data</div>
+                  </div>
+                  
+                  <div className="bg-white rounded-md p-3 border border-slate-200">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Activity className="w-3 h-3 text-slate-500" />
+                      <span className="text-xs font-medium text-slate-700">Applications</span>
+                    </div>
+                    <div className="text-xs text-slate-500">47 legacy apps</div>
                   </div>
                 </div>
               </div>
 
               {/* Migration Arrow */}
-              <div className="flex justify-center">
-                <div className="bg-gray-900 rounded-full p-2 border-2 border-brand-red-500">
-                  <ChevronRight className="w-4 h-4 text-brand-red-500 rotate-90" />
+              <div className="hidden lg:flex justify-center">
+                <div className="flex flex-col items-center gap-2">
+                  <ArrowRight className="w-8 h-8 text-sky-500" />
+                  <span className="text-xs text-slate-600 font-medium">Migrate</span>
                 </div>
               </div>
 
-              {/* Cloud Platform */}
-              <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-2.5 border border-brand-red-500/30 shadow-lg">
-                <h4 className="text-xs font-semibold text-brand-red-400 mb-2 flex items-center">
-                  <Cloud className="w-3 h-3 mr-1" />
-                  Cloud Platform
-                </h4>
-                <div className="grid grid-cols-2 gap-1.5">
-                  <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                    <div className="flex items-center gap-1">
-                      <Shield className="w-3 h-3 text-brand-red-400" />
-                      <div className="text-xs text-gray-300">Security</div>
-                    </div>
+              {/* Cloud Platform - Takes 3 columns for emphasis */}
+              <div className="lg:col-span-3 bg-gradient-to-br from-sky-900 to-slate-800 rounded-lg p-6 text-white">
+                <div className="text-center mb-6">
+                  <div className="w-16 h-16 bg-white/10 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Cloud className="w-8 h-8 text-white" />
                   </div>
-                  <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                    <div className="flex items-center gap-1">
-                      <Globe className="w-3 h-3 text-brand-red-400" />
-                      <div className="text-xs text-gray-300">CDN</div>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                    <div className="flex items-center gap-1">
-                      <Zap className="w-3 h-3 text-brand-red-400" />
-                      <div className="text-xs text-gray-300">Auto-Scale</div>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                    <div className="flex items-center gap-1">
-                      <Activity className="w-3 h-3 text-brand-red-400" />
-                      <div className="text-xs text-gray-300">Monitor</div>
-                    </div>
-                  </div>
+                  <h5 className="text-lg font-semibold">Azure Cloud Platform</h5>
+                  <p className="text-sm text-white/80">Modern Infrastructure</p>
                 </div>
-              </div>
-            </div>
-
-            {/* Desktop: Horizontal Layout */}
-            <div className="hidden lg:grid lg:grid-cols-5 gap-4 items-center">
-              
-              {/* On-Premise - Left */}
-              <div className="col-span-2">
-                <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
-                  <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
-                    <Server className="w-3 h-3 mr-1" />
-                    On-Premise
-                  </h4>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Infrastructure Services */}
+                  <div>
+                    <h6 className="text-sm font-semibold mb-3 text-sky-300">Infrastructure Services</h6>
+                    <div className="space-y-2">
+                      <div className="bg-white/10 rounded-md p-2 border border-white/20">
+                        <div className="flex items-center gap-2">
+                          <Database className="w-3 h-3 text-sky-300" />
+                          <span className="text-xs font-medium">Azure SQL Database</span>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white/10 rounded-md p-2 border border-white/20">
+                        <div className="flex items-center gap-2">
+                          <Server className="w-3 h-3 text-sky-300" />
+                          <span className="text-xs font-medium">Virtual Machines</span>
+                        </div>
+                      </div>
+                      
+                      <div className="bg-white/10 rounded-md p-2 border border-white/20">
+                        <div className="flex items-center gap-2">
+                          <Network className="w-3 h-3 text-sky-300" />
+                          <span className="text-xs font-medium">Blob Storage</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   
-                  <div className="space-y-1">
-                    <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                      <div className="flex items-center gap-1">
-                        <Database className="w-3 h-3 text-gray-400" />
-                        <span className="text-xs text-gray-300">Database</span>
+                  {/* Platform Services */}
+                  <div>
+                    <h6 className="text-sm font-semibold mb-3 text-sky-300">Platform Services</h6>
+                    <div className="space-y-2">
+                      <div className="bg-white/10 rounded-md p-2 border border-white/20">
+                        <div className="flex items-center gap-2">
+                          <Shield className="w-3 h-3 text-green-400" />
+                          <span className="text-xs font-medium">Azure Security</span>
+                        </div>
                       </div>
-                      <span className="text-xs text-gray-500">2.1TB</span>
-                    </div>
-                    
-                    <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                      <div className="flex items-center gap-1">
-                        <Server className="w-3 h-3 text-gray-400" />
-                        <span className="text-xs text-gray-300">Servers</span>
+                      
+                      <div className="bg-white/10 rounded-md p-2 border border-white/20">
+                        <div className="flex items-center gap-2">
+                          <Globe className="w-3 h-3 text-blue-400" />
+                          <span className="text-xs font-medium">Content Delivery</span>
+                        </div>
                       </div>
-                      <span className="text-xs text-gray-500">12</span>
-                    </div>
-                    
-                    <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                      <div className="flex items-center gap-1">
-                        <Network className="w-3 h-3 text-gray-400" />
-                        <span className="text-xs text-gray-300">Storage</span>
+                      
+                      <div className="bg-white/10 rounded-md p-2 border border-white/20">
+                        <div className="flex items-center gap-2">
+                          <Activity className="w-3 h-3 text-purple-400" />
+                          <span className="text-xs font-medium">Monitoring</span>
+                        </div>
                       </div>
-                      <span className="text-xs text-gray-500">0.9TB</span>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Migration Arrow - Center */}
-              <div className="col-span-1 flex items-center justify-center">
-                <div className="relative">
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-gray-700 via-brand-red-500 to-gray-700" />
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-900 rounded-full p-1.5 border-2 border-brand-red-500">
-                    <ChevronRight className="w-3 h-3 text-brand-red-500" />
+                
+                {/* Migration Progress */}
+                <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/20">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium">Migration Progress</span>
+                    <span className="text-sm text-green-400 font-medium">Complete</span>
                   </div>
-                  {/* Animated dot */}
-                  <div 
-                    className="absolute w-1.5 h-1.5 bg-brand-red-500 rounded-full -top-0.75 left-0"
-                    style={{ animation: 'flowRight 2s linear infinite' }}
-                  />
-                </div>
-              </div>
-
-              {/* Cloud Platform - Right */}
-              <div className="col-span-2">
-                <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-3 border border-brand-red-500/30 shadow-lg">
-                  <h4 className="text-xs font-semibold text-brand-red-400 mb-2 flex items-center">
-                    <Cloud className="w-3 h-3 mr-1" />
-                    Cloud Platform
-                  </h4>
-                  
-                  <div className="grid grid-cols-2 gap-1">
-                    <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                      <div className="flex items-center gap-1">
-                        <Shield className="w-3 h-3 text-brand-red-400" />
-                        <div>
-                          <div className="text-xs text-gray-300">Security</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                      <div className="flex items-center gap-1">
-                        <Globe className="w-3 h-3 text-brand-red-400" />
-                        <div>
-                          <div className="text-xs text-gray-300">CDN</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                      <div className="flex items-center gap-1">
-                        <Zap className="w-3 h-3 text-brand-red-400" />
-                        <div>
-                          <div className="text-xs text-gray-300">Auto-Scale</div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <div className="bg-white/5 rounded p-1.5 border border-white/10">
-                      <div className="flex items-center gap-1">
-                        <Activity className="w-3 h-3 text-brand-red-400" />
-                        <div>
-                          <div className="text-xs text-gray-300">Monitor</div>
-                        </div>
-                      </div>
-                    </div>
+                  <div className="w-full bg-white/20 rounded-full h-2">
+                    <div className="bg-gradient-to-r from-green-400 to-emerald-400 h-2 rounded-full" style={{ width: '100%' }}></div>
+                  </div>
+                  <div className="flex justify-between text-xs text-white/70 mt-1">
+                    <span>0TB</span>
+                    <span>2.1TB Migrated</span>
                   </div>
                 </div>
               </div>
@@ -259,61 +228,32 @@ const CloudModernizationVisual: React.FC = () => {
           </div>
         </div>
 
-        {/* Key Metrics - Bottom section */}
-        <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Cost Savings</div>
-                <div className="text-sm font-bold text-white">42%</div>
-                <div className="text-xs text-gray-500">$2.1M/year</div>
-              </div>
-              <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4 text-green-500" />
+        {/* Bottom Metrics */}
+        <div className="mt-6 bg-white rounded-lg p-4 shadow-sm border border-slate-200/80">
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            <div className="text-center">
+              <div className="text-lg font-bold text-slate-900">47</div>
+              <div className="text-xs text-slate-600">Applications Migrated</div>
             </div>
-          </div>
-          
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Performance</div>
-                <div className="text-sm font-bold text-white">3.2x</div>
-                <div className="text-xs text-gray-500">Faster</div>
-              </div>
-              <Activity className="w-3 h-3 sm:w-4 sm:h-4 text-brand-red-500" />
+            <div className="text-center">
+              <div className="text-lg font-bold text-slate-900">2.1TB</div>
+              <div className="text-xs text-slate-600">Data Transferred</div>
             </div>
-          </div>
-          
-          <div className="bg-white/5 backdrop-blur-sm rounded p-1.5 sm:p-2 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Uptime</div>
-                <div className="text-sm font-bold text-white">99.99%</div>
-                <div className="text-xs text-gray-500">SLA</div>
-              </div>
-              <Shield className="w-3 h-3 sm:w-4 sm:h-4 text-blue-500" />
+            <div className="text-center">
+              <div className="text-lg font-bold text-slate-900">Zero</div>
+              <div className="text-xs text-slate-600">Downtime</div>
+            </div>
+            <div className="text-center">
+              <div className="text-lg font-bold text-slate-900">8 weeks</div>
+              <div className="text-xs text-slate-600">Migration Time</div>
+            </div>
+            <div className="text-center">
+              <div className="text-lg font-bold text-slate-900">24/7</div>
+              <div className="text-xs text-slate-600">Support</div>
             </div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes flowRight {
-          0% { 
-            transform: translateX(0);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          90% {
-            opacity: 1;
-          }
-          100% { 
-            transform: translateX(48px);
-            opacity: 0;
-          }
-        }
-      `}</style>
     </div>
   );
 };

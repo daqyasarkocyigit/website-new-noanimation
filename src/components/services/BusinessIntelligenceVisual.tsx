@@ -1,284 +1,268 @@
 import React from 'react';
-import { TrendingUp, BarChart3, Target, Zap, CheckCircle, AlertCircle, BrainCircuit, LineChart } from 'lucide-react';
+import { TrendingUp, BarChart3, Target, Brain, CheckCircle, AlertCircle, Award, DollarSign, Users, Calendar, ArrowUp } from 'lucide-react';
 
 const BusinessIntelligenceVisual: React.FC = () => {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-xl overflow-hidden relative">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-20">
+    <div className="w-full h-full bg-gradient-to-br from-slate-50 via-white to-slate-100 rounded-xl overflow-hidden relative border border-slate-200/50 shadow-xl">
+      {/* Subtle Grid Background */}
+      <div className="absolute inset-0 opacity-[0.02]">
         <div 
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
+              linear-gradient(rgba(71,85,105,1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(71,85,105,1) 1px, transparent 1px)
             `,
-            backgroundSize: '40px 40px'
+            backgroundSize: '20px 20px'
           }}
         />
       </div>
 
       {/* Main Container */}
-      <div className="relative w-full h-full flex flex-col p-4">
+      <div className="relative w-full h-full flex flex-col p-6">
         
-        {/* BI Analytics Dashboard Card */}
-        <div className="bg-white/10 backdrop-blur-sm rounded-lg p-3 border border-white/20 shadow-xl mb-3">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <div className="relative">
-                <div className="w-2 h-2 bg-brand-red-500 rounded-full animate-pulse" />
+        {/* Header */}
+        <div className="bg-white rounded-lg p-4 shadow-sm border border-slate-200/80 mb-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                <Brain className="w-4 h-4 text-white" />
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-white">Business Intelligence Hub</h3>
-                <p className="text-xs text-gray-300">Advanced analytics & insights engine</p>
+                <h3 className="text-lg font-semibold text-slate-900">Business Intelligence Hub</h3>
+                <p className="text-sm text-slate-600">AI-Powered Strategic Insights</p>
               </div>
             </div>
             <div className="text-right">
-              <div className="text-2xl font-bold text-white tabular-nums">
-                87%
-              </div>
-              <div className="text-xs text-gray-300 uppercase">Accuracy</div>
-            </div>
-          </div>
-          
-          {/* KPI Performance Bar */}
-          <div className="grid grid-cols-4 gap-2">
-            <div className="text-center">
-              <div className="text-xs text-gray-400 mb-1">Revenue</div>
-              <div className="h-1 bg-gray-700/50 rounded-full overflow-hidden">
-                <div className="h-full w-[92%] bg-green-500 rounded-full" />
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-xs text-gray-400 mb-1">Efficiency</div>
-              <div className="h-1 bg-gray-700/50 rounded-full overflow-hidden">
-                <div className="h-full w-[87%] bg-brand-red-500 rounded-full" />
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-xs text-gray-400 mb-1">Quality</div>
-              <div className="h-1 bg-gray-700/50 rounded-full overflow-hidden">
-                <div className="h-full w-[95%] bg-blue-500 rounded-full" />
-              </div>
-            </div>
-            <div className="text-center">
-              <div className="text-xs text-gray-400 mb-1">Growth</div>
-              <div className="h-1 bg-gray-700/50 rounded-full overflow-hidden">
-                <div className="h-full w-[78%] bg-purple-500 rounded-full" />
-              </div>
+              <div className="text-2xl font-bold text-slate-900 tabular-nums">97.8%</div>
+              <div className="text-xs text-slate-500 uppercase tracking-wide">Accuracy</div>
             </div>
           </div>
         </div>
 
-        {/* BI Components Grid */}
-        <div className="flex-1 grid grid-cols-3 gap-3">
+        {/* Executive Summary */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-6">
+          <div className="bg-white rounded-lg p-4 shadow-sm border border-slate-200/80">
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center">
+                <DollarSign className="w-4 h-4 text-green-600" />
+              </div>
+              <ArrowUp className="w-4 h-4 text-green-500" />
+            </div>
+            <div className="text-xl font-bold text-slate-900">+$2.4M</div>
+            <div className="text-xs text-slate-600 mb-1">Revenue Impact</div>
+            <div className="text-xs text-green-600 font-medium">+18.7% growth</div>
+          </div>
+
+          <div className="bg-white rounded-lg p-4 shadow-sm border border-slate-200/80">
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                <Target className="w-4 h-4 text-blue-600" />
+              </div>
+              <span className="text-xs text-blue-600 font-medium">Optimized</span>
+            </div>
+            <div className="text-xl font-bold text-slate-900">24%</div>
+            <div className="text-xs text-slate-600 mb-1">Cost Reduction</div>
+            <div className="text-xs text-blue-600 font-medium">$847K saved</div>
+          </div>
+
+          <div className="bg-white rounded-lg p-4 shadow-sm border border-slate-200/80">
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-8 h-8 bg-purple-50 rounded-lg flex items-center justify-center">
+                <Users className="w-4 h-4 text-purple-600" />
+              </div>
+              <span className="text-xs text-purple-600 font-medium">Active</span>
+            </div>
+            <div className="text-xl font-bold text-slate-900">3.2x</div>
+            <div className="text-xs text-slate-600 mb-1">Decision Speed</div>
+            <div className="text-xs text-purple-600 font-medium">Faster insights</div>
+          </div>
+
+          <div className="bg-white rounded-lg p-4 shadow-sm border border-slate-200/80">
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center">
+                <Award className="w-4 h-4 text-orange-600" />
+              </div>
+              <span className="text-xs text-orange-600 font-medium">ROI</span>
+            </div>
+            <div className="text-xl font-bold text-slate-900">340%</div>
+            <div className="text-xs text-slate-600 mb-1">Return on Investment</div>
+            <div className="text-xs text-orange-600 font-medium">12 months</div>
+          </div>
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 grid grid-cols-1 lg:grid-cols-3 gap-6">
           
           {/* Predictive Analytics */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
-            <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
-              <TrendingUp className="w-3 h-3 mr-1" />
-              Predictive Analytics
-            </h4>
+          <div className="bg-white rounded-lg p-5 shadow-sm border border-slate-200/80">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center">
+                <Brain className="w-4 h-4 text-white" />
+              </div>
+              <h4 className="text-base font-semibold text-slate-900">AI Predictions</h4>
+            </div>
             
-            {/* Trend Visualization */}
-            <div className="bg-gray-900/50 rounded p-2 mb-2 border border-gray-700/30">
-              <svg width="100%" height="60" viewBox="0 0 100 60">
+            {/* Forecast Chart */}
+            <div className="bg-slate-50 rounded-lg p-4 mb-4">
+              <svg width="100%" height="100" viewBox="0 0 280 80" className="overflow-visible">
+                {/* Historical Data */}
                 <path
-                  d="M 0,40 Q 25,20 50,30 T 100,25"
-                  stroke="url(#trendGradient)"
+                  d="M 20,60 Q 60,45 100,35 Q 140,25 180,20"
+                  stroke="#64748b"
                   strokeWidth="2"
                   fill="none"
-                  style={{ animation: 'drawPath 2s ease-out' }}
                 />
-                <defs>
-                  <linearGradient id="trendGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#6b7280" />
-                    <stop offset="50%" stopColor="#ef4444" />
-                    <stop offset="100%" stopColor="#10b981" />
-                  </linearGradient>
-                </defs>
+                
+                {/* Prediction */}
+                <path
+                  d="M 180,20 Q 220,15 260,10"
+                  stroke="#10b981"
+                  strokeWidth="2"
+                  strokeDasharray="4,4"
+                  fill="none"
+                />
+                
+                {/* Data Points */}
+                <circle cx="20" cy="60" r="3" fill="#64748b" />
+                <circle cx="100" cy="35" r="3" fill="#64748b" />
+                <circle cx="180" cy="20" r="3" fill="#64748b" />
+                <circle cx="260" cy="10" r="3" fill="#10b981" />
+                
+                {/* Labels */}
+                <text x="20" y="75" fontSize="10" fill="#64748b" textAnchor="middle">Q1</text>
+                <text x="100" y="75" fontSize="10" fill="#64748b" textAnchor="middle">Q2</text>
+                <text x="180" y="75" fontSize="10" fill="#64748b" textAnchor="middle">Q3</text>
+                <text x="260" y="75" fontSize="10" fill="#10b981" textAnchor="middle">Q4</text>
               </svg>
-              <div className="text-xs text-gray-500 text-center">Future Projections</div>
-            </div>
-            
-            {/* Prediction Metrics */}
-            <div className="space-y-1">
-              <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                <span className="text-xs text-gray-300">Next Quarter</span>
-                <span className="text-xs text-green-400">+24%</span>
-              </div>
-              <div className="bg-gray-900/50 rounded p-1.5 flex items-center justify-between border border-gray-700/30">
-                <span className="text-xs text-gray-300">Risk Score</span>
-                <span className="text-xs text-yellow-400">Low</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Real-time Insights */}
-          <div className="bg-gradient-to-br from-brand-red-900/20 to-brand-red-800/10 backdrop-blur-sm rounded-lg p-3 border border-brand-red-500/30 shadow-lg">
-            <h4 className="text-xs font-semibold text-brand-red-400 mb-2 flex items-center">
-              <BrainCircuit className="w-3 h-3 mr-1" />
-              AI-Powered Insights
-            </h4>
-            
-            {/* Insight Cards */}
-            <div className="space-y-2">
-              <div className="bg-white/5 rounded p-2 border border-white/10">
-                <div className="flex items-start gap-2">
-                  <CheckCircle className="w-3.5 h-3.5 text-green-400 mt-0.5" />
-                  <div>
-                    <div className="text-xs text-gray-300">Opportunity Detected</div>
-                    <div className="text-xs text-gray-500">Market expansion potential</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white/5 rounded p-2 border border-white/10">
-                <div className="flex items-start gap-2">
-                  <AlertCircle className="w-3.5 h-3.5 text-yellow-400 mt-0.5" />
-                  <div>
-                    <div className="text-xs text-gray-300">Anomaly Alert</div>
-                    <div className="text-xs text-gray-500">Unusual spending pattern</div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white/5 rounded p-2 border border-white/10">
-                <div className="flex items-start gap-2">
-                  <Target className="w-3.5 h-3.5 text-brand-red-400 mt-0.5" />
-                  <div>
-                    <div className="text-xs text-gray-300">Goal Progress</div>
-                    <div className="text-xs text-gray-500">87% to target achieved</div>
-                  </div>
-                </div>
+              <div className="text-center text-xs text-slate-600 mt-2">
+                Revenue Forecast - Next Quarter
               </div>
             </div>
             
-            {/* AI Processing Indicator */}
-            <div className="mt-2 flex items-center justify-center">
-              <div className="flex gap-1">
-                {[0, 1, 2].map((i) => (
-                  <div
-                    key={i}
-                    className="w-1 h-1 bg-brand-red-500 rounded-full"
-                    style={{
-                      animation: `aiPulse 1.5s ease-in-out infinite ${i * 0.3}s`
-                    }}
-                  />
-                ))}
+            {/* Model Performance */}
+            <div className="space-y-3">
+              <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                <span className="text-sm font-medium text-slate-700">Sales Prediction</span>
+                <span className="text-sm font-bold text-green-700">94.7%</span>
+              </div>
+              <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                <span className="text-sm font-medium text-slate-700">Market Analysis</span>
+                <span className="text-sm font-bold text-blue-700">91.2%</span>
               </div>
             </div>
           </div>
 
-          {/* Business Metrics */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-3 border border-gray-700/50">
-            <h4 className="text-xs font-semibold text-gray-300 mb-2 flex items-center">
-              <BarChart3 className="w-3 h-3 mr-1" />
-              Key Metrics
-            </h4>
+          {/* Strategic Insights */}
+          <div className="bg-gradient-to-br from-slate-900 to-slate-800 rounded-lg p-5 text-white shadow-lg">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
+                <Target className="w-4 h-4 text-white" />
+              </div>
+              <h4 className="text-base font-semibold">Key Insights</h4>
+            </div>
             
-            {/* Metric Cards */}
-            <div className="space-y-2">
-              <div className="bg-gray-900/50 rounded p-2 border border-gray-700/30">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs text-gray-300">ROI</span>
-                  <TrendingUp className="w-3 h-3 text-green-400" />
+            {/* Insights List */}
+            <div className="space-y-4">
+              <div className="bg-white/10 rounded-lg p-3">
+                <div className="flex items-start gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <div className="text-sm font-semibold mb-1">Market Opportunity</div>
+                    <div className="text-xs text-white/80 mb-2">23% growth potential identified in Q2 segment</div>
+                    <div className="text-xs text-green-400 font-medium">Projected: +$1.2M revenue</div>
+                  </div>
                 </div>
-                <div className="text-lg font-bold text-white">3.2x</div>
-                <div className="text-xs text-gray-500">vs 2.1x last year</div>
               </div>
               
-              <div className="bg-gray-900/50 rounded p-2 border border-gray-700/30">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs text-gray-300">Efficiency</span>
-                  <Zap className="w-3 h-3 text-yellow-400" />
+              <div className="bg-white/10 rounded-lg p-3">
+                <div className="flex items-start gap-2">
+                  <AlertCircle className="w-4 h-4 text-yellow-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <div className="text-sm font-semibold mb-1">Risk Alert</div>
+                    <div className="text-xs text-white/80 mb-2">87 high-value customers showing churn signals</div>
+                    <div className="text-xs text-yellow-400 font-medium">Action required: Retention campaign</div>
+                  </div>
                 </div>
-                <div className="text-lg font-bold text-white">42%</div>
-                <div className="text-xs text-gray-500">time saved</div>
               </div>
               
-              <div className="bg-gray-900/50 rounded p-2 border border-gray-700/30">
-                <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs text-gray-300">Accuracy</span>
-                  <Target className="w-3 h-3 text-brand-red-400" />
+              <div className="bg-white/10 rounded-lg p-3">
+                <div className="flex items-start gap-2">
+                  <TrendingUp className="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <div className="text-sm font-semibold mb-1">Efficiency Gain</div>
+                    <div className="text-xs text-white/80 mb-2">Supply chain optimization potential: 18%</div>
+                    <div className="text-xs text-blue-400 font-medium">Savings: $340K annually</div>
+                  </div>
                 </div>
-                <div className="text-lg font-bold text-white">98.5%</div>
-                <div className="text-xs text-gray-500">prediction rate</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Performance Metrics */}
+          <div className="bg-white rounded-lg p-5 shadow-sm border border-slate-200/80">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center">
+                <BarChart3 className="w-4 h-4 text-blue-600" />
+              </div>
+              <h4 className="text-base font-semibold text-slate-900">Performance</h4>
+            </div>
+            
+            {/* KPI Cards */}
+            <div className="space-y-4">
+              <div className="p-4 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-slate-700">Revenue Growth</span>
+                  <TrendingUp className="w-4 h-4 text-green-600" />
+                </div>
+                <div className="text-2xl font-bold text-green-700 mb-1">+18.7%</div>
+                <div className="w-full bg-green-100 rounded-full h-2">
+                  <div className="bg-green-500 h-2 rounded-full" style={{ width: '87%' }}></div>
+                </div>
+                <div className="text-xs text-slate-600 mt-1">vs. previous quarter</div>
+              </div>
+              
+              <div className="p-4 bg-gradient-to-r from-purple-50 to-violet-50 rounded-lg">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm font-medium text-slate-700">Efficiency Score</span>
+                  <Award className="w-4 h-4 text-purple-600" />
+                </div>
+                <div className="text-2xl font-bold text-purple-700 mb-1">94.2%</div>
+                <div className="w-full bg-purple-100 rounded-full h-2">
+                  <div className="bg-purple-500 h-2 rounded-full" style={{ width: '94%' }}></div>
+                </div>
+                <div className="text-xs text-slate-600 mt-1">operational efficiency</div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3">
+                <div className="p-3 bg-slate-50 rounded-lg text-center">
+                  <div className="text-lg font-bold text-slate-900">1,247</div>
+                  <div className="text-xs text-slate-600">Reports</div>
+                </div>
+                <div className="p-3 bg-slate-50 rounded-lg text-center">
+                  <div className="text-lg font-bold text-slate-900">47</div>
+                  <div className="text-xs text-slate-600">AI Models</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Analytics Summary */}
-        <div className="grid grid-cols-4 gap-2 mt-3">
-          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Reports</div>
-                <div className="text-lg font-bold text-white">156</div>
-                <div className="text-xs text-gray-500">automated</div>
-              </div>
-              <LineChart className="w-4 h-4 text-purple-500" />
+        {/* Bottom Status */}
+        <div className="mt-6 bg-white rounded-lg p-4 shadow-sm border border-slate-200/80">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-sm text-slate-700">Real-time Processing Active</span>
             </div>
-          </div>
-          
-          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Insights</div>
-                <div className="text-lg font-bold text-white">2.4K</div>
-                <div className="text-xs text-gray-500">generated</div>
-              </div>
-              <BrainCircuit className="w-4 h-4 text-brand-red-500" />
-            </div>
-          </div>
-          
-          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Decisions</div>
-                <div className="text-lg font-bold text-white">87%</div>
-                <div className="text-xs text-gray-500">data-driven</div>
-              </div>
-              <CheckCircle className="w-4 h-4 text-green-500" />
-            </div>
-          </div>
-          
-          <div className="bg-white/5 backdrop-blur-sm rounded p-2.5 border border-white/10">
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="text-xs text-gray-400">Models</div>
-                <div className="text-lg font-bold text-white">34</div>
-                <div className="text-xs text-gray-500">active</div>
-              </div>
-              <Target className="w-4 h-4 text-blue-500" />
+            <div className="flex items-center gap-6 text-xs text-slate-600">
+              <span>Last Updated: 2 min ago</span>
+              <span>Next Refresh: 15 min</span>
+              <span>Data Sources: 12 active</span>
             </div>
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes drawPath {
-          from {
-            stroke-dasharray: 100;
-            stroke-dashoffset: 100;
-          }
-          to {
-            stroke-dashoffset: 0;
-          }
-        }
-        
-        @keyframes aiPulse {
-          0%, 100% {
-            opacity: 0.3;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.5);
-          }
-        }
-      `}</style>
     </div>
   );
 };
