@@ -14,42 +14,42 @@ const Hero: React.FC = () => {
     'Power BI'
   ];
 
-  const projectUpdates = [
+  const successStories = [
     {
-      title: 'Azure Synapse deployment completed',
-      client: 'Fortune 500 Retail',
+      title: 'Created metadata-driven ingestion pipeline with medallion architecture',
+      description: 'Unlocked full potential of data analytics for Fortune 500 retail chain',
       time: '2 minutes ago',
-      status: 'completed'
+      type: 'Data Engineering'
     },
     {
-      title: 'Databricks Unity Catalog implemented',
-      client: 'Healthcare Provider',
+      title: 'Implemented Unity Catalog migration for enterprise lakehouse',
+      description: 'Enhanced data governance and security across multi-cloud environment',
       time: '8 minutes ago',
-      status: 'completed'
+      type: 'Data Architecture'
     },
     {
-      title: 'Microsoft Fabric dashboard launched',
-      client: 'Financial Services',
+      title: 'Deployed real-time analytics with Microsoft Fabric',
+      description: 'Enabled streaming analytics and live dashboard creation for healthcare',
       time: '15 minutes ago',
-      status: 'completed'
+      type: 'Real-time Intelligence'
     },
     {
-      title: 'Power BI KPIs delivered',
-      client: 'Manufacturing Corp',
+      title: 'Built AI-powered recommendation engine',
+      description: 'Increased customer engagement by 34% using machine learning models',
       time: '23 minutes ago',
-      status: 'completed'
+      type: 'AI Engineering'
     },
     {
-      title: 'MLflow pipeline deployed',
-      client: 'Tech Startup',
+      title: 'Modernized cloud infrastructure with Azure Synapse',
+      description: 'Reduced operational costs by 45% while improving performance',
       time: '31 minutes ago',
-      status: 'completed'
+      type: 'Cloud Modernization'
     },
     {
-      title: 'Delta Lake migration finished',
-      client: 'E-commerce Platform',
+      title: 'Delivered comprehensive Power BI analytics suite',
+      description: 'Transformed business intelligence capabilities for manufacturing leader',
       time: '45 minutes ago',
-      status: 'completed'
+      type: 'Business Intelligence'
     }
   ];
 
@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
   // Add new updates every 5 seconds
   useEffect(() => {
     const updateInterval = setInterval(() => {
-      setCurrentUpdate((prev) => (prev + 1) % projectUpdates.length);
+      setCurrentUpdate((prev) => (prev + 1) % successStories.length);
     }, 5000);
     return () => clearInterval(updateInterval);
   }, []);
@@ -153,33 +153,38 @@ const Hero: React.FC = () => {
               }}
             >
 
-              <div className="space-y-4 max-h-96 overflow-hidden">
+              <div className="space-y-4 max-h-[400px] overflow-hidden">
                 <AnimatePresence>
-                  {projectUpdates.slice(0, 4).map((update, index) => (
+                  {successStories.slice(0, 4).map((story, index) => (
                     <motion.div
-                      key={`${currentUpdate}-${index}`}
+                      key={`story-${currentUpdate}-${index}`}
                       className="flex items-start gap-3 p-4 rounded-xl"
                       style={{
                         background: 'rgba(255,255,255,0.2)',
                         backdropFilter: 'blur(10px)',
                       }}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
+                      initial={{ opacity: 0, y: -30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 30 }}
                       transition={{ duration: 0.3, delay: index * 0.1 }}
                     >
                       <CheckCircle size={20} className="text-[#FF3333] mt-0.5 flex-shrink-0" />
                       <div className="flex-1">
-                        <h4 className="text-sm font-medium text-gray-800 mb-1">
-                          {update.title}
-                        </h4>
-                        <p className="text-xs text-gray-600 mb-1">
-                          {update.client}
-                        </p>
-                        <div className="flex items-center gap-1 text-xs text-gray-500">
-                          <Clock size={12} />
-                          {update.time}
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-xs font-medium text-[#FF3333] bg-[#FF3333]/10 px-2 py-1 rounded-full">
+                            {story.type}
+                          </span>
+                          <div className="flex items-center gap-1 text-xs text-gray-500">
+                            <Clock size={12} />
+                            {story.time}
+                          </div>
                         </div>
+                        <h4 className="text-sm font-medium text-gray-800 mb-1">
+                          {story.title}
+                        </h4>
+                        <p className="text-xs text-gray-600">
+                          {story.description}
+                        </p>
                       </div>
                     </motion.div>
                   ))}
