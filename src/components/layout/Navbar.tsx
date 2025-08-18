@@ -105,25 +105,16 @@ const Navbar: React.FC = () => {
             aria-label="DAQ Consulting Home"
             onClick={closeMenu}
           >
-            <div className="flex items-center space-x-3 transition-transform duration-200 group-hover:scale-105">
-              {/* Modern DAQ Icon */}
-              <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-br from-brand-red-500 to-brand-red-700 rounded-lg flex items-center justify-center shadow-lg">
-                  <span className="text-white font-black text-sm tracking-tight">DAQ</span>
-                </div>
-                <div className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full opacity-90"></div>
-              </div>
-              
-              {/* Company Name */}
-              <div className="flex flex-col">
-                <span className="text-xl font-bold text-gray-900 tracking-tight leading-tight">
-                  Consulting
-                </span>
-                <span className="text-xs text-gray-500 font-medium tracking-wide -mt-0.5">
-                  AI & Data Experts
-                </span>
-              </div>
-            </div>
+            <span className="flex items-center space-x-1 md:space-x-3">
+              <span className="text-lg md:text-2xl transition-transform duration-200 group-hover:scale-105">
+                <span className="text-brand-red-600 drop-shadow-md tracking-wider font-black">DAQ</span>
+                <span className="inline-block w-0.5 h-4 md:h-6 bg-brand-red-600 rounded-full opacity-80 mx-1.5 md:mx-2 shadow-sm"></span>
+                <span className="text-gray-800 font-bold tracking-wide">Consulting</span>
+              </span>
+            </span>
+            <span className="text-xs text-gray-600 mt-0.5 tracking-wide font-medium group-hover:text-brand-red-600 transition-colors duration-200">
+              AI & Data Engineering Experts
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
