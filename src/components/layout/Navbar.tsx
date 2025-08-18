@@ -129,12 +129,12 @@ const Navbar: React.FC = () => {
             onClick={closeMenu}
           >
             <span className="flex items-center space-x-2">
-              <span className="text-xl md:text-2xl font-bold transition-all duration-300 group-hover:scale-105">
-                <span className="font-extrabold tracking-wide" style={{ color: '#E53935' }}>DAQ</span>
-                <span className="font-medium tracking-wide ml-2" style={{ color: '#444444' }}>Consulting</span>
+              <span className="text-xl md:text-2xl transition-all duration-300 group-hover:scale-105">
+                <span className="font-black tracking-wide" style={{ color: '#E53935', fontWeight: '900' }}>DAQ</span>
+                <span className="font-light tracking-wide ml-2" style={{ color: '#9E9E9E', fontWeight: '300' }}>Consulting</span>
               </span>
             </span>
-            <span className="text-xs mt-1 tracking-wide font-normal transition-colors duration-300" style={{ color: '#777777' }}>
+            <span className="text-xs mt-1 tracking-wide font-medium transition-colors duration-300" style={{ color: '#777777' }}>
               AI & Data Engineering Experts
             </span>
           </Link>
