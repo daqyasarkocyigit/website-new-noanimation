@@ -186,7 +186,7 @@ const Hero: React.FC = () => {
                 <div 
                   className="flex gap-4 h-full"
                   style={{
-                    animation: 'horizontalScroll 15s linear infinite'
+                    animation: 'horizontalScroll 30s linear infinite'
                   }}
                 >
                   {/* First Set - Horizontal Cards */}
