@@ -186,7 +186,7 @@ const Hero: React.FC = () => {
                 <div 
                   className="flex gap-4 h-full"
                   style={{
-                    animation: 'horizontalScroll 20s linear infinite'
+                    animation: 'horizontalScroll 10s linear infinite'
                   }}
                 >
                   {/* First Set - All Stories for Smooth Loop */}
@@ -234,7 +234,7 @@ const Hero: React.FC = () => {
               <div 
                 className="hidden sm:block absolute inset-x-6 top-0 flex flex-col"
                 style={{
-                  animation: 'continuousScroll 30s linear infinite'
+                  animation: 'continuousScroll 15s linear infinite'
                 }}
               >
                 {/* First Set of Stories */}
