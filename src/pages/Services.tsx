@@ -119,8 +119,8 @@ const Services: React.FC = () => {
         benefits={[
           "Machine learning model development",
           "AI solution architecture",
-          "Natural language processing",
-          "Computer vision applications",
+          "AI Agents & RAG solutions",
+          "Generative AI & LLM integration",
           "MLOps implementation"
         ]}
         icon={<Brain size={32} />}
