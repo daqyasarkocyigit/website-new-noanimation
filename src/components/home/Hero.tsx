@@ -181,13 +181,44 @@ const Hero: React.FC = () => {
             >
               {/* Scrolling Feed Container */}
               <div 
-                className="absolute inset-x-6 top-0 flex flex-col"
+                className="absolute inset-x-6 top-0 flex flex-col md:flex-col"
                 style={{
                   animation: 'continuousScroll 40s linear infinite'
                 }}
               >
+                {/* Mobile Horizontal Container */}
+                <div className="md:hidden flex" style={{
+                  animation: 'horizontalScroll 30s linear infinite',
+                  width: 'max-content'
+                }}>
+                  {successStories.concat(successStories).map((story, index) => (
+                    <div
+                      key={`mobile-${index}`}
+                      className="flex-shrink-0 w-64 mr-4 p-3 rounded-xl"
+                      style={{
+                        background: 'rgba(255,255,255,0.2)',
+                        backdropFilter: 'blur(10px)',
+                        minHeight: '120px'
+                      }}
+                    >
+                      <div className="mb-2">
+                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
+                          {story.type}
+                        </span>
+                      </div>
+                      <h4 className="text-sm font-medium text-gray-800 mb-1">
+                        {story.title}
+                      </h4>
+                      <p className="text-xs text-gray-600">
+                        {story.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                
                 {/* First Set of Stories */}
-                {successStories.map((story, index) => (
+                <div className="hidden md:block">
+                {successStories.concat(successStories).map((story, index) => (
                   <div
                     key={`first-${index}`}
                     className="flex items-start gap-3 p-4 mb-4 rounded-xl"
@@ -212,46 +243,32 @@ const Hero: React.FC = () => {
                     </div>
                   </div>
                 ))}
-                
-                {/* Second Set of Stories (duplicate for seamless loop) */}
-                {successStories.map((story, index) => (
-                  <div
-                    key={`second-${index}`}
-                    className="flex items-start gap-3 p-4 mb-4 rounded-xl"
-                    style={{
-                      background: 'rgba(255,255,255,0.2)',
-                      backdropFilter: 'blur(10px)',
-                      minHeight: '120px'
-                    }}
-                  >
-                    <div className="flex-1">
-                      <div className="mb-2">
-                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
-                          {story.type}
-                        </span>
-                      </div>
-                      <h4 className="text-sm font-medium text-gray-800 mb-1">
-                        {story.title}
-                      </h4>
-                      <p className="text-xs text-gray-600">
-                        {story.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                </div>
               </div>
 
               {/* Gradient Overlays for Smooth Fade */}
-              <div 
+              <div className="hidden md:block"
                 className="absolute top-0 left-0 right-0 h-16 pointer-events-none z-10"
                 style={{
                   background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
                 }}
               />
-              <div 
+              <div className="hidden md:block"
                 className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
                 style={{
                   background: 'linear-gradient(0deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
+                }}
+              />
+              
+              {/* Mobile Gradient Overlays */}
+              <div className="md:hidden absolute top-0 left-0 bottom-0 w-8 pointer-events-none z-10"
+                style={{
+                  background: 'linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
+                }}
+              />
+              <div className="md:hidden absolute top-0 right-0 bottom-0 w-8 pointer-events-none z-10"
+                style={{
+                  background: 'linear-gradient(270deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
                 }}
               />
             </div>
@@ -274,8 +291,19 @@ const Hero: React.FC = () => {
           }
         }
         
+        @keyframes horizontalScroll {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+        
         @media (prefers-reduced-motion: reduce) {
-          .animate-scroll {
+          .animate-scroll,
+          [style*="horizontalScroll"],
+          [style*="continuousScroll"] {
             animation: none !important;
           }
         }
