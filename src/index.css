@@ -297,3 +297,10 @@ img[loading="eager"] {
   content-visibility: auto;
   contain-intrinsic-size: 1000px;
 }
+
+/* Extra bold font weight for DAQ logo */
+.font-extra-black {
+  font-weight: 1000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
