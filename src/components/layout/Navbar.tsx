@@ -107,7 +107,7 @@ const Navbar: React.FC = () => {
           >
             <span className="flex items-center space-x-1 md:space-x-3">
               <span className="text-lg md:text-2xl transition-transform duration-200 group-hover:scale-105">
-                <span className="text-brand-red-600 drop-shadow-md tracking-wider" style={{ fontFamily: 'Arial Black, Helvetica, sans-serif', fontWeight: '1000', textStroke: '2px currentColor' }}>DAQ</span>
+                <span className="text-brand-red-600 drop-shadow-md tracking-wider font-black">DAQ</span>
                 <span className="inline-block w-0.5 h-4 md:h-6 bg-brand-red-600 rounded-full opacity-80 mx-1.5 md:mx-2 shadow-sm"></span>
                 <span className="text-gray-800 font-bold tracking-wide">Consulting</span>
               </span>
