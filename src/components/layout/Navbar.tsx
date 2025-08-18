@@ -130,11 +130,11 @@ const Navbar: React.FC = () => {
           >
             <span className="flex items-center space-x-2">
               <span className="text-xl md:text-2xl font-bold transition-all duration-300 group-hover:scale-105">
-                <span className="text-brand-red-600 font-extra-black tracking-wide">DAQ</span>
-                <span className="text-gray-600 font-extra-black tracking-wide ml-2">Consulting</span>
+                <span className="font-extrabold tracking-wide" style={{ color: '#E53935' }}>DAQ</span>
+                <span className="font-medium tracking-wide ml-2" style={{ color: '#444444' }}>Consulting</span>
               </span>
             </span>
-            <span className="text-xs text-gray-500 mt-0.5 tracking-wide font-normal group-hover:text-brand-red-600 transition-colors duration-300">
+            <span className="text-xs mt-1 tracking-wide font-normal transition-colors duration-300" style={{ color: '#777777' }}>
               AI & Data Engineering Experts
             </span>
           </Link>
