@@ -33,13 +33,13 @@ const ResponsiveServiceVisual: React.FC<ResponsiveServiceVisualProps> = memo(({ 
     if (typeof window === 'undefined') return { isMobile: true, isLowEnd: false };
     
     const width = window.innerWidth;
-    const isMobileWidth = width < 768;
+    const isMobileWidth = width < 640; // Changed from 768 to 640 for more consistency
     
     // Enhanced low-end device detection
     const isLowEnd = 
       navigator.hardwareConcurrency <= 2 || 
       (navigator as any).deviceMemory <= 2 ||
-      /Android.*Chrome\/[0-5]/.test(navigator.userAgent) ||
+      /Android.*Chrome\/[0-4]/.test(navigator.userAgent) ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
       navigator.connection?.effectiveType === 'slow-2g' ||
       navigator.connection?.effectiveType === '2g';
@@ -64,7 +64,7 @@ const ResponsiveServiceVisual: React.FC<ResponsiveServiceVisualProps> = memo(({ 
 
   // Load desktop component only when needed
   useEffect(() => {
-    if (!isMobile && !isLowEndDevice && !DesktopComponent) {
+    if (!isLowEndDevice && !DesktopComponent) { // Remove mobile check to always load desktop component
       // Use requestIdleCallback for non-critical loading
       const loadComponent = () => {
         loadDesktopVisual(type).then(module => {
@@ -78,10 +78,10 @@ const ResponsiveServiceVisual: React.FC<ResponsiveServiceVisualProps> = memo(({ 
         setTimeout(loadComponent, 100);
       }
     }
-  }, [isMobile, isLowEndDevice, type, DesktopComponent]);
+  }, [isLowEndDevice, type, DesktopComponent]); // Remove isMobile dependency
 
-  // Always use mobile-optimized visual for mobile/low-end devices
-  if (isMobile || isLowEndDevice) {
+  // Only use mobile-optimized visual for very low-end devices
+  if (isLowEndDevice) {
     return <MobileOptimizedVisual type={type} />;
   }
 
