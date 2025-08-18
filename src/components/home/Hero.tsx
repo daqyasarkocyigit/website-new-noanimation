@@ -135,22 +135,6 @@ const Hero: React.FC = () => {
                 View Services
               </Link>
             </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-8">
-              <div>
-                <div className="text-3xl font-bold text-gray-900">50+</div>
-                <div className="text-sm text-gray-600">Projects Delivered</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-gray-900">98%</div>
-                <div className="text-sm text-gray-600">Success Rate</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-gray-900">24/7</div>
-                <div className="text-sm text-gray-600">Support</div>
-              </div>
-            </div>
           </motion.div>
 
           {/* Right Side - Embedded Live Feed */}
