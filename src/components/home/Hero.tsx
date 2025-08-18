@@ -142,14 +142,14 @@ const Hero: React.FC = () => {
 
           {/* Right Side - Continuous News Feed */}
           <motion.div 
-            className="relative lg:justify-self-end"
+            className="relative"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             {/* Continuous Success Stories Feed */}
             <div 
-              className="relative p-8 rounded-2xl border border-white/20 h-[500px] overflow-hidden"
+              className="relative p-6 rounded-2xl border border-white/20 h-[500px] overflow-hidden mx-auto max-w-lg"
               style={{
                 backdropFilter: 'blur(20px)',
                 background: 'rgba(255,255,255,0.3)',
@@ -157,7 +157,7 @@ const Hero: React.FC = () => {
             >
               {/* Scrolling Feed Container */}
               <div 
-                className="absolute inset-x-8 top-0 flex flex-col"
+                className="absolute inset-x-6 top-0 flex flex-col"
                 style={{
                   animation: 'continuousScroll 40s linear infinite'
                 }}
