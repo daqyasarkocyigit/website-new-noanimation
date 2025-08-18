@@ -15,19 +15,20 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, link, delay }) => {
   return (
     <AnimatedSection delay={delay}>
-      <Link to={link} className="block h-full">
-        <div className="bg-white p-8 rounded-xl shadow-lg card-hover h-full flex flex-col">
-          <div className="flex items-center justify-center w-16 h-16 mb-6 text-electric-blue-500">
+      <Link to={link} className="block h-full group">
+        <div className="bg-white p-8 rounded-xl shadow-sm hover:shadow-2xl transition-all duration-500 h-full flex flex-col border border-gray-100 hover:border-[#FF3333]/20 hover:-translate-y-2 group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-gray-50">
+          <div className="flex items-center justify-center w-16 h-16 mb-6 text-[#FF3333] transform group-hover:scale-110 transition-transform duration-300">
             {icon}
           </div>
-          <h3 className="text-2xl font-semibold mb-4">{title}</h3>
-          <p className="text-gray-600 mb-6 flex-grow">{description}</p>
-          <div className="text-electric-blue-500 font-medium flex items-center mt-auto">
+          <h3 className="text-2xl font-semibold mb-4 group-hover:text-[#FF3333] transition-colors duration-300">{title}</h3>
+          <p className="text-gray-600 mb-6 flex-grow group-hover:text-gray-700 transition-colors duration-300">{description}</p>
+          <div className="text-[#FF3333] font-medium flex items-center mt-auto">
             Learn more
             <motion.span
               className="ml-2"
               initial={{ x: 0 }}
-              whileHover={{ x: 5 }}
+              animate={{ x: 0 }}
+              whileHover={{ x: 8 }}
               transition={{ duration: 0.3 }}
             >
               →
@@ -41,7 +42,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, lin
 
 const Services: React.FC = () => {
   return (
-    <section className="py-16 md:py-24" id="services">
+    <section className="py-16 md:py-24 bg-gray-50" id="services">
       <div className="container mx-auto px-4 md:px-6">
         <AnimatedSection className="mb-12 text-center">
           <h2 className="section-title mx-auto">Our Services</h2>
