@@ -186,11 +186,11 @@ const Hero: React.FC = () => {
                 <div 
                   className="flex gap-4 h-full"
                   style={{
-                    animation: 'horizontalScroll 20s linear infinite'
+                    animation: 'horizontalScroll 7.5s linear infinite'
                   }}
                 >
-                  {/* First Set - All Stories for Smooth Loop */}
-                  {successStories.map((story, index) => (
+                  {/* First Set - Horizontal Cards */}
+                  {successStories.slice(0, 4).map((story, index) => (
                     <div
                       key={`mobile-${index}`}
                       className="flex-shrink-0 w-64 bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/10"
@@ -208,8 +208,8 @@ const Hero: React.FC = () => {
                       </p>
                     </div>
                   ))}
-                  {/* Duplicate All Stories for Seamless Loop */}
-                  {successStories.map((story, index) => (
+                  {/* Duplicate for seamless loop */}
+                  {successStories.slice(0, 4).map((story, index) => (
                     <div
                       key={`mobile-dup-${index}`}
                       className="flex-shrink-0 w-64 bg-white/20 backdrop-blur-sm rounded-xl p-4 border border-white/10"
@@ -234,7 +234,7 @@ const Hero: React.FC = () => {
               <div 
                 className="hidden sm:block absolute inset-x-6 top-0 flex flex-col"
                 style={{
-                  animation: 'continuousScroll 30s linear infinite'
+                  animation: 'continuousScroll 40s linear infinite'
                 }}
               >
                 {/* First Set of Stories */}
@@ -245,7 +245,7 @@ const Hero: React.FC = () => {
                     style={{
                       background: 'rgba(255,255,255,0.2)',
                       backdropFilter: 'blur(10px)',
-                      minHeight: '100px'
+                      minHeight: '120px'
                     }}
                   >
                     <div className="flex-1">
@@ -272,7 +272,7 @@ const Hero: React.FC = () => {
                     style={{
                       background: 'rgba(255,255,255,0.2)',
                       backdropFilter: 'blur(10px)',
-                      minHeight: '100px'
+                      minHeight: '120px'
                     }}
                   >
                     <div className="flex-1">
