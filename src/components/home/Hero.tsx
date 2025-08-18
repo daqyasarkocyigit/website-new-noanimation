@@ -173,16 +173,11 @@ const Hero: React.FC = () => {
                       minHeight: '120px'
                     }}
                   >
-                    <CheckCircle size={20} className="text-[#FF3333] mt-0.5 flex-shrink-0" />
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-medium text-[#FF3333] bg-[#FF3333]/10 px-2 py-1 rounded-full">
+                      <div className="mb-2">
+                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
                           {story.type}
                         </span>
-                        <div className="flex items-center gap-1 text-xs text-gray-500">
-                          <Clock size={12} />
-                          {story.time}
-                        </div>
                       </div>
                       <h4 className="text-sm font-medium text-gray-800 mb-1">
                         {story.title}
@@ -205,16 +200,11 @@ const Hero: React.FC = () => {
                       minHeight: '120px'
                     }}
                   >
-                    <CheckCircle size={20} className="text-[#FF3333] mt-0.5 flex-shrink-0" />
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-xs font-medium text-[#FF3333] bg-[#FF3333]/10 px-2 py-1 rounded-full">
+                      <div className="mb-2">
+                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
                           {story.type}
                         </span>
-                        <div className="flex items-center gap-1 text-xs text-gray-500">
-                          <Clock size={12} />
-                          {story.time}
-                        </div>
                       </div>
                       <h4 className="text-sm font-medium text-gray-800 mb-1">
                         {story.title}
