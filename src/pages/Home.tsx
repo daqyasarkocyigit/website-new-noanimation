@@ -1,12 +1,12 @@
 import React from 'react';
 import Hero from '../components/home/Hero';
-import NewsUpdates from '../components/home/NewsUpdates';
+import NewsTicker from '../components/home/NewsTicker';
 
 const Home: React.FC = () => {
   return (
     <>
       <Hero />
-      <NewsUpdates />
+      <NewsTicker />
     </>
   );
 };
