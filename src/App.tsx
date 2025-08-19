@@ -16,7 +16,7 @@ const Terms = lazy(() => import('./pages/Terms'));
 
 // Simple loading component
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-white">
+  <div className="min-h-[200px] flex items-center justify-center bg-white">
     <div className="text-center">
       <div className="w-8 h-8 border-2 border-gray-200 border-t-red-600 rounded-full animate-spin mx-auto mb-4"></div>
       <p className="text-gray-600">Loading...</p>

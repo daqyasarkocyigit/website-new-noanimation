@@ -14,14 +14,10 @@ const Footer: React.FC = () => {
           <div className="sm:col-span-2 lg:col-span-1">
             <Link to="/" className="inline-block mb-4 focus-ring rounded-lg">
               <div className="flex items-center group">
-                {/* Logo Icon */}
-                <div className="w-8 h-8 mr-2 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-lg flex items-center justify-center shadow-md">
-                  <span className="text-white font-black text-sm">D</span>
-                </div>
                 {/* Logo Text */}
                 <div className="flex flex-col">
                   <span className="text-lg font-black text-gray-900">
-                    DAQ <span className="font-light text-gray-600">Consulting</span>
+                    <span className="text-brand-red-600">DAQ</span> <span className="font-light text-gray-600">Consulting</span>
                   </span>
                   <span className="text-xs text-gray-500 font-medium -mt-1">
                     AI & Data Engineering Experts

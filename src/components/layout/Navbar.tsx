@@ -128,14 +128,10 @@ const Navbar: React.FC = () => {
             aria-label="DAQ Consulting - Navigate to homepage"
             onClick={closeMenu}
           >
-            {/* Logo Icon */}
-            <div className="w-10 h-10 mr-3 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
-              <span className="text-white font-black text-lg">D</span>
-            </div>
             {/* Logo Text */}
             <div className="flex flex-col">
               <span className="text-xl md:text-2xl font-black text-gray-900 transition-all duration-300 group-hover:text-brand-red-600">
-                DAQ <span className="font-light text-gray-600">Consulting</span>
+                <span className="text-brand-red-600">DAQ</span> <span className="font-light text-gray-600">Consulting</span>
               </span>
               <span className="text-xs text-gray-500 font-medium -mt-1">
                 AI & Data Engineering Experts
