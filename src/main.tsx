@@ -19,3 +19,4 @@ if (rootElement) {
   root.render(<App />);
 } else {
   console.error('Root element not found');
+}
