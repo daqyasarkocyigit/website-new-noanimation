@@ -44,7 +44,6 @@ export default defineConfig({
     }
   },
   build: {
-    target: 'es2020',
     cssTarget: 'chrome80',
     modulePreload: {
       polyfill: false
