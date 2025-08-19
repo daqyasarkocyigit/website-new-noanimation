@@ -23,28 +23,31 @@ const MAX_CACHE_SIZE = {
 
 // Install event - cache critical resources
 self.addEventListener('install', (event) => {
+  // Skip waiting to activate immediately
+  self.skipWaiting();
   event.waitUntil(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
       await cache.addAll(STATIC_ASSETS);
-      return self.skipWaiting();
     })()
   );
 });
 
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
+  // Take control of all clients immediately
+  self.clients.claim();
   event.waitUntil(
     (async () => {
       const cacheNames = await caches.keys();
       await Promise.all(
         cacheNames.map((cacheName) => {
           if (cacheName !== CACHE_NAME && cacheName !== RUNTIME_CACHE_NAME) {
+            console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
       );
-      return self.clients.claim();
     })()
   );
 });
@@ -66,6 +69,16 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // For debugging - bypass cache completely for HTML
+  if (url.pathname === '/' || url.pathname.endsWith('.html')) {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        return caches.match('/index.html');
+      })
+    );
+    return;
+  }
+
   // Route requests based on type
   if (url.pathname.match(/\.(js|mjs)$/)) {
     event.respondWith(cacheFirstWithExpiry(event.request, CACHE_NAME, MAX_CACHE_SIZE.SCRIPTS));
@@ -76,9 +89,6 @@ self.addEventListener('fetch', (event) => {
   } else if (url.pathname.match(/\.(woff2?|ttf|eot)$/)) {
     // Font files - cache first with long TTL
     event.respondWith(cacheFirst(event.request));
-  } else if (url.pathname === '/' || url.pathname.endsWith('.html') || url.pathname.includes('/page/')) {
-    // Network first for HTML pages
-    event.respondWith(networkFirstWithExpiry(event.request, RUNTIME_CACHE_NAME, MAX_CACHE_SIZE.PAGES));
   } else {
     event.respondWith(staleWhileRevalidate(event.request));
   }
