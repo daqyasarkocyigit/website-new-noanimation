@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Site</title>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <!-- Error handling for failed module loads -->
+  <script>
+    window.addEventListener('error', function(e) {
+      if (e.filename && e.filename.includes('.js')) {
+        console.error('Script loading failed:', e.filename);
+        // Show fallback message
+        document.body.innerHTML = '<div style="padding: 20px; text-align: center;"><h1>Loading Error</h1><p>Please refresh the page</p></div>';
+      }
+    });
+  </script>
+  
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+</html>
