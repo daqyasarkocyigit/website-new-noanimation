@@ -7,12 +7,6 @@ export default defineConfig({
   plugins: [
     react({
       fastRefresh: process.env.NODE_ENV === 'development',
-      babel: {
-        plugins: [
-          // Remove console.log in production
-          ...(process.env.NODE_ENV === 'production' ? [['transform-remove-console', { exclude: ['error', 'warn'] }]] : [])
-        ]
-      }
     }),
     splitVendorChunkPlugin()
   ],
