@@ -124,19 +124,23 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex flex-col items-start group focus-ring rounded-lg p-2 -m-2 transition-all duration-200 hover:bg-gray-50/50" 
+            className="flex items-center group focus-ring rounded-lg p-2 -m-2 transition-all duration-200 hover:bg-gray-50/50" 
             aria-label="DAQ Consulting - Navigate to homepage"
             onClick={closeMenu}
           >
-            <span className="flex items-center space-x-2">
-              <span className="text-xl md:text-2xl transition-all duration-300 group-hover:scale-105">
-                <span className="tracking-wide" style={{ fontFamily: 'Montserrat, sans-serif', color: '#E53935', fontWeight: '900' }}>DAQ</span>
-                <span className="tracking-wide ml-2" style={{ fontFamily: 'Montserrat, sans-serif', color: '#9E9E9E', fontWeight: '300' }}>Consulting</span>
+            {/* Logo Icon */}
+            <div className="w-10 h-10 mr-3 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-lg flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+              <span className="text-white font-black text-lg">D</span>
+            </div>
+            {/* Logo Text */}
+            <div className="flex flex-col">
+              <span className="text-xl md:text-2xl font-black text-gray-900 transition-all duration-300 group-hover:text-brand-red-600">
+                DAQ <span className="font-light text-gray-600">Consulting</span>
               </span>
-            </span>
-            <span className="text-xs mt-1 tracking-wide transition-colors duration-300" style={{ fontFamily: 'Montserrat, sans-serif', color: '#777777', fontWeight: '400' }}>
-              AI & Data Engineering Experts
-            </span>
+              <span className="text-xs text-gray-500 font-medium -mt-1">
+                AI & Data Engineering Experts
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
