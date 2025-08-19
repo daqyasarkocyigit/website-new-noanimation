@@ -43,17 +43,18 @@ export default defineConfig({
   build: {
     cssTarget: 'chrome80',
     modulePreload: {
-      polyfill: false
+      polyfill: true
     },
     sourcemap: false,
     minify: 'esbuild',
     rollupOptions: {
+      input: {
+        main: './index.html'
+      },
       output: {
         manualChunks: {
           'react-vendor': ['react', 'react-dom'],
-          'router': ['react-router-dom'],
-          'utils': ['react-intersection-observer'],
-          'icons': ['lucide-react']
+          'router': ['react-router-dom']
         },
         chunkFileNames: 'js/[name].[hash].js',
         entryFileNames: 'js/[name].[hash].js',

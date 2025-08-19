@@ -3,9 +3,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/utils/ScrollToTop';
-
-// Lazy load pages for better performance
 import Home from './pages/Home';
+
+// Lazy load non-critical pages
 const Services = lazy(() => import('./pages/Services'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
@@ -14,11 +14,11 @@ const Privacy = lazy(() => import('./pages/Privacy'));
 const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
 const Terms = lazy(() => import('./pages/Terms'));
 
-// Loading component
+// Simple loading component
 const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gray-50">
+  <div className="min-h-screen flex items-center justify-center bg-white">
     <div className="text-center">
-      <div className="w-8 h-8 border-3 border-gray-300 border-t-brand-red-600 rounded-full animate-spin mx-auto mb-4"></div>
+      <div className="w-8 h-8 border-2 border-gray-200 border-t-red-600 rounded-full animate-spin mx-auto mb-4"></div>
       <p className="text-gray-600">Loading...</p>
     </div>
   </div>

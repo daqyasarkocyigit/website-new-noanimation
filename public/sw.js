@@ -1,9 +1,8 @@
-const CACHE_NAME = 'daq-consulting-cache-v4';
-const RUNTIME_CACHE_NAME = 'daq-consulting-runtime-v4';
+const CACHE_NAME = 'daq-consulting-cache-v5';
+const RUNTIME_CACHE_NAME = 'daq-consulting-runtime-v5';
 const STATIC_ASSETS = [
   '/',
-  '/index.html',
-  '/manifest.json'
+  '/index.html'
 ];
 
 // Cache strategies with better performance
