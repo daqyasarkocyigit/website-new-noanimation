@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/utils/ScrollToTop';
-import CookieConsent from './components/utils/CookieConsent';
 
 // Import pages directly for faster loading
 import Home from './pages/Home';
@@ -123,7 +122,6 @@ function App() {
           </Routes>
         </main>
         <Footer />
-        <CookieConsent />
       </div>
     </BrowserRouter>
   );
