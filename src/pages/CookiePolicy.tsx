@@ -87,6 +87,7 @@ const CookiePolicy: React.FC = () => {
                   <p className="text-gray-600">
                     These cookies remember your choices and preferences to provide a more personalized experience 
                     when you return to our website.
+                  </p>
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-2">4. Marketing Cookies</h3>
