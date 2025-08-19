@@ -7,13 +7,18 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <meta name="format-detection" content="telephone=no" />
-    <link rel="icon" type="image/png" href="https://i.imgur.com/mCWcjTw.png" />
+    
+    <!-- Optimized icons and manifest -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/mCWcjTw.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/mCWcjTw.png" />
+    <link rel="manifest" href="/manifest.json" />
     
     <!-- SEO Meta Tags -->
     <title>DAQ Consulting - AI & Data Engineering Experts | Data Analytics Solutions</title>
     <meta name="description" content="DAQ Consulting delivers enterprise-grade data engineering, AI solutions, and analytics consulting. Transform your business with our expert data services and cloud modernization." />
     <meta name="keywords" content="data engineering, AI solutions, business intelligence, cloud modernization, data analytics, consulting" />
     <meta name="author" content="DAQ Consulting" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -29,15 +34,23 @@
     <meta property="twitter:description" content="Transform your business with enterprise-grade data engineering, AI solutions, and analytics consulting." />
     <meta property="twitter:image" content="https://i.imgur.com/mCWcjTw.png" />
 
-    <!-- Performance optimizations -->
+    <!-- Critical resource hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.pexels.com" />
+    <link rel="dns-prefetch" href="https://i.imgur.com" />
+    
+    <!-- Optimized font loading -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Uw-Y3tcoqK5.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <!-- Fallback font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preload" as="image" href="https://i.imgur.com/mCWcjTw.png">
-    
-    <!-- PWA -->
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="https://i.imgur.com/mCWcjTw.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    </noscript>
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -107,6 +120,7 @@
         line-height: 1.6;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        contain: layout style paint;
       }
       
       /* Immediate loading state */
@@ -114,10 +128,30 @@
         min-height: 100vh;
       }
       
-      /* Remove loading fallback since we're loading directly */
+      /* Loading spinner */
+      .loading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        font-family: 'Inter', sans-serif;
+      }
+      
+      /* Hide loading once app loads */
+      .app-loaded .loading {
+        display: none;
+      }
     </style>
   </head>
   <body>
+    <!-- Loading state -->
+    <div class="loading">
+      <div style="text-align: center;">
+        <div style="width: 40px; height: 40px; border: 3px solid #f3f3f3; border-top: 3px solid #ef4444; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 16px;"></div>
+        <p style="color: #666; margin: 0;">Loading DAQ Consulting...</p>
+      </div>
+    </div>
+    
     <div id="root"></div>
     
     <!-- Fallback for users with JavaScript disabled -->
@@ -131,6 +165,21 @@
       </div>
     </noscript>
     
+    <!-- Keyframes for loading spinner -->
+    <style>
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    </style>
+    
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Remove loading state once app loads -->
+    <script>
+      window.addEventListener('load', function() {
+        document.body.classList.add('app-loaded');
+      });
+    </script>
   </body>
 </html>

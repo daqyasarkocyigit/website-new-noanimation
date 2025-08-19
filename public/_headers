@@ -1,0 +1,49 @@
+# Security and Performance Headers
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+
+# Static Assets - Long-term caching
+/js/*
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Encoding: br, gzip
+
+/css/*
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Encoding: br, gzip
+
+/img/*
+  Cache-Control: public, max-age=31536000, immutable
+  Vary: Accept
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+  Content-Encoding: br, gzip
+
+# Service Worker
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Manifest
+/manifest.json
+  Cache-Control: public, max-age=86400
+  Content-Type: application/manifest+json
+
+# HTML Pages - Network first with short cache
+/*.html
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Content-Encoding: br, gzip
+
+# Root
+/
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Content-Encoding: br, gzip
+
+# Preload key resources
+/
+  Link: </js/index.js>; rel=modulepreload; as=script; crossorigin
+  Link: </css/index.css>; rel=preload; as=style; crossorigin
+  Link: <https://fonts.gstatic.com>; rel=preconnect; crossorigin

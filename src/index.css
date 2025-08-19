@@ -2,35 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Critical CSS - Optimized for performance */
+/* Critical CSS - Above the fold styles */
 @layer base {
-  html {
-    -webkit-tap-highlight-color: transparent;
-    scroll-behavior: smooth;
-    font-size: 16px;
-  }
-
-  body {
-    @apply text-base antialiased touch-manipulation overscroll-none;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    line-height: 1.6;
-    overflow-x: hidden;
-    font-display: swap;
-  }
-
-  *:focus {
-    outline: none;
-  }
-
-  ::selection {
-    background-color: #ef4444;
-    color: white;
-  }
-
-  /* Optimize font loading */
+  /* Preload critical fonts with font-display: swap */
   @font-face {
     font-family: 'Inter';
     font-style: normal;
@@ -40,7 +14,6 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 
-  /* Montserrat font for logo */
   @font-face {
     font-family: 'Montserrat';
     font-style: normal;
@@ -48,6 +21,46 @@
     font-display: swap;
     src: url('https://fonts.gstatic.com/s/montserrat/v25/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Uw-Y3tcoqK5.woff2') format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+}
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+    font-size: 16px;
+    /* Enable hardware acceleration */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply text-base antialiased touch-manipulation overscroll-none;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    text-rendering: optimizeLegibility;
+    line-height: 1.6;
+    overflow-x: hidden;
+    /* Optimize rendering */
+    will-change: scroll-position;
+    contain: layout style paint;
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  /* Optimize selections */
+  ::selection {
+    background-color: #ef4444;
+    color: white;
+  }
+
+  /* Optimize images */
+  img {
+    @apply w-full h-auto;
+    content-visibility: auto;
+    loading: lazy;
+    decoding: async;
   }
 }
 

@@ -3,6 +3,33 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 
+// Performance monitoring
+const reportWebVitals = (metric: any) => {
+  if (metric.label === 'web-vital') {
+    console.log(metric);
+    // Send to analytics service
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', metric.name, {
+        value: Math.round(metric.name === 'CLS' ? metric.value * 1000 : metric.value),
+        event_label: metric.id,
+        non_interaction: true,
+      });
+    }
+  }
+};
+
+// Lazy load web vitals
+const initWebVitals = async () => {
+  if (import.meta.env.PROD) {
+    const { getCLS, getFID, getFCP, getLCP, getTTFB } = await import('web-vitals');
+    getCLS(reportWebVitals);
+    getFID(reportWebVitals);
+    getFCP(reportWebVitals);
+    getLCP(reportWebVitals);
+    getTTFB(reportWebVitals);
+  }
+};
+
 // Enhanced error boundary with retry functionality
 class ErrorBoundary extends React.Component<
   { children: React.ReactNode },
@@ -19,6 +46,13 @@ class ErrorBoundary extends React.Component<
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     console.error('Application error:', error, errorInfo);
+    // Report errors to monitoring service
+    if (typeof window !== 'undefined' && window.gtag) {
+      window.gtag('event', 'exception', {
+        description: error.message,
+        fatal: false,
+      });
+    }
   }
 
   handleRetry = () => {
@@ -72,6 +106,9 @@ class ErrorBoundary extends React.Component<
 
 // Initialize app
 const initializeApp = async () => {
+  // Start performance monitoring
+  initWebVitals().catch(console.error);
+
   const rootElement = document.getElementById('root');
 
   if (!rootElement) {
@@ -113,6 +150,19 @@ const registerServiceWorker = async () => {
       
       console.log('SW registered: ', registration);
       
+      // Handle service worker updates
+      registration.addEventListener('updatefound', () => {
+        const newWorker = registration.installing;
+        if (newWorker) {
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              // New content available, show update prompt
+              console.log('New content available, please refresh.');
+            }
+          });
+        }
+      });
+      
     } catch (error) {
       console.log('SW registration failed: ', error);
     }
@@ -138,4 +188,8 @@ initializeApp().catch(error => {
 });
 
 // Register service worker after app loads
-window.addEventListener('load', registerServiceWorker);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', registerServiceWorker);
+} else {
+  registerServiceWorker();
+}
