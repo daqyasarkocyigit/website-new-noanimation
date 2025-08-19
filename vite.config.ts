@@ -46,10 +46,8 @@ export default defineConfig({
         main: './index.html'
       },
       output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom'],
-          'router': ['react-router-dom']
-        },
+        // Simplified manual chunks to avoid conflicts
+        manualChunks: undefined,
         chunkFileNames: 'js/[name].[hash].js',
         entryFileNames: 'js/[name].[hash].js',
         assetFileNames: (assetInfo) => {

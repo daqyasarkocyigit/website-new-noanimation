@@ -34,16 +34,16 @@
 
 # HTML Pages - Network first with short cache
 /*.html
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=0, must-revalidate
   Content-Encoding: br, gzip
 
-# Root
+# Root - Always fresh
 /
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=0, must-revalidate
   Content-Encoding: br, gzip
 
 # Preload key resources
 /
-  Link: </js/index.js>; rel=modulepreload; as=script; crossorigin
-  Link: </css/index.css>; rel=preload; as=style; crossorigin
+  Link: </js/main.js>; rel=modulepreload; as=script; crossorigin
+  Link: </css/main.css>; rel=preload; as=style; crossorigin
   Link: <https://fonts.gstatic.com>; rel=preconnect; crossorigin
