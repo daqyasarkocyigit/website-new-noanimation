@@ -1,18 +1,28 @@
-import React, { memo } from 'react';
+import React, { memo, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/utils/ScrollToTop';
 
-// Import pages directly for faster loading
+// Lazy load pages for better performance
 import Home from './pages/Home';
-import Services from './pages/Services';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Talent from './pages/Talent';
-import Privacy from './pages/Privacy';
-import CookiePolicy from './pages/CookiePolicy';
-import Terms from './pages/Terms';
+const Services = lazy(() => import('./pages/Services'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Talent = lazy(() => import('./pages/Talent'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
+const Terms = lazy(() => import('./pages/Terms'));
+
+// Loading component
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-gray-50">
+    <div className="text-center">
+      <div className="w-8 h-8 border-3 border-gray-300 border-t-brand-red-600 rounded-full animate-spin mx-auto mb-4"></div>
+      <p className="text-gray-600">Loading...</p>
+    </div>
+  </div>
+);
 
 // Error boundary for route-level errors
 class RouteErrorBoundary extends React.Component<
@@ -62,12 +72,11 @@ function App() {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Navbar />
-        <main className="flex-grow">
+        <Suspense fallback={<PageLoader />}>
+          <main className="flex-grow">
           <Routes>
             <Route path="/" element={
-              <RouteErrorBoundary>
-                <Home />
-              </RouteErrorBoundary>
+              <Home />
             } />
             <Route path="/services" element={
               <RouteErrorBoundary>
@@ -121,6 +130,7 @@ function App() {
             } />
           </Routes>
         </main>
+        </Suspense>
         <Footer />
       </div>
     </BrowserRouter>
