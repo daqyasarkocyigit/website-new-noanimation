@@ -274,7 +274,7 @@ const Navbar: React.FC = () => {
                     >
                       <button 
                         onClick={() => handleServiceClick(item.path)}
-                        className="group/item flex items-start w-full text-left px-4 py-3 sm:py-3 py-4 rounded-lg transition-all duration-200 hover:bg-white/10 focus-ring touch-manipulation"
+                        className="group/item flex items-start w-full text-left px-4 py-3 sm:py-3 py-4 rounded-lg transition-all duration-200 hover:bg-brand-red-50 focus-ring touch-manipulation"
                         role="menuitem"
                       >
                         <div className="flex-1">
@@ -440,8 +440,6 @@ const Navbar: React.FC = () => {
                           key={`mobile-service-${index}`}
                           onClick={() => handleServiceClick(item.path)}
                           className="block w-full text-left py-3 px-3 text-gray-200 hover:bg-white/10 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation"
-                        >
-                          className="block w-full text-left py-3 px-3 text-white hover:bg-brand-red-50 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation"
                         >
                           <div className="font-medium text-white">{item.label}</div>
                           <div className="text-sm text-gray-300 mt-0.5">{item.description}</div>
