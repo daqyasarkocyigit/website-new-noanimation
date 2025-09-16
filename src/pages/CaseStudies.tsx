@@ -510,7 +510,6 @@ const CaseStudies: React.FC = () => {
         <div ref={particlesRef} className="particles"></div>
       </div>
 
-      {/* Main Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
         
         {/* Header */}
