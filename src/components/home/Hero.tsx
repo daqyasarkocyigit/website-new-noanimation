@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, CheckCircle, Clock } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
   const [currentService, setCurrentService] = useState(0);
@@ -40,30 +40,6 @@ const Hero: React.FC = () => {
       description: 'Increased customer engagement by 34% using machine learning models',
       time: '23 minutes ago',
       type: 'AI Engineering'
-    },
-    {
-      title: 'Modernized cloud infrastructure with Azure Synapse',
-      description: 'Reduced operational costs by 45% while improving performance',
-      time: '31 minutes ago',
-      type: 'Cloud Modernization'
-    },
-    {
-      title: 'Delivered comprehensive Power BI analytics suite',
-      description: 'Transformed business intelligence capabilities for manufacturing leader',
-      time: '45 minutes ago',
-      type: 'Business Intelligence'
-    },
-    {
-      title: 'Implemented Delta Lake optimization for petabyte-scale data',
-      description: 'Achieved 10x performance improvement for global e-commerce platform',
-      time: '52 minutes ago',
-      type: 'Data Engineering'
-    },
-    {
-      title: 'Deployed MLflow pipeline for automated model deployment',
-      description: 'Streamlined ML operations for financial services company',
-      time: '1 hour ago',
-      type: 'MLOps'
     }
   ];
 
@@ -107,7 +83,7 @@ const Hero: React.FC = () => {
   return (
     <section className="min-h-screen relative overflow-hidden">
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16 sm:pb-20">
+      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16 sm:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[60vh] sm:min-h-[70vh]">
           
           {/* Left Content */}
@@ -137,7 +113,7 @@ const Hero: React.FC = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link 
                 to="/contact" 
-                className="inline-flex items-center justify-center px-6 py-3 bg-[#FF3333] hover:bg-[#e02d2d] text-white rounded-lg transition-all duration-300 text-button-base shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#FF3333] hover:bg-[#e02d2d] text-white rounded-lg transition-all duration-300 text-button-base transform hover:-translate-y-1"
               >
                 Start Your Project
                 <ArrowRight size={18} className="ml-2" />
@@ -151,33 +127,24 @@ const Hero: React.FC = () => {
             </div>
           </motion.div>
 
-          {/* Right Side - Continuous News Feed */}
+          {/* Right Side - Static News Feed */}
           <motion.div 
             className="relative order-first lg:order-last"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Continuous Success Stories Feed */}
-            <div 
-              className="relative p-4 sm:p-6 rounded-2xl border border-white/30 h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden mx-auto max-w-sm sm:max-w-md lg:max-w-lg bg-white/20 backdrop-blur-md"
-            >
-              {/* Static News Feed Container */}
-              <div 
-                className="absolute inset-x-6 top-0 flex flex-col space-y-3 sm:space-y-4"
-              >
-                {/* Visible Stories (First 4) */}
-                {successStories.slice(0, 4).map((story, index) => (
+            {/* Static Success Stories Feed */}
+            <div className="relative p-4 sm:p-6 rounded-2xl border border-white/30 h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden mx-auto max-w-sm sm:max-w-md lg:max-w-lg bg-white/20 backdrop-blur-md">
+              
+              {/* Stories Container - Static positioning */}
+              <div className="space-y-3 sm:space-y-4">
+                {successStories.map((story, index) => (
                   <div
                     key={index}
                     className={`flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-xl transition-all duration-500 ${
-                      index === currentService ? 'opacity-100 scale-100' : 'opacity-70 scale-95'
+                      index === currentService ? 'opacity-100 scale-100 bg-white/30' : 'opacity-70 scale-95 bg-white/15'
                     }`}
-                    style={{
-                      background: 'rgba(255,255,255,0.2)',
-                      backdropFilter: 'blur(10px)',
-                      minHeight: '90px'
-                    }}
                   >
                     {/* Live Indicator for Current Story */}
                     {index === currentService && (
@@ -227,7 +194,7 @@ const Hero: React.FC = () => {
 
             {/* Story Navigation Dots */}
             <div className="flex justify-center mt-4 space-x-2">
-              {successStories.slice(0, 4).map((_, index) => (
+              {successStories.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentService(index)}
@@ -238,7 +205,7 @@ const Hero: React.FC = () => {
                   }`}
                 />
               ))}
-              />
+            </div>
 
             {/* Floating Elements */}
             <div className="absolute -top-4 -right-4 w-20 h-20 bg-[#FF3333]/10 rounded-full blur-xl"></div>
