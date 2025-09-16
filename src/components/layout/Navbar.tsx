@@ -278,10 +278,10 @@ const Navbar: React.FC = () => {
                         role="menuitem"
                       >
                         <div className="flex-1">
-                          <div className="font-medium text-white group-hover/item:text-brand-red-600 transition-colors duration-200 mb-1 sm:text-base text-base">
+                         <div className="font-medium text-white group-hover/item:text-brand-red-400 transition-colors duration-200 mb-1 sm:text-base text-base drop-shadow-sm">
                             {item.label}
                           </div>
-                          <div className="text-sm sm:text-sm text-xs text-gray-300 group-hover/item:text-gray-400 transition-colors duration-200 leading-tight">
+                         <div className="text-sm sm:text-sm text-xs text-gray-200 group-hover/item:text-gray-100 transition-colors duration-200 leading-tight drop-shadow-sm">
                             {item.description}
                           </div>
                         </div>

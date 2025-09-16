@@ -128,7 +128,7 @@ const About: React.FC = () => {
             </AnimatedSection>
             
             <AnimatedSection delay={0.3} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:-translate-y-2 transition-all duration-500 border border-gray-200/20 hover:border-[#FF3333]/30">
-              <div className="w-14 h-14 rounded-full bg-gray-100/50 flex items-center justify-center mb-6">
+             <div className="w-14 h-14 rounded-full bg-transparent border border-gray-300/30 flex items-center justify-center mb-6">
                 <Award size={24} className="text-cool-gray-700" />
               </div>
               <h3 className="text-heading-4 mb-4">Our Values</h3>

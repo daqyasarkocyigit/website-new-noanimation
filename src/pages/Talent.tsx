@@ -295,7 +295,7 @@ const Talent: React.FC = () => {
                 ].map((skill, skillIndex) => (
                   <motion.span 
                     key={skillIndex}
-                    className="px-3 py-2 bg-gray-100 text-gray-800 text-sm rounded-lg font-medium border border-gray-200"
+                   className="px-3 py-2 bg-transparent border border-gray-300/30 text-gray-700 text-sm rounded-lg font-medium hover:bg-white/5 transition-colors duration-300"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
