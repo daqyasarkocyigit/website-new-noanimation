@@ -234,56 +234,100 @@ const Navbar: React.FC = () => {
                 onMouseEnter={handleServicesMouseEnter}
                 onMouseLeave={handleServicesMouseLeave}
                 style={{
-                  background: 'rgba(255, 51, 51, 0.05)',
-                  backdropFilter: 'blur(8px)',
-                  boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-                  border: '1px solid rgba(255, 51, 51, 0.2)'
+                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  boxShadow: `
+                    0 25px 50px -12px rgba(0, 0, 0, 0.15),
+                    0 10px 25px -5px rgba(255, 51, 51, 0.1),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                    0 0 0 1px rgba(255, 51, 51, 0.1)
+                  `,
+                  border: '1px solid rgba(255, 51, 51, 0.15)',
+                  borderTop: '1px solid rgba(255, 255, 255, 0.8)'
                 }}
               >
                 {/* Services List */}
-                <div className="py-2 sm:py-2 py-1">
+                <div className="py-3">
                   {[
                     { 
                       path: '/services#data-engineering', 
                       label: 'Data Engineering',
-                      description: 'Robust data pipelines'
+                      description: 'Build robust data pipelines & infrastructure',
+                      icon: '🔧'
                     },
                     { 
                       path: '/services#data-visualization', 
                       label: 'Data Visualization',
-                      description: 'Visual data insights'
+                      description: 'Transform data into compelling visuals',
+                      icon: '📊'
                     },
                     { 
                       path: '/services#business-intelligence', 
                       label: 'Business Intelligence & Analytics',
-                      description: 'Data-driven decisions'
+                      description: 'Drive strategic data-driven decisions',
+                      icon: '📈'
                     },
                     { 
                       path: '/services#cloud-modernization', 
                       label: 'Cloud Modernization',
-                      description: 'Modern infrastructure'
+                      description: 'Scale with modern cloud infrastructure',
+                      icon: '☁️'
                     },
                     { 
                       path: '/services#ai-engineering', 
                       label: 'AI Engineering',
-                      description: 'AI-powered solutions'
+                      description: 'Implement cutting-edge AI solutions',
+                      icon: '🤖'
                     }
                   ].map((item, index) => (
                     <div 
                       key={index}
-                      className="px-2 sm:px-2 px-1"
+                      className="px-3"
+                      style={{ 
+                        animationDelay: servicesOpen ? `${index * 50}ms` : '0ms'
+                      }}
                     >
                       <button 
                         onClick={() => handleServiceClick(item.path)}
-                        className="group/item flex items-start w-full text-left px-4 py-3 sm:py-3 py-4 rounded-lg transition-all duration-200 hover:bg-red-50/80 hover:backdrop-blur-sm focus-ring touch-manipulation"
+                        className="group/item relative flex items-start w-full text-left px-4 py-4 rounded-xl transition-all duration-300 ease-out hover:scale-[1.02] focus-ring touch-manipulation overflow-hidden"
+                        style={{
+                          background: 'transparent',
+                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 51, 51, 0.08) 0%, rgba(255, 51, 51, 0.05) 100%)';
+                          e.currentTarget.style.boxShadow = '0 8px 25px -8px rgba(255, 51, 51, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.6)';
+                          e.currentTarget.style.borderColor = 'rgba(255, 51, 51, 0.2)';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'transparent';
+                          e.currentTarget.style.boxShadow = 'none';
+                          e.currentTarget.style.borderColor = 'transparent';
+                        }}
                       >
+                        {/* Subtle border */}
+                        <div className="absolute inset-0 rounded-xl border border-transparent group-hover/item:border-brand-red-100 transition-colors duration-300"></div>
+                        
+                        {/* Icon */}
+                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 group-hover/item:from-brand-red-50 group-hover/item:to-brand-red-100 flex items-center justify-center mr-4 transition-all duration-300 group-hover/item:scale-110">
+                          <span className="text-lg">{item.icon}</span>
+                        </div>
+                        
+                        {/* Content */}
                         <div className="flex-1">
-                         <div className="font-medium text-gray-900 group-hover/item:text-brand-red-600 transition-colors duration-200 mb-1 sm:text-base text-base">
+                          <div className="font-semibold text-gray-900 group-hover/item:text-brand-red-600 transition-all duration-300 mb-1 text-base leading-tight">
                             {item.label}
                           </div>
-                         <div className="text-sm sm:text-sm text-xs text-gray-600 group-hover/item:text-gray-700 transition-colors duration-200 leading-tight">
+                          <div className="text-sm text-gray-600 group-hover/item:text-gray-700 transition-colors duration-300 leading-relaxed">
                             {item.description}
                           </div>
+                        </div>
+                        
+                        {/* Arrow indicator */}
+                        <div className="flex-shrink-0 ml-2 opacity-0 group-hover/item:opacity-100 transition-all duration-300 transform translate-x-2 group-hover/item:translate-x-0">
+                          <svg className="w-5 h-5 text-brand-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
                         </div>
                       </button>
                     </div>
