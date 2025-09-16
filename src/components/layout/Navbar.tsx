@@ -234,10 +234,10 @@ const Navbar: React.FC = () => {
                 onMouseEnter={handleServicesMouseEnter}
                 onMouseLeave={handleServicesMouseLeave}
                 style={{
-                  background: 'rgba(255,255,255,0.95)',
+                  background: 'rgba(255, 51, 51, 0.05)',
                   backdropFilter: 'blur(8px)',
                   boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-                  border: '1px solid rgba(229, 231, 235, 0.8)'
+                  border: '1px solid rgba(255, 51, 51, 0.2)'
                 }}
               >
                 {/* Services List */}
