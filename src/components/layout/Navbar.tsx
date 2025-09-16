@@ -404,7 +404,7 @@ const Navbar: React.FC = () => {
             }`}
           >
             {/* Header with Close Button */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+            <div className="flex items-center justify-between p-4 border-b border-gray-200/50 bg-white/80 backdrop-blur-sm">
               <span className="text-lg font-semibold text-gray-900">Menu</span>
               <button
                 onClick={closeMenu}
