@@ -134,35 +134,40 @@ const Hero: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            {/* Static Success Stories Feed */}
+            {/* Add continuous scroll animation styles */}
+            <style jsx>{`
+              @keyframes continuousScroll {
+                0% {
+                  transform: translateY(0);
+                }
+                100% {
+                  transform: translateY(-50%);
+                }
+              }
+              
+              .scrolling-content {
+                animation: continuousScroll 15s linear infinite;
+              }
+            `}</style>
+
+            {/* Scrolling Success Stories Feed */}
             <div className="relative p-4 sm:p-6 rounded-2xl border border-white/30 h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden mx-auto max-w-sm sm:max-w-md lg:max-w-lg bg-white/20 backdrop-blur-md">
               
-              {/* Stories Container - Static positioning */}
-              <div className="space-y-3 sm:space-y-4">
-                {successStories.map((story, index) => (
+              {/* Stories Container - Scrolling */}
+              <div className="scrolling-content space-y-3 sm:space-y-4">
+                {/* Duplicate stories for continuous scroll */}
+                {[...successStories, ...successStories].map((story, index) => (
                   <div
                     key={index}
-                    className={`flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-xl transition-all duration-500 ${
-                      index === currentService ? 'opacity-100 scale-100 bg-white/30' : 'opacity-70 scale-95 bg-white/15'
-                    }`}
+                    className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-xl bg-white/15 opacity-90"
                   >
-                    {/* Live Indicator for Current Story */}
-                    {index === currentService && (
-                      <div className="flex-shrink-0 mt-2">
-                        <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
-                      </div>
-                    )}
                     <div className="flex-1">
                       <div className="mb-2">
-                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-                          index === currentService 
-                            ? 'text-red-700 bg-red-100' 
-                            : 'text-gray-600 bg-gray-100'
-                        }`}>
+                        <span className="text-xs font-medium px-2 py-0.5 rounded-full text-gray-600 bg-gray-100">
                           {story.type}
                         </span>
                       </div>
-                      <h4 className="text-xs sm:text-sm font-medium text-gray-800 mb-1 leading-tight">
+                      <h4 className="text-xs sm:text-sm font-medium text-gray-900 mb-1 leading-tight">
                         {story.title}
                       </h4>
                       <p className="text-xs text-gray-600 leading-relaxed">
@@ -177,12 +182,6 @@ const Hero: React.FC = () => {
                 ))}
               </div>
 
-              {/* Live Feed Indicator */}
-              <div className="absolute top-2 right-2 flex items-center gap-1">
-                <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
-                <span className="text-xs font-medium text-gray-600">LIVE</span>
-              </div>
-
               {/* Bottom Status Bar */}
               <div className="absolute bottom-0 left-0 right-0 p-2 bg-white/10 backdrop-blur-sm">
                 <div className="flex items-center justify-between text-xs text-gray-600">
@@ -190,21 +189,6 @@ const Hero: React.FC = () => {
                   <span>{successStories.length} stories</span>
                 </div>
               </div>
-            </div>
-
-            {/* Story Navigation Dots */}
-            <div className="flex justify-center mt-4 space-x-2">
-              {successStories.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentService(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    currentService === index 
-                      ? 'bg-red-500 scale-125' 
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
-                />
-              ))}
             </div>
 
             {/* Floating Elements */}
