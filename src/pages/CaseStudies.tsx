@@ -117,10 +117,10 @@ const CaseStudies: React.FC = () => {
         }
 
         .architecture-diagram {
-          background: white;
+          background: transparent;
           border-radius: 16px;
           overflow: hidden;
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+          border: 1px solid rgba(156, 163, 175, 0.2);
         }
 
         .architecture-diagram svg {
@@ -146,7 +146,7 @@ const CaseStudies: React.FC = () => {
         }
 
         .sketch-fill {
-          fill: #f9fafb;
+          fill: rgba(255, 255, 255, 0.8);
           stroke: #374151;
           stroke-width: 1.5;
         }
@@ -177,7 +177,7 @@ const CaseStudies: React.FC = () => {
 
         .dashed-line {
           stroke-dasharray: 5,3;
-          stroke: #9ca3af;
+          stroke: #6b7280;
           fill: none;
           stroke-width: 1;
         }
@@ -504,55 +504,6 @@ const CaseStudies: React.FC = () => {
           </div>
         </section>
 
-        {/* Additional Case Studies Preview */}
-        <section className="py-20">
-          <div className="container mx-auto px-4 md:px-6">
-            <AnimatedSection className="text-center max-w-3xl mx-auto mb-12">
-              <h2 className="text-heading-1 mb-6">More Success Stories</h2>
-              <p className="text-body-large text-cool-gray-600">
-                Discover how we've helped organizations across industries transform their data capabilities and achieve measurable business outcomes.
-              </p>
-            </AnimatedSection>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <AnimatedSection delay={0.1}>
-                <div className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:-translate-y-2 transition-all duration-500 border border-gray-200/20 hover:border-[#FF3333]/30">
-                  <div className="mb-4">
-                    <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-sm font-medium rounded border border-blue-200">
-                      AI Engineering
-                    </span>
-                  </div>
-                  <h3 className="text-heading-3 mb-4">ML-Powered Recommendation Engine</h3>
-                  <p className="text-body-base text-gray-600 mb-4">
-                    Built an AI-powered recommendation system using Azure ML that increased customer engagement by 34% and drove $2M in additional revenue.
-                  </p>
-                  <div className="flex items-center text-brand-red-600 font-medium">
-                    <span>Learn More</span>
-                    <ArrowRight size={16} className="ml-2" />
-                  </div>
-                </div>
-              </AnimatedSection>
-
-              <AnimatedSection delay={0.2}>
-                <div className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:-translate-y-2 transition-all duration-500 border border-gray-200/20 hover:border-[#FF3333]/30">
-                  <div className="mb-4">
-                    <span className="inline-block px-3 py-1 bg-green-50 text-green-700 text-sm font-medium rounded border border-green-200">
-                      Cloud Modernization
-                    </span>
-                  </div>
-                  <h3 className="text-heading-3 mb-4">Enterprise Data Migration</h3>
-                  <p className="text-body-base text-gray-600 mb-4">
-                    Successfully migrated 500TB of legacy data to Azure, reducing infrastructure costs by 45% while improving performance by 3x.
-                  </p>
-                  <div className="flex items-center text-brand-red-600 font-medium">
-                    <span>Learn More</span>
-                    <ArrowRight size={16} className="ml-2" />
-                  </div>
-                </div>
-              </AnimatedSection>
-            </div>
-          </div>
-        </section>
 
         <CallToAction />
       </div>
