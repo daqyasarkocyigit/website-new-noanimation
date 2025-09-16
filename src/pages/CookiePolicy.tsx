@@ -326,5 +326,3 @@ const CookiePolicy: React.FC = () => {
 };
 
 export default CookiePolicy;
-  )
-}
