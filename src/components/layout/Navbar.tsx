@@ -381,7 +381,7 @@ const Navbar: React.FC = () => {
         {/* Enhanced Mobile Navigation */}
         <div
           id="mobile-menu"
-          className={`md:hidden fixed inset-0 top-0 transition-all duration-300 ease-in-out ${
+          className={`md:hidden fixed inset-0 top-0 transition-all duration-300 ease-in-out z-50 ${
             isOpen 
               ? 'opacity-100 visible' 
               : 'opacity-0 invisible pointer-events-none'
@@ -399,13 +399,13 @@ const Navbar: React.FC = () => {
           
           {/* Menu Panel */}
           <div 
-            className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white/10 backdrop-blur-md shadow-2xl border-l border-white/20 transform transition-transform duration-300 ease-in-out ${
+            className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white backdrop-blur-md shadow-2xl border-l border-gray-200 transform transition-transform duration-300 ease-in-out ${
               isOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
           >
             {/* Header - Simplified without duplicate close button */}
-            <div className="flex items-center justify-between p-4 border-b border-white/20">
-              <span className="text-lg font-semibold text-white">Menu</span>
+            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+              <span className="text-lg font-semibold text-gray-900">Menu</span>
               {/* The close functionality is handled by the main hamburger button */}
             </div>
 
@@ -415,7 +415,7 @@ const Navbar: React.FC = () => {
                 {/* Services Section */}
                 <div className="relative">
                   <button
-                    className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-800 focus-ring rounded-lg tap-highlight-none touch-manipulation"
+                    className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-900 focus-ring rounded-lg tap-highlight-none touch-manipulation hover:bg-gray-50"
                     onClick={toggleServices}
                     aria-expanded={servicesOpen}
                     aria-controls="mobile-services"
@@ -468,10 +468,10 @@ const Navbar: React.FC = () => {
                         <button
                           key={`mobile-service-${index}`}
                           onClick={() => handleServiceClick(item.path)}
-                          className="block w-full text-left py-3 px-3 text-gray-200 hover:bg-white/10 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation"
+                          className="block w-full text-left py-3 px-3 text-gray-700 hover:bg-gray-50 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation"
                         >
-                          <div className="font-medium text-white">{item.label}</div>
-                          <div className="text-sm text-gray-300 mt-0.5">{item.description}</div>
+                          <div className="font-medium text-gray-900">{item.label}</div>
+                          <div className="text-sm text-gray-600 mt-0.5">{item.description}</div>
                         </button>
                       ))}
                     </div>
@@ -489,10 +489,10 @@ const Navbar: React.FC = () => {
                       key={`mobile-nav-${index}`}
                       to={item.to}
                       className={({ isActive }) => 
-                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-colors duration-200 focus-ring tap-highlight-none touch-manipulation min-h-[48px] flex items-center ${
+                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-colors duration-200 focus-ring tap-highlight-none touch-manipulation min-h-[48px] flex items-center hover:bg-gray-50 ${
                           isActive 
-                            ? 'text-brand-red-600 font-semibold bg-brand-red-50/10' 
-                            : 'text-white hover:text-brand-red-600 hover:bg-white/10'
+                            ? 'text-brand-red-600 font-semibold bg-brand-red-50' 
+                            : 'text-gray-900 hover:text-brand-red-600'
                         }`
                       }
                       onClick={closeMenu}

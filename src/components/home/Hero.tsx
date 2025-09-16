@@ -84,11 +84,11 @@ const Hero: React.FC = () => {
     <section className="min-h-screen relative overflow-hidden">
 
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16 sm:pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[60vh] sm:min-h-[70vh]">
+        <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[60vh] sm:min-h-[70vh]">
           
           {/* Left Content */}
           <motion.div 
-            className="space-y-6 sm:space-y-8 text-center lg:text-left"
+            className="space-y-6 sm:space-y-8 text-center lg:text-left order-1 lg:order-1"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -129,7 +129,7 @@ const Hero: React.FC = () => {
 
           {/* Right Side - Static News Feed */}
           <motion.div 
-            className="relative order-first lg:order-last"
+            className="relative order-2 lg:order-last"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
