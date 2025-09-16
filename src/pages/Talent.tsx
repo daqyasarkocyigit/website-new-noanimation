@@ -107,7 +107,7 @@ const Talent: React.FC = () => {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-white border border-gray-100 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-transparent border border-gray-200/20 p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 transform hover:-translate-y-2"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -139,7 +139,7 @@ const Talent: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {/* Azure Data Platform */}
             <motion.div
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
+              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20 transform hover:-translate-y-1"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -180,7 +180,7 @@ const Talent: React.FC = () => {
 
             {/* Microsoft Fabric */}
             <motion.div
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
+              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20 transform hover:-translate-y-1"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -223,7 +223,7 @@ const Talent: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {/* Databricks Expertise - Enhanced with more details */}
             <motion.div
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
+              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20 transform hover:-translate-y-1"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -266,7 +266,7 @@ const Talent: React.FC = () => {
 
             {/* Power BI */}
             <motion.div
-              className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 transform hover:-translate-y-1"
+              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20 transform hover:-translate-y-1"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -312,7 +312,7 @@ const Talent: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Microsoft Power Platform */}
             <motion.div
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200"
+              className="bg-transparent p-6 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -354,7 +354,7 @@ const Talent: React.FC = () => {
 
             {/* Additional Service - AI & Machine Learning */}
             <motion.div
-              className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-200"
+              className="bg-transparent p-6 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
