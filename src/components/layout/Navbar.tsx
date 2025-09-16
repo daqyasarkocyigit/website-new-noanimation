@@ -234,13 +234,13 @@ const Navbar: React.FC = () => {
                 onMouseEnter={handleServicesMouseEnter}
                 onMouseLeave={handleServicesMouseLeave}
                 style={{
-                  background: 'rgba(255, 255, 255, 0.92)',
+                  background: 'rgba(255, 248, 248, 0.92)',
                   backdropFilter: 'blur(16px) saturate(180%)',
-                  border: '1px solid rgba(255, 51, 51, 0.08)',
+                  border: '1px solid rgba(255, 51, 51, 0.12)',
                   boxShadow: `
                     0 20px 40px -8px rgba(0, 0, 0, 0.08),
                     0 8px 16px -4px rgba(255, 51, 51, 0.06),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.9)
+                    inset 0 1px 0 rgba(255, 248, 248, 0.9)
                   `
                 }}
               >
@@ -279,7 +279,7 @@ const Navbar: React.FC = () => {
                     >
                       <button 
                         onClick={() => handleServiceClick(item.path)}
-                        className="group/item relative w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ease-out hover:bg-brand-red-50/80 focus-ring touch-manipulation border border-transparent hover:border-brand-red-100"
+                        className="group/item relative w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ease-out hover:bg-brand-red-50/60 focus-ring touch-manipulation border border-transparent hover:border-brand-red-200/50"
                       >
                         {/* Subtle left accent line */}
                         <div className="absolute left-0 top-3 bottom-3 w-0 bg-brand-red-500 rounded-r-sm group-hover/item:w-1 transition-all duration-200"></div>
