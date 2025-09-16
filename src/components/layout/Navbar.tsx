@@ -224,7 +224,7 @@ const Navbar: React.FC = () => {
               </button>
 
               <div 
-                className={`absolute left-0 mt-3 w-80 rounded-2xl shadow-2xl bg-white/10 backdrop-blur-md border border-white/20 transition-all duration-300 ${
+                className={`absolute left-0 mt-3 w-80 rounded-2xl shadow-2xl backdrop-blur-md transition-all duration-300 ${
                   servicesOpen 
                     ? 'opacity-100 visible transform translate-y-0' 
                     : 'opacity-0 invisible transform translate-y-2'
@@ -279,7 +279,7 @@ const Navbar: React.FC = () => {
                     >
                       <button 
                         onClick={() => handleServiceClick(item.path)}
-                        className="group/item relative w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ease-out hover:bg-gray-50/80 focus-ring touch-manipulation border border-transparent hover:border-brand-red-100"
+                        className="group/item relative w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ease-out hover:bg-brand-red-50/80 focus-ring touch-manipulation border border-transparent hover:border-brand-red-100"
                       >
                         {/* Subtle left accent line */}
                         <div className="absolute left-0 top-3 bottom-3 w-0 bg-brand-red-500 rounded-r-sm group-hover/item:w-1 transition-all duration-200"></div>
@@ -325,7 +325,7 @@ const Navbar: React.FC = () => {
             {[
               { to: '/talent', label: 'Hire Talent' },
               { to: '/about', label: 'About' },
-             { to: '/case-studies', label: 'Case Studies' },
+              { to: '/case-studies', label: 'Case Studies' },
               { to: '/contact', label: 'Contact' }
             ].map((item, index) => (
               <NavLink 
@@ -484,209 +484,7 @@ const Navbar: React.FC = () => {
                   {[
                     { to: '/talent', label: 'Hire Talent' },
                     { to: '/about', label: 'About' },
-                   { to: '/case-studies', label: 'Case Studies' },
-                    { to: '/contact', label: 'Contact' }
-                  ].map((item, index) => (
-                    <NavLink
-                      key={`mobile-nav-${index}`}
-                      to={item.to}
-                      className={({ isActive }) => 
-                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-colors duration-200 focus-ring tap-highlight-none touch-manipulation min-h-[48px] flex items-center ${
-                          isActive 
-                            ? 'text-brand-red-600 font-semibold bg-brand-red-50/10' 
-                            : 'text-white hover:text-brand-red-600 hover:bg-white/10'
-                        }`
-                      }
-                      onClick={closeMenu}
-                    >
-                      {item.label}
-                    </NavLink>
-                  ))}
-                </div>
-              </div
-                            {item.label}
-                          </div>
-                          <div className="text-sm text-gray-600 group-hover/item:text-gray-700 transition-colors duration-300 leading-relaxed">
-                            {item.description}
-                          </div>
-                        </div>
-                        
-                        {/* Arrow indicator */}
-                        <div className="flex-shrink-0 ml-2 opacity-0 group-hover/item:opacity-100 transition-all duration-300 transform translate-x-2 group-hover/item:translate-x-0">
-                          <svg className="w-5 h-5 text-brand-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {[
-              { to: '/talent', label: 'Hire Talent' },
-              { to: '/about', label: 'About' },
-             { to: '/case-studies', label: 'Case Studies' },
-              { to: '/contact', label: 'Contact' }
-            ].map((item, index) => (
-              <NavLink 
-                key={index}
-                to={item.to} 
-                className={({ isActive }) => 
-                  `nav-link focus-ring rounded-lg px-3 py-2 ${
-                    isActive 
-                      ? 'text-brand-red-600 font-semibold' 
-                      : 'text-gray-700 hover:text-brand-red-600 font-medium'
-                  }`
-                }
-              >
-                {({ isActive }) => (
-                  <>
-                    {item.label}
-                    <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-red-600 transition-all duration-300 ${
-                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
-                    }`}></span>
-                  </>
-                )}
-              </NavLink>
-            ))}
-          </nav>
-
-          {/* Enhanced Mobile Menu Button */}
-          <button
-            className="md:hidden relative z-50 w-12 h-12 flex items-center justify-center rounded-lg hover:bg-gray-100/50 transition-colors focus-ring tap-highlight-none touch-manipulation"
-            onClick={toggleMenu}
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-          >
-            <div className="relative w-6 h-6">
-              <span 
-                className={`absolute block w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out ${
-                  isOpen ? 'rotate-45 top-3' : 'top-1'
-                }`}
-              />
-              <span 
-                className={`absolute block w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out top-3 ${
-                  isOpen ? 'opacity-0' : 'opacity-100'
-                }`}
-              />
-              <span 
-                className={`absolute block w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out ${
-                  isOpen ? '-rotate-45 top-3' : 'top-5'
-                }`}
-              />
-            </div>
-          </button>
-        </div>
-
-        {/* Enhanced Mobile Navigation */}
-        <div
-          id="mobile-menu"
-          className={`md:hidden fixed inset-0 top-0 transition-all duration-300 ease-in-out ${
-            isOpen 
-              ? 'opacity-100 visible' 
-              : 'opacity-0 invisible pointer-events-none'
-          }`}
-          role="navigation"
-          aria-label="Mobile navigation"
-        >
-          {/* Backdrop */}
-          <div 
-            className={`absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
-              isOpen ? 'opacity-100' : 'opacity-0'
-            }`}
-            onClick={closeMenu}
-          />
-          
-          {/* Menu Panel */}
-          <div 
-            className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white/10 backdrop-blur-md shadow-2xl border-l border-white/20 transform transition-transform duration-300 ease-in-out ${
-              isOpen ? 'translate-x-0' : 'translate-x-full'
-            }`}
-          >
-            {/* Header - Simplified without duplicate close button */}
-            <div className="flex items-center justify-between p-4 border-b border-white/20">
-              <span className="text-lg font-semibold text-white">Menu</span>
-              {/* The close functionality is handled by the main hamburger button */}
-            </div>
-
-            {/* Menu Content */}
-            <div className="flex flex-col h-full overflow-y-auto pb-20">
-              <div className="px-4 py-2">
-                {/* Services Section */}
-                <div className="relative">
-                  <button
-                    className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-800 focus-ring rounded-lg tap-highlight-none touch-manipulation"
-                    onClick={toggleServices}
-                    aria-expanded={servicesOpen}
-                    aria-controls="mobile-services"
-                  >
-                    <span>Services</span>
-                    <ChevronDown
-                      size={20}
-                      className={`transition-transform duration-300 ${
-                        servicesOpen ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-                  
-                  <div
-                    id="mobile-services"
-                    className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                      servicesOpen 
-                        ? 'max-h-96 opacity-100' 
-                        : 'max-h-0 opacity-0'
-                    }`}
-                  >
-                    <div className="pl-4 border-l-2 border-gray-100">
-                      {[
-                        { 
-                          path: '/services#data-engineering', 
-                          label: 'Data Engineering',
-                          description: 'Build robust data pipelines'
-                        },
-                        { 
-                          path: '/services#data-visualization', 
-                          label: 'Data Visualization',
-                          description: 'Transform data into insights'
-                        },
-                        { 
-                          path: '/services#business-intelligence', 
-                          label: 'Business Intelligence',
-                          description: 'Drive data-driven decisions'
-                        },
-                        { 
-                          path: '/services#cloud-modernization', 
-                          label: 'Cloud Modernization',
-                          description: 'Scale your infrastructure'
-                        },
-                        { 
-                          path: '/services#ai-engineering', 
-                          label: 'AI Engineering',
-                          description: 'Implement AI solutions'
-                        }
-                      ].map((item, index) => (
-                        <button
-                          key={`mobile-service-${index}`}
-                          onClick={() => handleServiceClick(item.path)}
-                          className="block w-full text-left py-3 px-3 text-gray-200 hover:bg-white/10 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation"
-                        >
-                          <div className="font-medium text-white">{item.label}</div>
-                          <div className="text-sm text-gray-300 mt-0.5">{item.description}</div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-
-                {/* Main Navigation Links */}
-                <div className="border-t border-gray-200 pt-2 mt-2">
-                  {[
-                    { to: '/talent', label: 'Hire Talent' },
-                    { to: '/about', label: 'About' },
-                   { to: '/case-studies', label: 'Case Studies' },
+                    { to: '/case-studies', label: 'Case Studies' },
                     { to: '/contact', label: 'Contact' }
                   ].map((item, index) => (
                     <NavLink
