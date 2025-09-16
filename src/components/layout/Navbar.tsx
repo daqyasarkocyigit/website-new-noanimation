@@ -403,7 +403,7 @@ const Navbar: React.FC = () => {
               isOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
             style={{
-              background: 'rgba(255, 248, 248, 0.92)',
+              background: 'rgba(255, 235, 235, 0.95)',
               backdropFilter: 'blur(16px) saturate(180%)',
               borderLeft: '1px solid rgba(255, 51, 51, 0.12)',
               boxShadow: `
@@ -417,7 +417,7 @@ const Navbar: React.FC = () => {
             <div 
               className="flex items-center justify-between p-4 border-b"
               style={{
-                background: 'rgba(255, 248, 248, 0.8)',
+                background: 'rgba(255, 235, 235, 0.9)',
                 backdropFilter: 'blur(8px)',
                 borderBottom: '1px solid rgba(255, 51, 51, 0.08)'
               }}
