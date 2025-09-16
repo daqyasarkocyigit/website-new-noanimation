@@ -504,6 +504,5 @@ const CaseStudies: React.FC = () => {
             </AnimatedSection>
           </div>
   )
-}
   )
 }
