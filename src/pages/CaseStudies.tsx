@@ -1124,6 +1124,7 @@ const CaseStudies: React.FC = () => {
     </>
   )
   )
+  )
   );
 };
 
