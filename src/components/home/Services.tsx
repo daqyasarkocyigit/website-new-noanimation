@@ -16,7 +16,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, lin
   return (
     <AnimatedSection delay={delay}>
       <Link to={link} className="block h-full group">
-        <div className="bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-2xl transition-all duration-500 h-full flex flex-col border border-gray-100 hover:border-[#FF3333]/20 hover:-translate-y-2 group-hover:bg-gradient-to-br group-hover:from-white group-hover:to-gray-50 touch-manipulation">
+        <div className="bg-white/80 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-2xl transition-all duration-500 h-full flex flex-col border border-white/30 hover:border-[#FF3333]/30 hover:-translate-y-2 group-hover:bg-gradient-to-br group-hover:from-white/90 group-hover:to-gray-50/80 touch-manipulation">
           <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6 text-[#FF3333] transform group-hover:scale-110 transition-transform duration-300">
             {icon}
           </div>
@@ -42,7 +42,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, lin
 
 const Services: React.FC = () => {
   return (
-    <section className="py-12 sm:py-16 lg:py-24 bg-white/60 backdrop-blur-sm" id="services">
+    <section className="py-12 sm:py-16 lg:py-24 bg-transparent" id="services">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="mb-12 text-center">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 mx-auto">Our Services</h2>
