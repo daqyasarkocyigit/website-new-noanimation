@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from '../components/utils/AnimatedSection';
-import AzureArchitectureDiagram from '../components/architecture/AzureArchitectureDiagram';
 
 const CaseStudies: React.FC = () => {
   const particlesRef = useRef<HTMLDivElement>(null);
@@ -538,7 +537,405 @@ const CaseStudies: React.FC = () => {
                 <span className="status-text">SYSTEM OPERATIONAL</span>
               </div>
             </div>
-            <AzureArchitectureDiagram />
+            
+            {/* SVG Architecture Diagram */}
+            <svg 
+              className="block w-full h-auto p-6 sm:p-8 lg:p-12" 
+              viewBox="0 0 1800 900" 
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              <defs>
+                {/* Gradients - Updated to site colors */}
+                <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{stopColor: '#FF3333', stopOpacity: 1}} />
+                  <stop offset="100%" style={{stopColor: '#e02d2d', stopOpacity: 1}} />
+                </linearGradient>
+                
+                <linearGradient id="secondaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{stopColor: '#6B7280', stopOpacity: 1}} />
+                  <stop offset="100%" style={{stopColor: '#9CA3AF', stopOpacity: 1}} />
+                </linearGradient>
+                
+                <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{stopColor: '#374151', stopOpacity: 1}} />
+                  <stop offset="100%" style={{stopColor: '#4B5563', stopOpacity: 1}} />
+                </linearGradient>
+
+                <linearGradient id="bronzeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{stopColor: '#92400E', stopOpacity: 1}} />
+                  <stop offset="100%" style={{stopColor: '#D97706', stopOpacity: 1}} />
+                </linearGradient>
+
+                <linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{stopColor: '#6B7280', stopOpacity: 1}} />
+                  <stop offset="100%" style={{stopColor: '#9CA3AF', stopOpacity: 1}} />
+                </linearGradient>
+
+                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style={{stopColor: '#EAB308', stopOpacity: 1}} />
+                  <stop offset="100%" style={{stopColor: '#FDE047', stopOpacity: 1}} />
+                </linearGradient>
+
+                {/* Filters */}
+                <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feDropShadow dx="0" dy="8" stdDeviation="10" floodOpacity="0.2"/>
+                </filter>
+
+                {/* Arrow Markers */}
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#94A3B8" opacity="0.8"/>
+                </marker>
+
+                {/* Animated Gradient for Flow */}
+                <linearGradient id="flowGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style={{stopColor: '#FF3333', stopOpacity: 0}}>
+                    <animate attributeName="stop-opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
+                  </stop>
+                  <stop offset="50%" style={{stopColor: '#e02d2d', stopOpacity: 1}}>
+                    <animate attributeName="stop-opacity" values="1;0.5;1" dur="3s" repeatCount="indefinite" />
+                  </stop>
+                  <stop offset="100%" style={{stopColor: '#FF3333', stopOpacity: 0}}>
+                    <animate attributeName="stop-opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
+                  </stop>
+                </linearGradient>
+              </defs>
+
+              {/* Grid Background Pattern */}
+              <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
+                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,51,51,0.05)" strokeWidth="1"/>
+              </pattern>
+              <rect width="100%" height="100%" fill="url(#grid)" />
+
+              {/* Section Labels */}
+              <g id="sectionLabels">
+                <text x="140" y="70" fill="#64748B" fontSize="12" fontWeight="600" letterSpacing="0.1em">DATA SOURCES</text>
+                <text x="540" y="70" fill="#64748B" fontSize="12" fontWeight="600" letterSpacing="0.1em" textAnchor="middle">INGESTION</text>
+                <text x="980" y="70" fill="#64748B" fontSize="12" fontWeight="600" letterSpacing="0.1em" textAnchor="middle">PROCESSING</text>
+                <text x="1390" y="70" fill="#64748B" fontSize="12" fontWeight="600" letterSpacing="0.1em" textAnchor="middle">SERVING</text>
+              </g>
+
+              {/* Data Sources */}
+              <g id="dataSources">
+                {/* SQL Databases */}
+                <g className="data-source" transform="translate(50, 100)">
+                  <rect x="0" y="0" width="180" height="70" rx="12" fill="url(#primaryGradient)" filter="url(#shadow)" opacity="0.95"/>
+                  <text x="90" y="30" fill="white" fontSize="14" fontWeight="600" textAnchor="middle">SQL Databases</text>
+                  <text x="90" y="48" fill="rgba(255,255,255,0.8)" fontSize="11" textAnchor="middle">Transactional Systems</text>
+                  <circle cx="165" cy="15" r="5" fill="#10B981">
+                    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite"/>
+                  </circle>
+                </g>
+
+                {/* ERP Systems */}
+                <g className="data-source" transform="translate(50, 190)">
+                  <rect x="0" y="0" width="180" height="70" rx="12" fill="url(#secondaryGradient)" filter="url(#shadow)" opacity="0.95"/>
+                  <text x="90" y="30" fill="white" fontSize="14" fontWeight="600" textAnchor="middle">ERP Systems</text>
+                  <text x="90" y="48" fill="rgba(255,255,255,0.8)" fontSize="11" textAnchor="middle">SAP / Oracle</text>
+                  <circle cx="165" cy="15" r="5" fill="#10B981">
+                    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="0.4s"/>
+                  </circle>
+                </g>
+
+                {/* APIs */}
+                <g className="data-source" transform="translate(50, 280)">
+                  <rect x="0" y="0" width="180" height="70" rx="12" fill="url(#accentGradient)" filter="url(#shadow)" opacity="0.95"/>
+                  <text x="90" y="30" fill="white" fontSize="14" fontWeight="600" textAnchor="middle">External APIs</text>
+                  <text x="90" y="48" fill="rgba(255,255,255,0.8)" fontSize="11" textAnchor="middle">REST / GraphQL</text>
+                  <circle cx="165" cy="15" r="5" fill="#10B981">
+                    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="0.8s"/>
+                  </circle>
+                </g>
+
+                {/* File Storage */}
+                <g className="data-source" transform="translate(50, 370)">
+                  <rect x="0" y="0" width="180" height="70" rx="12" fill="url(#primaryGradient)" filter="url(#shadow)" opacity="0.95"/>
+                  <text x="90" y="30" fill="white" fontSize="14" fontWeight="600" textAnchor="middle">File Storage</text>
+                  <text x="90" y="48" fill="rgba(255,255,255,0.8)" fontSize="11" textAnchor="middle">CSV / Parquet / JSON</text>
+                  <circle cx="165" cy="15" r="5" fill="#10B981">
+                    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="1.2s"/>
+                  </circle>
+                </g>
+
+                {/* Streaming */}
+                <g className="data-source" transform="translate(50, 460)">
+                  <rect x="0" y="0" width="180" height="70" rx="12" fill="url(#secondaryGradient)" filter="url(#shadow)" opacity="0.95"/>
+                  <text x="90" y="30" fill="white" fontSize="14" fontWeight="600" textAnchor="middle">Streaming</text>
+                  <text x="90" y="48" fill="rgba(255,255,255,0.8)" fontSize="11" textAnchor="middle">Kafka / Event Hub</text>
+                  <circle cx="165" cy="15" r="5" fill="#10B981">
+                    <animate attributeName="opacity" values="1;0.3;1" dur="2s" repeatCount="indefinite" begin="1.6s"/>
+                  </circle>
+                </g>
+              </g>
+
+              {/* Flow Lines from Sources to Ingestion */}
+              <g id="sourceFlows">
+                {/* From SQL to Fabric */}
+                <path d="M 230 135 Q 340 135 400 290" stroke="url(#flowGradient)" strokeWidth="2" fill="none" opacity="0.8"/>
+                <circle r="4" fill="#FF3333">
+                  <animateMotion dur="3s" repeatCount="indefinite">
+                    <mpath href="#flow1"/>
+                  </animateMotion>
+                  <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <path id="flow1" d="M 230 135 Q 340 135 400 290" fill="none"/>
+
+                {/* From ERP to Fabric */}
+                <path d="M 230 225 Q 340 225 400 295" stroke="url(#flowGradient)" strokeWidth="2" fill="none" opacity="0.8"/>
+                <circle r="4" fill="#6B7280">
+                  <animateMotion dur="3s" repeatCount="indefinite" begin="0.5s">
+                    <mpath href="#flow2"/>
+                  </animateMotion>
+                  <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+                </circle>
+                <path id="flow2" d="M 230 225 Q 340 225 400 295" fill="none"/>
+
+                {/* From APIs to Fabric */}
+                <path d="M 230 315 Q 340 315 400 300" stroke="url(#flowGradient)" strokeWidth="2" fill="none" opacity="0.8"/>
+                <circle r="4" fill="#374151">
+                  <animateMotion dur="3s" repeatCount="indefinite" begin="1s">
+                    <mpath href="#flow3"/>
+                  </animateMotion>
+                  <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="1s"/>
+                </circle>
+                <path id="flow3" d="M 230 315 Q 340 315 400 300" fill="none"/>
+
+                {/* From Files to Fabric */}
+                <path d="M 230 405 Q 340 405 400 305" stroke="url(#flowGradient)" strokeWidth="2" fill="none" opacity="0.8"/>
+                <circle r="4" fill="#FF3333">
+                  <animateMotion dur="3s" repeatCount="indefinite" begin="1.5s">
+                    <mpath href="#flow4"/>
+                  </animateMotion>
+                  <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="1.5s"/>
+                </circle>
+                <path id="flow4" d="M 230 405 Q 340 405 400 305" fill="none"/>
+
+                {/* From Streaming to Fabric */}
+                <path d="M 230 495 Q 340 495 400 310" stroke="url(#flowGradient)" strokeWidth="2" fill="none" opacity="0.8"/>
+                <circle r="4" fill="#6B7280">
+                  <animateMotion dur="3s" repeatCount="indefinite" begin="2s">
+                    <mpath href="#flow5"/>
+                  </animateMotion>
+                  <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite" begin="2s"/>
+                </circle>
+                <path id="flow5" d="M 230 495 Q 340 495 400 310" fill="none"/>
+              </g>
+
+              {/* Ingestion Layer */}
+              <g id="ingestionLayer">
+                {/* Microsoft Fabric */}
+                <g transform="translate(400, 250)">
+                  <rect x="0" y="0" width="280" height="120" rx="16" fill="url(#primaryGradient)" filter="url(#shadow)" opacity="0.95"/>
+                  <text x="140" y="45" fill="white" fontSize="18" fontWeight="700" textAnchor="middle">Microsoft Fabric</text>
+                  <text x="140" y="70" fill="rgba(255,255,255,0.9)" fontSize="13" textAnchor="middle">Data Factory Orchestration</text>
+                  
+                  {/* Processing Bar Animation */}
+                  <rect x="30" y="90" width="220" height="6" rx="3" fill="rgba(255,255,255,0.2)"/>
+                  <rect x="30" y="90" width="60" height="6" rx="3" fill="#10B981">
+                    <animate attributeName="width" values="0;220;0" dur="4s" repeatCount="indefinite"/>
+                  </rect>
+                </g>
+
+                {/* Unity Catalog */}
+                <g transform="translate(420, 400)">
+                  <rect x="0" y="0" width="240" height="80" rx="12" fill="url(#accentGradient)" filter="url(#shadow)" opacity="0.95"/>
+                  <text x="120" y="35" fill="white" fontSize="14" fontWeight="600" textAnchor="middle">Unity Catalog</text>
+                  <text x="120" y="55" fill="rgba(255,255,255,0.8)" fontSize="11" textAnchor="middle">Metadata Management</text>
+                </g>
+              </g>
+
+              {/* Flow to Processing */}
+              <g id="ingestionToProcessing">
+                <path d="M 680 310 L 780 310" stroke="url(#flowGradient)" strokeWidth="2" fill="none" opacity="0.8" markerEnd="url(#arrowhead)"/>
+                <circle r="4" fill="#FF3333">
+                  <animateMotion dur="3s" repeatCount="indefinite">
+                    <mpath href="#toProcessing"/>
+                  </animateMotion>
+                  <animate attributeName="opacity" values="0;1;1;0" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <path id="toProcessing" d="M 680 310 L 780 310" fill="none"/>
+              </g>
+
+              {/* Processing Layer - Medallion Architecture */}
+              <g id="processingLayer">
+                <g transform="translate(780, 100)">
+                  {/* Container */}
+                  <rect x="0" y="0" width="400" height="550" rx="20" fill="none" stroke="rgba(148,163,184,0.2)" strokeWidth="2" strokeDasharray="10,5"/>
+                  <text x="200" y="30" fill="#64748B" fontSize="13" textAnchor="middle">Microsoft Fabric Lakehouse</text>
+
+                  {/* Bronze Layer */}
+                  <g className="medallion-layer" transform="translate(30, 60)">
+                    <rect x="0" y="0" width="340" height="100" rx="16" fill="url(#bronzeGradient)" filter="url(#shadow)" opacity="0.95">
+                      <animate attributeName="opacity" values="0.95;1;0.95" dur="3s" repeatCount="indefinite"/>
+                    </rect>
+                    <text x="170" y="40" fill="white" fontSize="18" fontWeight="700" textAnchor="middle">Bronze Layer</text>
+                    <text x="170" y="60" fill="rgba(255,255,255,0.9)" fontSize="13" textAnchor="middle">Raw Data Ingestion</text>
+                    <text x="170" y="80" fill="rgba(255,255,255,0.7)" fontSize="11" textAnchor="middle">Immutable | Partitioned | Full History</text>
+                    
+                    <g transform="translate(290, 10)">
+                      <rect x="0" y="0" width="40" height="25" rx="5" fill="rgba(0,0,0,0.3)"/>
+                      <text x="20" y="18" fill="white" fontSize="11" textAnchor="middle" fontWeight="600">10TB</text>
+                    </g>
+                  </g>
+
+                  {/* Arrow Bronze to Silver */}
+                  <g transform="translate(200, 160)">
+                    <line x1="0" y1="0" x2="0" y2="60" stroke="#94A3B8" strokeWidth="2" markerEnd="url(#arrowhead)" opacity="0.6"/>
+                    <circle r="3" fill="#D97706">
+                      <animateMotion dur="2s" repeatCount="indefinite">
+                        <mpath href="#bronzeToSilver"/>
+                      </animateMotion>
+                    </circle>
+                    <path id="bronzeToSilver" d="M 0 0 L 0 60" fill="none"/>
+                  </g>
+
+                  {/* Silver Layer */}
+                  <g className="medallion-layer" transform="translate(30, 220)">
+                    <rect x="0" y="0" width="340" height="100" rx="16" fill="url(#silverGradient)" filter="url(#shadow)" opacity="0.95">
+                      <animate attributeName="opacity" values="0.95;1;0.95" dur="3s" repeatCount="indefinite" begin="0.5s"/>
+                    </rect>
+                    <text x="170" y="40" fill="white" fontSize="18" fontWeight="700" textAnchor="middle">Silver Layer</text>
+                    <text x="170" y="60" fill="rgba(255,255,255,0.9)" fontSize="13" textAnchor="middle">Cleansed & Validated</text>
+                    <text x="170" y="80" fill="rgba(255,255,255,0.7)" fontSize="11" textAnchor="middle">Delta Lake | Deduplicated | Quality Checked</text>
+                    
+                    <g transform="translate(290, 10)">
+                      <rect x="0" y="0" width="40" height="25" rx="5" fill="rgba(0,0,0,0.3)"/>
+                      <text x="20" y="18" fill="white" fontSize="11" textAnchor="middle" fontWeight="600">6TB</text>
+                    </g>
+                  </g>
+
+                  {/* Arrow Silver to Gold */}
+                  <g transform="translate(200, 320)">
+                    <line x1="0" y1="0" x2="0" y2="60" stroke="#94A3B8" strokeWidth="2" markerEnd="url(#arrowhead)" opacity="0.6"/>
+                    <circle r="3" fill="#9CA3AF">
+                      <animateMotion dur="2s" repeatCount="indefinite">
+                        <mpath href="#silverToGold"/>
+                      </animateMotion>
+                    </circle>
+                    <path id="silverToGold" d="M 0 0 L 0 60" fill="none"/>
+                  </g>
+
+                  {/* Gold Layer */}
+                  <g className="medallion-layer" transform="translate(30, 380)">
+                    <rect x="0" y="0" width="340" height="100" rx="16" fill="url(#goldGradient)" filter="url(#shadow)" opacity="0.95">
+                      <animate attributeName="opacity" values="0.95;1;0.95" dur="3s" repeatCount="indefinite" begin="1s"/>
+                    </rect>
+                    <text x="170" y="40" fill="#1E293B" fontSize="18" fontWeight="700" textAnchor="middle">Gold Layer</text>
+                    <text x="170" y="60" fill="rgba(30,41,59,0.9)" fontSize="13" textAnchor="middle">Business Ready</text>
+                    <text x="170" y="80" fill="rgba(30,41,59,0.7)" fontSize="11" textAnchor="middle">Aggregated | KPIs | ML Features | Optimized</text>
+                    
+                    <g transform="translate(290, 10)">
+                      <rect x="0" y="0" width="40" height="25" rx="5" fill="rgba(0,0,0,0.2)"/>
+                      <text x="20" y="18" fill="#1E293B" fontSize="11" textAnchor="middle" fontWeight="600">2TB</text>
+                    </g>
+                  </g>
+
+                  {/* Data Lake Storage Label */}
+                  <text x="200" y="520" fill="#64748B" fontSize="11" textAnchor="middle">Azure Data Lake Storage Gen2</text>
+                </g>
+              </g>
+
+              {/* Flow to Serving */}
+              <g id="servingFlows">
+                {/* To Reporting */}
+                <path d="M 1180 430 Q 1230 390 1280 285" stroke="url(#flowGradient)" strokeWidth="2" fill="none" opacity="0.8"/>
+                <circle r="4" fill="#FDE047">
+                  <animateMotion dur="2.5s" repeatCount="indefinite">
+                    <mpath href="#toServe1"/>
+                  </animateMotion>
+                </circle>
+                <path id="toServe1" d="M 1180 430 Q 1230 390 1280 285" fill="none"/>
+
+                {/* To Applications */}
+                <path d="M 1180 430 Q 1230 410 1280 375" stroke="url(#flowGradient)" strokeWidth="2" fill="none" opacity="0.8"/>
+                <circle r="4" fill="#FDE047">
+                  <animateMotion dur="2.5s" repeatCount="indefinite" begin="0.5s">
+                    <mpath href="#toServe2"/>
+                  </animateMotion>
+                </circle>
+                <path id="toServe2" d="M 1180 430 Q 1230 410 1280 375" fill="none"/>
+
+                {/* To AI/ML */}
+                <path d="M 1180 430 Q 1230 430 1280 465" stroke="url(#flowGradient)" strokeWidth="2" fill="none" opacity="0.8"/>
+                <circle r="4" fill="#FDE047">
+                  <animateMotion dur="2.5s" repeatCount="indefinite" begin="1s">
+                    <mpath href="#toServe3"/>
+                  </animateMotion>
+                </circle>
+                <path id="toServe3" d="M 1180 430 Q 1230 430 1280 465" fill="none"/>
+
+                {/* To Data APIs */}
+                <path d="M 1180 430 Q 1230 470 1280 555" stroke="url(#flowGradient)" strokeWidth="2" fill="none" opacity="0.8"/>
+                <circle r="4" fill="#FDE047">
+                  <animateMotion dur="2.5s" repeatCount="indefinite" begin="1.5s">
+                    <mpath href="#toServe4"/>
+                  </animateMotion>
+                </circle>
+                <path id="toServe4" d="M 1180 430 Q 1230 470 1280 555" fill="none"/>
+              </g>
+
+              {/* Serving Layer */}
+              <g id="servingLayer">
+                {/* Reporting */}
+                <g transform="translate(1280, 250)">
+                  <rect x="0" y="0" width="220" height="70" rx="12" fill="url(#goldGradient)" filter="url(#shadow)" opacity="0.95"/>
+                  <text x="110" y="30" fill="#1E293B" fontSize="14" fontWeight="600" textAnchor="middle">Reporting</text>
+                  <text x="110" y="48" fill="rgba(30,41,59,0.8)" fontSize="11" textAnchor="middle">Power BI / Dashboards</text>
+                </g>
+
+                {/* Applications */}
+                <g transform="translate(1280, 340)">
+                  <rect x="0" y="0" width="220" height="70" rx="12" fill="url(#primaryGradient)" filter="url(#shadow)" opacity="0.95"/>
+                  <text x="110" y="30" fill="white" fontSize="14" fontWeight="600" textAnchor="middle">Applications</text>
+                  <text x="110" y="48" fill="rgba(255,255,255,0.8)" fontSize="11" textAnchor="middle">Business Applications</text>
+                </g>
+
+                {/* AI/ML */}
+                <g transform="translate(1280, 430)">
+                  <rect x="0" y="0" width="220" height="70" rx="12" fill="url(#secondaryGradient)" filter="url(#shadow)" opacity="0.95"/>
+                  <text x="110" y="30" fill="white" fontSize="14" fontWeight="600" textAnchor="middle">AI/ML</text>
+                  <text x="110" y="48" fill="rgba(255,255,255,0.8)" fontSize="11" textAnchor="middle">Models & Predictions</text>
+                </g>
+
+                {/* Data APIs */}
+                <g transform="translate(1280, 520)">
+                  <rect x="0" y="0" width="220" height="70" rx="12" fill="url(#accentGradient)" filter="url(#shadow)" opacity="0.95"/>
+                  <text x="110" y="30" fill="white" fontSize="14" fontWeight="600" textAnchor="middle">Data APIs</text>
+                  <text x="110" y="48" fill="rgba(255,255,255,0.8)" fontSize="11" textAnchor="middle">External Integrations</text>
+                </g>
+              </g>
+
+              {/* Governance Layer */}
+              <g id="governanceLayer" transform="translate(50, 750)">
+                <rect x="0" y="0" width="1450" height="120" rx="20" fill="none" stroke="rgba(148,163,184,0.2)" strokeWidth="2"/>
+                <text x="725" y="30" fill="#64748B" fontSize="12" fontWeight="600" letterSpacing="0.15em" textAnchor="middle">GOVERNANCE & SECURITY</text>
+                
+                <g transform="translate(150, 45)">
+                  <rect x="0" y="0" width="180" height="50" rx="10" fill="rgba(255,51,51,0.1)" stroke="rgba(255,51,51,0.3)" strokeWidth="1"/>
+                  <text x="90" y="30" fill="#94A3B8" fontSize="12" textAnchor="middle">Key Vault</text>
+                </g>
+
+                <g transform="translate(380, 45)">
+                  <rect x="0" y="0" width="180" height="50" rx="10" fill="rgba(107,114,128,0.1)" stroke="rgba(107,114,128,0.3)" strokeWidth="1"/>
+                  <text x="90" y="30" fill="#94A3B8" fontSize="12" textAnchor="middle">RBAC</text>
+                </g>
+
+                <g transform="translate(610, 45)">
+                  <rect x="0" y="0" width="180" height="50" rx="10" fill="rgba(55,65,81,0.1)" stroke="rgba(55,65,81,0.3)" strokeWidth="1"/>
+                  <text x="90" y="30" fill="#94A3B8" fontSize="12" textAnchor="middle">Data Lineage</text>
+                </g>
+
+                <g transform="translate(840, 45)">
+                  <rect x="0" y="0" width="180" height="50" rx="10" fill="rgba(255,51,51,0.1)" stroke="rgba(255,51,51,0.3)" strokeWidth="1"/>
+                  <text x="90" y="30" fill="#94A3B8" fontSize="12" textAnchor="middle">Monitoring</text>
+                </g>
+
+                <g transform="translate(1070, 45)">
+                  <rect x="0" y="0" width="180" height="50" rx="10" fill="rgba(107,114,128,0.1)" stroke="rgba(107,114,128,0.3)" strokeWidth="1"/>
+                  <text x="90" y="30" fill="#94A3B8" fontSize="12" textAnchor="middle">Compliance</text>
+                </g>
+              </g>
+            </svg>
           </div>
         </AnimatedSection>
 
