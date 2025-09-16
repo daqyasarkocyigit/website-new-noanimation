@@ -16,7 +16,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, lin
   return (
     <AnimatedSection delay={delay}>
       <Link to={link} className="block h-full group">
-        <div className="bg-white/80 backdrop-blur-sm p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-2xl transition-all duration-500 h-full flex flex-col border border-white/30 hover:border-[#FF3333]/30 hover:-translate-y-2 group-hover:bg-gradient-to-br group-hover:from-white/90 group-hover:to-gray-50/80 touch-manipulation">
+        <div className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg transition-all duration-500 h-full flex flex-col border border-gray-200/20 hover:border-[#FF3333]/30 hover:-translate-y-2 group-hover:bg-white/5 touch-manipulation">
           <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6 text-[#FF3333] transform group-hover:scale-110 transition-transform duration-300">
             {icon}
           </div>
