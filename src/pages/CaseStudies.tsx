@@ -364,12 +364,12 @@ const CaseStudies: React.FC = () => {
                     <text x="880" y="168" textAnchor="middle" className="handwritten">Reports</text>
                     
                     <rect x="830" y="195" width="100" height="50" rx="3" className="sketch-fill" />
-                    <text x="880" y="220" textAnchor="middle" className="diagram-text">Synapse</text>
-                    <text x="880" y="233" textAnchor="middle" className="handwritten">Analytics</text>
+                    <text x="880" y="220" textAnchor="middle" className="diagram-text">AI ML</text>
+                    <text x="880" y="233" textAnchor="middle" className="handwritten">Models</text>
                     
                     <rect x="830" y="260" width="100" height="50" rx="3" className="sketch-fill" />
-                    <text x="880" y="285" textAnchor="middle" className="diagram-text">APIs</text>
-                    <text x="880" y="298" textAnchor="middle" className="handwritten">Real-time</text>
+                    <text x="880" y="285" textAnchor="middle" className="diagram-text">Application</text>
+                    <text x="880" y="298" textAnchor="middle" className="handwritten">Services</text>
                   </g>
                   
                   {/* Governance & Security */}
@@ -502,13 +502,3 @@ const CaseStudies: React.FC = () => {
               </div>
             </AnimatedSection>
           </div>
-        </section>
-
-
-        <CallToAction />
-      </div>
-    </>
-  );
-};
-
-export default CaseStudies;
