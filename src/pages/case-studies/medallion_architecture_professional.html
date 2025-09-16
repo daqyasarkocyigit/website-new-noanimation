@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Data Platform Architecture</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: #fafafa;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .canvas {
+            width: 1200px;
+            height: 800px;
+            background: white;
+            position: relative;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .sketch-line {
+            fill: none;
+            stroke: #2c3e50;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .sketch-box {
+            fill: none;
+            stroke: #2c3e50;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        .sketch-fill {
+            fill: #f0f0f0;
+            stroke: #2c3e50;
+            stroke-width: 1.5;
+        }
+        
+        .arrow-marker {
+            fill: #2c3e50;
+        }
+        
+        text {
+            font-family: 'Courier New', monospace;
+            font-size: 11px;
+            fill: #2c3e50;
+        }
+        
+        .title-text {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .section-title {
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .bronze-fill { fill: #CD7F32; opacity: 0.3; }
+        .silver-fill { fill: #C0C0C0; opacity: 0.3; }
+        .gold-fill { fill: #FFD700; opacity: 0.3; }
+        
+        .dashed-line {
+            stroke-dasharray: 5,3;
+            stroke: #888;
+            fill: none;
+            stroke-width: 1;
+        }
+        
+        .arrow-path {
+            fill: none;
+            stroke: #2c3e50;
+            stroke-width: 2;
+            marker-end: url(#arrowhead);
+        }
+        
+        .handwritten {
+            font-family: 'Comic Sans MS', 'Marker Felt', cursive;
+            font-size: 10px;
+            fill: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas">
+        <svg viewBox="0 0 1200 800">
+            <!-- Define arrow markers -->
+            <defs>
+                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                    <polygon points="0 0, 10 3.5, 0 7" fill="#2c3e50" />
+                </marker>
+                
+                <!-- Hand-drawn effect filter -->
+                <filter id="roughPaper">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="5" result="noise" />
+                    <feDiffuseLighting in="noise" lighting-color="white" surfaceScale="1">
+                        <feDistantLight azimuth="45" elevation="60" />
+                    </feDiffuseLighting>
+                </filter>
+            </defs>
+            
+            <!-- Title -->
+            <text x="600" y="40" text-anchor="middle" class="title-text">AZURE DATA PLATFORM - MEDALLION ARCHITECTURE</text>
+            <line x1="350" y1="50" x2="850" y2="50" class="sketch-line" />
+            
+            <!-- Data Sources Section -->
+            <g id="data-sources">
+                <rect x="50" y="100" width="140" height="250" rx="5" class="sketch-box" />
+                <text x="120" y="90" text-anchor="middle" class="section-title">DATA SOURCES</text>
+                
+                <!-- Source boxes with hand-drawn style -->
+                <path d="M 70 130 L 170 130 L 170 160 L 70 160 Z" class="sketch-fill" />
+                <text x="120" y="150" text-anchor="middle">SQL Server</text>
+                
+                <path d="M 70 180 L 170 180 L 170 210 L 70 210 Z" class="sketch-fill" />
+                <text x="120" y="200" text-anchor="middle">ERP (SAP)</text>
+                
+                <path d="M 70 230 L 170 230 L 170 260 L 70 260 Z" class="sketch-fill" />
+                <text x="120" y="250" text-anchor="middle">REST APIs</text>
+                
+                <path d="M 70 280 L 170 280 L 170 310 L 70 310 Z" class="sketch-fill" />
+                <text x="120" y="300" text-anchor="middle">Files (CSV)</text>
+            </g>
+            
+            <!-- Arrow from Sources to Ingestion -->
+            <path d="M 190 225 L 240 225" class="arrow-path" />
+            
+            <!-- Ingestion Layer -->
+            <g id="ingestion">
+                <rect x="250" y="100" width="140" height="250" rx="5" class="sketch-box" />
+                <text x="320" y="90" text-anchor="middle" class="section-title">INGESTION</text>
+                
+                <rect x="270" y="130" width="100" height="60" rx="3" class="sketch-fill" />
+                <text x="320" y="155" text-anchor="middle">Azure Data</text>
+                <text x="320" y="170" text-anchor="middle">Factory</text>
+                
+                <rect x="270" y="210" width="100" height="60" rx="3" class="sketch-fill" />
+                <text x="320" y="235" text-anchor="middle">Control</text>
+                <text x="320" y="250" text-anchor="middle">Database</text>
+                
+                <text x="320" y="290" text-anchor="middle" class="handwritten">• Metadata-driven</text>
+                <text x="320" y="305" text-anchor="middle" class="handwritten">• Self-hosted IR</text>
+                <text x="320" y="320" text-anchor="middle" class="handwritten">• Incremental</text>
+            </g>
+            
+            <!-- Arrow from Ingestion to Process -->
+            <path d="M 390 225 L 440 225" class="arrow-path" />
+            
+            <!-- Process & Store (Medallion) -->
+            <g id="medallion">
+                <rect x="450" y="100" width="300" height="250" rx="5" class="sketch-box" />
+                <text x="600" y="90" text-anchor="middle" class="section-title">PROCESS & STORE</text>
+                
+                <!-- Azure Databricks label -->
+                <rect x="520" y="110" width="160" height="25" rx="3" class="sketch-fill" />
+                <text x="600" y="127" text-anchor="middle" style="font-weight: bold;">Azure Databricks</text>
+                
+                <!-- Bronze Layer -->
+                <rect x="470" y="150" width="80" height="60" rx="3" class="bronze-fill" />
+                <rect x="470" y="150" width="80" height="60" rx="3" class="sketch-box" />
+                <text x="510" y="175" text-anchor="middle" style="font-weight: bold;">BRONZE</text>
+                <text x="510" y="190" text-anchor="middle" class="handwritten">Raw Data</text>
+                <text x="510" y="203" text-anchor="middle" class="handwritten">Parquet</text>
+                
+                <!-- Silver Layer -->
+                <rect x="570" y="150" width="80" height="60" rx="3" class="silver-fill" />
+                <rect x="570" y="150" width="80" height="60" rx="3" class="sketch-box" />
+                <text x="610" y="175" text-anchor="middle" style="font-weight: bold;">SILVER</text>
+                <text x="610" y="190" text-anchor="middle" class="handwritten">Cleansed</text>
+                <text x="610" y="203" text-anchor="middle" class="handwritten">Delta Lake</text>
+                
+                <!-- Gold Layer -->
+                <rect x="670" y="150" width="80" height="60" rx="3" class="gold-fill" />
+                <rect x="670" y="150" width="80" height="60" rx="3" class="sketch-box" />
+                <text x="710" y="175" text-anchor="middle" style="font-weight: bold;">GOLD</text>
+                <text x="710" y="190" text-anchor="middle" class="handwritten">Business</text>
+                <text x="710" y="203" text-anchor="middle" class="handwritten">Aggregated</text>
+                
+                <!-- Arrows between layers -->
+                <path d="M 550 180 L 570 180" class="arrow-path" />
+                <path d="M 650 180 L 670 180" class="arrow-path" />
+                
+                <!-- Delta Lake Storage -->
+                <rect x="520" y="240" width="160" height="40" rx="3" class="dashed-line" />
+                <text x="600" y="263" text-anchor="middle">Azure Data Lake Gen2</text>
+                
+                <!-- Unity Catalog -->
+                <rect x="520" y="290" width="160" height="40" rx="3" class="sketch-fill" />
+                <text x="600" y="305" text-anchor="middle" style="font-weight: bold;">Unity Catalog</text>
+                <text x="600" y="318" text-anchor="middle" class="handwritten">Governance</text>
+            </g>
+            
+            <!-- Arrow from Process to Serve -->
+            <path d="M 750 225 L 800 225" class="arrow-path" />
+            
+            <!-- Serving Layer -->
+            <g id="serving">
+                <rect x="810" y="100" width="140" height="250" rx="5" class="sketch-box" />
+                <text x="880" y="90" text-anchor="middle" class="section-title">SERVING</text>
+                
+                <rect x="830" y="130" width="100" height="50" rx="3" class="sketch-fill" />
+                <text x="880" y="155" text-anchor="middle">Power BI</text>
+                <text x="880" y="168" text-anchor="middle" class="handwritten">Reports</text>
+                
+                <rect x="830" y="195" width="100" height="50" rx="3" class="sketch-fill" />
+                <text x="880" y="220" text-anchor="middle">Synapse</text>
+                <text x="880" y="233" text-anchor="middle" class="handwritten">Analytics</text>
+                
+                <rect x="830" y="260" width="100" height="50" rx="3" class="sketch-fill" />
+                <text x="880" y="285" text-anchor="middle">APIs</text>
+                <text x="880" y="298" text-anchor="middle" class="handwritten">Real-time</text>
+            </g>
+            
+            <!-- Governance & Security (Right side) -->
+            <g id="governance">
+                <rect x="1000" y="100" width="140" height="250" rx="5" class="dashed-line" />
+                <text x="1070" y="90" text-anchor="middle" class="section-title">GOVERNANCE</text>
+                
+                <text x="1070" y="140" text-anchor="middle">• Azure Key Vault</text>
+                <text x="1070" y="160" text-anchor="middle">• Azure AD / RBAC</text>
+                <text x="1070" y="180" text-anchor="middle">• Data Lineage</text>
+                <text x="1070" y="200" text-anchor="middle">• Monitoring</text>
+                <text x="1070" y="220" text-anchor="middle">• Data Quality</text>
+                <text x="1070" y="240" text-anchor="middle">• Cost Management</text>
+                
+                <!-- Connecting lines to main flow -->
+                <path d="M 1000 175 L 950 175" stroke="#888" stroke-width="1" stroke-dasharray="2,2" />
+                <path d="M 1000 175 L 750 175" stroke="#888" stroke-width="1" stroke-dasharray="2,2" />
+                <path d="M 1000 175 L 390 175" stroke="#888" stroke-width="1" stroke-dasharray="2,2" />
+            </g>
+            
+            <!-- CI/CD Pipeline -->
+            <g id="cicd">
+                <rect x="200" y="420" width="800" height="120" rx="5" class="dashed-line" />
+                <text x="600" y="410" text-anchor="middle" class="section-title">CI/CD PIPELINE - AZURE DEVOPS</text>
+                
+                <!-- Pipeline stages -->
+                <rect x="250" y="450" width="100" height="40" rx="3" class="sketch-fill" />
+                <text x="300" y="473" text-anchor="middle">Dev ADF</text>
+                
+                <path d="M 350 470 L 390 470" class="arrow-path" />
+                
+                <rect x="390" y="450" width="100" height="40" rx="3" class="sketch-fill" />
+                <text x="440" y="473" text-anchor="middle">Feature</text>
+                
+                <path d="M 490 470 L 530 470" class="arrow-path" />
+                
+                <rect x="530" y="450" width="100" height="40" rx="3" class="sketch-fill" />
+                <text x="580" y="473" text-anchor="middle">Test</text>
+                
+                <path d="M 630 470 L 670 470" class="arrow-path" />
+                
+                <rect x="670" y="450" width="100" height="40" rx="3" class="sketch-fill" />
+                <text x="720" y="473" text-anchor="middle">UAT</text>
+                
+                <path d="M 770 470 L 810 470" class="arrow-path" />
+                
+                <rect x="810" y="450" width="100" height="40" rx="3" style="fill: #2c3e50;" />
+                <text x="860" y="473" text-anchor="middle" style="fill: white;">PROD</text>
+                
+                <text x="600" y="515" text-anchor="middle" class="handwritten">ARM Templates | Approval Gates | Automated Testing</text>
+            </g>
+            
+            <!-- Key Features -->
+            <g id="features">
+                <text x="100" y="600" class="section-title">KEY CAPABILITIES:</text>
+                
+                <text x="120" y="625" class="handwritten">✓ Incremental & full load patterns</text>
+                <text x="120" y="645" class="handwritten">✓ ACID transactions (Delta Lake)</text>
+                <text x="120" y="665" class="handwritten">✓ Row-level security</text>
+                <text x="120" y="685" class="handwritten">✓ Automated data quality checks</text>
+                
+                <text x="450" y="625" class="handwritten">✓ Parallel processing with Spark</text>
+                <text x="450" y="645" class="handwritten">✓ Time travel & versioning</text>
+                <text x="450" y="665" class="handwritten">✓ Schema evolution</text>
+                <text x="450" y="685" class="handwritten">✓ Zero-downtime deployments</text>
+                
+                <text x="780" y="625" class="handwritten">✓ Real-time & batch processing</text>
+                <text x="780" y="645" class="handwritten">✓ Multi-cloud support</text>
+                <text x="780" y="665" class="handwritten">✓ Cost optimization</text>
+                <text x="780" y="685" class="handwritten">✓ Disaster recovery</text>
+            </g>
+            
+            <!-- Footer -->
+            <text x="600" y="760" text-anchor="middle" class="handwritten" style="font-size: 9px;">© 2025 DAQ - Enterprise Analytics Architecture v2.0</text>
+            
+            <!-- Add some hand-drawn decorative elements -->
+            <circle cx="70" cy="225" r="3" fill="#ff6b6b" opacity="0.5" />
+            <circle cx="270" cy="160" r="3" fill="#4ecdc4" opacity="0.5" />
+            <circle cx="510" cy="180" r="3" fill="#CD7F32" opacity="0.5" />
+            <circle cx="610" cy="180" r="3" fill="#C0C0C0" opacity="0.5" />
+            <circle cx="710" cy="180" r="3" fill="#FFD700" opacity="0.5" />
+            <circle cx="880" cy="155" r="3" fill="#f39c12" opacity="0.5" />
+        </svg>
+    </div>
+</body>
+</html>
