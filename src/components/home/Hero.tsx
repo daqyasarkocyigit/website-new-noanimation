@@ -163,7 +163,7 @@ const Hero: React.FC = () => {
                   >
                     <div className="flex-1">
                       <div className="mb-2">
-                        <span className="text-xs font-medium px-2 py-0.5 rounded-full text-gray-600 bg-gray-100">
+                        <span className="text-xs font-medium px-2 py-0.5 rounded-full text-gray-600">
                           {story.type}
                         </span>
                       </div>
@@ -185,7 +185,7 @@ const Hero: React.FC = () => {
                   >
                     <div className="flex-1">
                       <div className="mb-2">
-                        <span className="text-xs font-medium px-2 py-0.5 rounded-full text-gray-600 bg-gray-100">
+                        <span className="text-xs font-medium px-2 py-0.5 rounded-full text-gray-600">
                           {story.type}
                         </span>
                       </div>
