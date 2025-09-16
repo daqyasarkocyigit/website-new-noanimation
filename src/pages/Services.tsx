@@ -3,6 +3,8 @@ import { Database, BarChart, LineChart, Cloud, Brain } from 'lucide-react';
 import ServiceDetail from '../components/services/ServiceDetail';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
+import ServiceCaseStudies from '../components/services/ServiceCaseStudies';
+import { dataEngineeringCaseStudies } from '../data/caseStudies';
 import { motion } from 'framer-motion';
 
 const Services: React.FC = () => {
@@ -49,17 +51,23 @@ const Services: React.FC = () => {
       <ServiceDetail
         id="data-engineering"
         title="Data Engineering"
-        description="Build robust data pipelines and infrastructure to collect, process, and store your data efficiently."
+        description="Build robust data pipelines and infrastructure to collect, process, and store your data efficiently. See our production implementations below."
         benefits={[
           "Scalable data pipeline development",
           "Data warehouse design and implementation",
           "ETL/ELT process optimization",
           "Real-time data processing solutions",
-          "Data quality and governance frameworks"
+          "Data quality and governance frameworks",
+          "Metadata-driven ingestion frameworks"
         ]}
         icon={<Database size={32} />}
         useCustomVisual={true}
         visualType="data-engineering"
+      />
+
+      <ServiceCaseStudies 
+        title="Data Engineering" 
+        caseStudies={dataEngineeringCaseStudies.slice(0, 1)} 
       />
 
       <ServiceDetail

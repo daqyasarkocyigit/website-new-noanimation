@@ -25,6 +25,126 @@ interface DetailedSection {
 
 export const dataEngineeringCaseStudies: CaseStudyData[] = [
   {
+    id: 'metadata-driven-ingestion-framework',
+    title: 'Metadata-Driven Ingestion Framework with Medallion Architecture',
+    architectureDiagram: AzureArchitectureDiagram,
+    industry: 'Retail/E-commerce',
+    duration: '12 weeks',
+    teamSize: '5 specialists',
+    challenge: 'A major retail chain was experiencing significant performance issues with their analytics infrastructure. Their existing ETL processes were slow, manual, and difficult to scale. Each new data source required custom pipeline development, creating a maintenance nightmare. Power BI reports connected via DirectQuery to Dedicated SQL Pool became increasingly slow during peak hours, especially during Monday morning executive reviews when hundreds of users accessed dashboards simultaneously.',
+    solution: 'We implemented a comprehensive metadata-driven data ingestion framework using Azure Data Factory, Databricks, and medallion architecture. The solution automated the entire data pipeline process through configuration-based approach, eliminating manual coding for each data source.',
+    detailedSections: [
+      {
+        title: 'Metadata-Driven Architecture Design',
+        content: 'Instead of building individual pipelines for each data source, we developed a revolutionary configuration-based framework that automatically generates data pipelines based on metadata definitions stored in control tables.',
+        subsections: [
+          {
+            title: 'Control Table Structure',
+            content: 'Centralized metadata repository containing source system configurations, data transformation rules, and processing schedules'
+          },
+          {
+            title: 'Dynamic Pipeline Generation',
+            content: 'Azure Data Factory master pipeline that reads control tables and dynamically creates processing workflows'
+          },
+          {
+            title: 'Configuration-Based Processing',
+            content: 'Zero-code approach for onboarding new data sources - simply add configuration records to control tables'
+          }
+        ]
+      },
+      {
+        title: 'Medallion Architecture Implementation',
+        content: 'We structured the data lake into three distinct layers following Databricks medallion architecture best practices, ensuring data quality and performance at each stage.',
+        subsections: [
+          {
+            title: 'Bronze Layer (Raw Ingestion)',
+            content: 'Raw data preservation in original format with minimal transformation, maintaining full data lineage and audit capabilities'
+          },
+          {
+            title: 'Silver Layer (Cleansed & Standardized)', 
+            content: 'Business rules applied, data quality checks implemented, standardized schemas with Delta Lake ACID transactions'
+          },
+          {
+            title: 'Gold Layer (Analytics-Ready)',
+            content: 'Pre-aggregated business metrics, KPIs, and analytics-ready datasets optimized for reporting consumption'
+          }
+        ]
+      },
+      {
+        title: 'Advanced Technical Implementation',
+        content: 'The implementation leveraged cutting-edge Azure technologies and best practices for enterprise-scale data processing.',
+        subsections: [
+          {
+            title: 'Azure Data Factory Orchestration',
+            content: 'Master pipeline with parallel processing capabilities, dynamic parameter passing, and comprehensive error handling'
+          },
+          {
+            title: 'Databricks Processing Engine',
+            content: 'Scala and Python notebooks for Delta Lake operations, data quality validation, and business logic transformation'
+          },
+          {
+            title: 'Unity Catalog Integration',
+            content: 'Centralized metadata management, data lineage tracking, and fine-grained access control across all layers'
+          },
+          {
+            title: 'Performance Optimization',
+            content: 'Delta Lake liquid clustering, Z-ordering, and partition optimization for sub-second query performance'
+          }
+        ]
+      },
+      {
+        title: 'DevOps & CI/CD Pipeline',
+        content: 'Enterprise-grade deployment automation ensuring consistent and reliable releases across environments.',
+        subsections: [
+          {
+            title: 'Azure DevOps Integration',
+            content: 'ARM template-based deployments with environment-specific parameter files and automated testing'
+          },
+          {
+            title: 'Infrastructure as Code',
+            content: 'Complete infrastructure provisioning through ARM templates including Data Factory, Databricks, and storage accounts'
+          },
+          {
+            title: 'Approval Workflows',
+            content: 'Multi-stage approval gates with automated testing in development and staging environments before production deployment'
+          }
+        ]
+      }
+    ],
+    results: [
+      'Reduced data pipeline development time from weeks to hours through metadata-driven approach',
+      'Achieved 99.7% data pipeline reliability with automated error handling and retry mechanisms',
+      'Improved Power BI report performance by 85% through gold layer pre-aggregations',
+      'Eliminated timeout errors during peak usage with sub-second query response times',
+      'Reduced infrastructure costs by 45% by migrating from Dedicated SQL Pool to Serverless architecture',
+      'Enabled parallel processing of 50+ data sources with automated dependency management',
+      'Achieved zero-downtime deployments with automated CI/CD pipeline',
+      'Reduced manual intervention by 90% through configuration-driven data onboarding'
+    ],
+    keySuccessFactors: [
+      'Configuration-Driven Architecture: The metadata-driven approach enabled rapid scaling and consistent processing patterns. New data sources could be onboarded in minutes rather than weeks, dramatically reducing time-to-value for business users.',
+      'Medallion Architecture Benefits: The three-layer approach (Bronze-Silver-Gold) provided clear separation of concerns, enabling different teams to work independently while maintaining data quality and governance standards.',
+      'Performance-First Design: By implementing pre-aggregated gold layer tables and migrating from DirectQuery to Import mode in Power BI, we eliminated performance bottlenecks and delivered consistent user experience.',
+      'Enterprise-Grade DevOps: ARM template-based deployments and automated testing ensured reliable, repeatable releases across environments, reducing deployment risk and enabling faster iteration cycles.'
+    ],
+    conclusion: 'This metadata-driven ingestion framework represents a paradigm shift from traditional ETL development. By treating data pipeline configuration as data itself, we created a self-service platform that empowers business users while maintaining enterprise-grade governance and performance. The framework has processed over 2.5 billion records across 50+ data sources with 99.7% reliability, demonstrating its production readiness and scalability. This approach has become our standard methodology for all new data engineering projects, consistently delivering faster time-to-value and lower total cost of ownership.',
+    technologies: [
+      'Azure Data Factory',
+      'Azure Databricks', 
+      'Delta Lake',
+      'Unity Catalog',
+      'Azure Synapse Serverless SQL Pool',
+      'Power BI Premium',
+      'Azure Data Lake Storage Gen2',
+      'Azure DevOps',
+      'ARM Templates',
+      'Apache Spark',
+      'Python',
+      'Scala',
+      'SQL'
+    ]
+  },
+  {
     id: 'grocery-retailer-analytics',
     title: 'Modernizing Analytics for a Leading Grocery Retailer',
     architectureDiagram: AzureArchitectureDiagram,
