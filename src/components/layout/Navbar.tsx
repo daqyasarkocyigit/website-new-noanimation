@@ -234,7 +234,7 @@ const Navbar: React.FC = () => {
                 onMouseEnter={handleServicesMouseEnter}
                 onMouseLeave={handleServicesMouseLeave}
                 style={{
-                  background: 'rgba(255,255,255,0.05)',
+                  background: 'rgba(17,24,39,0.98)',
                   backdropFilter: 'blur(8px)',
                   boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
                 }}
@@ -278,10 +278,10 @@ const Navbar: React.FC = () => {
                         role="menuitem"
                       >
                         <div className="flex-1">
-                         <div className="font-medium text-white group-hover/item:text-brand-red-400 transition-colors duration-200 mb-1 sm:text-base text-base drop-shadow-sm">
+                         <div className="font-medium text-gray-100 group-hover/item:text-brand-red-400 transition-colors duration-200 mb-1 sm:text-base text-base">
                             {item.label}
                           </div>
-                         <div className="text-sm sm:text-sm text-xs text-gray-200 group-hover/item:text-gray-100 transition-colors duration-200 leading-tight drop-shadow-sm">
+                         <div className="text-sm sm:text-sm text-xs text-gray-300 group-hover/item:text-gray-200 transition-colors duration-200 leading-tight">
                             {item.description}
                           </div>
                         </div>
