@@ -112,6 +112,7 @@ const CaseStudies: React.FC = () => {
             transform: translateY(90vh) scale(1);
           }
           90% {
+            opacity: 0.6;
             transform: translateY(10vh) scale(1);
           }
         }
@@ -189,6 +190,293 @@ const CaseStudies: React.FC = () => {
           opacity: 0;
           animation: particleFloat 15s infinite;
         }
+
+        .header-container {
+          text-align: center;
+          padding: 4rem 0;
+          position: relative;
+        }
+
+        .header-container::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 600px;
+          height: 300px;
+          background: radial-gradient(circle, rgba(255, 51, 51, 0.1) 0%, transparent 70%);
+          filter: blur(100px);
+          animation: headerPulse 6s ease-in-out infinite;
+        }
+
+        .header-content {
+          position: relative;
+          z-index: 1;
+        }
+
+        .header-badge {
+          display: inline-block;
+          padding: 0.75rem 2rem;
+          background: linear-gradient(135deg, #FF3333, #e02d2d);
+          border-radius: 100px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          margin-bottom: 2rem;
+          position: relative;
+          overflow: hidden;
+          color: white;
+        }
+
+        .header-badge::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+          animation: badgeShine 3s infinite;
+        }
+
+        .architecture-container {
+          background: white;
+          border: 1px solid #e5e7eb;
+          border-radius: 24px;
+          overflow: hidden;
+          box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.1),
+            0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .canvas-header {
+          background: #f8fafc;
+          padding: 1.5rem 2rem;
+          border-bottom: 1px solid #e5e7eb;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .canvas-title {
+          font-size: 0.875rem;
+          font-weight: 600;
+          color: #374151;
+          letter-spacing: 0.05em;
+        }
+
+        .status-indicator {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.5rem 1rem;
+          background: rgba(16, 185, 129, 0.1);
+          border: 1px solid rgba(16, 185, 129, 0.3);
+          border-radius: 100px;
+        }
+
+        .status-dot {
+          width: 8px;
+          height: 8px;
+          background: #10B981;
+          border-radius: 50%;
+          position: relative;
+        }
+
+        .status-dot::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 20px;
+          height: 20px;
+          background: #10B981;
+          border-radius: 50%;
+          opacity: 0;
+          animation: statusPulse 2s infinite;
+        }
+
+        .status-text {
+          font-size: 0.75rem;
+          color: #10B981;
+          font-weight: 500;
+        }
+
+        .metrics-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1.5rem;
+        }
+
+        .metric-card {
+          background: white;
+          background: transparent;
+          border: 1px solid #e5e7eb;
+          border: 1px solid rgba(156,163,175,0.2);
+          border-radius: 16px;
+          padding: 2rem;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .metric-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          background: linear-gradient(90deg, #FF3333, #e02d2d);
+          transform: scaleX(0);
+          transform-origin: left;
+          transition: transform 0.4s ease;
+        }
+
+        .metric-card:hover {
+          transform: translateY(-8px);
+          border-color: #FF3333;
+          background: rgba(255,255,255,0.05);
+          box-shadow: 0 20px 40px rgba(255, 51, 51, 0.15);
+        }
+
+        .metric-card:hover::before {
+          transform: scaleX(1);
+        }
+
+        .metric-label {
+          font-size: 0.6875rem;
+          color: #6b7280;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          margin-bottom: 0.5rem;
+          font-weight: 500;
+        }
+
+        .metric-value {
+          font-size: 1.875rem;
+          font-weight: 700;
+          font-family: 'Inter', sans-serif;
+          background: linear-gradient(135deg, #1f2937, #FF3333);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          margin-bottom: 0.5rem;
+        }
+
+        .metric-change {
+          font-size: 0.75rem;
+          font-weight: 600;
+        }
+
+        .metric-change.positive {
+          color: #10B981;
+        }
+
+        .metric-change.negative {
+          color: #EF4444;
+        }
+
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+          gap: 2rem;
+        }
+
+        .feature-card {
+          background: white;
+          background: transparent;
+          border: 1px solid #e5e7eb;
+          border: 1px solid rgba(156,163,175,0.2);
+          border-radius: 16px;
+          padding: 2.5rem;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.5s ease;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .feature-card::before {
+          content: '';
+          position: absolute;
+          top: -100%;
+          left: -100%;
+          width: 300%;
+          height: 300%;
+          background: radial-gradient(circle, #FF3333 0%, transparent 70%);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          pointer-events: none;
+        }
+
+        .feature-card:hover {
+          transform: translateY(-8px);
+          border-color: #FF3333;
+          background: rgba(255,255,255,0.05);
+          box-shadow: 0 20px 40px rgba(255, 51, 51, 0.15);
+        }
+
+        .feature-card:hover::before {
+          opacity: 0.03;
+        }
+
+        .feature-number {
+          width: 40px;
+          height: 40px;
+          background: linear-gradient(135deg, #FF3333, #e02d2d);
+          border-radius: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+          font-size: 1.125rem;
+          margin-bottom: 1.5rem;
+          color: white;
+        }
+
+        .feature-title {
+          font-size: 1.125rem;
+          font-weight: 600;
+          color: #1f2937;
+          margin-bottom: 1rem;
+        }
+
+        .feature-description {
+          color: #6b7280;
+          font-size: 0.875rem;
+          line-height: 1.7;
+          margin-bottom: 1.5rem;
+        }
+
+        .feature-code {
+          background: #f8fafc;
+          border: 1px solid #e5e7eb;
+          border-radius: 8px;
+          padding: 1rem;
+          font-family: 'Space Mono', monospace;
+          font-size: 0.875rem;
+          color: #374151;
+          overflow-x: auto;
+        }
+
+        .code-keyword {
+          color: #FF3333;
+          font-weight: 600;
+        }
+      `}</style>
+
+      <div className="bg-container">
+        <div className="bg-gradient"></div>
+        <div className="bg-grid"></div>
+        <div ref={particlesRef} className="absolute inset-0 pointer-events-none"></div>
+      </div>
+
+      <div className="relative z-10 min-h-screen bg-gray-50">
         <section className="pt-32 pb-20 relative overflow-hidden">
           <div className="container mx-auto px-4 md:px-6 relative z-10">
             <div className="max-w-4xl mx-auto text-center">
@@ -232,6 +520,8 @@ const CaseStudies: React.FC = () => {
                 {/* Gradients - Updated for Brand Colors */}
                 <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                   <stop offset="0%" style={{stopColor: '#FF3333', stopOpacity: 1}} />
+                  <stop offset="100%" style={{stopColor: '#e02d2d', stopOpacity: 1}} />
+                </linearGradient>
                 <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
                   <polygon points="0 0, 10 3.5, 0 7" fill="#1f2937" />
                 </marker>
@@ -453,33 +743,6 @@ const CaseStudies: React.FC = () => {
                 <div className="metric-label">Data Sources</div>
                 <div className="metric-value" data-target="50">0</div>
                 <div className="metric-change positive">+12%</div>
-                </g>
-              </g>
-            <div className="metric-card">
-              <div className="metric-label">Daily Volume</div>
-              <div className="metric-value" data-target="10" data-suffix="TB">0TB</div>
-              <div className="metric-change positive">+25%</div>
-            </div>
-          </div>
-        </AnimatedSection>
-
-        {/* Metrics Section */}
-        <AnimatedSection delay={0.6}>
-          <section className="metrics-section mb-16">
-            <div className="text-center mb-12">
-              <h2 className="text-heading-1 mb-4 text-gray-900">
-                Performance Metrics
-              </h2>
-              <p className="text-body-large text-gray-600">
-                Real-world results from our enterprise implementations
-              </p>
-            </div>
-
-            <div className="metrics-grid">
-              <div className="metric-card">
-                <div className="metric-label">Data Sources</div>
-                <div className="metric-value" data-target="50">0</div>
-                <div className="metric-change positive">+12%</div>
               </div>
 
               <div className="metric-card">
@@ -624,40 +887,7 @@ const CaseStudies: React.FC = () => {
 
       <CallToAction />
     </>
-  )
-  )
-  )
   );
 };
 
 export default CaseStudies;
-    }
-  )
-}
-    }
-  )
-}</section>
-        </AnimatedSection>
-      </div>
-
-      <CallToAction />
-    </>
-  )
-  )
-  )
-  );
-};
-
-export default CaseStudies;
-    }
-  )
-}
-    }
-  )
-}
-    }
-  )
-}
-    }
-  )
-}
