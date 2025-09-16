@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
               <h2 className="text-heading-2 mb-8">Contact Information</h2>
               
               <div className="space-y-6">
-                <div className="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-start space-x-4 p-6 bg-transparent rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20">
                   <div className="flex-shrink-0 w-12 h-12 bg-brand-red-100 text-brand-red-600 rounded-xl flex items-center justify-center">
                     <Mail size={24} />
                   </div>
@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-start space-x-4 p-6 bg-transparent rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20">
                   <div className="flex-shrink-0 w-12 h-12 bg-brand-red-100 text-brand-red-600 rounded-xl flex items-center justify-center">
                     <Briefcase size={24} />
                   </div>
@@ -75,7 +75,7 @@ const Contact: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start space-x-4 p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-start space-x-4 p-6 bg-transparent rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20">
                   <div className="flex-shrink-0 w-12 h-12 bg-brand-red-100 text-brand-red-600 rounded-xl flex items-center justify-center">
                     <User size={24} />
                   </div>
@@ -138,7 +138,7 @@ const Contact: React.FC = () => {
               <AnimatedSection 
                 key={index} 
                 delay={0.1 * index}
-                className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="bg-transparent p-6 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20"
               >
                 <h3 className="text-heading-4 mb-3">{faq.q}</h3>
                 <p className="text-body-base text-gray-600">{faq.a}</p>

@@ -77,9 +77,9 @@ const About: React.FC = () => {
               <AnimatedSection 
                 key={index} 
                 delay={0.1 * index} 
-                className="bg-white border border-gray-100 p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="bg-transparent border border-gray-200/20 p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300"
               >
-                <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center mb-6">
+                <div className="w-12 h-12 rounded-lg bg-gray-100/50 flex items-center justify-center mb-6">
                   <span className="text-gray-700">{item.icon}</span>
                 </div>
                 <h3 className="text-heading-4 mb-4">{item.title}</h3>
@@ -103,8 +103,8 @@ const About: React.FC = () => {
           </AnimatedSection>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
-            <AnimatedSection delay={0.1} className="bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-              <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center mb-6">
+            <AnimatedSection delay={0.1} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20">
+              <div className="w-14 h-14 rounded-full bg-gray-100/50 flex items-center justify-center mb-6">
                 <Lightbulb size={24} className="text-gray-700" />
               </div>
               <h3 className="text-heading-4 mb-4">Our Vision</h3>
@@ -115,8 +115,8 @@ const About: React.FC = () => {
               </p>
             </AnimatedSection>
             
-            <AnimatedSection delay={0.2} className="bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-              <div className="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center mb-6">
+            <AnimatedSection delay={0.2} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20">
+              <div className="w-14 h-14 rounded-full bg-gray-100/50 flex items-center justify-center mb-6">
                 <Target size={24} className="text-gray-700" />
               </div>
               <h3 className="text-heading-4 mb-4">Our Mission</h3>
@@ -127,8 +127,8 @@ const About: React.FC = () => {
               </p>
             </AnimatedSection>
             
-            <AnimatedSection delay={0.3} className="bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100">
-              <div className="w-14 h-14 rounded-full bg-cool-gray-50 flex items-center justify-center mb-6">
+            <AnimatedSection delay={0.3} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20">
+              <div className="w-14 h-14 rounded-full bg-gray-100/50 flex items-center justify-center mb-6">
                 <Award size={24} className="text-cool-gray-700" />
               </div>
               <h3 className="text-heading-4 mb-4">Our Values</h3>
