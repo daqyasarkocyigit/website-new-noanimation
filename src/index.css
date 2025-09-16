@@ -127,6 +127,7 @@
   .section-padding {
     @apply py-12 sm:py-16 lg:py-20;
   }
+
 }
 
 @layer utilities {
