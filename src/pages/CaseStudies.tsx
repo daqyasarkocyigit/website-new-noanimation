@@ -517,7 +517,6 @@ const CaseStudies: React.FC = () => {
           <div className="header-content">
               className="text-heading-1 mb-4 text-gray-900"
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               Metadata-Driven Data Platform
             </motion.h1>
@@ -529,9 +528,24 @@ const CaseStudies: React.FC = () => {
             <motion.p
               className="text-body-large text-gray-600"
               initial={{ opacity: 0, y: 20 }}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              Next-Generation Analytics Infrastructure
-            </motion.p>
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-heading-1 mb-4 text-gray-900">
+                Metadata-Driven Data Platform
+              </h1>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <p className="text-body-large text-gray-600">
+                Next-Generation Analytics Infrastructure
+              </p>
+            </motion.div>
           </div>
         </div>
 
@@ -1115,7 +1129,6 @@ const CaseStudies: React.FC = () => {
 
       <CallToAction />
     </>
-  )
   );
 };
 
