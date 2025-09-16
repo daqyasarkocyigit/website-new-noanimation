@@ -522,13 +522,6 @@ const CaseStudies: React.FC = () => {
             <motion.p
               transition={{ duration: 0.8 }}
             >
-              Metadata-Driven Data Platform
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.8 }}
             <motion.h1
               className="text-heading-1 mb-4 text-gray-900"
               initial={{ opacity: 0, y: 20 }}
@@ -537,6 +530,9 @@ const CaseStudies: React.FC = () => {
               Metadata-Driven Data Platform
             </motion.h1>
             <motion.p
+              className="text-body-large text-gray-600"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               className="text-body-large text-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
