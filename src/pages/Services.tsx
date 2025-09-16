@@ -245,9 +245,8 @@ const Services: React.FC = () => {
 
       <CallToAction />
     </div>
+  </>
   );
 };
 
 export default Services;
-  )
-}
