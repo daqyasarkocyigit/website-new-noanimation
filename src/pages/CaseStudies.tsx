@@ -1120,6 +1120,7 @@ const CaseStudies: React.FC = () => {
       <CallToAction />
     </>
   )
+  )
   );
 };
 
