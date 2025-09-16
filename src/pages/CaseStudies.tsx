@@ -502,3 +502,5 @@ const CaseStudies: React.FC = () => {
               </div>
             </AnimatedSection>
           </div>
+  )
+}
