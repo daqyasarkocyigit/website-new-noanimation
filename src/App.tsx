@@ -1,4 +1,4 @@
-import React, { memo, Suspense, lazy, useEffect } from 'react';
+import React, { memo, Suspense, lazy, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
