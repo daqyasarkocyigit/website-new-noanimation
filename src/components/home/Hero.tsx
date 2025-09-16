@@ -151,15 +151,15 @@ const Hero: React.FC = () => {
             `}</style>
 
             {/* Scrolling Success Stories Feed */}
-            <div className="relative p-4 sm:p-6 rounded-2xl border border-white/30 h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden mx-auto max-w-sm sm:max-w-md lg:max-w-lg bg-white/20 backdrop-blur-md">
+            <div className="relative h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden mx-auto max-w-sm sm:max-w-md lg:max-w-lg">
               
               {/* Stories Container - Scrolling */}
               <div className="scrolling-content space-y-3 sm:space-y-4">
-                {/* Duplicate stories for continuous scroll */}
-                {[...successStories, ...successStories].map((story, index) => (
+                {/* Only 4 stories for continuous scroll */}
+                {successStories.map((story, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-xl bg-white/15 opacity-90"
+                    className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-xl bg-white/90"
                   >
                     <div className="flex-1">
                       <div className="mb-2">
@@ -180,14 +180,6 @@ const Hero: React.FC = () => {
                     </div>
                   </div>
                 ))}
-              </div>
-
-              {/* Bottom Status Bar */}
-              <div className="absolute bottom-0 left-0 right-0 p-2 bg-white/10 backdrop-blur-sm">
-                <div className="flex items-center justify-between text-xs text-gray-600">
-                  <span>Recent Updates</span>
-                  <span>{successStories.length} stories</span>
-                </div>
               </div>
             </div>
 
