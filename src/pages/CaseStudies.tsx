@@ -5,7 +5,6 @@ import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
 
 const CaseStudies: React.FC = () => {
-}
   return (
     <>
       <section className="pt-32 pb-16 animated-bg">
