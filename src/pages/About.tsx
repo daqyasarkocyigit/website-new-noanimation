@@ -199,9 +199,6 @@ const About: React.FC = () => {
                 delay={0.1 * index} 
                 className="bg-transparent border border-gray-200/20 p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:-translate-y-2 transition-all duration-500"
               >
-                <div className="w-12 h-12 rounded-lg bg-gray-100/50 flex items-center justify-center mb-6">
-                  <span className="text-gray-700">{item.icon}</span>
-                </div>
                 <div className="w-12 h-12 rounded-lg bg-brand-red-100 flex items-center justify-center mb-6">
                   <span className="text-brand-red-600">{item.icon}</span>
                 </div>
@@ -227,9 +224,6 @@ const About: React.FC = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
             <AnimatedSection delay={0.1} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:-translate-y-2 transition-all duration-500 border border-gray-200/20 hover:border-[#FF3333]/30">
-              <div className="w-14 h-14 rounded-full bg-gray-100/50 flex items-center justify-center mb-6">
-                <Lightbulb size={24} className="text-gray-700" />
-              </div>
               <h3 className="text-heading-4 mb-4">Our Vision</h3>
               <p className="text-body-base text-cool-gray-600">
                 To create a world where every business decision is informed by data and
@@ -239,9 +233,6 @@ const About: React.FC = () => {
             </AnimatedSection>
             
             <AnimatedSection delay={0.2} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:-translate-y-2 transition-all duration-500 border border-gray-200/20 hover:border-[#FF3333]/30">
-              <div className="w-14 h-14 rounded-full bg-gray-100/50 flex items-center justify-center mb-6">
-                <Target size={24} className="text-gray-700" />
-              </div>
               <h3 className="text-heading-4 mb-4">Our Mission</h3>
               <p className="text-body-base text-cool-gray-600">
                 To deliver transformative data and AI solutions that solve real business
@@ -251,12 +242,9 @@ const About: React.FC = () => {
             </AnimatedSection>
             
             <AnimatedSection delay={0.3} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:-translate-y-2 transition-all duration-500 border border-gray-200/20 hover:border-[#FF3333]/30">
-             <div className="w-14 h-14 rounded-full bg-transparent border border-gray-300/30 flex items-center justify-center mb-6">
-                <Award size={24} className="text-cool-gray-700" />
+              <div className="w-14 h-14 rounded-full bg-brand-red-100 flex items-center justify-center mb-6">
+                <Award size={24} className="text-brand-red-600" />
               </div>
-              <h3 className="text-heading-4 mb-4">Our Values</h3>
-              <ul className="text-body-base text-cool-gray-600 space-y-3">
-                {[
                   { icon: <CheckCircle size={16} />, text: "Excellence in everything we do" },
                   { icon: <CheckCircle size={16} />, text: "Innovation that drives real results" },
                   { icon: <CheckCircle size={16} />, text: "Integrity and transparency" },
