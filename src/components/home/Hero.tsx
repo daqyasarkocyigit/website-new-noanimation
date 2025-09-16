@@ -164,6 +164,8 @@ const Hero: React.FC = () => {
               style={{
                 backdropFilter: 'blur(20px)',
                 animation: 'continuousScroll 40s linear infinite'
+              }
+              }
               className="inline-flex items-center justify-center px-6 py-3.5 bg-[#FF3333] hover:bg-[#e02d2d] text-white rounded-lg transition-all duration-300 text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 min-h-[48px] touch-manipulation"
             >
               {/* Scrolling Feed Container */}
@@ -171,6 +173,8 @@ const Hero: React.FC = () => {
                 className="absolute inset-x-6 top-0 flex flex-col"
                 style={{
                   animation: 'continuousScroll 40s linear infinite'
+                }
+                }
               className="inline-flex items-center justify-center px-6 py-3.5 border-2 border-[#FF3333] text-[#FF3333] hover:bg-[#FF3333] hover:text-white rounded-lg transition-all duration-300 text-sm sm:text-base font-semibold transform hover:-translate-y-1 min-h-[48px] touch-manipulation"
               >
                 {/* First Set of Stories */}
@@ -227,6 +231,9 @@ const Hero: React.FC = () => {
                   </div>
                 ))}
               </div>
+                )
+                )
+                }
 
               {/* Gradient Overlays for Smooth Fade */}
               <div 
