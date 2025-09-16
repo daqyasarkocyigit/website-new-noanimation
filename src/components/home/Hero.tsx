@@ -146,7 +146,7 @@ const Hero: React.FC = () => {
               }
               
               .scrolling-content {
-                animation: continuousScroll 15s linear infinite;
+               animation: continuousScroll 20s linear infinite;
               }
             `}</style>
 
@@ -155,11 +155,11 @@ const Hero: React.FC = () => {
               
               {/* Stories Container - Scrolling */}
               <div className="scrolling-content space-y-3 sm:space-y-4">
-                {/* Only 4 stories for continuous scroll */}
+                {/* Double the stories for seamless infinite scroll */}
                 {successStories.map((story, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-xl bg-white/90"
+                    className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-xl bg-transparent"
                   >
                     <div className="flex-1">
                       <div className="mb-2">
@@ -173,10 +173,28 @@ const Hero: React.FC = () => {
                       <p className="text-xs text-gray-600 leading-relaxed">
                         {story.description}
                       </p>
-                      <div className="flex items-center mt-2 text-xs text-gray-500">
-                        <div className="w-1 h-1 bg-green-500 rounded-full mr-1" />
-                        {story.time}
+                    </div>
+                  </div>
+                ))}
+                
+                {/* Duplicate stories for seamless loop */}
+                {successStories.map((story, index) => (
+                  <div
+                    key={`duplicate-${index}`}
+                    className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-xl bg-transparent"
+                  >
+                    <div className="flex-1">
+                      <div className="mb-2">
+                        <span className="text-xs font-medium px-2 py-0.5 rounded-full text-gray-600 bg-gray-100">
+                          {story.type}
+                        </span>
                       </div>
+                      <h4 className="text-xs sm:text-sm font-medium text-gray-900 mb-1 leading-tight">
+                        {story.title}
+                      </h4>
+                      <p className="text-xs text-gray-600 leading-relaxed">
+                        {story.description}
+                      </p>
                     </div>
                   </div>
                 ))}
