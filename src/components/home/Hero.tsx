@@ -105,7 +105,7 @@ const Hero: React.FC = () => {
   }, [currentService, displayText, isDeleting, isPaused, services]);
 
   return (
-    <section className="min-h-screen relative overflow-hidden bg-white/30 backdrop-blur-sm">
+    <section className="min-h-screen relative overflow-hidden bg-white/20 backdrop-blur-sm">
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16 sm:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[60vh] sm:min-h-[70vh]">
@@ -160,9 +160,8 @@ const Hero: React.FC = () => {
           >
             {/* Continuous Success Stories Feed */}
             <div 
-              className="relative p-4 sm:p-6 rounded-2xl border border-white/20 h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden mx-auto max-w-sm sm:max-w-md lg:max-w-lg"
+              className="relative p-4 sm:p-6 rounded-2xl border border-white/30 h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden mx-auto max-w-sm sm:max-w-md lg:max-w-lg bg-white/20 backdrop-blur-md shadow-xl"
               style={{
-                backdropFilter: 'blur(20px)',
                 animation: 'continuousScroll 40s linear infinite'
               }
               }
