@@ -77,7 +77,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
               <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 lg:-bottom-6 lg:-left-6 w-12 h-12 sm:w-16 sm:h-16 lg:w-32 lg:h-32 bg-gray-400/10 rounded-full filter blur-2xl lg:blur-3xl"></div>
               
               {/* Main visual container - Mobile-optimized aspect ratio */}
-              <div className="relative rounded-xl overflow-hidden hover:shadow-lg bg-gray-900 w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px] border border-gray-200/20 hover:border-[#FF3333]/30 transition-all duration-500 hover:-translate-y-2">
+              <div className="relative rounded-xl overflow-hidden hover:shadow-lg bg-transparent w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px] border border-gray-200/20 hover:border-[#FF3333]/30 transition-all duration-500 hover:-translate-y-2">
                 {useCustomVisual && visualType ? (
                   <div className="w-full h-full relative z-10">
                     <ResponsiveServiceVisual type={visualType} />
