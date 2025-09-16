@@ -399,16 +399,33 @@ const Navbar: React.FC = () => {
           
           {/* Menu Panel */}
           <div 
-            className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white backdrop-blur-md shadow-2xl border-l border-gray-200 transform transition-transform duration-300 ease-in-out ${
+            className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] shadow-2xl transform transition-transform duration-300 ease-in-out ${
               isOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
+            style={{
+              background: 'rgba(255, 248, 248, 0.92)',
+              backdropFilter: 'blur(16px) saturate(180%)',
+              borderLeft: '1px solid rgba(255, 51, 51, 0.12)',
+              boxShadow: `
+                0 20px 40px -8px rgba(0, 0, 0, 0.08),
+                0 8px 16px -4px rgba(255, 51, 51, 0.06),
+                inset 0 1px 0 rgba(255, 248, 248, 0.9)
+              `
+            }}
           >
             {/* Header with Close Button */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200/50 bg-white/80 backdrop-blur-sm">
+            <div 
+              className="flex items-center justify-between p-4 border-b"
+              style={{
+                background: 'rgba(255, 248, 248, 0.8)',
+                backdropFilter: 'blur(8px)',
+                borderBottom: '1px solid rgba(255, 51, 51, 0.08)'
+              }}
+            >
               <span className="text-lg font-semibold text-gray-900">Menu</span>
               <button
                 onClick={closeMenu}
-                className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors focus-ring tap-highlight-none touch-manipulation"
+                className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/60 transition-colors focus-ring tap-highlight-none touch-manipulation"
                 aria-label="Close menu"
               >
                 <X size={20} className="text-gray-600" />
