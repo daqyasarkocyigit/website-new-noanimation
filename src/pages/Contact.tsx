@@ -270,5 +270,3 @@ const Contact: React.FC = () => {
     </div>
   );
 };
-  )
-}
