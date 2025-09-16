@@ -17,7 +17,6 @@ const Privacy = lazy(() => import('./pages/Privacy'));
 const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
 const Terms = lazy(() => import('./pages/Terms'));
 const CaseStudies = lazy(() => import('./pages/CaseStudies'));
-const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 
 // Enhanced loading component with better UX
 const PageLoader = () => {

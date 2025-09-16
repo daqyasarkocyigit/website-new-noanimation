@@ -35,20 +35,6 @@ const CaseStudies: React.FC = () => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <CaseStudyCard
-              id="power-platform-automation"
-              title="Power Platform Ticket Automation"
-              industry="Infrastructure & Energy Solutions"
-              image="https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              description="End-to-end ticket automation using Microsoft Forms, Power Automate, and ConnectWise API integration for a leading HVAC and infrastructure company."
-              results={[
-                "95% faster ticket creation through automation",
-                "100% audit trail compliance achieved",
-                "75% reduction in average response time"
-              ]}
-              delay={0.1}
-            />
-            
-            <CaseStudyCard
               id="healthcare-analytics"
               title="Healthcare Analytics Platform"
               industry="Healthcare"
