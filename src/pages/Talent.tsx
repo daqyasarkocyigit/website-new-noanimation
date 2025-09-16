@@ -311,6 +311,9 @@ const Talent: React.FC = () => {
                 <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center mr-4">
                   <Database className="w-6 h-6 text-white" />
                 </div>
+                <div className="w-12 h-12 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-xl flex items-center justify-center mr-4">
+                  <Database className="w-6 h-6 text-white" />
+                </div>
                 <h3 className="text-heading-2">Microsoft Fabric</h3>
               </div>
               <p className="text-body-base text-cool-gray-600 mb-6">

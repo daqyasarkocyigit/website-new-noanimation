@@ -441,6 +441,8 @@ const Navbar: React.FC = () => {
                           onClick={() => handleServiceClick(item.path)}
                           className="block w-full text-left py-3 px-3 text-gray-200 hover:bg-white/10 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation"
                         >
+                          className="block w-full text-left py-3 px-3 text-white hover:bg-brand-red-50 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation"
+                        >
                           <div className="font-medium text-white">{item.label}</div>
                           <div className="text-sm text-gray-300 mt-0.5">{item.description}</div>
                         </button>

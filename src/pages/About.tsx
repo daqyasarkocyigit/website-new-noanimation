@@ -202,6 +202,9 @@ const About: React.FC = () => {
                 <div className="w-12 h-12 rounded-lg bg-gray-100/50 flex items-center justify-center mb-6">
                   <span className="text-gray-700">{item.icon}</span>
                 </div>
+                <div className="w-12 h-12 rounded-lg bg-brand-red-100 flex items-center justify-center mb-6">
+                  <span className="text-brand-red-600">{item.icon}</span>
+                </div>
                 <h3 className="text-heading-4 mb-4">{item.title}</h3>
                 <p className="text-body-base text-cool-gray-600">{item.description}</p>
               </AnimatedSection>
