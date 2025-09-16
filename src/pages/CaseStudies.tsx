@@ -467,74 +467,32 @@ const CaseStudies: React.FC = () => {
         .code-keyword {
           color: #FF3333;
           font-weight: 600;
-        }
-
-        .code-string {
-          color: #10B981;
-        }
-
-        .code-number {
-          color: #F59E0B;
-        }
-
-        @media (max-width: 768px) {
-          .features-grid {
-            grid-template-columns: 1fr;
-          }
-          
-          .metrics-grid {
-            grid-template-columns: repeat(2, 1fr);
-          }
-
-          .canvas-header {
-            flex-direction: column;
-            text-align: center;
-          }
-        }
-
-        @media (max-width: 640px) {
-          .metrics-grid {
-            grid-template-columns: 1fr;
-          }
-          
-          .header-container {
-            padding: 2rem 0;
-          }
-        }
-      `}</style>
-
-      {/* Light Background */}
-      <div className="bg-container">
-        <div className="bg-gradient"></div>
-        <div className="bg-grid"></div>
-        <div ref={particlesRef} className="particles"></div>
-      </div>
-
-      {/* Main Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-        
-        <div className="header-container">
-          <div className="header-content">
-              className="text-heading-1 mb-4 text-gray-900"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              Metadata-Driven Data Platform
-            </motion.h1>
-            <motion.p
-              transition={{ duration: 0.8 }}
-            >
-              Metadata-Driven Data Platform
-            </motion.h1>
-            <motion.p
-              className="text-body-large text-gray-600"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              Next-Generation Analytics Infrastructure
-            </motion.p>
+        <section className="pt-32 pb-20 relative overflow-hidden">
+          <div className="container mx-auto px-4 md:px-6 relative z-10">
+            <div className="max-w-4xl mx-auto text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h1 className="text-heading-1 mb-4 text-gray-900">
+                  Metadata-Driven Data Platform
+                </h1>
+                <div className="w-16 h-1 bg-brand-red-600 rounded-full mb-4 mx-auto"></div>
+              </motion.div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <p className="text-body-large text-gray-600">
+                  Next-generation analytics infrastructure built on Microsoft Fabric
+                </p>
+              </motion.div>
+            </div>
           </div>
-        </div>
+        </section>
 
         {/* Architecture Diagram */}
         <AnimatedSection delay={0.4}>
@@ -1117,7 +1075,12 @@ const CaseStudies: React.FC = () => {
       <CallToAction />
     </>
   )
+  )
+  )
   );
 };
 
 export default CaseStudies;
+    }
+  )
+}
