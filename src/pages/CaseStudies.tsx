@@ -519,7 +519,6 @@ const CaseStudies: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-            >
               Metadata-Driven Data Platform
             </motion.h1>
             <motion.p
@@ -1116,7 +1115,6 @@ const CaseStudies: React.FC = () => {
 
       <CallToAction />
     </>
-  )
   );
 };
 
