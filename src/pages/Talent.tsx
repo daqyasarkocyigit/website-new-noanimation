@@ -8,7 +8,6 @@ const Talent: React.FC = () => {
   return (
     <div className="relative z-10">
       {/* Hero Section - Simplified without visual */}
-      <section className="pt-32 pb-20 relative overflow-hidden bg-white/50 backdrop-blur-sm">
       <section className="pt-32 pb-20 relative overflow-hidden bg-transparent">
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
