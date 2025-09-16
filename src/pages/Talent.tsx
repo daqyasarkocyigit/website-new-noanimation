@@ -167,16 +167,16 @@ const Talent: React.FC = () => {
             >
               <motion.a 
                 href="/contact" 
-                className="inline-flex items-center justify-center px-6 py-3 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium text-base transform hover:-translate-y-1 min-w-[140px]"
+                className="inline-flex items-center justify-center px-6 py-3 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-lg transition-all duration-300 font-medium text-base transform hover:-translate-y-1"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
                 <span>Request Talent</span>
-                <ChevronRight size={18} />
+                <ChevronRight size={18} className="ml-2" />
               </motion.a>
               <motion.a 
                 href="/contact" 
-                className="inline-flex items-center justify-center px-6 py-3 border border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 hover:border-brand-red-700 rounded-lg transition-all duration-300 font-medium text-base transform hover:-translate-y-1 min-w-[120px]"
+                className="inline-flex items-center justify-center px-6 py-3 border border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 hover:border-brand-red-700 hover:text-brand-red-700 rounded-lg transition-all duration-300 font-medium text-base transform hover:-translate-y-1"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
@@ -227,15 +227,15 @@ const Talent: React.FC = () => {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-transparent border border-gray-200/20 p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 transform hover:-translate-y-2"
+                className="bg-transparent border border-gray-200/20 p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 transform hover:-translate-y-2"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ scale: 1.02 }}
               >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center mb-6">
-                  <span className="text-gray-700">{item.icon}</span>
+                <div className="w-12 h-12 bg-brand-red-100 rounded-xl flex items-center justify-center mb-6">
+                  <span className="text-brand-red-600">{item.icon}</span>
                 </div>
                 <h3 className="text-heading-4 mb-4">{item.title}</h3>
                 <p className="text-body-base text-cool-gray-600">{item.description}</p>
@@ -259,7 +259,7 @@ const Talent: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {/* Azure Data Platform */}
             <motion.div
-              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
+              className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -267,8 +267,8 @@ const Talent: React.FC = () => {
               whileHover={{ scale: 1.02 }}
             >
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center mr-4">
-                  <Cloud className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-brand-red-100 rounded-xl flex items-center justify-center mr-4">
+                  <Cloud className="w-6 h-6 text-brand-red-600" />
                 </div>
                 <h3 className="text-heading-2">Azure Data Platform</h3>
               </div>
@@ -286,7 +286,7 @@ const Talent: React.FC = () => {
                 ].map((skill, skillIndex) => (
                   <motion.span 
                     key={skillIndex}
-                    className="px-3 py-2 bg-gray-100 text-gray-800 text-sm rounded-lg font-medium border border-gray-200"
+                    className="px-3 py-2 bg-transparent border border-gray-200/30 text-gray-700 text-sm rounded-lg font-medium hover:bg-white/5 hover:border-brand-red-200/50 transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
@@ -300,7 +300,7 @@ const Talent: React.FC = () => {
 
             {/* Microsoft Fabric */}
             <motion.div
-              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
+              className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -308,11 +308,8 @@ const Talent: React.FC = () => {
               whileHover={{ scale: 1.02 }}
             >
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center mr-4">
-                  <Database className="w-6 h-6 text-white" />
-                </div>
-                <div className="w-12 h-12 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-xl flex items-center justify-center mr-4">
-                  <Database className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-brand-red-100 rounded-xl flex items-center justify-center mr-4">
+                  <Database className="w-6 h-6 text-brand-red-600" />
                 </div>
                 <h3 className="text-heading-2">Microsoft Fabric</h3>
               </div>
@@ -330,7 +327,7 @@ const Talent: React.FC = () => {
                 ].map((skill, skillIndex) => (
                   <motion.span 
                     key={skillIndex}
-                    className="px-3 py-2 bg-gray-100 text-gray-800 text-sm rounded-lg font-medium border border-gray-200"
+                    className="px-3 py-2 bg-transparent border border-gray-200/30 text-gray-700 text-sm rounded-lg font-medium hover:bg-white/5 hover:border-brand-red-200/50 transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
@@ -346,7 +343,7 @@ const Talent: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {/* Databricks Expertise - Enhanced with more details */}
             <motion.div
-              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
+              className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -354,8 +351,8 @@ const Talent: React.FC = () => {
               whileHover={{ scale: 1.02 }}
             >
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-orange-600 to-red-600 rounded-xl flex items-center justify-center mr-4">
-                  <Zap className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-brand-red-100 rounded-xl flex items-center justify-center mr-4">
+                  <Zap className="w-6 h-6 text-brand-red-600" />
                 </div>
                 <h3 className="text-heading-2">Databricks Platform</h3>
               </div>
@@ -375,7 +372,7 @@ const Talent: React.FC = () => {
                 ].map((skill, skillIndex) => (
                   <motion.span 
                     key={skillIndex}
-                    className="px-3 py-2 bg-orange-50 text-orange-800 text-sm rounded-lg font-medium border border-orange-200"
+                    className="px-3 py-2 bg-transparent border border-gray-200/30 text-gray-700 text-sm rounded-lg font-medium hover:bg-white/5 hover:border-brand-red-200/50 transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
@@ -389,7 +386,7 @@ const Talent: React.FC = () => {
 
             {/* Power BI */}
             <motion.div
-              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
+              className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -397,8 +394,8 @@ const Talent: React.FC = () => {
               whileHover={{ scale: 1.02 }}
             >
               <div className="flex items-center mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center mr-4">
-                  <BarChart3 className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-brand-red-100 rounded-xl flex items-center justify-center mr-4">
+                  <BarChart3 className="w-6 h-6 text-brand-red-600" />
                 </div>
                 <h3 className="text-heading-2">Power BI</h3>
               </div>
@@ -435,15 +432,16 @@ const Talent: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Microsoft Power Platform */}
             <motion.div
-              className="bg-transparent p-6 rounded-xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 hover:-translate-y-2"
+              className="bg-transparent p-6 rounded-xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
               viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
             >
               <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-purple-700 rounded-lg flex items-center justify-center mr-3">
-                  <Zap className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-brand-red-100 rounded-lg flex items-center justify-center mr-3">
+                  <Zap className="w-5 h-5 text-brand-red-600" />
                 </div>
                 <h3 className="text-heading-4">Microsoft Power Platform</h3>
               </div>
@@ -463,7 +461,7 @@ const Talent: React.FC = () => {
                 ].map((skill, skillIndex) => (
                   <motion.span 
                     key={skillIndex}
-                    className="px-3 py-1.5 bg-purple-50 text-purple-700 text-xs rounded-md font-medium border border-purple-100"
+                    className="px-2 py-1.5 bg-transparent border border-gray-200/30 text-gray-700 text-xs rounded-md font-medium hover:bg-white/5 hover:border-brand-red-200/50 transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
@@ -477,15 +475,16 @@ const Talent: React.FC = () => {
 
             {/* Additional Service - AI & Machine Learning */}
             <motion.div
-              className="bg-transparent p-6 rounded-xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 hover:-translate-y-2"
+              className="bg-transparent p-6 rounded-xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
             >
               <div className="flex items-center mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-lg flex items-center justify-center mr-3">
-                  <Brain className="w-5 h-5 text-white" />
+                <div className="w-10 h-10 bg-brand-red-100 rounded-lg flex items-center justify-center mr-3">
+                  <Brain className="w-5 h-5 text-brand-red-600" />
                 </div>
                 <h3 className="text-heading-4">AI & Machine Learning</h3>
               </div>
@@ -505,7 +504,7 @@ const Talent: React.FC = () => {
                 ].map((skill, skillIndex) => (
                   <motion.span 
                     key={skillIndex}
-                    className="px-3 py-1.5 bg-blue-50 text-blue-700 text-xs rounded-md font-medium border border-blue-100"
+                    className="px-2 py-1.5 bg-transparent border border-gray-200/30 text-gray-700 text-xs rounded-md font-medium hover:bg-white/5 hover:border-brand-red-200/50 transition-all duration-300"
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: skillIndex * 0.05 }}
@@ -520,24 +519,24 @@ const Talent: React.FC = () => {
 
           {/* Data Architecture Guidance */}
           <motion.div
-            className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl shadow-lg border border-gray-700 mt-12"
+            className="bg-transparent p-6 sm:p-8 rounded-xl border border-gray-200/20 hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 mt-12"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
           >
             <div className="text-center mb-8">
-              <div className="w-16 h-16 bg-gradient-to-br from-brand-red-600 to-brand-red-700 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                <Brain className="w-8 h-8 text-white" />
+              <div className="w-16 h-16 bg-brand-red-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <Brain className="w-8 h-8 text-brand-red-600" />
               </div>
-              <h3 className="text-heading-2 text-white mb-4">Data Architecture Guidance</h3>
-              <p className="text-body-large text-gray-300 max-w-3xl mx-auto">
+              <h3 className="text-heading-2 text-gray-900 mb-4">Data Architecture Guidance</h3>
+              <p className="text-body-large text-cool-gray-600 max-w-3xl mx-auto">
                 We help you navigate the world of data architectures, align business strategy with data strategy, 
                 design end-to-end analytics solutions, & deliver a better experience with data.
               </p>
             </div>
             
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
               {[
                 "Modern Data Warehouse",
                 "Data Lakes", 
@@ -550,14 +549,14 @@ const Talent: React.FC = () => {
               ].map((concept, conceptIndex) => (
                 <motion.div
                   key={conceptIndex}
-                  className="bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-700 text-center hover:bg-gray-700 transition-all duration-300"
+                  className="bg-transparent border border-gray-200/30 p-3 rounded-lg text-center hover:bg-white/5 hover:border-brand-red-200/50 transition-all duration-300"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.3, delay: conceptIndex * 0.05 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <span className="text-body-small font-medium text-gray-200">{concept}</span>
+                  <span className="text-body-small font-medium text-gray-700">{concept}</span>
                 </motion.div>
               ))}
             </div>
