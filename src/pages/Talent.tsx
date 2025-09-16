@@ -563,7 +563,8 @@ const Talent: React.FC = () => {
       </section>
 
       <CallToAction />
-    </div>
+      </div>
+    </>
   );
 };
 
