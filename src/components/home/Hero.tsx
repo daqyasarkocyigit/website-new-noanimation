@@ -157,7 +157,7 @@ const Hero: React.FC = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-lg leading-relaxed">
+          >
             {/* Continuous Success Stories Feed */}
             <div 
               className="relative p-4 sm:p-6 rounded-2xl border border-white/20 h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden mx-auto max-w-sm sm:max-w-md lg:max-w-lg"
@@ -166,7 +166,6 @@ const Hero: React.FC = () => {
                 animation: 'continuousScroll 40s linear infinite'
               }
               }
-              className="inline-flex items-center justify-center px-6 py-3.5 bg-[#FF3333] hover:bg-[#e02d2d] text-white rounded-lg transition-all duration-300 text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 min-h-[48px] touch-manipulation"
             >
               {/* Scrolling Feed Container */}
               <div 
@@ -175,7 +174,6 @@ const Hero: React.FC = () => {
                   animation: 'continuousScroll 40s linear infinite'
                 }
                 }
-              className="inline-flex items-center justify-center px-6 py-3.5 border-2 border-[#FF3333] text-[#FF3333] hover:bg-[#FF3333] hover:text-white rounded-lg transition-all duration-300 text-sm sm:text-base font-semibold transform hover:-translate-y-1 min-h-[48px] touch-manipulation"
               >
                 {/* First Set of Stories */}
                 {successStories.map((story, index) => (
@@ -222,7 +220,7 @@ const Hero: React.FC = () => {
                         </span>
                       </div>
                       <h4 className="text-xs sm:text-sm font-medium text-gray-800 mb-1 leading-tight">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
+                        {story.title}
                       </h4>
                       <p className="text-xs text-gray-600 leading-relaxed">
                         {story.description}
@@ -231,9 +229,6 @@ const Hero: React.FC = () => {
                   </div>
                 ))}
               </div>
-                )
-                )
-                }
 
               {/* Gradient Overlays for Smooth Fade */}
               <div 
