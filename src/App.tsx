@@ -16,6 +16,7 @@ const Talent = lazy(() => import('./pages/Talent'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
 const Terms = lazy(() => import('./pages/Terms'));
+const Terms = lazy(() => import('./pages/Terms'));
 
 // Enhanced loading component with better UX
 const PageLoader = () => {
@@ -243,6 +244,11 @@ function App() {
                 <Route path="/cookie-policy" element={
                   <RouteErrorBoundary>
                     <CookiePolicy />
+                  </RouteErrorBoundary>
+                } />
+                <Route path="/terms" element={
+                  <RouteErrorBoundary>
+                    <Terms />
                   </RouteErrorBoundary>
                 } />
                 {/* Enhanced 404 Route */}
