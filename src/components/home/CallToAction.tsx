@@ -5,14 +5,14 @@ import AnimatedSection from '../utils/AnimatedSection';
 
 const CallToAction: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-cta-pattern bg-cover bg-center opacity-10"></div>
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-gray-200"></div>
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection className="text-center max-w-3xl mx-auto">
           <motion.h2 
-            className="text-heading-1 mb-4"
+            className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 sm:mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -21,7 +21,7 @@ const CallToAction: React.FC = () => {
           </motion.h2>
           
           <motion.p
-            className="text-body-large text-cool-gray-600 mb-6"
+            className="text-sm sm:text-base lg:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -37,7 +37,7 @@ const CallToAction: React.FC = () => {
           >
             <Link 
               to="/contact" 
-              className="inline-block px-6 py-3 rounded-lg bg-brand-red-600 hover:bg-brand-red-700 text-white text-button-base shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+              className="inline-block px-6 py-3.5 rounded-lg bg-brand-red-600 hover:bg-brand-red-700 text-white text-sm sm:text-base font-semibold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 min-h-[48px] touch-manipulation"
             >
               Get in Touch
             </Link>

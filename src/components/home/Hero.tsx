@@ -107,12 +107,12 @@ const Hero: React.FC = () => {
   return (
     <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16 sm:pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[60vh] sm:min-h-[70vh]">
           
           {/* Left Content */}
           <motion.div 
-            className="space-y-8"
+            className="space-y-6 sm:space-y-8 text-center lg:text-left"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -153,47 +153,47 @@ const Hero: React.FC = () => {
 
           {/* Right Side - Continuous News Feed */}
           <motion.div 
-            className="relative"
+            className="relative order-first lg:order-last"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-lg leading-relaxed">
             {/* Continuous Success Stories Feed */}
             <div 
-              className="relative p-6 rounded-2xl border border-white/20 h-[500px] overflow-hidden mx-auto max-w-lg"
+              className="relative p-4 sm:p-6 rounded-2xl border border-white/20 h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden mx-auto max-w-sm sm:max-w-md lg:max-w-lg"
               style={{
                 backdropFilter: 'blur(20px)',
                 animation: 'continuousScroll 40s linear infinite'
-              }}
+              className="inline-flex items-center justify-center px-6 py-3.5 bg-[#FF3333] hover:bg-[#e02d2d] text-white rounded-lg transition-all duration-300 text-sm sm:text-base font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-1 min-h-[48px] touch-manipulation"
             >
               {/* Scrolling Feed Container */}
               <div 
                 className="absolute inset-x-6 top-0 flex flex-col"
                 style={{
                   animation: 'continuousScroll 40s linear infinite'
-                }}
+              className="inline-flex items-center justify-center px-6 py-3.5 border-2 border-[#FF3333] text-[#FF3333] hover:bg-[#FF3333] hover:text-white rounded-lg transition-all duration-300 text-sm sm:text-base font-semibold transform hover:-translate-y-1 min-h-[48px] touch-manipulation"
               >
                 {/* First Set of Stories */}
                 {successStories.map((story, index) => (
                   <div
                     key={`first-${index}`}
-                    className="flex items-start gap-3 p-4 mb-4 rounded-xl"
+                    className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 mb-3 sm:mb-4 rounded-xl"
                     style={{
                       background: 'rgba(255,255,255,0.2)',
                       backdropFilter: 'blur(10px)',
-                      minHeight: '120px'
+                      minHeight: '100px'
                     }}
                   >
                     <div className="flex-1">
                       <div className="mb-2">
-                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
+                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full">
                           {story.type}
                         </span>
                       </div>
-                      <h4 className="text-sm font-medium text-gray-800 mb-1">
+                      <h4 className="text-xs sm:text-sm font-medium text-gray-800 mb-1 leading-tight">
                         {story.title}
                       </h4>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs text-gray-600 leading-relaxed">
                         {story.description}
                       </p>
                     </div>
@@ -204,23 +204,23 @@ const Hero: React.FC = () => {
                 {successStories.map((story, index) => (
                   <div
                     key={`second-${index}`}
-                    className="flex items-start gap-3 p-4 mb-4 rounded-xl"
+                    className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 mb-3 sm:mb-4 rounded-xl"
                     style={{
                       background: 'rgba(255,255,255,0.2)',
                       backdropFilter: 'blur(10px)',
-                      minHeight: '120px'
+                      minHeight: '100px'
                     }}
                   >
                     <div className="flex-1">
                       <div className="mb-2">
-                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
+                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full">
                           {story.type}
                         </span>
                       </div>
-                      <h4 className="text-sm font-medium text-gray-800 mb-1">
-                        {story.title}
+                      <h4 className="text-xs sm:text-sm font-medium text-gray-800 mb-1 leading-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold leading-tight">
                       </h4>
-                      <p className="text-xs text-gray-600">
+                      <p className="text-xs text-gray-600 leading-relaxed">
                         {story.description}
                       </p>
                     </div>
