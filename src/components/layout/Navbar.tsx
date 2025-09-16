@@ -234,88 +234,276 @@ const Navbar: React.FC = () => {
                 onMouseEnter={handleServicesMouseEnter}
                 onMouseLeave={handleServicesMouseLeave}
                 style={{
-                  background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%)',
-                  backdropFilter: 'blur(20px)',
+                  background: 'rgba(255, 255, 255, 0.92)',
+                  backdropFilter: 'blur(16px) saturate(180%)',
+                  border: '1px solid rgba(255, 51, 51, 0.08)',
                   boxShadow: `
-                    0 25px 50px -12px rgba(0, 0, 0, 0.15),
-                    0 10px 25px -5px rgba(255, 51, 51, 0.1),
-                    inset 0 1px 0 rgba(255, 255, 255, 0.6),
-                    0 0 0 1px rgba(255, 51, 51, 0.1)
-                  `,
-                  border: '1px solid rgba(255, 51, 51, 0.15)',
-                  borderTop: '1px solid rgba(255, 255, 255, 0.8)'
+                    0 20px 40px -8px rgba(0, 0, 0, 0.08),
+                    0 8px 16px -4px rgba(255, 51, 51, 0.06),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.9)
+                  `
                 }}
               >
                 {/* Services List */}
-                <div className="py-3">
+                <div className="py-2">
                   {[
                     { 
                       path: '/services#data-engineering', 
                       label: 'Data Engineering',
-                      description: 'Build robust data pipelines & infrastructure',
-                      icon: '🔧'
+                      description: 'Build robust data pipelines & infrastructure'
                     },
                     { 
                       path: '/services#data-visualization', 
                       label: 'Data Visualization',
-                      description: 'Transform data into compelling visuals',
-                      icon: '📊'
+                      description: 'Transform data into compelling visuals'
                     },
                     { 
                       path: '/services#business-intelligence', 
                       label: 'Business Intelligence & Analytics',
-                      description: 'Drive strategic data-driven decisions',
-                      icon: '📈'
+                      description: 'Drive strategic data-driven decisions'
                     },
                     { 
                       path: '/services#cloud-modernization', 
                       label: 'Cloud Modernization',
-                      description: 'Scale with modern cloud infrastructure',
-                      icon: '☁️'
+                      description: 'Scale with modern cloud infrastructure'
                     },
                     { 
                       path: '/services#ai-engineering', 
                       label: 'AI Engineering',
-                      description: 'Implement cutting-edge AI solutions',
-                      icon: '🤖'
+                      description: 'Implement cutting-edge AI solutions'
                     }
                   ].map((item, index) => (
                     <div 
                       key={index}
-                      className="px-3"
-                      style={{ 
-                        animationDelay: servicesOpen ? `${index * 50}ms` : '0ms'
-                      }}
+                      className="px-2"
                     >
                       <button 
                         onClick={() => handleServiceClick(item.path)}
-                        className="group/item relative flex items-start w-full text-left px-4 py-4 rounded-xl transition-all duration-300 ease-out hover:scale-[1.02] focus-ring touch-manipulation overflow-hidden"
-                        style={{
-                          background: 'transparent',
-                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = 'linear-gradient(135deg, rgba(255, 51, 51, 0.08) 0%, rgba(255, 51, 51, 0.05) 100%)';
-                          e.currentTarget.style.boxShadow = '0 8px 25px -8px rgba(255, 51, 51, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.6)';
-                          e.currentTarget.style.borderColor = 'rgba(255, 51, 51, 0.2)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = 'transparent';
-                          e.currentTarget.style.boxShadow = 'none';
-                          e.currentTarget.style.borderColor = 'transparent';
-                        }}
+                        className="group/item relative w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ease-out hover:bg-gray-50/80 focus-ring touch-manipulation border border-transparent hover:border-brand-red-100"
                       >
-                        {/* Subtle border */}
-                        <div className="absolute inset-0 rounded-xl border border-transparent group-hover/item:border-brand-red-100 transition-colors duration-300"></div>
+                        {/* Subtle left accent line */}
+                        <div className="absolute left-0 top-3 bottom-3 w-0 bg-brand-red-500 rounded-r-sm group-hover/item:w-1 transition-all duration-200"></div>
                         
-                        {/* Icon */}
-                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-gray-50 to-gray-100 group-hover/item:from-brand-red-50 group-hover/item:to-brand-red-100 flex items-center justify-center mr-4 transition-all duration-300 group-hover/item:scale-110">
-                          <span className="text-lg">{item.icon}</span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex-1">
+                            <div className="font-semibold text-gray-900 group-hover/item:text-brand-red-600 transition-colors duration-200 mb-1 text-sm leading-tight">
+                              {item.label}
+                            </div>
+                            <div className="text-xs text-gray-600 leading-relaxed">
+                              {item.description}
+                            </div>
+                          </div>
+                          
+                          {/* Subtle arrow */}
+                          <div className="ml-3 opacity-40 group-hover/item:opacity-100 group-hover/item:translate-x-1 transition-all duration-200">
+                            <svg className="w-4 h-4 text-brand-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
                         </div>
-                        
-                        {/* Content */}
-                        <div className="flex-1">
-                          <div className="font-semibold text-gray-900 group-hover/item:text-brand-red-600 transition-all duration-300 mb-1 text-base leading-tight">
+                      </button>
+                    </div>
+                  ))}
+                  
+                  {/* View All Services Link */}
+                  <div className="px-2 mt-1 pt-2 border-t border-gray-100">
+                    <Link
+                      to="/services"
+                      onClick={() => setServicesOpen(false)}
+                      className="group flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-brand-red-600 hover:text-brand-red-700 hover:bg-brand-red-50/60 rounded-lg transition-all duration-200"
+                    >
+                      <span>View All Services</span>
+                      <svg className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {[
+              { to: '/talent', label: 'Hire Talent' },
+              { to: '/about', label: 'About' },
+             { to: '/case-studies', label: 'Case Studies' },
+              { to: '/contact', label: 'Contact' }
+            ].map((item, index) => (
+              <NavLink 
+                key={index}
+                to={item.to} 
+                className={({ isActive }) => 
+                  `nav-link focus-ring rounded-lg px-3 py-2 ${
+                    isActive 
+                      ? 'text-brand-red-600 font-semibold' 
+                      : 'text-gray-700 hover:text-brand-red-600 font-medium'
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {item.label}
+                    <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-red-600 transition-all duration-300 ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}></span>
+                  </>
+                )}
+              </NavLink>
+            ))}
+          </nav>
+
+          {/* Enhanced Mobile Menu Button */}
+          <button
+            className="md:hidden relative z-50 w-12 h-12 flex items-center justify-center rounded-lg hover:bg-gray-100/50 transition-colors focus-ring tap-highlight-none touch-manipulation"
+            onClick={toggleMenu}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+          >
+            <div className="relative w-6 h-6">
+              <span 
+                className={`absolute block w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out ${
+                  isOpen ? 'rotate-45 top-3' : 'top-1'
+                }`}
+              />
+              <span 
+                className={`absolute block w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out top-3 ${
+                  isOpen ? 'opacity-0' : 'opacity-100'
+                }`}
+              />
+              <span 
+                className={`absolute block w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out ${
+                  isOpen ? '-rotate-45 top-3' : 'top-5'
+                }`}
+              />
+            </div>
+          </button>
+        </div>
+
+        {/* Enhanced Mobile Navigation */}
+        <div
+          id="mobile-menu"
+          className={`md:hidden fixed inset-0 top-0 transition-all duration-300 ease-in-out ${
+            isOpen 
+              ? 'opacity-100 visible' 
+              : 'opacity-0 invisible pointer-events-none'
+          }`}
+          role="navigation"
+          aria-label="Mobile navigation"
+        >
+          {/* Backdrop */}
+          <div 
+            className={`absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
+              isOpen ? 'opacity-100' : 'opacity-0'
+            }`}
+            onClick={closeMenu}
+          />
+          
+          {/* Menu Panel */}
+          <div 
+            className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white/10 backdrop-blur-md shadow-2xl border-l border-white/20 transform transition-transform duration-300 ease-in-out ${
+              isOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
+          >
+            {/* Header - Simplified without duplicate close button */}
+            <div className="flex items-center justify-between p-4 border-b border-white/20">
+              <span className="text-lg font-semibold text-white">Menu</span>
+              {/* The close functionality is handled by the main hamburger button */}
+            </div>
+
+            {/* Menu Content */}
+            <div className="flex flex-col h-full overflow-y-auto pb-20">
+              <div className="px-4 py-2">
+                {/* Services Section */}
+                <div className="relative">
+                  <button
+                    className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-800 focus-ring rounded-lg tap-highlight-none touch-manipulation"
+                    onClick={toggleServices}
+                    aria-expanded={servicesOpen}
+                    aria-controls="mobile-services"
+                  >
+                    <span>Services</span>
+                    <ChevronDown
+                      size={20}
+                      className={`transition-transform duration-300 ${
+                        servicesOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  
+                  <div
+                    id="mobile-services"
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                      servicesOpen 
+                        ? 'max-h-96 opacity-100' 
+                        : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className="pl-4 border-l-2 border-gray-100">
+                      {[
+                        { 
+                          path: '/services#data-engineering', 
+                          label: 'Data Engineering',
+                          description: 'Build robust data pipelines'
+                        },
+                        { 
+                          path: '/services#data-visualization', 
+                          label: 'Data Visualization',
+                          description: 'Transform data into insights'
+                        },
+                        { 
+                          path: '/services#business-intelligence', 
+                          label: 'Business Intelligence',
+                          description: 'Drive data-driven decisions'
+                        },
+                        { 
+                          path: '/services#cloud-modernization', 
+                          label: 'Cloud Modernization',
+                          description: 'Scale your infrastructure'
+                        },
+                        { 
+                          path: '/services#ai-engineering', 
+                          label: 'AI Engineering',
+                          description: 'Implement AI solutions'
+                        }
+                      ].map((item, index) => (
+                        <button
+                          key={`mobile-service-${index}`}
+                          onClick={() => handleServiceClick(item.path)}
+                          className="block w-full text-left py-3 px-3 text-gray-200 hover:bg-white/10 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation"
+                        >
+                          <div className="font-medium text-white">{item.label}</div>
+                          <div className="text-sm text-gray-300 mt-0.5">{item.description}</div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Main Navigation Links */}
+                <div className="border-t border-gray-200 pt-2 mt-2">
+                  {[
+                    { to: '/talent', label: 'Hire Talent' },
+                    { to: '/about', label: 'About' },
+                   { to: '/case-studies', label: 'Case Studies' },
+                    { to: '/contact', label: 'Contact' }
+                  ].map((item, index) => (
+                    <NavLink
+                      key={`mobile-nav-${index}`}
+                      to={item.to}
+                      className={({ isActive }) => 
+                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-colors duration-200 focus-ring tap-highlight-none touch-manipulation min-h-[48px] flex items-center ${
+                          isActive 
+                            ? 'text-brand-red-600 font-semibold bg-brand-red-50/10' 
+                            : 'text-white hover:text-brand-red-600 hover:bg-white/10'
+                        }`
+                      }
+                      onClick={closeMenu}
+                    >
+                      {item.label}
+                    </NavLink>
+                  ))}
+                </div>
+              </div
                             {item.label}
                           </div>
                           <div className="text-sm text-gray-600 group-hover/item:text-gray-700 transition-colors duration-300 leading-relaxed">
