@@ -106,18 +106,34 @@ const Hero: React.FC = () => {
 
   return (
     <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-20">
-        <div 
-          className="w-full h-full"
-          style={{
-            backgroundImage: `
-              radial-gradient(circle at 20% 50%, rgba(255, 51, 51, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 40% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%)
-            `
-          }}
-        />
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0">
+        {/* Floating Geometric Shapes */}
+        <div className="absolute top-20 left-10 w-20 h-20 bg-brand-red-500/10 rounded-full animate-float-slow"></div>
+        <div className="absolute top-40 right-20 w-16 h-16 bg-blue-500/10 rotate-45 animate-float-medium"></div>
+        <div className="absolute bottom-32 left-20 w-24 h-24 bg-purple-500/10 rounded-full animate-float-fast"></div>
+        <div className="absolute bottom-20 right-10 w-12 h-12 bg-green-500/10 rotate-12 animate-float-slow"></div>
+        <div className="absolute top-1/3 left-1/4 w-8 h-8 bg-yellow-500/10 rounded-full animate-float-medium"></div>
+        <div className="absolute top-2/3 right-1/3 w-14 h-14 bg-pink-500/10 rotate-45 animate-float-fast"></div>
+        
+        {/* Moving Grid Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div 
+            className="w-full h-full animate-grid-move"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(255, 51, 51, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 51, 51, 0.3) 1px, transparent 1px)
+              `,
+              backgroundSize: '50px 50px'
+            }}
+          />
+        </div>
+        
+        {/* Gradient Orbs */}
+        <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-gradient-to-r from-brand-red-500/20 to-transparent rounded-full blur-xl animate-pulse-slow"></div>
+        <div className="absolute bottom-1/4 left-1/4 w-40 h-40 bg-gradient-to-r from-blue-500/15 to-transparent rounded-full blur-2xl animate-pulse-medium"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-gradient-to-r from-purple-500/20 to-transparent rounded-full blur-lg animate-pulse-fast"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
@@ -276,6 +292,115 @@ const Hero: React.FC = () => {
         
         @media (prefers-reduced-motion: reduce) {
           .animate-scroll {
+            animation: none !important;
+          }
+        }
+        
+        @keyframes floatSlow {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-20px) rotate(10deg);
+          }
+        }
+        
+        @keyframes floatMedium {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-15px) rotate(-5deg);
+          }
+        }
+        
+        @keyframes floatFast {
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-10px) rotate(15deg);
+          }
+        }
+        
+        @keyframes gridMove {
+          0% {
+            transform: translate(0, 0);
+          }
+          100% {
+            transform: translate(50px, 50px);
+          }
+        }
+        
+        @keyframes pulseSlow {
+          0%, 100% {
+            opacity: 0.1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.3;
+            transform: scale(1.1);
+          }
+        }
+        
+        @keyframes pulseMedium {
+          0%, 100% {
+            opacity: 0.05;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.2;
+            transform: scale(1.05);
+          }
+        }
+        
+        @keyframes pulseFast {
+          0%, 100% {
+            opacity: 0.08;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.25;
+            transform: scale(1.08);
+          }
+        }
+        
+        .animate-float-slow {
+          animation: floatSlow 8s ease-in-out infinite;
+        }
+        
+        .animate-float-medium {
+          animation: floatMedium 6s ease-in-out infinite;
+        }
+        
+        .animate-float-fast {
+          animation: floatFast 4s ease-in-out infinite;
+        }
+        
+        .animate-grid-move {
+          animation: gridMove 20s linear infinite;
+        }
+        
+        .animate-pulse-slow {
+          animation: pulseSlow 4s ease-in-out infinite;
+        }
+        
+        .animate-pulse-medium {
+          animation: pulseMedium 6s ease-in-out infinite;
+        }
+        
+        .animate-pulse-fast {
+          animation: pulseFast 3s ease-in-out infinite;
+        }
+        
+        @media (prefers-reduced-motion: reduce) {
+          .animate-float-slow,
+          .animate-float-medium,
+          .animate-float-fast,
+          .animate-grid-move,
+          .animate-pulse-slow,
+          .animate-pulse-medium,
+          .animate-pulse-fast {
             animation: none !important;
           }
         }
