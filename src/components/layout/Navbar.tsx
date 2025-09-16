@@ -176,57 +176,109 @@ const Navbar: React.FC = () => {
               </button>
 
               <div 
-                className={`absolute left-0 mt-2 w-72 rounded-xl shadow-2xl bg-white transition-all duration-300 ${
+                className={`absolute left-0 mt-3 w-80 rounded-2xl shadow-2xl bg-white border border-gray-100 backdrop-blur-sm transition-all duration-300 ${
                   servicesOpen 
                     ? 'opacity-100 visible transform translate-y-0' 
                     : 'opacity-0 invisible transform translate-y-2'
                 }`}
                 role="menu"
                 aria-label="Services submenu"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(248,250,252,0.95) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.05)'
+                }}
               >
-                <div className="py-2">
+                {/* Header Section */}
+                <div className="px-6 py-4 border-b border-gray-100">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-1">Our Services</h3>
+                  <p className="text-sm text-gray-600">Comprehensive data and AI solutions</p>
+                </div>
+                
+                {/* Services Grid */}
+                <div className="py-3">
                   {[
                     { 
                       path: '/services#data-engineering', 
                       label: 'Data Engineering',
-                      description: 'Build robust data pipelines and infrastructure'
+                      description: 'Build robust data pipelines and infrastructure',
+                      icon: '🔧',
+                      color: 'bg-blue-50 border-blue-100 hover:bg-blue-100'
                     },
                     { 
                       path: '/services#data-visualization', 
                       label: 'Data Visualization',
-                      description: 'Transform complex data into clear insights'
+                      description: 'Transform complex data into clear insights',
+                      icon: '📊',
+                      color: 'bg-purple-50 border-purple-100 hover:bg-purple-100'
                     },
                     { 
                       path: '/services#business-intelligence', 
                       label: 'Business Intelligence & Analytics',
-                      description: 'Drive decisions with powerful analytics'
+                      description: 'Drive decisions with powerful analytics',
+                      icon: '📈',
+                      color: 'bg-green-50 border-green-100 hover:bg-green-100'
                     },
                     { 
                       path: '/services#cloud-modernization', 
                       label: 'Cloud Modernization',
-                      description: 'Scale your infrastructure for the future'
+                      description: 'Scale your infrastructure for the future',
+                      icon: '☁️',
+                      color: 'bg-cyan-50 border-cyan-100 hover:bg-cyan-100'
                     },
                     { 
                       path: '/services#ai-engineering', 
                       label: 'AI Engineering',
-                      description: 'Implement cutting-edge AI solutions'
+                      description: 'Implement cutting-edge AI solutions',
+                      icon: '🤖',
+                      color: 'bg-indigo-50 border-indigo-100 hover:bg-indigo-100'
                     }
                   ].map((item, index) => (
-                    <button 
+                    <div 
                       key={index}
-                      onClick={() => handleServiceClick(item.path)}
-                      className="group/item flex flex-col w-full text-left px-5 py-3 hover:bg-gray-100 transition-all duration-200 focus-ring"
-                      role="menuitem"
+                      className="px-4 py-2"
                     >
-                      <span className="font-medium text-gray-800 group-hover/item:text-brand-red-600 transition-colors duration-200">
-                        {item.label}
-                      </span>
-                      <span className="text-sm text-cool-gray-500 group-hover/item:text-cool-gray-600 transition-colors duration-200 mt-0.5">
-                        {item.description}
-                      </span>
-                      <span className="block w-0 group-hover/item:w-full h-px bg-brand-red-400 transition-all duration-300 mt-2"></span>
-                    </button>
+                      <button 
+                        onClick={() => handleServiceClick(item.path)}
+                        className={`group/item flex items-start w-full text-left p-4 rounded-xl border transition-all duration-300 focus-ring ${item.color} hover:scale-[1.02] hover:shadow-md`}
+                        role="menuitem"
+                      >
+                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-white border border-gray-200 flex items-center justify-center mr-4 text-lg shadow-sm group-hover/item:scale-110 transition-transform duration-300">
+                          {item.icon}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="font-semibold text-gray-900 group-hover/item:text-brand-red-600 transition-colors duration-200 mb-1">
+                            {item.label}
+                          </div>
+                          <div className="text-sm text-gray-600 group-hover/item:text-gray-700 transition-colors duration-200 leading-relaxed">
+                            {item.description}
+                          </div>
+                        </div>
+                        <div className="flex-shrink-0 ml-2 opacity-0 group-hover/item:opacity-100 transition-opacity duration-200">
+                          <ChevronDown className="w-4 h-4 text-brand-red-500 rotate-[-90deg]" />
+                        </div>
+                      </button>
+                    </div>
                   ))}
+                </div>
+                
+                {/* Footer CTA */}
+                <div className="px-6 py-4 bg-gradient-to-r from-gray-50 to-gray-100 border-t border-gray-100 rounded-b-2xl">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">Need custom solutions?</p>
+                      <p className="text-xs text-gray-600">Let's discuss your specific requirements</p>
+                    </div>
+                    <button
+                      onClick={() => {
+                        window.location.href = '/contact';
+                        setServicesOpen(false);
+                      }}
+                      className="px-4 py-2 bg-brand-red-600 hover:bg-brand-red-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md"
+                    >
+                      Contact Us
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
