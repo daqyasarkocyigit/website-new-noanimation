@@ -509,19 +509,22 @@ const CaseStudies: React.FC = () => {
         <div className="bg-grid"></div>
         <div ref={particlesRef} className="particles"></div>
       </div>
-
-      {/* Main Container */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-        
-        <div className="header-container">
-          <div className="header-content">
+            <motion.h1
               className="text-heading-1 mb-4 text-gray-900"
               initial={{ opacity: 0, y: 20 }}
-              transition={{ duration: 0.8 }}
-              Metadata-Driven Data Platform
-            <motion.p
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
+              Metadata-Driven Data Platform
+            </motion.h1>
+            <motion.p
+              className="text-body-large text-gray-600"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Next-generation analytics infrastructure built on Microsoft Fabric
+            </motion.p>
             <motion.h1
               className="text-heading-1 mb-4 text-gray-900"
               initial={{ opacity: 0, y: 20 }}
