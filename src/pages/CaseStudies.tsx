@@ -236,6 +236,7 @@ const CaseStudies: React.FC = () => {
             </div>
           </div>
         </section>
+        </section>
 
         {/* Featured Case Study - Architecture */}
         <section className="py-20">
