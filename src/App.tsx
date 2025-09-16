@@ -147,6 +147,52 @@ class AppErrorBoundary extends React.Component<
   }
 }
 
+// Global background component
+const GlobalBackground: React.FC = () => {
+  const particlesRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    // Create floating particles
+    const createParticles = () => {
+      const container = particlesRef.current;
+      if (!container) return;
+
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: #FF3333;
+          border-radius: 50%;
+          opacity: 0;
+          left: ${Math.random() * 100}%;
+          animation: particleFloat ${15 + Math.random() * 10}s infinite;
+          animation-delay: ${Math.random() * 15}s;
+        `;
+        container.appendChild(particle);
+      }
+    };
+
+    createParticles();
+
+    return () => {
+      if (particlesRef.current) {
+        particlesRef.current.innerHTML = '';
+      }
+    };
+  }, []);
+
+  return (
+    <div className="page-background">
+      <div className="bg-gradient-animated"></div>
+      <div className="bg-grid-animated"></div>
+      <div ref={particlesRef} className="particles-container"></div>
+    </div>
+  );
+};
+
 function App() {
   console.log('🎯 App component rendering...');
 
@@ -161,9 +207,10 @@ function App() {
 
   return (
     <AppErrorBoundary>
+      <GlobalBackground />
       <BrowserRouter>
         <ScrollToTop />
-        <div className="flex flex-col min-h-screen">
+        <div className="page-content flex flex-col min-h-screen">
           <Navbar />
           <Suspense fallback={<PageLoader />}>
             <main className="flex-grow">

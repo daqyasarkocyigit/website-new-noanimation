@@ -6,17 +6,9 @@ import { motion } from 'framer-motion';
 
 const Contact: React.FC = () => {
   return (
-    <>
+    <div className="relative z-10">
       {/* Hero Section - Simplified without visual */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 z-0"></div>
-        <div 
-          className="absolute top-0 right-0 w-1/2 h-full opacity-10 z-0"
-          style={{
-            backgroundImage: 'url("/images/pattern-dots.svg")',
-            backgroundSize: '30px 30px'
-          }}
-        ></div>
+      <section className="pt-32 pb-20 relative overflow-hidden bg-white/50 backdrop-blur-sm">
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -155,7 +147,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

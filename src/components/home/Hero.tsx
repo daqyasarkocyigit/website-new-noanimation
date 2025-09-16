@@ -105,7 +105,7 @@ const Hero: React.FC = () => {
   }, [currentService, displayText, isDeleting, isPaused, services]);
 
   return (
-    <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
+    <section className="min-h-screen relative overflow-hidden bg-white/30 backdrop-blur-sm">
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-32 pb-16 sm:pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[60vh] sm:min-h-[70vh]">

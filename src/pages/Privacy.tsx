@@ -4,7 +4,7 @@ import AnimatedSection from '../components/utils/AnimatedSection';
 
 const Privacy: React.FC = () => {
   return (
-    <div className="pt-32 pb-20">
+    <div className="relative z-10 pt-32 pb-20 bg-white/50 backdrop-blur-sm">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

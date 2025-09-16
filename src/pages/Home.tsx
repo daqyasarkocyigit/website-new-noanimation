@@ -5,11 +5,11 @@ import CallToAction from '../components/home/CallToAction';
 
 const Home: React.FC = () => {
   return (
-    <>
+    <div className="relative z-10">
       <Hero />
       <Services />
       <CallToAction />
-    </>
+    </div>
   );
 };
 
