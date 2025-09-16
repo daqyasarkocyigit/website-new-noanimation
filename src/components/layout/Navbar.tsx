@@ -6,6 +6,8 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [leaveTimeout, setLeaveTimeout] = useState<NodeJS.Timeout | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,6 +19,9 @@ const Navbar: React.FC = () => {
       if (window.innerWidth >= 768) {
         setIsOpen(false);
         setServicesOpen(false);
+        // Clear timeouts on resize
+        if (hoverTimeout) clearTimeout(hoverTimeout);
+        if (leaveTimeout) clearTimeout(leaveTimeout);
       }
     };
 
@@ -29,6 +34,9 @@ const Navbar: React.FC = () => {
       if (servicesOpen && servicesButton && servicesDropdown) {
         if (!servicesButton.contains(target) && !servicesDropdown.contains(target)) {
           setServicesOpen(false);
+          // Clear any pending timeouts
+          if (hoverTimeout) clearTimeout(hoverTimeout);
+          if (leaveTimeout) clearTimeout(leaveTimeout);
         }
       }
     };
@@ -37,6 +45,9 @@ const Navbar: React.FC = () => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape' && servicesOpen) {
         setServicesOpen(false);
+        // Clear any pending timeouts
+        if (hoverTimeout) clearTimeout(hoverTimeout);
+        if (leaveTimeout) clearTimeout(leaveTimeout);
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -49,8 +60,11 @@ const Navbar: React.FC = () => {
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('keydown', handleKeyDown);
+      // Cleanup timeouts
+      if (hoverTimeout) clearTimeout(hoverTimeout);
+      if (leaveTimeout) clearTimeout(leaveTimeout);
     };
-  }, [servicesOpen]);
+  }, [servicesOpen, hoverTimeout, leaveTimeout]);
 
   // Enhanced mobile menu management
   useEffect(() => {
@@ -99,15 +113,55 @@ const Navbar: React.FC = () => {
   const closeMenu = () => {
     setIsOpen(false);
     setServicesOpen(false);
+    // Clear any pending timeouts
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    if (leaveTimeout) clearTimeout(leaveTimeout);
   };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     setServicesOpen(false); // Close services when toggling main menu
+    // Clear any pending timeouts
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    if (leaveTimeout) clearTimeout(leaveTimeout);
+  };
+
+  const handleServicesMouseEnter = () => {
+    // Clear any pending leave timeout
+    if (leaveTimeout) {
+      clearTimeout(leaveTimeout);
+      setLeaveTimeout(null);
+    }
+    
+    // Set a delay before opening (300ms)
+    if (!servicesOpen) {
+      const timeout = setTimeout(() => {
+        setServicesOpen(true);
+      }, 300);
+      setHoverTimeout(timeout);
+    }
+  };
+
+  const handleServicesMouseLeave = () => {
+    // Clear any pending enter timeout
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+    
+    // Set a delay before closing (500ms)
+    const timeout = setTimeout(() => {
+      setServicesOpen(false);
+    }, 500);
+    setLeaveTimeout(timeout);
   };
 
   const toggleServices = () => {
+    // For click events, toggle immediately
     setServicesOpen(!servicesOpen);
+    // Clear any pending timeouts
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    if (leaveTimeout) clearTimeout(leaveTimeout);
   };
 
   return (
@@ -143,14 +197,8 @@ const Navbar: React.FC = () => {
           <nav className="hidden md:flex items-center space-x-8" role="navigation">
             <div 
               className="relative group"
-              onMouseLeave={() => {
-                // Auto close after mouse leave with small delay
-                setTimeout(() => setServicesOpen(false), 300);
-              }}
-              onMouseEnter={() => {
-                // Clear any pending auto-close when mouse enters
-                setServicesOpen(true);
-              }}
+              onMouseEnter={handleServicesMouseEnter}
+              onMouseLeave={handleServicesMouseLeave}
             >
               <button 
                 className="flex items-center text-gray-700 hover:text-brand-red-600 font-medium group relative overflow-hidden transition-colors duration-200 focus-ring rounded-lg px-3 py-2"
@@ -183,6 +231,8 @@ const Navbar: React.FC = () => {
                 } sm:w-80 w-screen sm:max-w-none max-w-[calc(100vw-2rem)] sm:left-0 -left-4 sm:rounded-2xl rounded-xl sm:mt-3 mt-2`}
                 role="menu"
                 aria-label="Services submenu"
+                onMouseEnter={handleServicesMouseEnter}
+                onMouseLeave={handleServicesMouseLeave}
                 style={{
                   background: 'rgba(255,255,255,0.98)',
                   backdropFilter: 'blur(8px)',
