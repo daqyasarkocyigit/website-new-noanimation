@@ -144,4 +144,22 @@
       transform: translateY(-50%);
     }
   }
+  
+  /* Mobile horizontal scroll animation */
+  @keyframes continuousScrollHorizontal {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  /* Line clamp utilities for mobile */
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
 }
