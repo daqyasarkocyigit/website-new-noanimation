@@ -168,7 +168,7 @@ const Navbar: React.FC = () => {
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/90 backdrop-blur-md shadow-lg py-2' 
+          ? 'bg-white/10 backdrop-blur-md shadow-lg py-2' 
           : 'bg-transparent py-4'
       }`}
       role="banner"
@@ -178,7 +178,7 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center group focus-ring rounded-lg p-2 -m-2 transition-all duration-200 hover:bg-gray-50/50" 
+            className="flex items-center group focus-ring rounded-lg p-2 -m-2 transition-all duration-200 hover:bg-white/5" 
             aria-label="DAQ Consulting - Navigate to homepage"
             onClick={closeMenu}
           >
@@ -224,7 +224,7 @@ const Navbar: React.FC = () => {
               </button>
 
               <div 
-                className={`absolute left-0 mt-3 w-80 rounded-2xl shadow-2xl bg-white border border-gray-100 backdrop-blur-sm transition-all duration-300 ${
+                className={`absolute left-0 mt-3 w-80 rounded-2xl shadow-2xl bg-white/10 backdrop-blur-md border border-white/20 transition-all duration-300 ${
                   servicesOpen 
                     ? 'opacity-100 visible transform translate-y-0' 
                     : 'opacity-0 invisible transform translate-y-2'
@@ -234,7 +234,7 @@ const Navbar: React.FC = () => {
                 onMouseEnter={handleServicesMouseEnter}
                 onMouseLeave={handleServicesMouseLeave}
                 style={{
-                  background: 'rgba(255,255,255,0.98)',
+                  background: 'rgba(255,255,255,0.05)',
                   backdropFilter: 'blur(8px)',
                   boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
                 }}
@@ -274,14 +274,14 @@ const Navbar: React.FC = () => {
                     >
                       <button 
                         onClick={() => handleServiceClick(item.path)}
-                        className="group/item flex items-start w-full text-left px-4 py-3 sm:py-3 py-4 rounded-lg transition-all duration-200 hover:bg-gray-50 focus-ring touch-manipulation"
+                        className="group/item flex items-start w-full text-left px-4 py-3 sm:py-3 py-4 rounded-lg transition-all duration-200 hover:bg-white/10 focus-ring touch-manipulation"
                         role="menuitem"
                       >
                         <div className="flex-1">
-                          <div className="font-medium text-gray-900 group-hover/item:text-brand-red-600 transition-colors duration-200 mb-1 sm:text-base text-base">
+                          <div className="font-medium text-white group-hover/item:text-brand-red-600 transition-colors duration-200 mb-1 sm:text-base text-base">
                             {item.label}
                           </div>
-                          <div className="text-sm sm:text-sm text-xs text-gray-500 group-hover/item:text-gray-600 transition-colors duration-200 leading-tight">
+                          <div className="text-sm sm:text-sm text-xs text-gray-300 group-hover/item:text-gray-400 transition-colors duration-200 leading-tight">
                             {item.description}
                           </div>
                         </div>
@@ -362,7 +362,7 @@ const Navbar: React.FC = () => {
         >
           {/* Backdrop */}
           <div 
-            className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+            className={`absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
               isOpen ? 'opacity-100' : 'opacity-0'
             }`}
             onClick={closeMenu}
@@ -370,13 +370,13 @@ const Navbar: React.FC = () => {
           
           {/* Menu Panel */}
           <div 
-            className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out ${
+            className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white/10 backdrop-blur-md shadow-2xl border-l border-white/20 transform transition-transform duration-300 ease-in-out ${
               isOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
           >
             {/* Header - Simplified without duplicate close button */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
-              <span className="text-lg font-semibold text-gray-900">Menu</span>
+            <div className="flex items-center justify-between p-4 border-b border-white/20">
+              <span className="text-lg font-semibold text-white">Menu</span>
               {/* The close functionality is handled by the main hamburger button */}
             </div>
 
@@ -439,10 +439,10 @@ const Navbar: React.FC = () => {
                         <button
                           key={`mobile-service-${index}`}
                           onClick={() => handleServiceClick(item.path)}
-                          className="block w-full text-left py-3 px-3 text-gray-700 hover:bg-gray-50 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation"
+                          className="block w-full text-left py-3 px-3 text-gray-200 hover:bg-white/10 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation"
                         >
-                          <div className="font-medium">{item.label}</div>
-                          <div className="text-sm text-gray-500 mt-0.5">{item.description}</div>
+                          <div className="font-medium text-white">{item.label}</div>
+                          <div className="text-sm text-gray-300 mt-0.5">{item.description}</div>
                         </button>
                       ))}
                     </div>
@@ -463,8 +463,8 @@ const Navbar: React.FC = () => {
                       className={({ isActive }) => 
                         `block w-full px-3 py-4 text-base font-medium rounded-lg transition-colors duration-200 focus-ring tap-highlight-none touch-manipulation min-h-[48px] flex items-center ${
                           isActive 
-                            ? 'text-brand-red-600 font-semibold bg-brand-red-50' 
-                            : 'text-gray-800 hover:text-brand-red-600 hover:bg-gray-50'
+                            ? 'text-brand-red-600 font-semibold bg-brand-red-50/10' 
+                            : 'text-white hover:text-brand-red-600 hover:bg-white/10'
                         }`
                       }
                       onClick={closeMenu}
