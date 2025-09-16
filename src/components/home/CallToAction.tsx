@@ -44,7 +44,7 @@ const CallToAction: React.FC = () => {
       </div>
       
       {/* Decorative elements */}
-      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-white/10 to-transparent"></div>
+      <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-transparent to-transparent"></div>
       <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-brand-red-600/10 rounded-full blur-3xl"></div>
       <div className="absolute -top-40 -right-40 w-80 h-80 bg-gray-400/10 rounded-full blur-3xl"></div>
     </section>

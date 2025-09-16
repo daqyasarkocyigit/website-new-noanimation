@@ -215,6 +215,14 @@
     @apply py-12 sm:py-16 lg:py-20;
   }
 
+  .header-badge {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: transparent;
+    border-radius: 100px;
+    font-size: 0.75rem;
+  }
+
 }
 
 @layer utilities {
