@@ -7,7 +7,7 @@ const Home: React.FC = () => {
   const particlesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Create floating particles - Exact same as Case Studies
+    // Create floating particles - EXACT SAME as Case Studies
     const createParticles = () => {
       const container = particlesRef.current;
       if (!container) return;
@@ -71,7 +71,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      {/* Exact Same Professional Background Animation System as Case Studies */}
+      {/* EXACT SAME PROFESSIONAL BACKGROUND ANIMATION SYSTEM AS CASE STUDIES */}
       <style jsx>{`
         @keyframes particleFloat {
           0%, 100% {
@@ -169,7 +169,7 @@ const Home: React.FC = () => {
         }
       `}</style>
 
-      {/* Exact Same Background Animation System as Case Studies */}
+      {/* EXACT SAME BACKGROUND ANIMATION SYSTEM AS CASE STUDIES */}
       <div className="bg-container">
         <div className="bg-gradient"></div>
         <div className="bg-grid"></div>
