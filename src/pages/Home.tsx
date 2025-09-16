@@ -7,7 +7,7 @@ const Home: React.FC = () => {
   const particlesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Create floating particles - Same as Case Studies
+    // Create floating particles - Exact same as Case Studies
     const createParticles = () => {
       const container = particlesRef.current;
       if (!container) return;
@@ -43,9 +43,35 @@ const Home: React.FC = () => {
     };
   }, []);
 
+  // Animate metric values - Same function as Case Studies
+  const animateValue = (element: HTMLElement, start: number, end: number, duration: number, decimal = false, suffix = '') => {
+    const startTime = performance.now();
+    
+    const updateValue = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing function
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const current = start + (end - start) * easeOutQuart;
+      
+      if (decimal) {
+        element.textContent = current.toFixed(1) + suffix;
+      } else {
+        element.textContent = Math.round(current) + suffix;
+      }
+      
+      if (progress < 1) {
+        requestAnimationFrame(updateValue);
+      }
+    };
+    
+    requestAnimationFrame(updateValue);
+  };
+
   return (
     <>
-      {/* Professional Background Animation System - Same as Case Studies */}
+      {/* Exact Same Professional Background Animation System as Case Studies */}
       <style jsx>{`
         @keyframes particleFloat {
           0%, 100% {
@@ -70,6 +96,26 @@ const Home: React.FC = () => {
         @keyframes gridMove {
           from { transform: translate(0, 0); }
           to { transform: translate(50px, 50px); }
+        }
+
+        @keyframes headerPulse {
+          0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+          50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        @keyframes badgeShine {
+          to { left: 100%; }
+        }
+
+        @keyframes statusPulse {
+          0% {
+            opacity: 0.6;
+            transform: translate(-50%, -50%) scale(0);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(2);
+          }
         }
 
         .bg-container {
@@ -123,7 +169,7 @@ const Home: React.FC = () => {
         }
       `}</style>
 
-      {/* Background Animation System */}
+      {/* Exact Same Background Animation System as Case Studies */}
       <div className="bg-container">
         <div className="bg-gradient"></div>
         <div className="bg-grid"></div>
