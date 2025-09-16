@@ -516,9 +516,8 @@ const CaseStudies: React.FC = () => {
         {/* Header */}
         <div className="header-container">
           <div className="header-content">
-            <div className="header-badge bg-transparent border border-white/30">Enterprise Architecture</div>
             <motion.h1
-              className="text-heading-1 mb-4 text-gray-900"
+              className="text-heading-1 mb-6 text-gray-900"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
