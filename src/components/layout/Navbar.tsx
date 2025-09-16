@@ -180,7 +180,7 @@ const Navbar: React.FC = () => {
                   servicesOpen 
                     ? 'opacity-100 visible transform translate-y-0' 
                     : 'opacity-0 invisible transform translate-y-2'
-                }`}
+                } sm:w-80 w-screen sm:max-w-none max-w-[calc(100vw-2rem)] sm:left-0 -left-4 sm:rounded-2xl rounded-xl sm:mt-3 mt-2`}
                 role="menu"
                 aria-label="Services submenu"
                 style={{
@@ -190,48 +190,48 @@ const Navbar: React.FC = () => {
                 }}
               >
                 {/* Services List */}
-                <div className="py-2">
+                <div className="py-2 sm:py-2 py-1">
                   {[
                     { 
                       path: '/services#data-engineering', 
                       label: 'Data Engineering',
-                      description: 'Build robust data pipelines and infrastructure'
+                      description: 'Robust data pipelines'
                     },
                     { 
                       path: '/services#data-visualization', 
                       label: 'Data Visualization',
-                      description: 'Transform complex data into clear insights'
+                      description: 'Visual data insights'
                     },
                     { 
                       path: '/services#business-intelligence', 
                       label: 'Business Intelligence & Analytics',
-                      description: 'Drive decisions with powerful analytics'
+                      description: 'Data-driven decisions'
                     },
                     { 
                       path: '/services#cloud-modernization', 
                       label: 'Cloud Modernization',
-                      description: 'Scale your infrastructure for the future'
+                      description: 'Modern infrastructure'
                     },
                     { 
                       path: '/services#ai-engineering', 
                       label: 'AI Engineering',
-                      description: 'Implement cutting-edge AI solutions'
+                      description: 'AI-powered solutions'
                     }
                   ].map((item, index) => (
                     <div 
                       key={index}
-                      className="px-2"
-                    >
+                      className="px-2 sm:px-2 px-1"
+                      className="block w-full text-left py-3 px-3 text-gray-700 hover:bg-gray-50 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation min-h-[52px]"
                       <button 
                         onClick={() => handleServiceClick(item.path)}
-                        className="group/item flex items-start w-full text-left px-4 py-3 rounded-lg transition-all duration-200 hover:bg-gray-50 focus-ring"
+                        className="group/item flex items-start w-full text-left px-4 py-3 sm:py-3 py-4 rounded-lg transition-all duration-200 hover:bg-gray-50 focus-ring touch-manipulation"
                         role="menuitem"
                       >
                         <div className="flex-1">
-                          <div className="font-medium text-gray-900 group-hover/item:text-brand-red-600 transition-colors duration-200 mb-1">
+                          <div className="font-medium text-gray-900 group-hover/item:text-brand-red-600 transition-colors duration-200 mb-1 sm:text-base text-base">
                             {item.label}
                           </div>
-                          <div className="text-sm text-gray-500 group-hover/item:text-gray-600 transition-colors duration-200">
+                          <div className="text-sm sm:text-sm text-xs text-gray-500 group-hover/item:text-gray-600 transition-colors duration-200 leading-tight">
                             {item.description}
                           </div>
                         </div>
@@ -409,7 +409,7 @@ const Navbar: React.FC = () => {
                       key={`mobile-nav-${index}`}
                       to={item.to}
                       className={({ isActive }) => 
-                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-colors duration-200 focus-ring tap-highlight-none touch-manipulation ${
+                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-colors duration-200 focus-ring tap-highlight-none touch-manipulation min-h-[48px] flex items-center ${
                           isActive 
                             ? 'text-brand-red-600 font-semibold bg-brand-red-50' 
                             : 'text-gray-800 hover:text-brand-red-600 hover:bg-gray-50'
@@ -417,8 +417,8 @@ const Navbar: React.FC = () => {
                       }
                       onClick={closeMenu}
                     >
-                      {item.label}
-                    </NavLink>
+                      <div className="font-medium text-sm">{item.label}</div>
+                      <div className="text-xs text-gray-500 mt-0.5 leading-tight">{item.description}</div>
                   ))}
                 </div>
               </div>
