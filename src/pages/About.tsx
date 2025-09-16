@@ -251,19 +251,11 @@ const About: React.FC = () => {
                   <Award size={24} className="text-brand-red-600" />
                 </div>
                 <h3 className="text-heading-4 mb-4">Our Values</h3>
-                <ul className="text-body-base text-cool-gray-600 space-y-2">
-                  {[
-                    { icon: <CheckCircle size={16} />, text: "Excellence in everything we do" },
-                    { icon: <CheckCircle size={16} />, text: "Innovation that drives real results" },
-                    { icon: <CheckCircle size={16} />, text: "Integrity and transparency" },
-                    { icon: <CheckCircle size={16} />, text: "Client success above all" }
-                  ].map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <span className="text-gray-700 mr-2 flex-shrink-0 mt-1">{item.icon}</span>
-                      <span>{item.text}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-body-base text-cool-gray-600">
+                  We believe in excellence in everything we do, innovation that drives real results, 
+                  integrity and transparency in all our interactions, and putting client success above all else.
+                  These core values guide our decisions and shape how we work with every client.
+                </p>
               </AnimatedSection>
             </div>
           </div>
