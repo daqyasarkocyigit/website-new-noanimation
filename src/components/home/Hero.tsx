@@ -160,34 +160,38 @@ const Hero: React.FC = () => {
           >
             {/* Continuous Success Stories Feed */}
             <div 
-              className="relative p-4 sm:p-6 rounded-2xl border border-white/30 h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden mx-auto max-w-sm sm:max-w-md lg:max-w-lg bg-white/20 backdrop-blur-md shadow-xl"
-              style={{
-                animation: 'continuousScroll 40s linear infinite'
-              }
-              }
+              className="relative p-4 sm:p-6 rounded-2xl border border-white/30 h-[300px] sm:h-[400px] lg:h-[500px] overflow-hidden mx-auto max-w-sm sm:max-w-md lg:max-w-lg bg-white/20 backdrop-blur-md"
             >
-              {/* Scrolling Feed Container */}
+              {/* Static News Feed Container */}
               <div 
-                className="absolute inset-x-6 top-0 flex flex-col"
-                style={{
-                  animation: 'continuousScroll 40s linear infinite'
-                }
-                }
+                className="absolute inset-x-6 top-0 flex flex-col space-y-3 sm:space-y-4"
               >
-                {/* First Set of Stories */}
-                {successStories.map((story, index) => (
+                {/* Visible Stories (First 4) */}
+                {successStories.slice(0, 4).map((story, index) => (
                   <div
-                    key={`first-${index}`}
-                    className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 mb-3 sm:mb-4 rounded-xl"
+                    key={index}
+                    className={`flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-xl transition-all duration-500 ${
+                      index === currentService ? 'opacity-100 scale-100' : 'opacity-70 scale-95'
+                    }`}
                     style={{
                       background: 'rgba(255,255,255,0.2)',
                       backdropFilter: 'blur(10px)',
-                      minHeight: '100px'
+                      minHeight: '90px'
                     }}
                   >
+                    {/* Live Indicator for Current Story */}
+                    {index === currentService && (
+                      <div className="flex-shrink-0 mt-2">
+                        <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                      </div>
+                    )}
                     <div className="flex-1">
                       <div className="mb-2">
-                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full">
+                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                          index === currentService 
+                            ? 'text-red-700 bg-red-100' 
+                            : 'text-gray-600 bg-gray-100'
+                        }`}>
                           {story.type}
                         </span>
                       </div>
@@ -197,52 +201,44 @@ const Hero: React.FC = () => {
                       <p className="text-xs text-gray-600 leading-relaxed">
                         {story.description}
                       </p>
-                    </div>
-                  </div>
-                ))}
-                
-                {/* Second Set of Stories (duplicate for seamless loop) */}
-                {successStories.map((story, index) => (
-                  <div
-                    key={`second-${index}`}
-                    className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 mb-3 sm:mb-4 rounded-xl"
-                    style={{
-                      background: 'rgba(255,255,255,0.2)',
-                      backdropFilter: 'blur(10px)',
-                      minHeight: '100px'
-                    }}
-                  >
-                    <div className="flex-1">
-                      <div className="mb-2">
-                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full">
-                          {story.type}
-                        </span>
+                      <div className="flex items-center mt-2 text-xs text-gray-500">
+                        <div className="w-1 h-1 bg-green-500 rounded-full mr-1" />
+                        {story.time}
                       </div>
-                      <h4 className="text-xs sm:text-sm font-medium text-gray-800 mb-1 leading-tight">
-                        {story.title}
-                      </h4>
-                      <p className="text-xs text-gray-600 leading-relaxed">
-                        {story.description}
-                      </p>
                     </div>
                   </div>
                 ))}
               </div>
 
-              {/* Gradient Overlays for Smooth Fade */}
-              <div 
-                className="absolute top-0 left-0 right-0 h-16 pointer-events-none z-10"
-                style={{
-                  background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
-                }}
-              />
-              <div 
-                className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
-                style={{
-                  background: 'linear-gradient(0deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
-                }}
-              />
+              {/* Live Feed Indicator */}
+              <div className="absolute top-2 right-2 flex items-center gap-1">
+                <div className="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse" />
+                <span className="text-xs font-medium text-gray-600">LIVE</span>
+              </div>
+
+              {/* Bottom Status Bar */}
+              <div className="absolute bottom-0 left-0 right-0 p-2 bg-white/10 backdrop-blur-sm">
+                <div className="flex items-center justify-between text-xs text-gray-600">
+                  <span>Recent Updates</span>
+                  <span>{successStories.length} stories</span>
+                </div>
+              </div>
             </div>
+
+            {/* Story Navigation Dots */}
+            <div className="flex justify-center mt-4 space-x-2">
+              {successStories.slice(0, 4).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentService(index)}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    currentService === index 
+                      ? 'bg-red-500 scale-125' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
+              ))}
+              />
 
             {/* Floating Elements */}
             <div className="absolute -top-4 -right-4 w-20 h-20 bg-[#FF3333]/10 rounded-full blur-xl"></div>
