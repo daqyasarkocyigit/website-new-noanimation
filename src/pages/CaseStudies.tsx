@@ -534,37 +534,12 @@ const CaseStudies: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-            >
               Metadata-Driven Data Platform
             </motion.h1>
             <motion.p
               className="text-body-large text-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Next-Generation Analytics Infrastructure
-            </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            <motion.h1
-              className="text-heading-1 mb-4 text-gray-900"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              Metadata-Driven Data Platform
-            </motion.h1>
-            <motion.p
-              className="text-body-large text-gray-600"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Next-Generation Analytics Infrastructure
-            </motion.p>
           </div>
         </div>
 
@@ -1148,6 +1123,7 @@ const CaseStudies: React.FC = () => {
 
       <CallToAction />
     </>
+  )
   );
 };
 
