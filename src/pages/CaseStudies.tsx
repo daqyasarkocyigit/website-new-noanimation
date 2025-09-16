@@ -513,7 +513,6 @@ const CaseStudies: React.FC = () => {
       {/* Main Container */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
         
-        {/* Header */}
         <div className="header-container">
           <div className="header-content">
               className="text-heading-1 mb-4 text-gray-900"
@@ -524,12 +523,6 @@ const CaseStudies: React.FC = () => {
               Metadata-Driven Data Platform
             </motion.h1>
             <motion.p
-              className="text-body-large text-gray-600"
-              initial={{ opacity: 0, y: 20 }}
-            <motion.h1
-              className="text-heading-1 mb-6 text-gray-900"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               Metadata-Driven Data Platform
@@ -538,13 +531,6 @@ const CaseStudies: React.FC = () => {
               className="text-body-large text-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              Next-Generation Analytics Infrastructure
-            </motion.p>
-          </div>
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
               Next-Generation Analytics Infrastructure
             </motion.p>
           </div>
