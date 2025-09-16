@@ -234,7 +234,6 @@ const Navbar: React.FC = () => {
             {[
               { to: '/talent', label: 'Hire Talent' },
               { to: '/about', label: 'About' },
-              { to: '/case-studies', label: 'Case Studies' },
               { to: '/contact', label: 'Contact' }
             ].map((item, index) => (
               <NavLink 
@@ -393,7 +392,6 @@ const Navbar: React.FC = () => {
                   {[
                     { to: '/talent', label: 'Hire Talent' },
                     { to: '/about', label: 'About' },
-                    { to: '/case-studies', label: 'Case Studies' },
                     { to: '/contact', label: 'Contact' }
                   ].map((item, index) => (
                     <NavLink
