@@ -43,7 +43,7 @@ const About: React.FC = () => {
       <section className="py-20 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-3 py-1 text-sm font-medium bg-gray-100 text-gray-700 rounded-full mb-4">OUR APPROACH</span>
+            <span className="inline-block px-3 py-1 text-sm font-medium bg-transparent border border-gray-300/30 text-gray-700 rounded-full mb-4 hover:bg-white/5 transition-all duration-300">OUR APPROACH</span>
             <h2 className="text-heading-1 mb-6">How We Drive Transformation</h2>
             <p className="text-body-large text-cool-gray-600">
               We combine deep technical expertise with business acumen to deliver solutions that create real impact.
@@ -94,7 +94,7 @@ const About: React.FC = () => {
       <section className="py-20 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-3 py-1 text-sm font-medium bg-gray-100 text-gray-700 rounded-full mb-4">OUR FOUNDATION</span>
+            <span className="inline-block px-3 py-1 text-sm font-medium bg-transparent border border-gray-300/30 text-gray-700 rounded-full mb-4 hover:bg-white/5 transition-all duration-300">OUR FOUNDATION</span>
             <h2 className="text-heading-1 mb-6">Mission & Values</h2>
             <p className="text-body-large text-cool-gray-600">
               We're guided by a set of core principles that inform everything we do,

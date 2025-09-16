@@ -515,7 +515,7 @@ const CaseStudies: React.FC = () => {
         {/* Header */}
         <div className="header-container">
           <div className="header-content">
-            <div className="header-badge">Enterprise Architecture</div>
+            <div className="header-badge bg-transparent border border-white/30">Enterprise Architecture</div>
             <motion.h1 
               className="text-4xl sm:text-5xl lg:text-6xl font-light mb-4 text-gray-900"
               initial={{ opacity: 0, y: 20 }}
