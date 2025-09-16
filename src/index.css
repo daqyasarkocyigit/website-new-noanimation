@@ -127,6 +127,84 @@
   .section-padding {
     @apply py-12 sm:py-16 lg:py-20;
   }
+
+  /* Mexican Wave Animation Styles */
+  .wave-container {
+    @apply absolute bottom-0 left-0 right-0 h-full flex items-end justify-center;
+    perspective: 1000px;
+  }
+
+  .wave-bar {
+    @apply relative;
+    width: calc(100vw / 60); /* Responsive width based on viewport */
+    height: 100%;
+    margin: 0 1px;
+    background: linear-gradient(
+      180deg,
+      rgba(239, 68, 68, 0.8) 0%,    /* Red */
+      rgba(59, 130, 246, 0.6) 25%,  /* Blue */
+      rgba(168, 85, 247, 0.6) 50%,  /* Purple */
+      rgba(34, 197, 94, 0.6) 75%,   /* Green */
+      rgba(239, 68, 68, 0.8) 100%   /* Red */
+    );
+    border-radius: 4px 4px 0 0;
+    transform-origin: bottom center;
+    animation: mexicanWave 4s ease-in-out infinite;
+    animation-delay: var(--delay);
+  }
+
+  /* Mexican Wave Animation Keyframes */
+  @keyframes mexicanWave {
+    0%, 90%, 100% {
+      transform: scaleY(0.1);
+      opacity: 0.3;
+    }
+    5% {
+      transform: scaleY(0.8);
+      opacity: 0.9;
+    }
+    10% {
+      transform: scaleY(0.4);
+      opacity: 0.6;
+    }
+  }
+
+  /* Performance optimizations */
+  .wave-bar {
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .wave-container {
+      height: 60%;
+    }
+    .wave-bar {
+      width: calc(100vw / 40); /* Fewer bars on mobile */
+      margin: 0 0.5px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .wave-container {
+      height: 40%;
+    }
+    .wave-bar {
+      width: calc(100vw / 30); /* Even fewer bars on small screens */
+    }
+  }
+
+  /* Reduced motion accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    .wave-bar {
+      animation: none;
+      transform: scaleY(0.2);
+      opacity: 0.3;
+    }
+  }
 }
 
 @layer utilities {

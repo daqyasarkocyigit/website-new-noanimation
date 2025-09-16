@@ -16,6 +16,10 @@ const Hero: React.FC = () => {
     'Power BI'
   ];
 
+  // Generate wave bars for Mexican wave animation
+  const waveBarCount = 60; // Number of bars across the screen
+  const waveBars = Array.from({ length: waveBarCount }, (_, i) => i);
+
   const successStories = [
     {
       title: 'Created metadata-driven ingestion pipeline with medallion architecture',
@@ -106,6 +110,22 @@ const Hero: React.FC = () => {
 
   return (
     <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-gray-50 via-white to-gray-100">
+
+      {/* Mexican Wave Animation Background */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
+        <div className="wave-container">
+          {waveBars.map((index) => (
+            <div
+              key={index}
+              className="wave-bar"
+              style={{
+                '--delay': `${index * 0.1}s`,
+                '--bar-index': index
+              } as React.CSSProperties & { '--delay': string; '--bar-index': number }}
+            />
+          ))}
+        </div>
+      </div>
 
       <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[70vh]">
