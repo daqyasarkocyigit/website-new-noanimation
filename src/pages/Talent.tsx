@@ -167,16 +167,16 @@ const Talent: React.FC = () => {
             >
               <motion.a 
                 href="/contact" 
-                className="inline-flex items-center justify-center px-8 py-4 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl font-semibold text-lg transform hover:-translate-y-1"
+                className="inline-flex items-center justify-center px-6 py-3 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-lg transition-all duration-300 shadow-md hover:shadow-lg font-medium text-base transform hover:-translate-y-1 min-w-[140px]"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <span className="mr-2">Request Talent</span>
+                <span>Request Talent</span>
                 <ChevronRight size={18} />
               </motion.a>
               <motion.a 
                 href="/contact" 
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 rounded-xl transition-all duration-300 font-semibold text-lg transform hover:-translate-y-1"
+                className="inline-flex items-center justify-center px-6 py-3 border border-brand-red-600 text-brand-red-600 hover:bg-brand-red-50 hover:border-brand-red-700 rounded-lg transition-all duration-300 font-medium text-base transform hover:-translate-y-1 min-w-[120px]"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
               >
