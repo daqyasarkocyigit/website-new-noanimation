@@ -5,7 +5,7 @@ import AnimatedSection from '../utils/AnimatedSection';
 
 const CallToAction: React.FC = () => {
   return (
-    <section className="py-12 sm:py-16 lg:py-24 relative overflow-hidden bg-white/20 backdrop-blur-md">
+    <section className="py-12 sm:py-16 lg:py-24 relative overflow-hidden bg-white/70 backdrop-blur-sm">
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <AnimatedSection className="text-center max-w-3xl mx-auto">

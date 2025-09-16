@@ -97,7 +97,7 @@ const Home: React.FC = () => {
           left: 0;
           width: 100%;
           height: 100%;
-          z-index: 0;
+          z-index: -1;
           overflow: hidden;
         }
 
@@ -108,9 +108,9 @@ const Home: React.FC = () => {
           top: -50%;
           left: -50%;
           background: 
-            radial-gradient(ellipse at 20% 30%, rgba(255, 51, 51, 0.08) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 70%, rgba(107, 114, 128, 0.06) 0%, transparent 50%),
-            radial-gradient(ellipse at 50% 50%, rgba(255, 51, 51, 0.04) 0%, transparent 50%);
+            radial-gradient(ellipse at 20% 30%, rgba(255, 51, 51, 0.03) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 70%, rgba(107, 114, 128, 0.02) 0%, transparent 50%),
+            radial-gradient(ellipse at 50% 50%, rgba(255, 51, 51, 0.02) 0%, transparent 50%);
           animation: bgRotate 45s linear infinite;
         }
 
@@ -119,8 +119,8 @@ const Home: React.FC = () => {
           width: 100%;
           height: 100%;
           background-image: 
-            linear-gradient(rgba(255, 51, 51, 0.02) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 51, 51, 0.02) 1px, transparent 1px);
+            linear-gradient(rgba(255, 51, 51, 0.01) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 51, 51, 0.01) 1px, transparent 1px);
           background-size: 60px 60px;
           animation: gridMove 30s linear infinite;
         }
@@ -129,7 +129,7 @@ const Home: React.FC = () => {
           position: absolute;
           width: 2px;
           height: 2px;
-          background: #FF3333;
+          background: rgba(255, 51, 51, 0.6);
           border-radius: 50%;
           opacity: 0;
           animation: particleFloat 15s infinite;
@@ -206,7 +206,7 @@ const Home: React.FC = () => {
       </div>
 
       {/* Page Content */}
-      <div className="relative z-10">
+      <div className="relative">
         <Hero />
         <Services />
         <CallToAction />
