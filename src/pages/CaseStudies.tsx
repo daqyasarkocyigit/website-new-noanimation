@@ -315,12 +315,14 @@ const CaseStudies: React.FC = () => {
 
         .metric-card {
           background: white;
+          background: transparent;
           border: 1px solid #e5e7eb;
+          border: 1px solid rgba(156,163,175,0.2);
           border-radius: 16px;
           padding: 2rem;
           position: relative;
           overflow: hidden;
-          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
@@ -338,8 +340,9 @@ const CaseStudies: React.FC = () => {
         }
 
         .metric-card:hover {
-          transform: translateY(-8px) scale(1.02);
+          transform: translateY(-8px);
           border-color: #FF3333;
+          background: rgba(255,255,255,0.05);
           box-shadow: 0 20px 40px rgba(255, 51, 51, 0.15);
         }
 
@@ -387,12 +390,14 @@ const CaseStudies: React.FC = () => {
 
         .feature-card {
           background: white;
+          background: transparent;
           border: 1px solid #e5e7eb;
+          border: 1px solid rgba(156,163,175,0.2);
           border-radius: 16px;
           padding: 2.5rem;
           position: relative;
           overflow: hidden;
-          transition: all 0.4s ease;
+          transition: all 0.5s ease;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
@@ -412,6 +417,7 @@ const CaseStudies: React.FC = () => {
         .feature-card:hover {
           transform: translateY(-8px);
           border-color: #FF3333;
+          background: rgba(255,255,255,0.05);
           box-shadow: 0 20px 40px rgba(255, 51, 51, 0.15);
         }
 

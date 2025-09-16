@@ -8,7 +8,7 @@ const About: React.FC = () => {
   return (
     <div className="relative z-10">
       {/* Hero Section - Simplified without visual */}
-      <section className="pt-32 pb-20 relative overflow-hidden bg-white/50 backdrop-blur-sm">
+      <section className="pt-32 pb-20 relative overflow-hidden bg-transparent">
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -40,7 +40,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Our Approach Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-3 py-1 text-sm font-medium bg-gray-100 text-gray-700 rounded-full mb-4">OUR APPROACH</span>
@@ -77,7 +77,7 @@ const About: React.FC = () => {
               <AnimatedSection 
                 key={index} 
                 delay={0.1 * index} 
-                className="bg-transparent border border-gray-200/20 p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300"
+                className="bg-transparent border border-gray-200/20 p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:-translate-y-2 transition-all duration-500"
               >
                 <div className="w-12 h-12 rounded-lg bg-gray-100/50 flex items-center justify-center mb-6">
                   <span className="text-gray-700">{item.icon}</span>
@@ -91,7 +91,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Mission & Values Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-3 py-1 text-sm font-medium bg-gray-100 text-gray-700 rounded-full mb-4">OUR FOUNDATION</span>
@@ -103,7 +103,7 @@ const About: React.FC = () => {
           </AnimatedSection>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-16">
-            <AnimatedSection delay={0.1} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20">
+            <AnimatedSection delay={0.1} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:-translate-y-2 transition-all duration-500 border border-gray-200/20 hover:border-[#FF3333]/30">
               <div className="w-14 h-14 rounded-full bg-gray-100/50 flex items-center justify-center mb-6">
                 <Lightbulb size={24} className="text-gray-700" />
               </div>
@@ -115,7 +115,7 @@ const About: React.FC = () => {
               </p>
             </AnimatedSection>
             
-            <AnimatedSection delay={0.2} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20">
+            <AnimatedSection delay={0.2} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:-translate-y-2 transition-all duration-500 border border-gray-200/20 hover:border-[#FF3333]/30">
               <div className="w-14 h-14 rounded-full bg-gray-100/50 flex items-center justify-center mb-6">
                 <Target size={24} className="text-gray-700" />
               </div>
@@ -127,7 +127,7 @@ const About: React.FC = () => {
               </p>
             </AnimatedSection>
             
-            <AnimatedSection delay={0.3} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20">
+            <AnimatedSection delay={0.3} className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg hover:bg-white/5 hover:-translate-y-2 transition-all duration-500 border border-gray-200/20 hover:border-[#FF3333]/30">
               <div className="w-14 h-14 rounded-full bg-gray-100/50 flex items-center justify-center mb-6">
                 <Award size={24} className="text-cool-gray-700" />
               </div>

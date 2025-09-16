@@ -9,6 +9,7 @@ const Talent: React.FC = () => {
     <div className="relative z-10">
       {/* Hero Section - Simplified without visual */}
       <section className="pt-32 pb-20 relative overflow-hidden bg-white/50 backdrop-blur-sm">
+      <section className="pt-32 pb-20 relative overflow-hidden bg-transparent">
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -68,7 +69,7 @@ const Talent: React.FC = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-4xl mx-auto mb-16">
             <motion.span 
@@ -107,7 +108,7 @@ const Talent: React.FC = () => {
             ].map((item, index) => (
               <motion.div
                 key={index}
-                className="bg-transparent border border-gray-200/20 p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 transform hover:-translate-y-2"
+                className="bg-transparent border border-gray-200/20 p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 transform hover:-translate-y-2"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -126,7 +127,7 @@ const Talent: React.FC = () => {
       </section>
 
       {/* Talent Specializations Section with Azure Focus */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-transparent">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-4xl mx-auto mb-16">
             <h2 className="text-display-1 mb-6">Our Data Expertise</h2>
@@ -139,7 +140,7 @@ const Talent: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {/* Azure Data Platform */}
             <motion.div
-              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20 transform hover:-translate-y-1"
+              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -180,7 +181,7 @@ const Talent: React.FC = () => {
 
             {/* Microsoft Fabric */}
             <motion.div
-              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20 transform hover:-translate-y-1"
+              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -223,7 +224,7 @@ const Talent: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {/* Databricks Expertise - Enhanced with more details */}
             <motion.div
-              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20 transform hover:-translate-y-1"
+              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -266,7 +267,7 @@ const Talent: React.FC = () => {
 
             {/* Power BI */}
             <motion.div
-              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20 transform hover:-translate-y-1"
+              className="bg-transparent p-8 rounded-2xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 transform hover:-translate-y-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
@@ -312,7 +313,7 @@ const Talent: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Microsoft Power Platform */}
             <motion.div
-              className="bg-transparent p-6 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20"
+              className="bg-transparent p-6 rounded-xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 hover:-translate-y-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -354,7 +355,7 @@ const Talent: React.FC = () => {
 
             {/* Additional Service - AI & Machine Learning */}
             <motion.div
-              className="bg-transparent p-6 rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 border border-gray-200/20"
+              className="bg-transparent p-6 rounded-xl hover:shadow-lg hover:bg-white/5 hover:border-[#FF3333]/30 transition-all duration-500 border border-gray-200/20 hover:-translate-y-2"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
