@@ -134,4 +134,14 @@
   .tap-highlight-none {
     -webkit-tap-highlight-color: transparent;
   }
+  
+  /* News feed continuous scroll animation */
+  @keyframes continuousScroll {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
 }

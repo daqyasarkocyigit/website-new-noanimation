@@ -163,7 +163,7 @@ const Hero: React.FC = () => {
               className="relative p-6 rounded-2xl border border-white/20 h-[500px] overflow-hidden mx-auto max-w-lg"
               style={{
                 backdropFilter: 'blur(20px)',
-                background: 'rgba(255,255,255,0.3)',
+                animation: 'continuousScroll 40s linear infinite'
               }}
             >
               {/* Scrolling Feed Container */}
