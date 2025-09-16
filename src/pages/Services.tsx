@@ -4,7 +4,7 @@ import ServiceDetail from '../components/services/ServiceDetail';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
 import ServiceCaseStudies from '../components/services/ServiceCaseStudies';
-import { dataEngineeringCaseStudies } from '../data/caseStudies';
+import { dataEngineeringCaseStudies, powerPlatformCaseStudies } from '../data/caseStudies';
 import { motion } from 'framer-motion';
 
 const Services: React.FC = () => {
@@ -85,6 +85,11 @@ const Services: React.FC = () => {
         isReversed
         useCustomVisual={true}
         visualType="data-visualization"
+      />
+
+      <ServiceCaseStudies 
+        title="Microsoft Power Platform" 
+        caseStudies={powerPlatformCaseStudies.slice(0, 1)} 
       />
 
       <ServiceDetail
