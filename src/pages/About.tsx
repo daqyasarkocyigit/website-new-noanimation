@@ -271,7 +271,8 @@ const About: React.FC = () => {
       </section>
 
       <CallToAction />
-    </div>
+      </div>
+    </>
   );
 };
 
