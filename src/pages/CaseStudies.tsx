@@ -351,7 +351,7 @@ const CaseStudies: React.FC = () => {
         }
 
         .metric-label {
-          font-size: 0.75rem;
+          font-size: 0.6875rem;
           color: #6b7280;
           text-transform: uppercase;
           letter-spacing: 0.1em;
@@ -360,7 +360,7 @@ const CaseStudies: React.FC = () => {
         }
 
         .metric-value {
-          font-size: 2.5rem;
+          font-size: 1.875rem;
           font-weight: 700;
           font-family: 'Inter', sans-serif;
           background: linear-gradient(135deg, #1f2937, #FF3333);
@@ -370,7 +370,7 @@ const CaseStudies: React.FC = () => {
         }
 
         .metric-change {
-          font-size: 0.875rem;
+          font-size: 0.75rem;
           font-weight: 600;
         }
 
@@ -440,7 +440,7 @@ const CaseStudies: React.FC = () => {
         }
 
         .feature-title {
-          font-size: 1.25rem;
+          font-size: 1.125rem;
           font-weight: 600;
           color: #1f2937;
           margin-bottom: 1rem;
@@ -448,6 +448,7 @@ const CaseStudies: React.FC = () => {
 
         .feature-description {
           color: #6b7280;
+          font-size: 0.875rem;
           line-height: 1.7;
           margin-bottom: 1.5rem;
         }
@@ -516,16 +517,16 @@ const CaseStudies: React.FC = () => {
         <div className="header-container">
           <div className="header-content">
             <div className="header-badge bg-transparent border border-white/30">Enterprise Architecture</div>
-            <motion.h1 
-              className="text-4xl sm:text-5xl lg:text-6xl font-light mb-4 text-gray-900"
+            <motion.h1
+              className="text-heading-1 mb-4 text-gray-900"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
               Metadata-Driven Data Platform
             </motion.h1>
-            <motion.p 
-              className="text-xl text-gray-600 font-light"
+            <motion.p
+              className="text-body-large text-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -958,10 +959,10 @@ const CaseStudies: React.FC = () => {
         <AnimatedSection delay={0.6}>
           <section className="metrics-section mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
+              <h2 className="text-heading-1 mb-4 text-gray-900">
                 Performance Metrics
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-body-large text-gray-600">
                 Real-world results from our enterprise implementations
               </p>
             </div>
@@ -1022,10 +1023,10 @@ const CaseStudies: React.FC = () => {
         <AnimatedSection delay={0.8}>
           <section className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
+              <h2 className="text-heading-1 mb-4 text-gray-900">
                 Key Architecture Features
               </h2>
-              <p className="text-lg text-gray-600">
+              <p className="text-body-large text-gray-600">
                 Enterprise-grade capabilities for modern data platforms
               </p>
             </div>
