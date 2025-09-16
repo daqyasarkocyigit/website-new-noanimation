@@ -403,10 +403,16 @@ const Navbar: React.FC = () => {
               isOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
           >
-            {/* Header - Simplified without duplicate close button */}
+            {/* Header with Close Button */}
             <div className="flex items-center justify-between p-4 border-b border-gray-200">
               <span className="text-lg font-semibold text-gray-900">Menu</span>
-              {/* The close functionality is handled by the main hamburger button */}
+              <button
+                onClick={closeMenu}
+                className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors focus-ring tap-highlight-none touch-manipulation"
+                aria-label="Close menu"
+              >
+                <X size={20} className="text-gray-600" />
+              </button>
             </div>
 
             {/* Menu Content */}
@@ -415,7 +421,7 @@ const Navbar: React.FC = () => {
                 {/* Services Section */}
                 <div className="relative">
                   <button
-                    className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-900 focus-ring rounded-lg tap-highlight-none touch-manipulation hover:bg-gray-50"
+                    className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-700 hover:text-brand-red-600 focus-ring rounded-lg tap-highlight-none touch-manipulation hover:bg-gray-50 transition-colors duration-200"
                     onClick={toggleServices}
                     aria-expanded={servicesOpen}
                     aria-controls="mobile-services"
@@ -423,7 +429,7 @@ const Navbar: React.FC = () => {
                     <span>Services</span>
                     <ChevronDown
                       size={20}
-                      className={`transition-transform duration-300 ${
+                      className={`text-gray-500 transition-all duration-300 ${
                         servicesOpen ? 'rotate-180' : ''
                       }`}
                     />
@@ -437,7 +443,7 @@ const Navbar: React.FC = () => {
                         : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div className="pl-4 border-l-2 border-gray-100">
+                    <div className="pl-4 border-l-2 border-brand-red-100">
                       {[
                         { 
                           path: '/services#data-engineering', 
@@ -468,9 +474,9 @@ const Navbar: React.FC = () => {
                         <button
                           key={`mobile-service-${index}`}
                           onClick={() => handleServiceClick(item.path)}
-                          className="block w-full text-left py-3 px-3 text-gray-700 hover:bg-gray-50 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation"
+                          className="block w-full text-left py-3 px-3 text-gray-700 hover:bg-brand-red-50/60 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation border border-transparent hover:border-brand-red-200/50"
                         >
-                          <div className="font-medium text-gray-900">{item.label}</div>
+                          <div className="font-semibold text-gray-900 group-hover:text-brand-red-600">{item.label}</div>
                           <div className="text-sm text-gray-600 mt-0.5">{item.description}</div>
                         </button>
                       ))}
@@ -479,7 +485,7 @@ const Navbar: React.FC = () => {
                 </div>
 
                 {/* Main Navigation Links */}
-                <div className="border-t border-gray-200 pt-2 mt-2">
+                <div className="border-t border-gray-100 pt-2 mt-2">
                   {[
                     { to: '/talent', label: 'Hire Talent' },
                     { to: '/about', label: 'About' },
@@ -489,10 +495,10 @@ const Navbar: React.FC = () => {
                       key={`mobile-nav-${index}`}
                       to={item.to}
                       className={({ isActive }) => 
-                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-colors duration-200 focus-ring tap-highlight-none touch-manipulation min-h-[48px] flex items-center hover:bg-gray-50 ${
+                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-colors duration-200 focus-ring tap-highlight-none touch-manipulation min-h-[48px] flex items-center hover:bg-gray-50 hover:text-brand-red-600 ${
                           isActive 
                             ? 'text-brand-red-600 font-semibold bg-brand-red-50' 
-                            : 'text-gray-900 hover:text-brand-red-600'
+                            : 'text-gray-700'
                         }`
                       }
                       onClick={closeMenu}
