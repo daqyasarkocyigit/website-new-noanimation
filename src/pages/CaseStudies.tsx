@@ -5,6 +5,14 @@ import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
 
 const CaseStudies: React.FC = () => {
+}
+import React from 'react';
+import { motion } from 'framer-motion';
+import CaseStudyCard from '../components/caseStudies/CaseStudyCard';
+import AnimatedSection from '../components/utils/AnimatedSection';
+import CallToAction from '../components/home/CallToAction';
+
+const CaseStudies: React.FC = () => {
   return (
     <>
       <section className="pt-32 pb-16 animated-bg">
