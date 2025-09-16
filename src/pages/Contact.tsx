@@ -8,7 +8,7 @@ const Contact: React.FC = () => {
   return (
     <div className="relative z-10">
       {/* Hero Section - Simplified without visual */}
-      <section className="pt-32 pb-20 relative overflow-hidden bg-transparent">
+      <section className="pt-32 pb-20 relative overflow-hidden">
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -40,7 +40,7 @@ const Contact: React.FC = () => {
       </section>
 
       {/* Contact Information & Form Section */}
-      <section className="py-20 bg-transparent">
+      <section className="py-20">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
             
@@ -99,7 +99,7 @@ const Contact: React.FC = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-transparent">
+      <section className="py-20">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-heading-1 mb-6">Frequently Asked Questions</h2>

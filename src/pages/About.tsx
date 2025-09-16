@@ -8,7 +8,7 @@ const About: React.FC = () => {
   return (
     <div className="relative z-10">
       {/* Hero Section - Simplified without visual */}
-      <section className="pt-32 pb-20 relative overflow-hidden bg-transparent">
+      <section className="pt-32 pb-20 relative overflow-hidden">
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -40,7 +40,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Our Approach Section */}
-      <section className="py-20 bg-transparent">
+      <section className="py-20">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-3 py-1 text-sm font-medium bg-transparent border border-gray-300/30 text-gray-700 rounded-full mb-4 hover:bg-white/5 transition-all duration-300">OUR APPROACH</span>
@@ -91,7 +91,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Mission & Values Section */}
-      <section className="py-20 bg-transparent">
+      <section className="py-20">
         <div className="container mx-auto px-4 md:px-6">
           <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-3 py-1 text-sm font-medium bg-transparent border border-gray-300/30 text-gray-700 rounded-full mb-4 hover:bg-white/5 transition-all duration-300">OUR FOUNDATION</span>
