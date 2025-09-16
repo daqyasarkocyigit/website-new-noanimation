@@ -10,7 +10,6 @@ const Services: React.FC = () => {
     <div className="relative z-10">
       {/* Hero Section with Gradient Background */}
       <section className="pt-32 pb-20 relative overflow-hidden bg-white/50 backdrop-blur-sm">
-      <section className="pt-32 pb-20 relative overflow-hidden bg-transparent">
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
