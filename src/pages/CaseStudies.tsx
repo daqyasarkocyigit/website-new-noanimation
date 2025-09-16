@@ -506,3 +506,5 @@ const CaseStudies: React.FC = () => {
   )
   )
 }
+  )
+}
