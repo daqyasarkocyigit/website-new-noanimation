@@ -13,7 +13,6 @@ const Services = lazy(() => import('./pages/Services'));
 const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Talent = lazy(() => import('./pages/Talent'));
-const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
 const Terms = lazy(() => import('./pages/Terms'));
@@ -234,11 +233,6 @@ function App() {
                 <Route path="/talent" element={
                   <RouteErrorBoundary>
                     <Talent />
-                  </RouteErrorBoundary>
-                } />
-                <Route path="/case-studies" element={
-                  <RouteErrorBoundary>
-                    <CaseStudies />
                   </RouteErrorBoundary>
                 } />
                 <Route path="/privacy" element={
