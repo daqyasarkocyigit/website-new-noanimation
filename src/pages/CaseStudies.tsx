@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import AnimatedSection from '../components/utils/AnimatedSection';
+import CallToAction from '../components/home/CallToAction';
 
 const CaseStudies: React.FC = () => {
   const particlesRef = useRef<HTMLDivElement>(null);
@@ -11,7 +12,7 @@ const CaseStudies: React.FC = () => {
       const container = particlesRef.current;
       if (!container) return;
 
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 30; i++) {
         const particle = document.createElement('div');
         particle.className = 'particle';
         particle.style.cssText = `
@@ -29,7 +30,7 @@ const CaseStudies: React.FC = () => {
       }
     };
 
-    // Hide loading and create particles
+    // Create particles
     setTimeout(() => {
       createParticles();
     }, 500);
@@ -107,11 +108,11 @@ const CaseStudies: React.FC = () => {
             transform: translateY(100vh) scale(0);
           }
           10% {
-            opacity: 1;
+            opacity: 0.6;
             transform: translateY(90vh) scale(1);
           }
           90% {
-            opacity: 1;
+            opacity: 0.6;
             transform: translateY(10vh) scale(1);
           }
         }
@@ -123,12 +124,12 @@ const CaseStudies: React.FC = () => {
 
         @keyframes gridMove {
           from { transform: translate(0, 0); }
-          to { transform: translate(100px, 100px); }
+          to { transform: translate(50px, 50px); }
         }
 
         @keyframes headerPulse {
-          0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-          50% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+          0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+          50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
         }
 
         @keyframes badgeShine {
@@ -163,10 +164,10 @@ const CaseStudies: React.FC = () => {
           top: -50%;
           left: -50%;
           background: 
-            radial-gradient(ellipse at 20% 30%, rgba(255, 51, 51, 0.15) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 70%, rgba(255, 51, 51, 0.1) 0%, transparent 50%),
-            radial-gradient(ellipse at 50% 50%, rgba(255, 51, 51, 0.08) 0%, transparent 50%);
-          animation: bgRotate 30s linear infinite;
+            radial-gradient(ellipse at 20% 30%, rgba(255, 51, 51, 0.08) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 70%, rgba(107, 114, 128, 0.06) 0%, transparent 50%),
+            radial-gradient(ellipse at 50% 50%, rgba(255, 51, 51, 0.04) 0%, transparent 50%);
+          animation: bgRotate 45s linear infinite;
         }
 
         .bg-grid {
@@ -174,10 +175,10 @@ const CaseStudies: React.FC = () => {
           width: 100%;
           height: 100%;
           background-image: 
-            linear-gradient(rgba(255, 51, 51, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 51, 51, 0.03) 1px, transparent 1px);
-          background-size: 100px 100px;
-          animation: gridMove 20s linear infinite;
+            linear-gradient(rgba(255, 51, 51, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 51, 51, 0.02) 1px, transparent 1px);
+          background-size: 60px 60px;
+          animation: gridMove 30s linear infinite;
         }
 
         .particle {
@@ -204,9 +205,9 @@ const CaseStudies: React.FC = () => {
           transform: translate(-50%, -50%);
           width: 600px;
           height: 300px;
-          background: radial-gradient(circle, rgba(255, 51, 51, 0.2) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(255, 51, 51, 0.1) 0%, transparent 70%);
           filter: blur(100px);
-          animation: headerPulse 4s ease-in-out infinite;
+          animation: headerPulse 6s ease-in-out infinite;
         }
 
         .header-content {
@@ -241,20 +242,19 @@ const CaseStudies: React.FC = () => {
         }
 
         .architecture-container {
-          background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.6));
-          backdrop-filter: blur(20px);
-          border: 1px solid rgba(148, 163, 184, 0.1);
+          background: white;
+          border: 1px solid #e5e7eb;
           border-radius: 24px;
           overflow: hidden;
           box-shadow: 
-            0 20px 40px rgba(0, 0, 0, 0.4),
-            inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            0 20px 40px rgba(0, 0, 0, 0.1),
+            0 4px 8px rgba(0, 0, 0, 0.05);
         }
 
         .canvas-header {
-          background: rgba(15, 23, 42, 0.9);
+          background: #f8fafc;
           padding: 1.5rem 2rem;
-          border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+          border-bottom: 1px solid #e5e7eb;
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -264,8 +264,8 @@ const CaseStudies: React.FC = () => {
 
         .canvas-title {
           font-size: 0.875rem;
-          font-weight: 500;
-          color: #CBD5E1;
+          font-weight: 600;
+          color: #374151;
           letter-spacing: 0.05em;
         }
 
@@ -314,14 +314,14 @@ const CaseStudies: React.FC = () => {
         }
 
         .metric-card {
-          background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(51, 65, 85, 0.4));
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(148, 163, 184, 0.1);
+          background: white;
+          border: 1px solid #e5e7eb;
           border-radius: 16px;
           padding: 2rem;
           position: relative;
           overflow: hidden;
           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .metric-card::before {
@@ -330,7 +330,7 @@ const CaseStudies: React.FC = () => {
           top: 0;
           left: 0;
           right: 0;
-          height: 2px;
+          height: 3px;
           background: linear-gradient(90deg, #FF3333, #e02d2d);
           transform: scaleX(0);
           transform-origin: left;
@@ -340,7 +340,7 @@ const CaseStudies: React.FC = () => {
         .metric-card:hover {
           transform: translateY(-8px) scale(1.02);
           border-color: #FF3333;
-          box-shadow: 0 20px 40px rgba(255, 51, 51, 0.3);
+          box-shadow: 0 20px 40px rgba(255, 51, 51, 0.15);
         }
 
         .metric-card:hover::before {
@@ -349,17 +349,18 @@ const CaseStudies: React.FC = () => {
 
         .metric-label {
           font-size: 0.75rem;
-          color: #94A3B8;
+          color: #6b7280;
           text-transform: uppercase;
           letter-spacing: 0.1em;
           margin-bottom: 0.5rem;
+          font-weight: 500;
         }
 
         .metric-value {
           font-size: 2.5rem;
           font-weight: 700;
           font-family: 'Inter', sans-serif;
-          background: linear-gradient(135deg, #E2E8F0, #FF3333);
+          background: linear-gradient(135deg, #1f2937, #FF3333);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           margin-bottom: 0.5rem;
@@ -385,14 +386,14 @@ const CaseStudies: React.FC = () => {
         }
 
         .feature-card {
-          background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(51, 65, 85, 0.4));
-          backdrop-filter: blur(10px);
-          border: 1px solid rgba(148, 163, 184, 0.1);
+          background: white;
+          border: 1px solid #e5e7eb;
           border-radius: 16px;
           padding: 2.5rem;
           position: relative;
           overflow: hidden;
           transition: all 0.4s ease;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .feature-card::before {
@@ -411,11 +412,11 @@ const CaseStudies: React.FC = () => {
         .feature-card:hover {
           transform: translateY(-8px);
           border-color: #FF3333;
-          box-shadow: 0 20px 40px rgba(255, 51, 51, 0.2);
+          box-shadow: 0 20px 40px rgba(255, 51, 51, 0.15);
         }
 
         .feature-card:hover::before {
-          opacity: 0.05;
+          opacity: 0.03;
         }
 
         .feature-number {
@@ -435,29 +436,30 @@ const CaseStudies: React.FC = () => {
         .feature-title {
           font-size: 1.25rem;
           font-weight: 600;
-          color: #E2E8F0;
+          color: #1f2937;
           margin-bottom: 1rem;
         }
 
         .feature-description {
-          color: #CBD5E1;
+          color: #6b7280;
           line-height: 1.7;
           margin-bottom: 1.5rem;
         }
 
         .feature-code {
-          background: #0F172A;
-          border: 1px solid rgba(148, 163, 184, 0.1);
+          background: #f8fafc;
+          border: 1px solid #e5e7eb;
           border-radius: 8px;
           padding: 1rem;
           font-family: 'Space Mono', monospace;
           font-size: 0.875rem;
-          color: #CBD5E1;
+          color: #374151;
           overflow-x: auto;
         }
 
         .code-keyword {
           color: #FF3333;
+          font-weight: 600;
         }
 
         .code-string {
@@ -494,7 +496,7 @@ const CaseStudies: React.FC = () => {
         }
       `}</style>
 
-      {/* Background */}
+      {/* Light Background */}
       <div className="bg-container">
         <div className="bg-gradient"></div>
         <div className="bg-grid"></div>
@@ -509,7 +511,7 @@ const CaseStudies: React.FC = () => {
           <div className="header-content">
             <div className="header-badge">Enterprise Architecture</div>
             <motion.h1 
-              className="text-4xl sm:text-5xl lg:text-6xl font-extralight mb-4 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent"
+              className="text-4xl sm:text-5xl lg:text-6xl font-light mb-4 text-gray-900"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -582,12 +584,12 @@ const CaseStudies: React.FC = () => {
                 </filter>
 
                 <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feDropShadow dx="0" dy="8" stdDeviation="10" floodOpacity="0.2"/>
+                  <feDropShadow dx="0" dy="4" stdDeviation="8" floodOpacity="0.1"/>
                 </filter>
 
                 {/* Arrow Markers */}
                 <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
-                  <polygon points="0 0, 10 3.5, 0 7" fill="#94A3B8" opacity="0.8"/>
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#9CA3AF" opacity="0.8"/>
                 </marker>
 
                 {/* Animated Gradient for Flow */}
@@ -604,18 +606,18 @@ const CaseStudies: React.FC = () => {
                 </linearGradient>
               </defs>
 
-              {/* Grid Background Pattern */}
+              {/* Light Grid Background Pattern */}
               <pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse">
-                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,51,51,0.05)" strokeWidth="1"/>
+                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,51,51,0.08)" strokeWidth="1"/>
               </pattern>
               <rect width="100%" height="100%" fill="url(#grid)" />
 
               {/* Section Labels */}
               <g id="sectionLabels">
-                <text x="140" y="70" fill="#64748B" fontSize="12" fontWeight="600" letterSpacing="0.1em">DATA SOURCES</text>
-                <text x="540" y="70" fill="#64748B" fontSize="12" fontWeight="600" letterSpacing="0.1em" textAnchor="middle">INGESTION</text>
-                <text x="980" y="70" fill="#64748B" fontSize="12" fontWeight="600" letterSpacing="0.1em" textAnchor="middle">PROCESSING</text>
-                <text x="1390" y="70" fill="#64748B" fontSize="12" fontWeight="600" letterSpacing="0.1em" textAnchor="middle">SERVING</text>
+                <text x="140" y="70" fill="#374151" fontSize="12" fontWeight="600" letterSpacing="0.1em">DATA SOURCES</text>
+                <text x="540" y="70" fill="#374151" fontSize="12" fontWeight="600" letterSpacing="0.1em" textAnchor="middle">INGESTION</text>
+                <text x="980" y="70" fill="#374151" fontSize="12" fontWeight="600" letterSpacing="0.1em" textAnchor="middle">PROCESSING</text>
+                <text x="1390" y="70" fill="#374151" fontSize="12" fontWeight="600" letterSpacing="0.1em" textAnchor="middle">SERVING</text>
               </g>
 
               {/* Data Sources */}
@@ -761,8 +763,8 @@ const CaseStudies: React.FC = () => {
               {/* Processing Layer - Medallion Architecture */}
               <g id="processingLayer">
                 <g transform="translate(780, 100)">
-                  <rect x="0" y="0" width="400" height="550" rx="20" fill="none" stroke="rgba(148,163,184,0.2)" strokeWidth="2" strokeDasharray="10,5"/>
-                  <text x="200" y="30" fill="#64748B" fontSize="13" textAnchor="middle">Microsoft Fabric Lakehouse</text>
+                  <rect x="0" y="0" width="400" height="550" rx="20" fill="none" stroke="rgba(107,114,128,0.3)" strokeWidth="2" strokeDasharray="10,5"/>
+                  <text x="200" y="30" fill="#374151" fontSize="13" textAnchor="middle">Microsoft Fabric Lakehouse</text>
 
                   {/* Bronze Layer */}
                   <g className="medallion-layer" transform="translate(30, 60)">
@@ -781,7 +783,7 @@ const CaseStudies: React.FC = () => {
 
                   {/* Arrow Bronze to Silver */}
                   <g transform="translate(200, 160)">
-                    <line x1="0" y1="0" x2="0" y2="60" stroke="#94A3B8" strokeWidth="2" markerEnd="url(#arrowhead)" opacity="0.6"/>
+                    <line x1="0" y1="0" x2="0" y2="60" stroke="#9CA3AF" strokeWidth="2" markerEnd="url(#arrowhead)" opacity="0.6"/>
                     <circle r="3" fill="#D97706">
                       <animateMotion dur="2s" repeatCount="indefinite">
                         <mpath href="#bronzeToSilver"/>
@@ -817,7 +819,7 @@ const CaseStudies: React.FC = () => {
 
                   {/* Arrow Silver to Gold */}
                   <g transform="translate(200, 320)">
-                    <line x1="0" y1="0" x2="0" y2="60" stroke="#94A3B8" strokeWidth="2" markerEnd="url(#arrowhead)" opacity="0.6"/>
+                    <line x1="0" y1="0" x2="0" y2="60" stroke="#9CA3AF" strokeWidth="2" markerEnd="url(#arrowhead)" opacity="0.6"/>
                     <circle r="3" fill="#9CA3AF">
                       <animateMotion dur="2s" repeatCount="indefinite">
                         <mpath href="#silverToGold"/>
@@ -846,7 +848,7 @@ const CaseStudies: React.FC = () => {
                     </g>
                   </g>
 
-                  <text x="200" y="520" fill="#64748B" fontSize="11" textAnchor="middle">Azure Data Lake Storage Gen2</text>
+                  <text x="200" y="520" fill="#6B7280" fontSize="11" textAnchor="middle">Azure Data Lake Storage Gen2</text>
                 </g>
               </g>
 
@@ -914,32 +916,32 @@ const CaseStudies: React.FC = () => {
 
               {/* Governance Layer */}
               <g id="governanceLayer" transform="translate(50, 750)">
-                <rect x="0" y="0" width="1450" height="120" rx="20" fill="none" stroke="rgba(148,163,184,0.2)" strokeWidth="2"/>
-                <text x="725" y="30" fill="#64748B" fontSize="12" fontWeight="600" letterSpacing="0.15em" textAnchor="middle">GOVERNANCE & SECURITY</text>
+                <rect x="0" y="0" width="1450" height="120" rx="20" fill="none" stroke="rgba(107,114,128,0.2)" strokeWidth="2"/>
+                <text x="725" y="30" fill="#374151" fontSize="12" fontWeight="600" letterSpacing="0.15em" textAnchor="middle">GOVERNANCE & SECURITY</text>
                 
                 <g transform="translate(150, 45)">
                   <rect x="0" y="0" width="180" height="50" rx="10" fill="rgba(255,51,51,0.1)" stroke="rgba(255,51,51,0.3)" strokeWidth="1"/>
-                  <text x="90" y="30" fill="#94A3B8" fontSize="12" textAnchor="middle">Key Vault</text>
+                  <text x="90" y="30" fill="#6B7280" fontSize="12" textAnchor="middle">Key Vault</text>
                 </g>
 
                 <g transform="translate(380, 45)">
                   <rect x="0" y="0" width="180" height="50" rx="10" fill="rgba(107,114,128,0.1)" stroke="rgba(107,114,128,0.3)" strokeWidth="1"/>
-                  <text x="90" y="30" fill="#94A3B8" fontSize="12" textAnchor="middle">RBAC</text>
+                  <text x="90" y="30" fill="#6B7280" fontSize="12" textAnchor="middle">RBAC</text>
                 </g>
 
                 <g transform="translate(610, 45)">
                   <rect x="0" y="0" width="180" height="50" rx="10" fill="rgba(55,65,81,0.1)" stroke="rgba(55,65,81,0.3)" strokeWidth="1"/>
-                  <text x="90" y="30" fill="#94A3B8" fontSize="12" textAnchor="middle">Data Lineage</text>
+                  <text x="90" y="30" fill="#6B7280" fontSize="12" textAnchor="middle">Data Lineage</text>
                 </g>
 
                 <g transform="translate(840, 45)">
                   <rect x="0" y="0" width="180" height="50" rx="10" fill="rgba(255,51,51,0.1)" stroke="rgba(255,51,51,0.3)" strokeWidth="1"/>
-                  <text x="90" y="30" fill="#94A3B8" fontSize="12" textAnchor="middle">Monitoring</text>
+                  <text x="90" y="30" fill="#6B7280" fontSize="12" textAnchor="middle">Monitoring</text>
                 </g>
 
                 <g transform="translate(1070, 45)">
                   <rect x="0" y="0" width="180" height="50" rx="10" fill="rgba(107,114,128,0.1)" stroke="rgba(107,114,128,0.3)" strokeWidth="1"/>
-                  <text x="90" y="30" fill="#94A3B8" fontSize="12" textAnchor="middle">Compliance</text>
+                  <text x="90" y="30" fill="#6B7280" fontSize="12" textAnchor="middle">Compliance</text>
                 </g>
               </g>
             </svg>
@@ -949,6 +951,15 @@ const CaseStudies: React.FC = () => {
         {/* Metrics Section */}
         <AnimatedSection delay={0.6}>
           <section className="metrics-section mb-16">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
+                Performance Metrics
+              </h2>
+              <p className="text-lg text-gray-600">
+                Real-world results from our enterprise implementations
+              </p>
+            </div>
+
             <div className="metrics-grid">
               <div className="metric-card">
                 <div className="metric-label">Data Sources</div>
@@ -1005,7 +1016,7 @@ const CaseStudies: React.FC = () => {
         <AnimatedSection delay={0.8}>
           <section className="mb-16">
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-extralight mb-4 bg-gradient-to-r from-gray-900 to-gray-600 bg-clip-text text-transparent">
+              <h2 className="text-3xl sm:text-4xl font-light mb-4 text-gray-900">
                 Key Architecture Features
               </h2>
               <p className="text-lg text-gray-600">
@@ -1095,6 +1106,8 @@ const CaseStudies: React.FC = () => {
           </section>
         </AnimatedSection>
       </div>
+
+      <CallToAction />
     </>
   );
 };
