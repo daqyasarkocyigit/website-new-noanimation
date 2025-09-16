@@ -1084,3 +1084,24 @@ export default CaseStudies;
     }
   )
 }
+    }
+  )
+}</section>
+        </AnimatedSection>
+      </div>
+
+      <CallToAction />
+    </>
+  )
+  )
+  )
+  );
+};
+
+export default CaseStudies;
+    }
+  )
+}
+    }
+  )
+}
