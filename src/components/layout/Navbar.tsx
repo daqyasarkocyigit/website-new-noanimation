@@ -221,7 +221,7 @@ const Navbar: React.FC = () => {
                     <div 
                       key={index}
                       className="px-2 sm:px-2 px-1"
-                      className="block w-full text-left py-3 px-3 text-gray-700 hover:bg-gray-50 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation min-h-[52px]"
+                    >
                       <button 
                         onClick={() => handleServiceClick(item.path)}
                         className="group/item flex items-start w-full text-left px-4 py-3 sm:py-3 py-4 rounded-lg transition-all duration-200 hover:bg-gray-50 focus-ring touch-manipulation"
@@ -417,8 +417,8 @@ const Navbar: React.FC = () => {
                       }
                       onClick={closeMenu}
                     >
-                      <div className="font-medium text-sm">{item.label}</div>
-                      <div className="text-xs text-gray-500 mt-0.5 leading-tight">{item.description}</div>
+                      {item.label}
+                    </NavLink>
                   ))}
                 </div>
               </div>
