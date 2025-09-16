@@ -54,12 +54,18 @@ self.addEventListener('activate', (event) => {
 
 // Enhanced fetch event with better caching strategies
 self.addEventListener('fetch', (event) => {
+  const url = new URL(event.request.url);
+  
+  // Bypass service worker for development requests
+  if (url.hostname === 'localhost' || url.hostname.includes('webcontainer-api.io')) {
+    return;
+  }
+
   // Skip non-GET requests
   if (event.request.method !== 'GET') {
     return;
   }
 
-  const url = new URL(event.request.url);
   
   // Skip external requests except fonts and CDN resources
   if (!url.origin.includes(self.location.origin) && 

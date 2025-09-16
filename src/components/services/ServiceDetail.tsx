@@ -91,7 +91,6 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
                   />
                 )}
               </div>
-              </div>
             </div>
           </AnimatedSection>
         </div>
