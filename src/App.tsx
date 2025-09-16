@@ -236,11 +236,6 @@ function App() {
                     <Talent />
                   </RouteErrorBoundary>
                 } />
-                <Route path="/case-studies" element={
-                  <RouteErrorBoundary>
-                    <CaseStudies />
-                  </RouteErrorBoundary>
-                } />
                 <Route path="/privacy" element={
                   <RouteErrorBoundary>
                     <Privacy />
