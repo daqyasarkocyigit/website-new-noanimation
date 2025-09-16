@@ -160,41 +160,40 @@ const Hero: React.FC = () => {
           >
             {/* Continuous Success Stories Feed */}
             <div 
-              className="relative p-6 rounded-2xl border border-white/20 h-[500px] lg:h-[500px] sm:h-[200px] overflow-hidden mx-auto max-w-lg"
+              className="relative p-6 rounded-2xl border border-white/20 h-[500px] overflow-hidden mx-auto max-w-lg"
               style={{
                 backdropFilter: 'blur(20px)',
-                animation: window.innerWidth < 640 ? 'continuousScrollHorizontal 30s linear infinite' : 'continuousScroll 40s linear infinite'
+                animation: 'continuousScroll 40s linear infinite'
               }}
             >
               {/* Scrolling Feed Container */}
               <div 
-                className="absolute inset-x-6 top-0 flex flex-col lg:flex-col sm:flex-row sm:inset-y-6 sm:left-0 sm:top-auto"
+                className="absolute inset-x-6 top-0 flex flex-col"
                 style={{
-                  animation: window.innerWidth < 640 ? 'continuousScrollHorizontal 30s linear infinite' : 'continuousScroll 40s linear infinite'
+                  animation: 'continuousScroll 40s linear infinite'
                 }}
               >
                 {/* First Set of Stories */}
                 {successStories.map((story, index) => (
                   <div
                     key={`first-${index}`}
-                    className="flex items-start gap-3 p-4 mb-4 lg:mb-4 sm:mb-0 sm:mr-4 rounded-xl flex-shrink-0"
+                    className="flex items-start gap-3 p-4 mb-4 rounded-xl"
                     style={{
                       background: 'rgba(255,255,255,0.2)',
                       backdropFilter: 'blur(10px)',
-                      minHeight: '120px',
-                      minWidth: window.innerWidth < 640 ? '280px' : 'auto'
+                      minHeight: '120px'
                     }}
                   >
                     <div className="flex-1">
                       <div className="mb-2">
-                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full whitespace-nowrap">
+                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
                           {story.type}
                         </span>
                       </div>
-                      <h4 className="text-sm font-medium text-gray-800 mb-1 line-clamp-2">
+                      <h4 className="text-sm font-medium text-gray-800 mb-1">
                         {story.title}
                       </h4>
-                      <p className="text-xs text-gray-600 line-clamp-2">
+                      <p className="text-xs text-gray-600">
                         {story.description}
                       </p>
                     </div>
@@ -205,24 +204,23 @@ const Hero: React.FC = () => {
                 {successStories.map((story, index) => (
                   <div
                     key={`second-${index}`}
-                    className="flex items-start gap-3 p-4 mb-4 lg:mb-4 sm:mb-0 sm:mr-4 rounded-xl flex-shrink-0"
+                    className="flex items-start gap-3 p-4 mb-4 rounded-xl"
                     style={{
                       background: 'rgba(255,255,255,0.2)',
                       backdropFilter: 'blur(10px)',
-                      minHeight: '120px',
-                      minWidth: window.innerWidth < 640 ? '280px' : 'auto'
+                      minHeight: '120px'
                     }}
                   >
                     <div className="flex-1">
                       <div className="mb-2">
-                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full whitespace-nowrap">
+                        <span className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-full">
                           {story.type}
                         </span>
                       </div>
-                      <h4 className="text-sm font-medium text-gray-800 mb-1 line-clamp-2">
+                      <h4 className="text-sm font-medium text-gray-800 mb-1">
                         {story.title}
                       </h4>
-                      <p className="text-xs text-gray-600 line-clamp-2">
+                      <p className="text-xs text-gray-600">
                         {story.description}
                       </p>
                     </div>
@@ -232,19 +230,15 @@ const Hero: React.FC = () => {
 
               {/* Gradient Overlays for Smooth Fade */}
               <div 
-                className="absolute top-0 left-0 right-0 h-16 lg:h-16 sm:h-full sm:w-16 sm:right-auto pointer-events-none z-10"
+                className="absolute top-0 left-0 right-0 h-16 pointer-events-none z-10"
                 style={{
-                  background: window.innerWidth < 640 ? 
-                    'linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 100%)' :
-                    'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
+                  background: 'linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
                 }}
               />
               <div 
-                className="absolute bottom-0 left-0 right-0 h-16 lg:h-16 sm:h-full sm:w-16 sm:left-auto sm:right-0 pointer-events-none z-10"
+                className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none z-10"
                 style={{
-                  background: window.innerWidth < 640 ? 
-                    'linear-gradient(270deg, rgba(255,255,255,0.3) 0%, transparent 100%)' :
-                    'linear-gradient(0deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
+                  background: 'linear-gradient(0deg, rgba(255,255,255,0.3) 0%, transparent 100%)'
                 }}
               />
             </div>
