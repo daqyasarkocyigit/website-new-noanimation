@@ -260,6 +260,7 @@ ${formData.message}
         </form>
       )}
     </div>
+    </div>
   );
 };
 
