@@ -276,7 +276,6 @@ const Navbar: React.FC = () => {
                       <button 
                         onClick={() => handleServiceClick(item.path)}
                         className="group/item flex items-start w-full text-left px-4 py-3 sm:py-3 py-4 rounded-lg transition-all duration-200 hover:bg-brand-red-50 focus-ring touch-manipulation"
-                        role="menuitem"
                       >
                         <div className="flex-1">
                          <div className="font-medium text-gray-900 group-hover/item:text-brand-red-600 transition-colors duration-200 mb-1 sm:text-base text-base">
