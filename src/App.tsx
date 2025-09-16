@@ -16,6 +16,7 @@ const Talent = lazy(() => import('./pages/Talent'));
 const Privacy = lazy(() => import('./pages/Privacy'));
 const CookiePolicy = lazy(() => import('./pages/CookiePolicy'));
 const Terms = lazy(() => import('./pages/Terms'));
+const CaseStudies = lazy(() => import('./pages/CaseStudies'));
 
 // Enhanced loading component with better UX
 const PageLoader = () => {
@@ -186,6 +187,11 @@ function App() {
                 <Route path="/talent" element={
                   <RouteErrorBoundary>
                     <Talent />
+                  </RouteErrorBoundary>
+                } />
+                <Route path="/case-studies" element={
+                  <RouteErrorBoundary>
+                    <CaseStudies />
                   </RouteErrorBoundary>
                 } />
                 <Route path="/privacy" element={
