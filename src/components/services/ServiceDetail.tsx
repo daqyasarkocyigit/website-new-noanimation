@@ -78,6 +78,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
               
               {/* Main visual container - Mobile-optimized aspect ratio */}
               <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-900 w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px]">
+              <div className="relative rounded-xl overflow-hidden hover:shadow-lg bg-gray-900 w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px] border border-gray-200/20">
                 {useCustomVisual && visualType ? (
                   <div className="w-full h-full relative z-10">
                     <ResponsiveServiceVisual type={visualType} />

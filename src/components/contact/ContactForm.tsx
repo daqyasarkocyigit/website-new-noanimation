@@ -100,6 +100,7 @@ ${formData.message}
 
   return (
     <div className="bg-white rounded-xl shadow-xl p-4 sm:p-6 md:p-8">
+    <div className="bg-transparent rounded-xl hover:shadow-lg hover:bg-white/5 transition-all duration-300 p-4 sm:p-6 md:p-8 border border-gray-200/20">
       {isSubmitted ? (
         <motion.div 
           className="text-center py-8"
