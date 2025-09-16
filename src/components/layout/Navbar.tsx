@@ -188,7 +188,7 @@ const Navbar: React.FC = () => {
                   {[
                     { 
                       path: '/services#data-engineering', 
-                      label: 'Data Engineering & Case Studies',
+                      label: 'Data Engineering',
                       description: 'Build robust data pipelines and infrastructure'
                     },
                     { 
