@@ -182,6 +182,16 @@
     
     <!-- Error handling script - runs immediately -->
     <script>
+      // Ensure console is available
+      window.console = window.console || {
+        log: function() {},
+        error: function() {},
+        warn: function() {},
+        info: function() {}
+      };
+      
+      console.log('🏁 Index.html script starting...');
+      
       // Global error handling
       window.addEventListener('error', function(e) {
         console.error('Global error caught:', e.error);
@@ -189,22 +199,41 @@
         // Show error message after 10 seconds if app doesn't load
         setTimeout(function() {
           const loading = document.getElementById('app-loading');
-          if (loading && loading.style.display !== 'none') {
+          const root = document.getElementById('root');
+          
+          // Check if app actually loaded
+          const appLoaded = root && root.children.length > 0;
+          
+          if (loading && loading.style.display !== 'none' && !appLoaded) {
+            console.error('App failed to load after 10 seconds');
             loading.innerHTML = `
               <div class="loading-content">
-                <h2 style="color: #dc2626; margin-bottom: 8px;">Loading Error</h2>
+                <h2 style="color: #FF3333; margin-bottom: 8px;">Loading Error</h2>
                 <p style="color: #7f1d1d; font-size: 14px; margin-bottom: 16px;">The application failed to load properly.</p>
                 <button onclick="window.location.reload()" style="
-                  background: #dc2626; 
+                  background: #FF3333; 
                   color: white; 
                   border: none; 
                   padding: 10px 20px; 
                   border-radius: 6px; 
                   cursor: pointer;
                   font-size: 14px;
+                  margin-right: 10px;
                 ">Reload Page</button>
+                <button onclick="console.log('Debug info:', {url: window.location.href, userAgent: navigator.userAgent, timestamp: new Date().toISOString()})" style="
+                  background: transparent; 
+                  color: #FF3333; 
+                  border: 1px solid #FF3333; 
+                  padding: 10px 20px; 
+                  border-radius: 6px; 
+                  cursor: pointer;
+                  font-size: 14px;
+                ">Debug Info</button>
                 <p style="color: #6b7280; font-size: 12px; margin-top: 16px;">
                   If this problem persists, please contact support.
+                </p>
+                <p style="color: #6b7280; font-size: 10px; margin-top: 8px;">
+                  Debug: ${navigator.userAgent} - ${new Date().toISOString()}
                 </p>
               </div>
             `;
@@ -214,17 +243,23 @@
       
       // Hide loading when DOM is fully loaded (fallback)
       document.addEventListener('DOMContentLoaded', function() {
+        console.log('📄 DOM Content Loaded');
         setTimeout(function() {
           const root = document.getElementById('root');
           const loading = document.getElementById('app-loading');
           
           // If root has content, hide loading
           if (root && root.children.length > 0 && loading) {
+            console.log('✅ App content detected, hiding loading');
             loading.style.display = 'none';
             document.body.classList.add('app-loaded');
+          } else {
+            console.log('⚠️ No app content detected yet');
           }
-        }, 1000);
+        }, 2000);
       });
+      
+      console.log('✅ Index.html script loaded');
     </script>
     
     <script type="module" src="/src/main.tsx"></script>
