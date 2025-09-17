@@ -176,6 +176,16 @@ function initializeApp() {
 
 // Global error handling for uncaught errors
 window.addEventListener('error', (event) => {
+  // Filter out generic cross-origin script errors (usually from third-party scripts)
+  if (event.message === 'Script error.' && event.error === null) {
+    console.warn('⚠️ Third-party script error (likely from external service like analytics/tracking):', {
+      message: event.message,
+      filename: event.filename || 'unknown'
+    });
+    return;
+  }
+  
+  // Only log actionable errors from our own code
   console.error('🚨 Global error:', event.error);
   console.error('Error details:', {
     message: event.message,
