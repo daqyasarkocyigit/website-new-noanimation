@@ -133,7 +133,7 @@ ${formData.message}
                 required
                 aria-invalid={errors.name ? 'true' : 'false'}
                 aria-describedby={errors.name ? 'name-error' : undefined}
-                className={`form-input ${errors.name ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : ''}`}
+               className={`w-full px-4 py-3 text-base border rounded-lg transition-all duration-200 bg-transparent border-gray-200/30 hover:border-brand-red-300/50 focus:border-brand-red-500 focus:ring-2 focus:ring-brand-red-500/20 focus:bg-white/5 ${errors.name ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/10' : ''}`}
                 placeholder="Enter your full name"
               />
               {errors.name && (
@@ -157,7 +157,7 @@ ${formData.message}
                 required
                 aria-invalid={errors.email ? 'true' : 'false'}
                 aria-describedby={errors.email ? 'email-error' : undefined}
-                className={`form-input ${errors.email ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : ''}`}
+               className={`w-full px-4 py-3 text-base border rounded-lg transition-all duration-200 bg-transparent border-gray-200/30 hover:border-brand-red-300/50 focus:border-brand-red-500 focus:ring-2 focus:ring-brand-red-500/20 focus:bg-white/5 ${errors.email ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/10' : ''}`}
                 placeholder="your.email@company.com"
               />
               {errors.email && (
@@ -180,7 +180,7 @@ ${formData.message}
                 name="company"
                 value={formData.company}
                 onChange={handleChange}
-                className="form-input"
+               className="w-full px-4 py-3 text-base border rounded-lg transition-all duration-200 bg-transparent border-gray-200/30 hover:border-brand-red-300/50 focus:border-brand-red-500 focus:ring-2 focus:ring-brand-red-500/20 focus:bg-white/5"
                 placeholder="Your company name"
               />
             </div>
@@ -194,7 +194,7 @@ ${formData.message}
                 name="service"
                 value={formData.service}
                 onChange={handleChange}
-                className="form-select"
+               className="w-full px-4 py-3 text-base border rounded-lg transition-all duration-200 bg-transparent border-gray-200/30 hover:border-brand-red-300/50 focus:border-brand-red-500 focus:ring-2 focus:ring-brand-red-500/20 focus:bg-white/5"
               >
                 <option value="">Select a service</option>
                 <option value="data-engineering">Data Engineering</option>
