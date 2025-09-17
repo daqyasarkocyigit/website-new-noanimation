@@ -513,7 +513,7 @@ const Navbar: React.FC = () => {
                       key={`mobile-nav-${index}`}
                       to={item.to}
                       className={({ isActive }) => 
-                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-colors duration-200 focus-ring tap-highlight-none touch-manipulation min-h-[48px] flex items-center hover:bg-gray-50 hover:text-brand-red-600 ${
+                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-all duration-200 focus-ring tap-highlight-none touch-manipulation min-h-[48px] flex items-center hover:bg-brand-red-50/30 hover:text-brand-red-600 ${
                           isActive 
                             ? 'text-brand-red-600 font-semibold bg-brand-red-50' 
                             : 'text-gray-700'
