@@ -199,3 +199,4 @@ if (document.readyState === 'loading') {
 } else {
   console.log('✅ DOM already ready, initializing...');
   initializeApp();
+}
