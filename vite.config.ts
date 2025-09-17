@@ -8,16 +8,15 @@ export default defineConfig({
     outDir: 'dist',
     sourcemap: false,
     minify: 'esbuild',
+    target: 'es2015',
     rollupOptions: {
       output: {
         manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          animations: ['framer-motion'],
-          icons: ['lucide-react']
+          vendor: ['react', 'react-dom'],
+          router: ['react-router-dom'],
         }
       }
-    },
-    chunkSizeWarningLimit: 1000
+    }
   },
   server: {
     port: 5173,
@@ -25,5 +24,8 @@ export default defineConfig({
   },
   preview: {
     port: 4173
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom']
   }
 });

@@ -1,4 +1,1 @@
-# Redirect www subdomain to main domain
-https://www.daqconsulting.com/* https://daqconsulting.com/:splat 301!
-
 /*    /index.html   200
