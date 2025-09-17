@@ -53,12 +53,3 @@ function App() {
 }
 
 export default App;
-        </div>
-      </BrowserRouter>
-    </AppErrorBoundary>
-  );
-}
-
-console.log('📤 App component defined, exporting...');
-
-export default memo(App);
