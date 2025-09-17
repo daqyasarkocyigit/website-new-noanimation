@@ -3,10 +3,11 @@ import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 
-console.log('🚀 DAQ Consulting App starting...');
+console.log('🚀 Starting DAQ Consulting App...');
 
-function mountApp() {
+function initializeApp() {
   const rootElement = document.getElementById('root');
+  const loadingElement = document.getElementById('app-loading');
   
   if (!rootElement) {
     console.error('❌ Root element not found');
@@ -14,6 +15,11 @@ function mountApp() {
   }
 
   try {
+    // Hide loading screen
+    if (loadingElement) {
+      loadingElement.style.display = 'none';
+    }
+    
     const root = createRoot(rootElement);
     
     root.render(
@@ -24,50 +30,24 @@ function mountApp() {
     
     console.log('✅ App mounted successfully');
     
-    // Hide loading screen
-    const loadingElement = document.getElementById('app-loading');
+  } catch (error) {
+    console.error('❌ Failed to mount app:', error);
+    
+    // Hide loading and show error
     if (loadingElement) {
       loadingElement.style.display = 'none';
     }
     
-  } catch (error) {
-    console.error('❌ Failed to mount app:', error);
-    
-    // Show error message
-    if (rootElement) {
-      rootElement.innerHTML = `
-        <div style="padding: 40px; text-align: center; font-family: system-ui, sans-serif;">
-          <h1 style="color: #ef4444; margin-bottom: 16px;">Application Error</h1>
-          <p style="color: #374151; margin-bottom: 24px;">The application failed to load.</p>
-          <button onclick="window.location.reload()" style="
-            background: #ef4444; 
-            color: white; 
-            border: none; 
-            padding: 12px 24px; 
-            border-radius: 6px; 
-            cursor: pointer;
-            font-size: 16px;
-          ">Reload Page</button>
-        </div>
-      `;
+    const errorElement = document.getElementById('js-error');
+    if (errorElement) {
+      errorElement.style.display = 'block';
     }
   }
 }
 
-// Mount the app when DOM is ready
+// Initialize when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', mountApp);
+  document.addEventListener('DOMContentLoaded', initializeApp);
 } else {
-  mountApp();
+  initializeApp();
 }
-
-// Basic error handling
-window.addEventListener('error', (e) => {
-  if (e.message !== 'Script error.') {
-    console.error('Global error:', e.error || e.message);
-  }
-});
-
-window.addEventListener('unhandledrejection', (e) => {
-  console.error('Unhandled promise rejection:', e.reason);
-});
