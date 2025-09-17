@@ -2,22 +2,113 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DAQ Consulting - AI & Data Engineering Experts</title>
-    <meta name="description" content="DAQ Consulting delivers enterprise-grade data engineering, AI solutions, and analytics consulting." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5, user-scalable=yes" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
     
+    <!-- Optimized icons and manifest -->
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.imgur.com/mCWcjTw.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.imgur.com/mCWcjTw.png" />
+    <link rel="manifest" href="/manifest.json" />
+    
+    <!-- SEO Meta Tags -->
+    <title>DAQ Consulting - AI & Data Engineering Experts | Data Analytics Solutions</title>
+    <meta name="description" content="DAQ Consulting delivers enterprise-grade data engineering, AI solutions, and analytics consulting. Transform your business with our expert data services and cloud modernization." />
+    <meta name="keywords" content="data engineering, AI solutions, business intelligence, cloud modernization, data analytics, consulting" />
+    <meta name="author" content="DAQ Consulting" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://daqconsulting.com/" />
+    <meta property="og:title" content="DAQ Consulting - AI & Data Engineering Experts" />
+    <meta property="og:description" content="Transform your business with enterprise-grade data engineering, AI solutions, and analytics consulting." />
+    <meta property="og:image" content="https://i.imgur.com/mCWcjTw.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://daqconsulting.com/" />
+    <meta property="twitter:title" content="DAQ Consulting - AI & Data Engineering Experts" />
+    <meta property="twitter:description" content="Transform your business with enterprise-grade data engineering, AI solutions, and analytics consulting." />
+    <meta property="twitter:image" content="https://i.imgur.com/mCWcjTw.png" />
+
+    <!-- Critical resource hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Inline critical fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "DAQ Consulting",
+      "url": "https://daqconsulting.com",
+      "logo": "https://i.imgur.com/mCWcjTw.png",
+      "description": "Enterprise-grade data engineering, AI solutions, and analytics consulting services.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/daq-consulting",
+        "https://twitter.com/DAQConsulting",
+        "https://github.com/DAQConsulting"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "",
+        "contactType": "customer service",
+        "email": "info@daqconsulting.com",
+        "availableLanguage": "English"
+      },
+      "offers": {
+        "@type": "AggregateOffer",
+        "offerCount": "5",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Data Engineering",
+              "description": "Build robust data pipelines and infrastructure"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Engineering",
+              "description": "Implement cutting-edge AI solutions"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Business Intelligence",
+              "description": "Transform data into actionable insights"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <!-- Cookiebot Consent Management -->
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="cf433ebc-216b-430d-8e2e-1950208699bb" data-blockingmode="auto" type="text/javascript"></script>
+    
+    <!-- Critical CSS inlined for better performance -->
     <style>
-      * {
+      body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
-      }
-      
-      body {
-        font-family: system-ui, -apple-system, sans-serif;
         line-height: 1.6;
-        background: #ffffff;
-        color: #333;
       }
       
       #root {
@@ -29,42 +120,26 @@
         align-items: center;
         justify-content: center;
         min-height: 100vh;
-        background: #ffffff;
+        font-family: 'Inter', sans-serif;
       }
       
-      .spinner {
-        width: 40px;
-        height: 40px;
-        border: 3px solid #f3f4f6;
-        border-top: 3px solid #dc2626;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-      }
-      
-      @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-      }
     </style>
   </head>
   <body>
-    <div id="root">
-      <div class="loading">
-        <div style="text-align: center;">
-          <div class="spinner"></div>
-          <div style="margin-top: 16px; font-weight: 600;">DAQ Consulting</div>
-          <div style="color: #6b7280; font-size: 14px; margin-top: 8px;">Loading...</div>
-        </div>
-      </div>
-    </div>
+    <div id="root"></div>
     
+    <!-- Fallback for users with JavaScript disabled -->
     <noscript>
-      <div style="padding: 40px; text-align: center; background: #fef2f2; margin: 20px; border-radius: 8px;">
-        <h1 style="color: #dc2626;">JavaScript Required</h1>
-        <p style="color: #7f1d1d; margin-top: 16px;">Please enable JavaScript to view this website.</p>
+      <div style="padding: 20px; text-align: center; background-color: #fef2f2; border: 1px solid #fecaca; margin: 20px; border-radius: 8px;">
+        <h1 style="color: #dc2626; margin-bottom: 10px;">JavaScript Required</h1>
+        <p style="color: #7f1d1d;">Please enable JavaScript to view this website and experience all its features.</p>
+        <p style="color: #7f1d1d; font-size: 14px; margin-top: 15px;">
+          For assistance, please contact us at <a href="mailto:info@daqconsulting.com" style="color: #dc2626;">info@daqconsulting.com</a>
+        </p>
       </div>
     </noscript>
     
     <script type="module" src="/src/main.tsx"></script>
+    
   </body>
 </html>

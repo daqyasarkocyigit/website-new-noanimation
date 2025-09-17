@@ -1,79 +1,217 @@
-import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import Hero from '../components/home/Hero';
+import Services from '../components/home/Services';
+import CallToAction from '../components/home/CallToAction';
 
 const Home: React.FC = () => {
+  const particlesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Create floating particles
+    const createParticles = () => {
+      const container = particlesRef.current;
+      if (!container) return;
+
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: #FF3333;
+          border-radius: 50%;
+          opacity: 0;
+          left: ${Math.random() * 100}%;
+          animation: particleFloat ${15 + Math.random() * 10}s infinite;
+          animation-delay: ${Math.random() * 15}s;
+        `;
+        container.appendChild(particle);
+      }
+    };
+
+    // Create particles
+    setTimeout(() => {
+      createParticles();
+    }, 500);
+
+    return () => {
+      // Cleanup particles
+      if (particlesRef.current) {
+        particlesRef.current.innerHTML = '';
+      }
+    };
+  }, []);
+
   return (
-    <div>
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4">
-        <div className="container mx-auto text-center max-w-4xl">
-          <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-            We deliver <span className="text-red-600">Azure Solutions</span>
-          </h1>
-          <p className="text-xl text-gray-600 mb-8">
-            Transform your business with enterprise-grade data platforms, AI solutions, and cloud modernization services.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/contact" className="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
-              Start Your Project
-              <ArrowRight size={20} className="inline ml-2" />
-            </a>
-            <a href="/services" className="px-6 py-3 border-2 border-red-600 text-red-600 rounded-lg hover:bg-red-600 hover:text-white transition-colors">
-              View Services
-            </a>
-          </div>
-        </div>
-      </section>
+    <>
+      <style jsx>{`
+        @keyframes particleFloat {
+          0%, 100% {
+            opacity: 0;
+            transform: translateY(100vh) scale(0);
+          }
+          10% {
+            opacity: 0.6;
+            transform: translateY(90vh) scale(1);
+          }
+          90% {
+            opacity: 0.6;
+            transform: translateY(10vh) scale(1);
+          }
+        }
 
-      {/* Services Section */}
-      <section className="py-20 bg-gray-50 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
-            <p className="text-xl text-gray-600">
-              Comprehensive data and AI solutions for your business
-            </p>
-          </div>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Data Engineering",
-                description: "Build robust data pipelines and infrastructure"
-              },
-              {
-                title: "AI Engineering", 
-                description: "Implement advanced machine learning solutions"
-              },
-              {
-                title: "Cloud Modernization",
-                description: "Migrate to modern cloud platforms"
-              }
-            ].map((service, index) => (
-              <div key={index} className="bg-white p-6 rounded-lg shadow-lg">
-                <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        @keyframes bgRotate {
+          from { transform: rotate(0deg) scale(1.5); }
+          to { transform: rotate(360deg) scale(1.5); }
+        }
 
-      {/* CTA Section */}
-      <section className="py-20 px-4">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Ready to Transform Your Data?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Let's discuss how we can help your business
-          </p>
-          <a href="/contact" className="px-8 py-4 bg-red-600 text-white rounded-lg text-lg hover:bg-red-700 transition-colors">
-            Get in Touch
-          </a>
-        </div>
-      </section>
-    </div>
+        @keyframes gridMove {
+          from { transform: translate(0, 0); }
+          to { transform: translate(50px, 50px); }
+        }
+
+        @keyframes headerPulse {
+          0%, 100% { opacity: 0.3; transform: translate(-50%, -50%) scale(1); }
+          50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        @keyframes badgeShine {
+          to { left: 100%; }
+        }
+
+        @keyframes statusPulse {
+          0% {
+            opacity: 0.6;
+            transform: translate(-50%, -50%) scale(0);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(2);
+          }
+        }
+
+        .bg-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          overflow: hidden;
+        }
+
+        .bg-gradient {
+          position: absolute;
+          width: 200%;
+          height: 200%;
+          top: -50%;
+          left: -50%;
+          background: 
+            radial-gradient(ellipse at 20% 30%, rgba(255, 51, 51, 0.03) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 70%, rgba(107, 114, 128, 0.02) 0%, transparent 50%),
+            radial-gradient(ellipse at 50% 50%, rgba(255, 51, 51, 0.02) 0%, transparent 50%);
+          animation: bgRotate 45s linear infinite;
+        }
+
+        .bg-grid {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-image: 
+            linear-gradient(rgba(255, 51, 51, 0.01) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 51, 51, 0.01) 1px, transparent 1px);
+          background-size: 60px 60px;
+          animation: gridMove 30s linear infinite;
+        }
+
+        .particle {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: rgba(255, 51, 51, 0.6);
+          border-radius: 50%;
+          opacity: 0;
+          animation: particleFloat 15s infinite;
+        }
+
+        .header-container {
+          text-align: center;
+          padding: 4rem 0;
+          position: relative;
+        }
+
+        .header-container::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 600px;
+          height: 300px;
+          background: radial-gradient(circle, rgba(255, 51, 51, 0.1) 0%, transparent 70%);
+          filter: blur(100px);
+          animation: headerPulse 6s ease-in-out infinite;
+        }
+
+        .header-content {
+          position: relative;
+          z-index: 1;
+        }
+
+        .header-badge {
+          display: inline-block;
+          padding: 0.75rem 2rem;
+          background: linear-gradient(135deg, #FF3333, #e02d2d);
+          border-radius: 100px;
+          font-size: 0.75rem;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.2em;
+          margin-bottom: 2rem;
+          position: relative;
+          overflow: hidden;
+          color: white;
+        }
+
+        .header-badge::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+          animation: badgeShine 3s infinite;
+        }
+
+        @media (max-width: 768px) {
+          .header-container {
+            padding: 2rem 0;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .header-container {
+            padding: 2rem 0;
+          }
+        }
+      `}</style>
+
+      {/* Light Background */}
+      <div className="bg-container">
+        <div className="bg-gradient"></div>
+        <div className="bg-grid"></div>
+        <div ref={particlesRef} className="particles"></div>
+      </div>
+
+      {/* Page Content */}
+      <div className="relative">
+        <Hero />
+        <Services />
+        <CallToAction />
+      </div>
+    </>
   );
 };
 

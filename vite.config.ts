@@ -7,11 +7,23 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     sourcemap: false,
-    target: 'es2015',
+    minify: 'esbuild',
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'react-router-dom'],
+          animations: ['framer-motion'],
+          icons: ['lucide-react']
+        }
       }
-    }
+    },
+    chunkSizeWarningLimit: 1000
+  },
+  server: {
+    port: 5173,
+    host: true
+  },
+  preview: {
+    port: 4173
   }
 });

@@ -1,91 +1,534 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Menu, X, ChevronDown } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [leaveTimeout, setLeaveTimeout] = useState<NodeJS.Timeout | null>(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
+        setServicesOpen(false);
+        // Clear timeouts on resize
+        if (hoverTimeout) clearTimeout(hoverTimeout);
+        if (leaveTimeout) clearTimeout(leaveTimeout);
+      }
+    };
+
+    // Click outside detection for services dropdown
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      const servicesButton = document.querySelector('[aria-label="Services menu"]');
+      const servicesDropdown = document.querySelector('[role="menu"][aria-label="Services submenu"]');
+      
+      if (servicesOpen && servicesButton && servicesDropdown) {
+        if (!servicesButton.contains(target) && !servicesDropdown.contains(target)) {
+          setServicesOpen(false);
+          // Clear any pending timeouts
+          if (hoverTimeout) clearTimeout(hoverTimeout);
+          if (leaveTimeout) clearTimeout(leaveTimeout);
+        }
+      }
+    };
+
+    // Escape key detection
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && servicesOpen) {
+        setServicesOpen(false);
+        // Clear any pending timeouts
+        if (hoverTimeout) clearTimeout(hoverTimeout);
+        if (leaveTimeout) clearTimeout(leaveTimeout);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleResize);
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+      // Cleanup timeouts
+      if (hoverTimeout) clearTimeout(hoverTimeout);
+      if (leaveTimeout) clearTimeout(leaveTimeout);
+    };
+  }, [servicesOpen, hoverTimeout, leaveTimeout]);
+
+  // Enhanced mobile menu management
+  useEffect(() => {
+    if (isOpen) {
+      // Prevent background scroll when menu is open
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${window.scrollY}px`;
+    } else {
+      // Restore scroll position when menu closes
+      const scrollY = document.body.style.top;
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
+    }
+
+    return () => {
+      // Cleanup on unmount
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+    };
+  }, [isOpen]);
+
+  const handleServiceClick = (path: string) => {
+    const [route, section] = path.split('#');
+    navigate('/services');
+    
+    setTimeout(() => {
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+
+    setServicesOpen(false);
+    setIsOpen(false);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    setServicesOpen(false);
+    // Clear any pending timeouts
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    if (leaveTimeout) clearTimeout(leaveTimeout);
+  };
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+    setServicesOpen(false); // Close services when toggling main menu
+    // Clear any pending timeouts
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    if (leaveTimeout) clearTimeout(leaveTimeout);
+  };
+
+  const handleServicesMouseEnter = () => {
+    // Clear any pending leave timeout
+    if (leaveTimeout) {
+      clearTimeout(leaveTimeout);
+      setLeaveTimeout(null);
+    }
+    
+    // Set a delay before opening (300ms)
+    if (!servicesOpen) {
+      const timeout = setTimeout(() => {
+        setServicesOpen(true);
+      }, 300);
+      setHoverTimeout(timeout);
+    }
+  };
+
+  const handleServicesMouseLeave = () => {
+    // Clear any pending enter timeout
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+    
+    // Set a delay before closing (500ms)
+    const timeout = setTimeout(() => {
+      setServicesOpen(false);
+    }, 500);
+    setLeaveTimeout(timeout);
+  };
+
+  const toggleServices = () => {
+    // For click events, toggle immediately
+    setServicesOpen(!servicesOpen);
+    // Clear any pending timeouts
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    if (leaveTimeout) clearTimeout(leaveTimeout);
+  };
 
   return (
-    <header className="fixed w-full z-50 bg-white shadow-lg">
-      <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+    <header 
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/10 backdrop-blur-md shadow-lg py-2' 
+          : 'bg-transparent py-4'
+      }`}
+      role="banner"
+    >
+      <div className="container">
+        <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold">
-              <span className="text-red-600">DAQ</span> Consulting
-            </span>
+          <Link 
+            to="/" 
+            className="flex items-center group focus-ring rounded-lg p-2 -m-2 transition-all duration-200 hover:bg-white/5" 
+            aria-label="DAQ Consulting - Navigate to homepage"
+            onClick={closeMenu}
+          >
+            {/* Logo Text */}
+            <div className="flex flex-col">
+              <span className="text-xl md:text-2xl font-black text-gray-900 transition-all duration-300 group-hover:text-brand-red-600">
+                <span className="text-brand-red-600">DAQ</span> <span className="font-light text-gray-600">Consulting</span>
+              </span>
+              <span className="text-xs text-gray-500 font-medium -mt-1">
+                AI & Data Engineering Experts
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-red-600 transition-colors">
-              Home
-            </Link>
-            <Link to="/services" className="text-gray-700 hover:text-red-600 transition-colors">
-              Services
-            </Link>
-            <Link to="/about" className="text-gray-700 hover:text-red-600 transition-colors">
-              About
-            </Link>
-            <Link to="/talent" className="text-gray-700 hover:text-red-600 transition-colors">
-              Hire Talent
-            </Link>
-            <Link to="/contact" className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
-              Contact
-            </Link>
+          <nav className="hidden md:flex items-center space-x-8" role="navigation">
+            <div 
+              className="relative group"
+              onMouseEnter={handleServicesMouseEnter}
+              onMouseLeave={handleServicesMouseLeave}
+            >
+              <button 
+                className="flex items-center text-gray-700 hover:text-brand-red-600 font-medium group relative overflow-hidden transition-colors duration-200 focus-ring rounded-lg px-3 py-2"
+                onClick={() => setServicesOpen(!servicesOpen)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setServicesOpen(!servicesOpen);
+                  }
+                }}
+                aria-expanded={servicesOpen}
+                aria-haspopup="true"
+                aria-label="Services menu"
+              >
+                <span className="relative z-10">Services</span>
+                <ChevronDown 
+                  size={16} 
+                  className={`ml-1 transition-transform duration-300 ${
+                    servicesOpen ? 'rotate-180' : ''
+                  }`} 
+                />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-brand-red-600 group-hover:w-full transition-all duration-300"></span>
+              </button>
+
+              <div 
+                className={`absolute left-0 mt-3 w-80 rounded-2xl shadow-2xl backdrop-blur-md transition-all duration-300 ${
+                  servicesOpen 
+                    ? 'opacity-100 visible transform translate-y-0' 
+                    : 'opacity-0 invisible transform translate-y-2'
+                } sm:w-80 w-screen sm:max-w-none max-w-[calc(100vw-2rem)] sm:left-0 -left-4 sm:rounded-2xl rounded-xl sm:mt-3 mt-2`}
+                role="menu"
+                aria-label="Services submenu"
+                onMouseEnter={handleServicesMouseEnter}
+                onMouseLeave={handleServicesMouseLeave}
+                style={{
+                  background: 'rgba(255, 248, 248, 0.92)',
+                  backdropFilter: 'blur(16px) saturate(180%)',
+                  border: '1px solid rgba(255, 51, 51, 0.12)',
+                  boxShadow: `
+                    0 20px 40px -8px rgba(0, 0, 0, 0.08),
+                    0 8px 16px -4px rgba(255, 51, 51, 0.06),
+                    inset 0 1px 0 rgba(255, 248, 248, 0.9)
+                  `
+                }}
+              >
+                {/* Services List */}
+                <div className="py-2">
+                  {[
+                    { 
+                      path: '/services#data-engineering', 
+                      label: 'Data Engineering',
+                      description: 'Build robust data pipelines & infrastructure'
+                    },
+                    { 
+                      path: '/services#data-visualization', 
+                      label: 'Data Visualization',
+                      description: 'Transform data into compelling visuals'
+                    },
+                    { 
+                      path: '/services#business-intelligence', 
+                      label: 'Business Intelligence & Analytics',
+                      description: 'Drive strategic data-driven decisions'
+                    },
+                    { 
+                      path: '/services#cloud-modernization', 
+                      label: 'Cloud Modernization',
+                      description: 'Scale with modern cloud infrastructure'
+                    },
+                    { 
+                      path: '/services#ai-engineering', 
+                      label: 'AI Engineering',
+                      description: 'Implement cutting-edge AI solutions'
+                    }
+                  ].map((item, index) => (
+                    <div 
+                      key={index}
+                      className="px-2"
+                    >
+                      <button 
+                        onClick={() => handleServiceClick(item.path)}
+                        className="group/item relative w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ease-out hover:bg-brand-red-50/60 focus-ring touch-manipulation border border-transparent hover:border-brand-red-200/50"
+                      >
+                        {/* Subtle left accent line */}
+                        <div className="absolute left-0 top-3 bottom-3 w-0 bg-brand-red-500 rounded-r-sm group-hover/item:w-1 transition-all duration-200"></div>
+                        
+                        <div className="flex items-center justify-between">
+                          <div className="flex-1">
+                            <div className="font-semibold text-gray-900 group-hover/item:text-brand-red-600 transition-colors duration-200 mb-1 text-sm leading-tight">
+                              {item.label}
+                            </div>
+                            <div className="text-xs text-gray-600 leading-relaxed">
+                              {item.description}
+                            </div>
+                          </div>
+                          
+                          {/* Subtle arrow */}
+                          <div className="ml-3 opacity-40 group-hover/item:opacity-100 group-hover/item:translate-x-1 transition-all duration-200">
+                            <svg className="w-4 h-4 text-brand-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </div>
+                      </button>
+                    </div>
+                  ))}
+                  
+                  {/* View All Services Link */}
+                  <div className="px-2 mt-1 pt-2 border-t border-gray-100">
+                    <Link
+                      to="/services"
+                      onClick={() => setServicesOpen(false)}
+                      className="group flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-brand-red-600 hover:text-brand-red-700 hover:bg-brand-red-50/60 rounded-lg transition-all duration-200"
+                    >
+                      <span>View All Services</span>
+                      <svg className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {[
+              { to: '/talent', label: 'Hire Talent' },
+              { to: '/about', label: 'About' },
+              { to: '/contact', label: 'Contact' }
+            ].map((item, index) => (
+              <NavLink 
+                key={index}
+                to={item.to} 
+                className={({ isActive }) => 
+                  `nav-link focus-ring rounded-lg px-3 py-2 ${
+                    isActive 
+                      ? 'text-brand-red-600 font-semibold' 
+                      : 'text-gray-700 hover:text-brand-red-600 font-medium'
+                  }`
+                }
+              >
+                {({ isActive }) => (
+                  <>
+                    {item.label}
+                    <span className={`absolute bottom-0 left-0 h-0.5 bg-brand-red-600 transition-all duration-300 ${
+                      isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                    }`}></span>
+                  </>
+                )}
+              </NavLink>
+            ))}
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Enhanced Mobile Menu Button */}
           <button
-            className="md:hidden"
-            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden relative z-50 w-12 h-12 flex items-center justify-center rounded-lg hover:bg-gray-100/50 transition-colors focus-ring tap-highlight-none touch-manipulation"
+            onClick={toggleMenu}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            <div className="relative w-6 h-6">
+              <span 
+                className={`absolute block w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out ${
+                  isOpen ? 'rotate-45 top-3' : 'top-1'
+                }`}
+              />
+              <span 
+                className={`absolute block w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out top-3 ${
+                  isOpen ? 'opacity-0' : 'opacity-100'
+                }`}
+              />
+              <span 
+                className={`absolute block w-6 h-0.5 bg-gray-800 transition-all duration-300 ease-in-out ${
+                  isOpen ? '-rotate-45 top-3' : 'top-5'
+                }`}
+              />
+            </div>
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="md:hidden py-4">
-            <nav className="flex flex-col space-y-4">
-              <Link 
-                to="/" 
-                className="text-gray-700 hover:text-red-600 transition-colors"
-                onClick={() => setIsOpen(false)}
+        {/* Enhanced Mobile Navigation */}
+        <div
+          id="mobile-menu"
+          className={`md:hidden fixed inset-0 top-0 transition-all duration-300 ease-in-out z-50 ${
+            isOpen 
+              ? 'opacity-100 visible' 
+              : 'opacity-0 invisible pointer-events-none'
+          }`}
+          role="navigation"
+          aria-label="Mobile navigation"
+        >
+          {/* Backdrop */}
+          <div 
+            className={`absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
+              isOpen ? 'opacity-100' : 'opacity-0'
+            }`}
+            onClick={closeMenu}
+          />
+          
+          {/* Menu Panel */}
+          <div 
+            className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] shadow-2xl transform transition-transform duration-300 ease-in-out ${
+              isOpen ? 'translate-x-0' : 'translate-x-full'
+            }`}
+            style={{
+              background: 'rgba(255, 235, 235, 0.95)',
+              backdropFilter: 'blur(16px) saturate(180%)',
+              borderLeft: '1px solid rgba(255, 51, 51, 0.12)',
+              boxShadow: `
+                0 20px 40px -8px rgba(0, 0, 0, 0.08),
+                0 8px 16px -4px rgba(255, 51, 51, 0.06),
+                inset 0 1px 0 rgba(255, 248, 248, 0.9)
+              `
+            }}
+          >
+            {/* Header with Close Button */}
+            <div 
+              className="flex items-center justify-between p-4 border-b"
+              style={{
+                background: 'rgba(255, 235, 235, 0.9)',
+                backdropFilter: 'blur(8px)',
+                borderBottom: '1px solid rgba(255, 51, 51, 0.08)'
+              }}
+            >
+              <span className="text-lg font-semibold text-gray-900">Menu</span>
+              <button
+                onClick={closeMenu}
+                className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/60 transition-colors focus-ring tap-highlight-none touch-manipulation"
+                aria-label="Close menu"
               >
-                Home
-              </Link>
-              <Link 
-                to="/services" 
-                className="text-gray-700 hover:text-red-600 transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Services
-              </Link>
-              <Link 
-                to="/about" 
-                className="text-gray-700 hover:text-red-600 transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                About
-              </Link>
-              <Link 
-                to="/talent" 
-                className="text-gray-700 hover:text-red-600 transition-colors"
-                onClick={() => setIsOpen(false)}
-              >
-                Hire Talent
-              </Link>
-              <Link 
-                to="/contact" 
-                className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-center"
-                onClick={() => setIsOpen(false)}
-              >
-                Contact
-              </Link>
-            </nav>
+                <X size={20} className="text-gray-600" />
+              </button>
+            </div>
+
+            {/* Menu Content */}
+            <div className="flex flex-col h-full overflow-y-auto pb-20">
+              <div className="px-4 py-2">
+                {/* Services Section */}
+                <div className="relative">
+                  <button
+                    className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-700 hover:text-brand-red-600 focus-ring rounded-lg tap-highlight-none touch-manipulation hover:bg-gray-50 transition-colors duration-200"
+                    className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-700 hover:text-brand-red-600 focus-ring rounded-lg tap-highlight-none touch-manipulation hover:bg-brand-red-50/30 transition-all duration-200"
+                    onClick={toggleServices}
+                    aria-expanded={servicesOpen}
+                    aria-controls="mobile-services"
+                  >
+                    <span>Services</span>
+                    <ChevronDown
+                      size={20}
+                      className={`text-gray-500 transition-all duration-300 ${
+                        servicesOpen ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  
+                  <div
+                    id="mobile-services"
+                    className={`transition-all duration-300 ease-in-out overflow-hidden ${
+                      servicesOpen 
+                        ? 'max-h-96 opacity-100' 
+                        : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className="pl-4 border-l-2 border-brand-red-100">
+                      {[
+                        { 
+                          path: '/services#data-engineering', 
+                          label: 'Data Engineering',
+                          description: 'Build robust data pipelines'
+                        },
+                        { 
+                          path: '/services#data-visualization', 
+                          label: 'Data Visualization',
+                          description: 'Transform data into insights'
+                        },
+                        { 
+                          path: '/services#business-intelligence', 
+                          label: 'Business Intelligence',
+                          description: 'Drive data-driven decisions'
+                        },
+                        { 
+                          path: '/services#cloud-modernization', 
+                          label: 'Cloud Modernization',
+                          description: 'Scale your infrastructure'
+                        },
+                        { 
+                          path: '/services#ai-engineering', 
+                          label: 'AI Engineering',
+                          description: 'Implement AI solutions'
+                        }
+                      ].map((item, index) => (
+                        <button
+                          key={`mobile-service-${index}`}
+                          onClick={() => handleServiceClick(item.path)}
+                          className="block w-full text-left py-3 px-3 text-gray-700 hover:bg-brand-red-50/60 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation border border-transparent hover:border-brand-red-200/50"
+                        >
+                          <div className="font-semibold text-gray-900 group-hover:text-brand-red-600">{item.label}</div>
+                          <div className="text-sm text-gray-600 mt-0.5">{item.description}</div>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Main Navigation Links */}
+                <div className="border-t border-gray-100 pt-2 mt-2">
+                  {[
+                    { to: '/talent', label: 'Hire Talent' },
+                    { to: '/about', label: 'About' },
+                    { to: '/contact', label: 'Contact' }
+                  ].map((item, index) => (
+                    <NavLink
+                      key={`mobile-nav-${index}`}
+                      to={item.to}
+                      className={({ isActive }) => 
+                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-all duration-200 focus-ring tap-highlight-none touch-manipulation min-h-[48px] flex items-center hover:bg-brand-red-50/30 hover:text-brand-red-600 ${
+                          isActive 
+                            ? 'text-brand-red-600 font-semibold bg-brand-red-50' 
+                            : 'text-gray-700'
+                        }`
+                      }
+                      onClick={closeMenu}
+                    >
+                      {item.label}
+                    </NavLink>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </header>
   );
