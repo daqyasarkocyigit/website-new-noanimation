@@ -136,13 +136,13 @@ const CookiePolicy: React.FC = () => {
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-600 mb-8">Effective Date: 05/31/2025</p>
 
-              <section className="mb-8 p-6 bg-blue-50 rounded-lg border border-blue-200">
-                <h2 className="text-xl font-semibold mb-4 text-blue-800">Cookie Management with Cookiebot</h2>
-                <p className="text-blue-700 mb-4">
+              <section className="mb-8 p-6 bg-brand-red-50 rounded-lg border border-brand-red-200">
+                <h2 className="text-xl font-semibold mb-4 text-brand-red-800">Cookie Management with Cookiebot</h2>
+                <p className="text-brand-red-700 mb-4">
                   We use Cookiebot, a professional cookie consent management platform, to handle all cookie-related 
                   preferences on our website. This ensures full compliance with GDPR, CCPA, and other privacy regulations.
                 </p>
-                <p className="text-blue-700">
+                <p className="text-brand-red-700">
                   You can manage your cookie preferences at any time by clicking on the cookie settings in the 
                   consent banner or by visiting our <strong>Cookie Declaration</strong> page which is automatically 
                   generated and updated by Cookiebot.
