@@ -146,7 +146,7 @@ const Hero: React.FC = () => {
               }
               
               .scrolling-content {
-               animation: continuousScroll 20s linear infinite;
+               animation: continuousScroll 10s linear infinite;
               }
             `}</style>
 
