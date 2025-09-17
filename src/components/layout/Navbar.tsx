@@ -6,6 +6,8 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [hoverTimeout, setHoverTimeout] = useState<NodeJS.Timeout | null>(null);
+  const [leaveTimeout, setLeaveTimeout] = useState<NodeJS.Timeout | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,17 +19,52 @@ const Navbar: React.FC = () => {
       if (window.innerWidth >= 768) {
         setIsOpen(false);
         setServicesOpen(false);
+        // Clear timeouts on resize
+        if (hoverTimeout) clearTimeout(hoverTimeout);
+        if (leaveTimeout) clearTimeout(leaveTimeout);
       }
     };
 
+    // Click outside detection for services dropdown
+    const handleClickOutside = (event: MouseEvent) => {
+      const target = event.target as Element;
+      const servicesButton = document.querySelector('[aria-label="Services menu"]');
+      const servicesDropdown = document.querySelector('[role="menu"][aria-label="Services submenu"]');
+      
+      if (servicesOpen && servicesButton && servicesDropdown) {
+        if (!servicesButton.contains(target) && !servicesDropdown.contains(target)) {
+          setServicesOpen(false);
+          // Clear any pending timeouts
+          if (hoverTimeout) clearTimeout(hoverTimeout);
+          if (leaveTimeout) clearTimeout(leaveTimeout);
+        }
+      }
+    };
+
+    // Escape key detection
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && servicesOpen) {
+        setServicesOpen(false);
+        // Clear any pending timeouts
+        if (hoverTimeout) clearTimeout(hoverTimeout);
+        if (leaveTimeout) clearTimeout(leaveTimeout);
+      }
+    };
     window.addEventListener('scroll', handleScroll, { passive: true });
     window.addEventListener('resize', handleResize);
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('keydown', handleKeyDown);
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
+      // Cleanup timeouts
+      if (hoverTimeout) clearTimeout(hoverTimeout);
+      if (leaveTimeout) clearTimeout(leaveTimeout);
     };
-  }, []);
+  }, [servicesOpen, hoverTimeout, leaveTimeout]);
 
   // Enhanced mobile menu management
   useEffect(() => {
@@ -76,22 +113,62 @@ const Navbar: React.FC = () => {
   const closeMenu = () => {
     setIsOpen(false);
     setServicesOpen(false);
+    // Clear any pending timeouts
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    if (leaveTimeout) clearTimeout(leaveTimeout);
   };
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
     setServicesOpen(false); // Close services when toggling main menu
+    // Clear any pending timeouts
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    if (leaveTimeout) clearTimeout(leaveTimeout);
+  };
+
+  const handleServicesMouseEnter = () => {
+    // Clear any pending leave timeout
+    if (leaveTimeout) {
+      clearTimeout(leaveTimeout);
+      setLeaveTimeout(null);
+    }
+    
+    // Set a delay before opening (300ms)
+    if (!servicesOpen) {
+      const timeout = setTimeout(() => {
+        setServicesOpen(true);
+      }, 300);
+      setHoverTimeout(timeout);
+    }
+  };
+
+  const handleServicesMouseLeave = () => {
+    // Clear any pending enter timeout
+    if (hoverTimeout) {
+      clearTimeout(hoverTimeout);
+      setHoverTimeout(null);
+    }
+    
+    // Set a delay before closing (500ms)
+    const timeout = setTimeout(() => {
+      setServicesOpen(false);
+    }, 500);
+    setLeaveTimeout(timeout);
   };
 
   const toggleServices = () => {
+    // For click events, toggle immediately
     setServicesOpen(!servicesOpen);
+    // Clear any pending timeouts
+    if (hoverTimeout) clearTimeout(hoverTimeout);
+    if (leaveTimeout) clearTimeout(leaveTimeout);
   };
 
   return (
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/95 backdrop-blur-sm shadow-md py-2' 
+          ? 'bg-white/10 backdrop-blur-md shadow-lg py-2' 
           : 'bg-transparent py-4'
       }`}
       role="banner"
@@ -101,25 +178,28 @@ const Navbar: React.FC = () => {
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex flex-col items-start group focus-ring rounded-lg p-2 -m-2" 
-            aria-label="DAQ Consulting Home"
+            className="flex items-center group focus-ring rounded-lg p-2 -m-2 transition-all duration-200 hover:bg-white/5" 
+            aria-label="DAQ Consulting - Navigate to homepage"
             onClick={closeMenu}
           >
-            <span className="flex items-center space-x-1 md:space-x-3">
-              <span className="text-lg md:text-2xl font-extrabold tracking-tight transition-transform duration-200 group-hover:scale-105">
-                <span className="text-brand-red-600 drop-shadow-sm">DAQ</span>
-                <span className="inline-block w-0.5 h-4 md:h-6 bg-brand-red-600 rounded-full opacity-60 mx-1.5 md:mx-2"></span>
-                <span className="text-gray-800 font-semibold tracking-wider">Consulting</span>
+            {/* Logo Text */}
+            <div className="flex flex-col">
+              <span className="text-xl md:text-2xl font-black text-gray-900 transition-all duration-300 group-hover:text-brand-red-600">
+                <span className="text-brand-red-600">DAQ</span> <span className="font-light text-gray-600">Consulting</span>
               </span>
-            </span>
-            <span className="text-[9px] md:text-xs text-gray-500 mt-0.5 tracking-wide group-hover:text-brand-red-600 transition-colors duration-200">
-              AI & Data Engineering Experts
-            </span>
+              <span className="text-xs text-gray-500 font-medium -mt-1">
+                AI & Data Engineering Experts
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8" role="navigation">
-            <div className="relative group">
+            <div 
+              className="relative group"
+              onMouseEnter={handleServicesMouseEnter}
+              onMouseLeave={handleServicesMouseLeave}
+            >
               <button 
                 className="flex items-center text-gray-700 hover:text-brand-red-600 font-medium group relative overflow-hidden transition-colors duration-200 focus-ring rounded-lg px-3 py-2"
                 onClick={() => setServicesOpen(!servicesOpen)}
@@ -144,35 +224,48 @@ const Navbar: React.FC = () => {
               </button>
 
               <div 
-                className={`absolute left-0 mt-2 w-72 rounded-xl shadow-2xl bg-white transition-all duration-300 ${
+                className={`absolute left-0 mt-3 w-80 rounded-2xl shadow-2xl backdrop-blur-md transition-all duration-300 ${
                   servicesOpen 
                     ? 'opacity-100 visible transform translate-y-0' 
                     : 'opacity-0 invisible transform translate-y-2'
-                }`}
+                } sm:w-80 w-screen sm:max-w-none max-w-[calc(100vw-2rem)] sm:left-0 -left-4 sm:rounded-2xl rounded-xl sm:mt-3 mt-2`}
                 role="menu"
                 aria-label="Services submenu"
+                onMouseEnter={handleServicesMouseEnter}
+                onMouseLeave={handleServicesMouseLeave}
+                style={{
+                  background: 'rgba(255, 248, 248, 0.92)',
+                  backdropFilter: 'blur(16px) saturate(180%)',
+                  border: '1px solid rgba(255, 51, 51, 0.12)',
+                  boxShadow: `
+                    0 20px 40px -8px rgba(0, 0, 0, 0.08),
+                    0 8px 16px -4px rgba(255, 51, 51, 0.06),
+                    inset 0 1px 0 rgba(255, 248, 248, 0.9)
+                  `
+                }}
               >
+                {/* Services List */}
                 <div className="py-2">
                   {[
                     { 
                       path: '/services#data-engineering', 
                       label: 'Data Engineering',
-                      description: 'Build robust data pipelines and infrastructure'
+                      description: 'Build robust data pipelines & infrastructure'
                     },
                     { 
                       path: '/services#data-visualization', 
                       label: 'Data Visualization',
-                      description: 'Transform complex data into clear insights'
+                      description: 'Transform data into compelling visuals'
                     },
                     { 
                       path: '/services#business-intelligence', 
                       label: 'Business Intelligence & Analytics',
-                      description: 'Drive decisions with powerful analytics'
+                      description: 'Drive strategic data-driven decisions'
                     },
                     { 
                       path: '/services#cloud-modernization', 
                       label: 'Cloud Modernization',
-                      description: 'Scale your infrastructure for the future'
+                      description: 'Scale with modern cloud infrastructure'
                     },
                     { 
                       path: '/services#ai-engineering', 
@@ -180,21 +273,51 @@ const Navbar: React.FC = () => {
                       description: 'Implement cutting-edge AI solutions'
                     }
                   ].map((item, index) => (
-                    <button 
+                    <div 
                       key={index}
-                      onClick={() => handleServiceClick(item.path)}
-                      className="group/item flex flex-col w-full text-left px-5 py-3 hover:bg-gray-100 transition-all duration-200 focus-ring"
-                      role="menuitem"
+                      className="px-2"
                     >
-                      <span className="font-medium text-gray-800 group-hover/item:text-brand-red-600 transition-colors duration-200">
-                        {item.label}
-                      </span>
-                      <span className="text-sm text-cool-gray-500 group-hover/item:text-cool-gray-600 transition-colors duration-200 mt-0.5">
-                        {item.description}
-                      </span>
-                      <span className="block w-0 group-hover/item:w-full h-px bg-brand-red-400 transition-all duration-300 mt-2"></span>
-                    </button>
+                      <button 
+                        onClick={() => handleServiceClick(item.path)}
+                        className="group/item relative w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ease-out hover:bg-brand-red-50/60 focus-ring touch-manipulation border border-transparent hover:border-brand-red-200/50"
+                      >
+                        {/* Subtle left accent line */}
+                        <div className="absolute left-0 top-3 bottom-3 w-0 bg-brand-red-500 rounded-r-sm group-hover/item:w-1 transition-all duration-200"></div>
+                        
+                        <div className="flex items-center justify-between">
+                          <div className="flex-1">
+                            <div className="font-semibold text-gray-900 group-hover/item:text-brand-red-600 transition-colors duration-200 mb-1 text-sm leading-tight">
+                              {item.label}
+                            </div>
+                            <div className="text-xs text-gray-600 leading-relaxed">
+                              {item.description}
+                            </div>
+                          </div>
+                          
+                          {/* Subtle arrow */}
+                          <div className="ml-3 opacity-40 group-hover/item:opacity-100 group-hover/item:translate-x-1 transition-all duration-200">
+                            <svg className="w-4 h-4 text-brand-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </div>
+                        </div>
+                      </button>
+                    </div>
                   ))}
+                  
+                  {/* View All Services Link */}
+                  <div className="px-2 mt-1 pt-2 border-t border-gray-100">
+                    <Link
+                      to="/services"
+                      onClick={() => setServicesOpen(false)}
+                      className="group flex items-center justify-center w-full px-4 py-3 text-sm font-medium text-brand-red-600 hover:text-brand-red-700 hover:bg-brand-red-50/60 rounded-lg transition-all duration-200"
+                    >
+                      <span>View All Services</span>
+                      <svg className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
@@ -258,7 +381,7 @@ const Navbar: React.FC = () => {
         {/* Enhanced Mobile Navigation */}
         <div
           id="mobile-menu"
-          className={`md:hidden fixed inset-0 top-0 transition-all duration-300 ease-in-out ${
+          className={`md:hidden fixed inset-0 top-0 transition-all duration-300 ease-in-out z-50 ${
             isOpen 
               ? 'opacity-100 visible' 
               : 'opacity-0 invisible pointer-events-none'
@@ -268,7 +391,7 @@ const Navbar: React.FC = () => {
         >
           {/* Backdrop */}
           <div 
-            className={`absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-300 ${
+            className={`absolute inset-0 bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${
               isOpen ? 'opacity-100' : 'opacity-0'
             }`}
             onClick={closeMenu}
@@ -276,14 +399,37 @@ const Navbar: React.FC = () => {
           
           {/* Menu Panel */}
           <div 
-            className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl transform transition-transform duration-300 ease-in-out ${
+            className={`absolute right-0 top-0 h-full w-80 max-w-[85vw] shadow-2xl transform transition-transform duration-300 ease-in-out ${
               isOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
+            style={{
+              background: 'rgba(255, 235, 235, 0.95)',
+              backdropFilter: 'blur(16px) saturate(180%)',
+              borderLeft: '1px solid rgba(255, 51, 51, 0.12)',
+              boxShadow: `
+                0 20px 40px -8px rgba(0, 0, 0, 0.08),
+                0 8px 16px -4px rgba(255, 51, 51, 0.06),
+                inset 0 1px 0 rgba(255, 248, 248, 0.9)
+              `
+            }}
           >
-            {/* Header - Simplified without duplicate close button */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+            {/* Header with Close Button */}
+            <div 
+              className="flex items-center justify-between p-4 border-b"
+              style={{
+                background: 'rgba(255, 235, 235, 0.9)',
+                backdropFilter: 'blur(8px)',
+                borderBottom: '1px solid rgba(255, 51, 51, 0.08)'
+              }}
+            >
               <span className="text-lg font-semibold text-gray-900">Menu</span>
-              {/* The close functionality is handled by the main hamburger button */}
+              <button
+                onClick={closeMenu}
+                className="w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/60 transition-colors focus-ring tap-highlight-none touch-manipulation"
+                aria-label="Close menu"
+              >
+                <X size={20} className="text-gray-600" />
+              </button>
             </div>
 
             {/* Menu Content */}
@@ -292,7 +438,8 @@ const Navbar: React.FC = () => {
                 {/* Services Section */}
                 <div className="relative">
                   <button
-                    className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-800 focus-ring rounded-lg tap-highlight-none touch-manipulation"
+                    className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-700 hover:text-brand-red-600 focus-ring rounded-lg tap-highlight-none touch-manipulation hover:bg-gray-50 transition-colors duration-200"
+                    className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-700 hover:text-brand-red-600 focus-ring rounded-lg tap-highlight-none touch-manipulation hover:bg-brand-red-50/30 transition-all duration-200"
                     onClick={toggleServices}
                     aria-expanded={servicesOpen}
                     aria-controls="mobile-services"
@@ -300,7 +447,7 @@ const Navbar: React.FC = () => {
                     <span>Services</span>
                     <ChevronDown
                       size={20}
-                      className={`transition-transform duration-300 ${
+                      className={`text-gray-500 transition-all duration-300 ${
                         servicesOpen ? 'rotate-180' : ''
                       }`}
                     />
@@ -314,7 +461,7 @@ const Navbar: React.FC = () => {
                         : 'max-h-0 opacity-0'
                     }`}
                   >
-                    <div className="pl-4 border-l-2 border-gray-100">
+                    <div className="pl-4 border-l-2 border-brand-red-100">
                       {[
                         { 
                           path: '/services#data-engineering', 
@@ -345,10 +492,10 @@ const Navbar: React.FC = () => {
                         <button
                           key={`mobile-service-${index}`}
                           onClick={() => handleServiceClick(item.path)}
-                          className="block w-full text-left py-3 px-3 text-gray-700 hover:bg-gray-50 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation"
+                          className="block w-full text-left py-3 px-3 text-gray-700 hover:bg-brand-red-50/60 hover:text-brand-red-600 transition-colors duration-200 focus-ring rounded-lg tap-highlight-none touch-manipulation border border-transparent hover:border-brand-red-200/50"
                         >
-                          <div className="font-medium">{item.label}</div>
-                          <div className="text-sm text-gray-500 mt-0.5">{item.description}</div>
+                          <div className="font-semibold text-gray-900 group-hover:text-brand-red-600">{item.label}</div>
+                          <div className="text-sm text-gray-600 mt-0.5">{item.description}</div>
                         </button>
                       ))}
                     </div>
@@ -356,7 +503,7 @@ const Navbar: React.FC = () => {
                 </div>
 
                 {/* Main Navigation Links */}
-                <div className="border-t border-gray-200 pt-2 mt-2">
+                <div className="border-t border-gray-100 pt-2 mt-2">
                   {[
                     { to: '/talent', label: 'Hire Talent' },
                     { to: '/about', label: 'About' },
@@ -366,10 +513,10 @@ const Navbar: React.FC = () => {
                       key={`mobile-nav-${index}`}
                       to={item.to}
                       className={({ isActive }) => 
-                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-colors duration-200 focus-ring tap-highlight-none touch-manipulation ${
+                        `block w-full px-3 py-4 text-base font-medium rounded-lg transition-all duration-200 focus-ring tap-highlight-none touch-manipulation min-h-[48px] flex items-center hover:bg-brand-red-50/30 hover:text-brand-red-600 ${
                           isActive 
                             ? 'text-brand-red-600 font-semibold bg-brand-red-50' 
-                            : 'text-gray-800 hover:text-brand-red-600 hover:bg-gray-50'
+                            : 'text-gray-700'
                         }`
                       }
                       onClick={closeMenu}

@@ -3,29 +3,133 @@ import { Database, BarChart, LineChart, Cloud, Brain } from 'lucide-react';
 import ServiceDetail from '../components/services/ServiceDetail';
 import AnimatedSection from '../components/utils/AnimatedSection';
 import CallToAction from '../components/home/CallToAction';
-import ServiceCaseStudies from '../components/services/ServiceCaseStudies';
-import {
-  dataEngineeringCaseStudies,
-  dataVisualizationCaseStudies,
-  businessIntelligenceCaseStudies,
-  cloudModernizationCaseStudies,
-  aiEngineeringCaseStudies
-} from '../data/caseStudies';
 import { motion } from 'framer-motion';
+import { useEffect, useRef } from 'react';
 
 const Services: React.FC = () => {
+  const particlesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Create floating particles
+    const createParticles = () => {
+      const container = particlesRef.current;
+      if (!container) return;
+
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.cssText = `
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: #FF3333;
+          border-radius: 50%;
+          opacity: 0;
+          left: ${Math.random() * 100}%;
+          animation: particleFloat ${15 + Math.random() * 10}s infinite;
+          animation-delay: ${Math.random() * 15}s;
+        `;
+        container.appendChild(particle);
+      }
+    };
+
+    // Create particles
+    setTimeout(() => {
+      createParticles();
+    }, 500);
+
+    return () => {
+      // Cleanup particles
+      if (particlesRef.current) {
+        particlesRef.current.innerHTML = '';
+      }
+    };
+  }, []);
+
   return (
     <>
+      <style jsx>{`
+        @keyframes particleFloat {
+          0%, 100% {
+            opacity: 0;
+            transform: translateY(100vh) scale(0);
+          }
+          10% {
+            opacity: 0.6;
+            transform: translateY(90vh) scale(1);
+          }
+          90% {
+            opacity: 0.6;
+            transform: translateY(10vh) scale(1);
+          }
+        }
+
+        @keyframes bgRotate {
+          from { transform: rotate(0deg) scale(1.5); }
+          to { transform: rotate(360deg) scale(1.5); }
+        }
+
+        @keyframes gridMove {
+          from { transform: translate(0, 0); }
+          to { transform: translate(50px, 50px); }
+        }
+
+        .bg-container {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 0;
+          overflow: hidden;
+        }
+
+        .bg-gradient {
+          position: absolute;
+          width: 200%;
+          height: 200%;
+          top: -50%;
+          left: -50%;
+          background: 
+            radial-gradient(ellipse at 20% 30%, rgba(255, 51, 51, 0.08) 0%, transparent 50%),
+            radial-gradient(ellipse at 80% 70%, rgba(107, 114, 128, 0.06) 0%, transparent 50%),
+            radial-gradient(ellipse at 50% 50%, rgba(255, 51, 51, 0.04) 0%, transparent 50%);
+          animation: bgRotate 45s linear infinite;
+        }
+
+        .bg-grid {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-image: 
+            linear-gradient(rgba(255, 51, 51, 0.02) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 51, 51, 0.02) 1px, transparent 1px);
+          background-size: 60px 60px;
+          animation: gridMove 30s linear infinite;
+        }
+
+        .particle {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: #FF3333;
+          border-radius: 50%;
+          opacity: 0;
+          animation: particleFloat 15s infinite;
+        }
+      `}</style>
+
+      {/* Light Background */}
+      <div className="bg-container">
+        <div className="bg-gradient"></div>
+        <div className="bg-grid"></div>
+        <div ref={particlesRef} className="particles"></div>
+      </div>
+
+      {/* Page Content */}
+      <div className="relative z-10">
       {/* Hero Section with Gradient Background */}
       <section className="pt-32 pb-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-gray-100 z-0"></div>
-        <div 
-          className="absolute top-0 right-0 w-1/2 h-full opacity-10 z-0"
-          style={{
-            backgroundImage: 'url("/images/pattern-dots.svg")',
-            backgroundSize: '30px 30px'
-          }}
-        ></div>
         
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -34,14 +138,14 @@ const Services: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-gray-900">
+              <h1 className="text-heading-1 mb-4">
                 Our <span className="text-brand-red-600">Services</span>
               </h1>
-              <div className="w-20 h-1.5 bg-brand-red-600 rounded-full mb-6 mx-auto"></div>
+              <div className="w-16 h-1 bg-brand-red-600 rounded-full mb-4 mx-auto"></div>
             </motion.div>
             
             <motion.p
-              className="text-base sm:text-lg lg:text-xl text-cool-gray-600"
+              className="text-body-large text-cool-gray-600"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -57,23 +161,20 @@ const Services: React.FC = () => {
       <ServiceDetail
         id="data-engineering"
         title="Data Engineering"
-        description="Build robust data pipelines and infrastructure to collect, process, and store your data efficiently."
+        description="Build robust data pipelines and infrastructure to collect, process, and store your data efficiently. See our production implementations below."
         benefits={[
           "Scalable data pipeline development",
           "Data warehouse design and implementation",
           "ETL/ELT process optimization",
           "Real-time data processing solutions",
-          "Data quality and governance frameworks"
+          "Data quality and governance frameworks",
+          "Metadata-driven ingestion frameworks"
         ]}
         icon={<Database size={32} />}
         useCustomVisual={true}
         visualType="data-engineering"
       />
 
-      <ServiceCaseStudies 
-        title="Data Engineering" 
-        caseStudies={dataEngineeringCaseStudies} 
-      />
 
       <ServiceDetail
         id="data-visualization"
@@ -92,10 +193,6 @@ const Services: React.FC = () => {
         visualType="data-visualization"
       />
 
-      <ServiceCaseStudies 
-        title="Data Visualization" 
-        caseStudies={dataVisualizationCaseStudies} 
-      />
 
       <ServiceDetail
         id="business-intelligence"
@@ -111,11 +208,6 @@ const Services: React.FC = () => {
         icon={<LineChart size={32} />}
         useCustomVisual={true}
         visualType="business-intelligence"
-      />
-
-      <ServiceCaseStudies 
-        title="Business Intelligence" 
-        caseStudies={businessIntelligenceCaseStudies} 
       />
 
       <ServiceDetail
@@ -135,11 +227,6 @@ const Services: React.FC = () => {
         visualType="cloud-modernization"
       />
 
-      <ServiceCaseStudies 
-        title="Cloud Modernization" 
-        caseStudies={cloudModernizationCaseStudies} 
-      />
-
       <ServiceDetail
         id="ai-engineering"
         title="AI Engineering"
@@ -147,8 +234,8 @@ const Services: React.FC = () => {
         benefits={[
           "Machine learning model development",
           "AI solution architecture",
-          "Natural language processing",
-          "Computer vision applications",
+          "AI Agents & RAG solutions",
+          "Generative AI & LLM integration",
           "MLOps implementation"
         ]}
         icon={<Brain size={32} />}
@@ -156,13 +243,9 @@ const Services: React.FC = () => {
         visualType="ai-engineering"
       />
 
-      <ServiceCaseStudies 
-        title="AI Engineering" 
-        caseStudies={aiEngineeringCaseStudies} 
-      />
-
       <CallToAction />
-    </>
+    </div>
+  </>
   );
 };
 

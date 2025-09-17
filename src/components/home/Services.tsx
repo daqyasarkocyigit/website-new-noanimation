@@ -15,19 +15,20 @@ interface ServiceCardProps {
 const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, link, delay }) => {
   return (
     <AnimatedSection delay={delay}>
-      <Link to={link} className="block h-full">
-        <div className="bg-white p-8 rounded-xl shadow-lg card-hover h-full flex flex-col">
-          <div className="flex items-center justify-center w-16 h-16 mb-6 text-electric-blue-500">
+      <Link to={link} className="block h-full group">
+        <div className="bg-transparent p-6 sm:p-8 rounded-xl hover:shadow-lg transition-all duration-500 h-full flex flex-col border border-gray-200/20 hover:border-[#FF3333]/30 hover:-translate-y-2 group-hover:bg-white/5 touch-manipulation">
+          <div className="flex items-center justify-center w-12 h-12 sm:w-16 sm:h-16 mb-4 sm:mb-6 text-[#FF3333] transform group-hover:scale-110 transition-transform duration-300">
             {icon}
           </div>
-          <h3 className="text-2xl font-semibold mb-4">{title}</h3>
-          <p className="text-gray-600 mb-6 flex-grow">{description}</p>
-          <div className="text-electric-blue-500 font-medium flex items-center mt-auto">
+          <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-3 sm:mb-4 group-hover:text-[#FF3333] transition-colors duration-300 leading-tight">{title}</h3>
+          <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 flex-grow group-hover:text-gray-700 transition-colors duration-300 leading-relaxed">{description}</p>
+          <div className="text-[#FF3333] font-medium flex items-center mt-auto text-sm sm:text-base">
             Learn more
             <motion.span
               className="ml-2"
               initial={{ x: 0 }}
-              whileHover={{ x: 5 }}
+              animate={{ x: 0 }}
+              whileHover={{ x: 8 }}
               transition={{ duration: 0.3 }}
             >
               →
@@ -41,17 +42,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ icon, title, description, lin
 
 const Services: React.FC = () => {
   return (
-    <section className="py-16 md:py-24" id="services">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="py-12 sm:py-16 lg:py-24 bg-transparent" id="services">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <AnimatedSection className="mb-12 text-center">
-          <h2 className="section-title mx-auto">Our Services</h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 mx-auto">Our Services</h2>
+          <p className="text-sm sm:text-base lg:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
             We offer comprehensive data and AI solutions to help your business make better decisions,
             streamline operations, and unlock new opportunities.
           </p>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-7xl mx-auto">
           <ServiceCard
             icon={<Database size={40} strokeWidth={1.5} />}
             title="Data Engineering"

@@ -44,10 +44,10 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
               <div className="text-brand-red-600 flex-shrink-0">
                 {icon}
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight">{title}</h2>
+              <h2 className="text-heading-2">{title}</h2>
             </div>
             
-            <p className="text-base sm:text-lg lg:text-xl text-cool-gray-600 mb-8 leading-relaxed">{description}</p>
+            <p className="text-body-large text-cool-gray-600 mb-6">{description}</p>
             
             <ul className="space-y-4">
               {benefits.map((benefit, index) => (
@@ -60,7 +60,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
                   viewport={{ once: true }}
                 >
                   <Check size={20} className="text-brand-red-600 mt-1 mr-3 flex-shrink-0 min-w-[20px]" />
-                  <span className="text-sm sm:text-base lg:text-lg text-cool-gray-600">{benefit}</span>
+                  <span className="text-body-base text-cool-gray-600">{benefit}</span>
                 </motion.li>
               ))}
             </ul>
@@ -77,7 +77,7 @@ const ServiceDetail: React.FC<ServiceDetailProps> = ({
               <div className="absolute -bottom-2 -left-2 sm:-bottom-4 sm:-left-4 lg:-bottom-6 lg:-left-6 w-12 h-12 sm:w-16 sm:h-16 lg:w-32 lg:h-32 bg-gray-400/10 rounded-full filter blur-2xl lg:blur-3xl"></div>
               
               {/* Main visual container - Mobile-optimized aspect ratio */}
-              <div className="relative rounded-xl overflow-hidden shadow-2xl bg-gray-900 w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px]">
+              <div className="relative rounded-xl overflow-hidden hover:shadow-lg bg-transparent w-full h-64 xs:h-72 sm:h-80 md:h-96 lg:h-[400px] xl:h-[450px] border border-gray-200/20 hover:border-[#FF3333]/30 transition-all duration-500 hover:-translate-y-2">
                 {useCustomVisual && visualType ? (
                   <div className="w-full h-full relative z-10">
                     <ResponsiveServiceVisual type={visualType} />

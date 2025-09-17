@@ -6,23 +6,26 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-white border-t border-gray-100" role="contentinfo">
+    <footer className="bg-white/50 backdrop-blur-sm border-t border-gray-100" role="contentinfo">
       <div className="container section-padding">
         {/* Main footer content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {/* Company info */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Link to="/" className="inline-block mb-4 focus-ring rounded-lg">
-              <span className="flex items-center space-x-1 text-xl font-bold">
-                <span className="text-brand-red-600">DAQ</span>
-                <span className="inline-block w-0.5 h-5 bg-brand-red-600 rounded-full opacity-60 mx-1.5"></span>
-                <span className="text-gray-800 font-semibold">Consulting</span>
-              </span>
-              <p className="text-xs text-gray-500 mt-1">
-                AI & Data Engineering Experts
-              </p>
+              <div className="flex items-center group">
+                {/* Logo Text */}
+                <div className="flex flex-col">
+                  <span className="text-lg font-black text-gray-900">
+                    <span className="text-brand-red-600">DAQ</span> <span className="font-light text-gray-600">Consulting</span>
+                  </span>
+                  <span className="text-xs text-gray-500 font-medium -mt-1">
+                    AI & Data Engineering Experts
+                  </span>
+                </div>
+              </div>
             </Link>
-            <p className="text-cool-gray-600 text-sm leading-relaxed max-w-sm">
+            <p className="text-cool-gray-600 text-sm leading-relaxed max-w-sm mt-4">
               Empowering businesses with AI & Cloud solutions to drive innovation and growth through data-driven insights.
             </p>
           </div>

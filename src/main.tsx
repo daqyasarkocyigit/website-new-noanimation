@@ -1,141 +1,73 @@
-import React, { StrictMode } from 'react';
+import React from 'react';
 import { createRoot } from 'react-dom/client';
 import './index.css';
 import App from './App';
 
-// Enhanced error boundary with retry functionality
-class ErrorBoundary extends React.Component<
-  { children: React.ReactNode },
-  { hasError: boolean; error?: Error; retryCount: number }
-> {
-  constructor(props: { children: React.ReactNode }) {
-    super(props);
-    this.state = { hasError: false, retryCount: 0 };
-  }
+console.log('🚀 DAQ Consulting App starting...');
 
-  static getDerivedStateFromError(error: Error) {
-    return { hasError: true, error };
-  }
-
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error('Application error:', error, errorInfo);
-  }
-
-  handleRetry = () => {
-    this.setState(prevState => ({
-      hasError: false,
-      error: undefined,
-      retryCount: prevState.retryCount + 1
-    }));
-  };
-
-  render() {
-    if (this.state.hasError) {
-      return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-          <div className="text-center max-w-md mx-auto">
-            <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-              <svg className="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
-              </svg>
-            </div>
-            
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">Something went wrong</h1>
-            <p className="text-gray-600 mb-6">
-              We're sorry, but something unexpected happened. Please try again.
-            </p>
-            
-            <div className="space-y-3">
-              <button
-                onClick={this.handleRetry}
-                className="w-full px-6 py-3 bg-brand-red-600 text-white rounded-lg hover:bg-brand-red-700 transition-colors font-medium"
-                disabled={this.state.retryCount >= 3}
-              >
-                {this.state.retryCount >= 3 ? 'Max retries reached' : 'Try Again'}
-              </button>
-              
-              <button
-                onClick={() => window.location.reload()}
-                className="w-full px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-              >
-                Refresh Page
-              </button>
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    return this.props.children;
-  }
-}
-
-// Initialize app
-const initializeApp = async () => {
+function mountApp() {
   const rootElement = document.getElementById('root');
-
+  
   if (!rootElement) {
-    const errorDiv = document.createElement('div');
-    errorDiv.className = 'min-h-screen flex items-center justify-center bg-gray-50 p-4';
-    errorDiv.innerHTML = `
-      <div class="text-center max-w-md mx-auto">
-        <h1 class="text-2xl font-bold text-gray-900 mb-4">Unable to Load Application</h1>
-        <p class="text-gray-600 mb-4">Please try refreshing the page or contact support if the problem persists.</p>
-        <button onclick="window.location.reload()" class="px-6 py-3 bg-brand-red-600 text-white rounded-lg hover:bg-brand-red-700 transition-colors">
-          Refresh Page
-        </button>
-      </div>
-    `;
-    document.body.appendChild(errorDiv);
+    console.error('❌ Root element not found');
     return;
   }
 
-  // Create root and render immediately
-  const root = createRoot(rootElement);
-  
-  root.render(
-    <StrictMode>
-      <ErrorBoundary>
+  try {
+    const root = createRoot(rootElement);
+    
+    root.render(
+      <React.StrictMode>
         <App />
-      </ErrorBoundary>
-    </StrictMode>
-  );
-};
-
-// Enhanced service worker registration
-const registerServiceWorker = async () => {
-  if ('serviceWorker' in navigator && import.meta.env.PROD) {
-    try {
-      const registration = await navigator.serviceWorker.register('/sw.js', { 
-        scope: '/',
-        updateViaCache: 'none'
-      });
-      
-      console.log('SW registered: ', registration);
-      
-    } catch (error) {
-      console.log('SW registration failed: ', error);
+      </React.StrictMode>
+    );
+    
+    console.log('✅ App mounted successfully');
+    
+    // Hide loading screen
+    const loadingElement = document.getElementById('app-loading');
+    if (loadingElement) {
+      loadingElement.style.display = 'none';
+    }
+    
+  } catch (error) {
+    console.error('❌ Failed to mount app:', error);
+    
+    // Show error message
+    if (rootElement) {
+      rootElement.innerHTML = `
+        <div style="padding: 40px; text-align: center; font-family: system-ui, sans-serif;">
+          <h1 style="color: #ef4444; margin-bottom: 16px;">Application Error</h1>
+          <p style="color: #374151; margin-bottom: 24px;">The application failed to load.</p>
+          <button onclick="window.location.reload()" style="
+            background: #ef4444; 
+            color: white; 
+            border: none; 
+            padding: 12px 24px; 
+            border-radius: 6px; 
+            cursor: pointer;
+            font-size: 16px;
+          ">Reload Page</button>
+        </div>
+      `;
     }
   }
-};
+}
 
-// Start the application immediately
-initializeApp().catch(error => {
-  console.error('Failed to bootstrap application:', error);
-  
-  // Fallback error display
-  document.body.innerHTML = `
-    <div class="min-h-screen flex items-center justify-center bg-gray-50 p-4">
-      <div class="text-center max-w-md mx-auto">
-        <h1 class="text-2xl font-bold text-gray-900 mb-4">Failed to Load</h1>
-        <p class="text-gray-600 mb-4">The application failed to start. Please refresh the page.</p>
-        <button onclick="window.location.reload()" class="px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
-          Refresh Page
-        </button>
-      </div>
-    </div>
-  `;
+// Mount the app when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', mountApp);
+} else {
+  mountApp();
+}
+
+// Basic error handling
+window.addEventListener('error', (e) => {
+  if (e.message !== 'Script error.') {
+    console.error('Global error:', e.error || e.message);
+  }
 });
 
-// Register service worker after app loads
-window.addEventListener('load', registerServiceWorker);
+window.addEventListener('unhandledrejection', (e) => {
+  console.error('Unhandled promise rejection:', e.reason);
+});
