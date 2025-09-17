@@ -6,14 +6,6 @@
     <title>DAQ Consulting - AI & Data Engineering Experts</title>
     <meta name="description" content="DAQ Consulting delivers enterprise-grade data engineering, AI solutions, and analytics consulting." />
     
-    <!-- Preconnect for faster font loading -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- Load fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Critical inline styles to prevent FOUC -->
     <style>
       * {
         margin: 0;
@@ -22,7 +14,7 @@
       }
       
       body {
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-family: system-ui, -apple-system, sans-serif;
         line-height: 1.6;
         background: #ffffff;
         color: #333;
@@ -32,21 +24,19 @@
         min-height: 100vh;
       }
       
-      /* Loading fallback */
-      .loading-fallback {
+      .loading {
         display: flex;
         align-items: center;
         justify-content: center;
         min-height: 100vh;
         background: #ffffff;
-        font-family: 'Inter', sans-serif;
       }
       
       .spinner {
         width: 40px;
         height: 40px;
         border: 3px solid #f3f4f6;
-        border-top: 3px solid #ef4444;
+        border-top: 3px solid #dc2626;
         border-radius: 50%;
         animation: spin 1s linear infinite;
       }
@@ -59,17 +49,15 @@
   </head>
   <body>
     <div id="root">
-      <!-- Fallback loading content -->
-      <div class="loading-fallback">
+      <div class="loading">
         <div style="text-align: center;">
           <div class="spinner"></div>
-          <div style="margin-top: 16px; color: #1f2937; font-weight: 600;">DAQ Consulting</div>
+          <div style="margin-top: 16px; font-weight: 600;">DAQ Consulting</div>
           <div style="color: #6b7280; font-size: 14px; margin-top: 8px;">Loading...</div>
         </div>
       </div>
     </div>
     
-    <!-- Fallback for JavaScript disabled -->
     <noscript>
       <div style="padding: 40px; text-align: center; background: #fef2f2; margin: 20px; border-radius: 8px;">
         <h1 style="color: #dc2626;">JavaScript Required</h1>

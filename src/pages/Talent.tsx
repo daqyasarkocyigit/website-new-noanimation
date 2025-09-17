@@ -1,107 +1,63 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Users, ChevronRight, CheckCircle, Briefcase, Database, Cloud, Brain, Zap, BarChart3 } from 'lucide-react';
-import AnimatedSection from '../components/utils/AnimatedSection';
-import CallToAction from '../components/home/CallToAction';
+import { Users, CheckCircle, Briefcase } from 'lucide-react';
 
 const Talent: React.FC = () => {
   return (
-    <div className="relative z-10">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-display-1 mb-4">
-                Hire Top <span className="text-brand-red-600">Data</span> Experts
-              </h1>
-              <div className="w-16 h-1 bg-brand-red-600 rounded-full mb-4 mx-auto"></div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mb-8"
-            >
-              <p className="text-body-large text-gray-800 mb-4 font-medium">
-                Find the right data professionals for your business needs. We specialize in Azure Data Platform, 
-                Microsoft Fabric, and Databricks solutions.
-              </p>
-            </motion.div>
-            
-            <motion.div 
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <motion.a 
-                href="/contact" 
-                className="inline-flex items-center justify-center px-6 py-3 bg-brand-red-600 hover:bg-brand-red-700 text-white rounded-lg transition-all duration-300 font-medium text-base"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <span>Request Talent</span>
-                <ChevronRight size={18} className="ml-2" />
-              </motion.a>
-            </motion.div>
-          </div>
+    <div className="pt-32 pb-20 px-4">
+      <div className="container mx-auto">
+        <div className="text-center mb-16 max-w-4xl mx-auto">
+          <h1 className="text-4xl font-bold text-gray-900 mb-6">
+            Hire Top Data Experts
+          </h1>
+          <p className="text-xl text-gray-600 mb-8">
+            Find the right data professionals for your business needs. We specialize in Azure Data Platform, Microsoft Fabric, and Databricks solutions.
+          </p>
+          <a href="/contact" className="px-8 py-4 bg-red-600 text-white rounded-lg text-lg hover:bg-red-700 transition-colors">
+            Request Talent
+          </a>
         </div>
-      </section>
 
-      {/* Benefits Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <AnimatedSection className="text-center max-w-4xl mx-auto mb-16">
-            <h2 className="text-display-1 mb-6">The DAQ Talent Advantage</h2>
-            <p className="text-body-large text-cool-gray-600">
-              Our talent solutions provide you with the highest quality data professionals.
-            </p>
-          </AnimatedSection>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+        <div className="mb-20">
+          <h2 className="text-3xl font-bold text-center mb-12">The DAQ Talent Advantage</h2>
+          <div className="grid lg:grid-cols-3 gap-8">
             {[
               {
-                icon: <Users size={28} />,
+                icon: <Users size={40} className="text-red-600" />,
                 title: "Certified Azure & Databricks Experts",
                 description: "All our professionals are Microsoft and Databricks certified with proven experience."
               },
               {
-                icon: <Briefcase size={28} />,
-                title: "Modern Data Architecture",
+                icon: <Briefcase size={40} className="text-red-600" />,
+                title: "Modern Data Architecture", 
                 description: "Specialists in Data Lakes, Lakehouses, and Real-time Intelligence solutions."
               },
               {
-                icon: <CheckCircle size={28} />,
+                icon: <CheckCircle size={40} className="text-red-600" />,
                 title: "End-to-End Solutions",
                 description: "From strategy to implementation, we deliver complete data transformation."
               }
             ].map((item, index) => (
-              <motion.div
-                key={index}
-                className="bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <div className="w-12 h-12 bg-brand-red-100 rounded-xl flex items-center justify-center mb-6">
-                  <span className="text-brand-red-600">{item.icon}</span>
+              <div key={index} className="bg-white p-8 rounded-lg shadow-lg text-center">
+                <div className="flex justify-center mb-6">
+                  {item.icon}
                 </div>
                 <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
                 <p className="text-gray-600">{item.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
-      </section>
 
-      <CallToAction />
+        <div className="bg-gray-50 py-16 px-8 rounded-lg text-center">
+          <h2 className="text-3xl font-bold mb-6">Ready to Build Your Team?</h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Let's discuss your talent requirements and find the perfect match
+          </p>
+          <a href="/contact" className="px-8 py-4 bg-red-600 text-white rounded-lg text-lg hover:bg-red-700 transition-colors">
+            Get Started
+          </a>
+        </div>
+      </div>
     </div>
   );
 };

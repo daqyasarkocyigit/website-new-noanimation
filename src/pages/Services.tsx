@@ -1,125 +1,101 @@
 import React from 'react';
-import { Database, BarChart, LineChart, Cloud, Brain } from 'lucide-react';
-import ServiceDetail from '../components/services/ServiceDetail';
-import AnimatedSection from '../components/utils/AnimatedSection';
-import CallToAction from '../components/home/CallToAction';
-import { motion } from 'framer-motion';
+import { Database, Brain, Cloud } from 'lucide-react';
 
 const Services: React.FC = () => {
   return (
-    <div className="relative z-10">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-heading-1 mb-4">
-                Our <span className="text-brand-red-600">Services</span>
-              </h1>
-              <div className="w-16 h-1 bg-brand-red-600 rounded-full mb-4 mx-auto"></div>
-            </motion.div>
-            
-            <motion.p
-              className="text-body-large text-cool-gray-600"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Comprehensive data and AI solutions to help your business make better decisions,
-              streamline operations, and unlock new opportunities.
-            </motion.p>
+    <div className="pt-32 pb-20 px-4">
+      <div className="container mx-auto">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Services</h1>
+          <p className="text-xl text-gray-600">
+            Comprehensive solutions for your data and AI needs
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          <div>
+            <div className="flex items-center mb-6">
+              <Database size={40} className="text-red-600 mr-4" />
+              <h2 className="text-3xl font-bold">Data Engineering</h2>
+            </div>
+            <p className="text-lg text-gray-600 mb-6">
+              Build robust data pipelines and infrastructure to collect, process, and store your data efficiently.
+            </p>
+            <ul className="space-y-3">
+              {[
+                "Scalable data pipeline development",
+                "Data warehouse design and implementation", 
+                "ETL/ELT process optimization",
+                "Real-time data processing solutions"
+              ].map((item, index) => (
+                <li key={index} className="flex items-center">
+                  <span className="w-2 h-2 bg-red-600 rounded-full mr-3"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="bg-gray-100 h-64 rounded-lg flex items-center justify-center">
+            <Database size={80} className="text-gray-400" />
           </div>
         </div>
-      </section>
 
-      {/* Services Details */}
-      <ServiceDetail
-        id="data-engineering"
-        title="Data Engineering"
-        description="Build robust data pipelines and infrastructure to collect, process, and store your data efficiently."
-        benefits={[
-          "Scalable data pipeline development",
-          "Data warehouse design and implementation",
-          "ETL/ELT process optimization",
-          "Real-time data processing solutions",
-          "Data quality and governance frameworks"
-        ]}
-        icon={<Database size={32} />}
-        useCustomVisual={true}
-        visualType="data-engineering"
-      />
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          <div className="bg-gray-100 h-64 rounded-lg flex items-center justify-center">
+            <Brain size={80} className="text-gray-400" />
+          </div>
+          <div>
+            <div className="flex items-center mb-6">
+              <Brain size={40} className="text-red-600 mr-4" />
+              <h2 className="text-3xl font-bold">AI Engineering</h2>
+            </div>
+            <p className="text-lg text-gray-600 mb-6">
+              Implement advanced machine learning and AI solutions to automate processes.
+            </p>
+            <ul className="space-y-3">
+              {[
+                "Machine learning model development",
+                "AI solution architecture",
+                "MLOps implementation",
+                "Generative AI integration"
+              ].map((item, index) => (
+                <li key={index} className="flex items-center">
+                  <span className="w-2 h-2 bg-red-600 rounded-full mr-3"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-      <ServiceDetail
-        id="data-visualization"
-        title="Data Visualization"
-        description="Transform complex data into intuitive visualizations that tell a compelling story and drive insights."
-        benefits={[
-          "Interactive dashboard development",
-          "Custom visualization solutions",
-          "Real-time data monitoring",
-          "Business metrics tracking",
-          "Automated reporting systems"
-        ]}
-        icon={<BarChart size={32} />}
-        isReversed
-        useCustomVisual={true}
-        visualType="data-visualization"
-      />
-
-      <ServiceDetail
-        id="business-intelligence"
-        title="Business Intelligence & Analytics"
-        description="Leverage your data to gain actionable insights, identify trends, and make data-driven decisions."
-        benefits={[
-          "Advanced analytics implementation",
-          "Predictive modeling",
-          "KPI development and tracking",
-          "Business performance analysis",
-          "Competitive intelligence solutions"
-        ]}
-        icon={<LineChart size={32} />}
-        useCustomVisual={true}
-        visualType="business-intelligence"
-      />
-
-      <ServiceDetail
-        id="cloud-modernization"
-        title="Cloud Modernization"
-        description="Migrate and optimize your data infrastructure on modern cloud platforms for scalability and cost efficiency."
-        benefits={[
-          "Cloud migration strategy",
-          "Infrastructure optimization",
-          "Multi-cloud solutions",
-          "Cloud cost optimization",
-          "Security and compliance"
-        ]}
-        icon={<Cloud size={32} />}
-        isReversed
-        useCustomVisual={true}
-        visualType="cloud-modernization"
-      />
-
-      <ServiceDetail
-        id="ai-engineering"
-        title="AI Engineering"
-        description="Implement advanced machine learning and AI solutions to automate processes and unlock predictive capabilities."
-        benefits={[
-          "Machine learning model development",
-          "AI solution architecture",
-          "AI Agents & RAG solutions",
-          "Generative AI & LLM integration",
-          "MLOps implementation"
-        ]}
-        icon={<Brain size={32} />}
-        useCustomVisual={true}
-        visualType="ai-engineering"
-      />
-
-      <CallToAction />
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div className="flex items-center mb-6">
+              <Cloud size={40} className="text-red-600 mr-4" />
+              <h2 className="text-3xl font-bold">Cloud Modernization</h2>
+            </div>
+            <p className="text-lg text-gray-600 mb-6">
+              Migrate and optimize your infrastructure on modern cloud platforms.
+            </p>
+            <ul className="space-y-3">
+              {[
+                "Cloud migration strategy",
+                "Infrastructure optimization",
+                "Multi-cloud solutions",
+                "Security and compliance"
+              ].map((item, index) => (
+                <li key={index} className="flex items-center">
+                  <span className="w-2 h-2 bg-red-600 rounded-full mr-3"></span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="bg-gray-100 h-64 rounded-lg flex items-center justify-center">
+            <Cloud size={80} className="text-gray-400" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

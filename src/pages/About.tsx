@@ -1,94 +1,68 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { CheckCircle, Award, Lightbulb, Target, TrendingUp, Shield, Zap } from 'lucide-react';
-import AnimatedSection from '../components/utils/AnimatedSection';
-import CallToAction from '../components/home/CallToAction';
+import { Target, Zap, TrendingUp, Shield } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
-    <div className="relative z-10">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h1 className="text-heading-1 mb-4">
-                About <span className="text-brand-red-600">DAQ</span> Consulting
-              </h1>
-              <div className="w-16 h-1 bg-brand-red-600 rounded-full mb-4 mx-auto"></div>
-            </motion.div>
-            
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <p className="text-body-large text-cool-gray-600 mb-4">
-                DAQ Consulting is a premier data solutions provider dedicated to helping organizations harness the power of their data.
-              </p>
-              <p className="text-body-large text-cool-gray-600">
-                Our mission is to empower organizations to unlock the full potential of their data through advanced analytics, cloud modernization, and AI.
-              </p>
-            </motion.div>
-          </div>
+    <div className="pt-32 pb-20 px-4">
+      <div className="container mx-auto">
+        <div className="text-center mb-16 max-w-4xl mx-auto">
+          <h1 className="text-4xl font-bold text-gray-900 mb-6">
+            About DAQ Consulting
+          </h1>
+          <p className="text-xl text-gray-600 mb-6">
+            DAQ Consulting is a premier data solutions provider dedicated to helping organizations harness the power of their data.
+          </p>
+          <p className="text-lg text-gray-600">
+            Our mission is to empower organizations to unlock the full potential of their data through advanced analytics, cloud modernization, and AI.
+          </p>
         </div>
-      </section>
 
-      {/* Our Approach Section */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 md:px-6">
-          <AnimatedSection className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-3 py-1 text-sm font-medium bg-gray-100 text-gray-700 rounded-full mb-4">OUR APPROACH</span>
-            <h2 className="text-heading-1 mb-6">How We Drive Transformation</h2>
-            <p className="text-body-large text-cool-gray-600">
-              We combine deep technical expertise with business acumen to deliver solutions that create real impact.
-            </p>
-          </AnimatedSection>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="mb-20">
+          <h2 className="text-3xl font-bold text-center mb-12">Our Approach</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: <Target className="text-brand-red-600" />,
+                icon: <Target size={32} className="text-red-600" />,
                 title: "Discovery & Strategy",
-                description: "We start by understanding your business goals and challenges to create a tailored data strategy."
+                description: "Understanding your business goals and challenges"
               },
               {
-                icon: <Zap className="text-brand-red-600" />,
-                title: "Solution Design",
-                description: "Our experts architect scalable, future-proof solutions that align with your business objectives."
+                icon: <Zap size={32} className="text-red-600" />,
+                title: "Solution Design", 
+                description: "Architecting scalable, future-proof solutions"
               },
               {
-                icon: <TrendingUp className="text-brand-red-600" />,
+                icon: <TrendingUp size={32} className="text-red-600" />,
                 title: "Implementation",
-                description: "We deliver with precision, ensuring seamless integration with your existing systems."
+                description: "Delivering with precision and expertise"
               },
               {
-                icon: <Shield className="text-brand-red-600" />,
+                icon: <Shield size={32} className="text-red-600" />,
                 title: "Continuous Support",
-                description: "Our relationship continues with ongoing optimization and support to maximize your ROI."
+                description: "Ongoing optimization and support"
               }
             ].map((item, index) => (
-              <AnimatedSection 
-                key={index} 
-                delay={0.1 * index} 
-                className="bg-white p-6 sm:p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="w-12 h-12 rounded-lg bg-brand-red-100 flex items-center justify-center mb-6">
+              <div key={index} className="bg-white p-6 rounded-lg shadow-lg text-center">
+                <div className="flex justify-center mb-4">
                   {item.icon}
                 </div>
-                <h3 className="text-heading-4 mb-4">{item.title}</h3>
-                <p className="text-body-base text-cool-gray-600">{item.description}</p>
-              </AnimatedSection>
+                <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
             ))}
           </div>
         </div>
-      </section>
 
-      <CallToAction />
+        <div className="bg-gray-50 py-16 px-8 rounded-lg text-center">
+          <h2 className="text-3xl font-bold mb-6">Ready to Get Started?</h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Let's discuss how we can help transform your data capabilities
+          </p>
+          <a href="/contact" className="px-8 py-4 bg-red-600 text-white rounded-lg text-lg hover:bg-red-700 transition-colors">
+            Contact Us
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
