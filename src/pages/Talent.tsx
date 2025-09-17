@@ -93,6 +93,13 @@ const Talent: React.FC = () => {
                 <div className="w-12 h-12 bg-brand-red-100 rounded-xl flex items-center justify-center mb-6">
                   <span className="text-brand-red-600">{item.icon}</span>
                 </div>
+                <h3 className="text-xl font-semibold mb-4">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <CallToAction />
     </div>
