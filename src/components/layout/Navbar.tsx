@@ -439,6 +439,7 @@ const Navbar: React.FC = () => {
                 <div className="relative">
                   <button
                     className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-700 hover:text-brand-red-600 focus-ring rounded-lg tap-highlight-none touch-manipulation hover:bg-gray-50 transition-colors duration-200"
+                    className="flex justify-between items-center w-full py-4 text-base font-medium text-gray-700 hover:text-brand-red-600 focus-ring rounded-lg tap-highlight-none touch-manipulation hover:bg-brand-red-50/30 transition-all duration-200"
                     onClick={toggleServices}
                     aria-expanded={servicesOpen}
                     aria-controls="mobile-services"
