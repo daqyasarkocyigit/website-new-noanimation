@@ -221,7 +221,7 @@ ${formData.message}
               rows={5}
               aria-invalid={errors.message ? 'true' : 'false'}
               aria-describedby={errors.message ? 'message-error' : undefined}
-              className={`form-textarea ${errors.message ? 'border-red-500 focus:ring-red-500 focus:border-red-500' : ''}`}
+              className={`w-full px-4 py-3 text-base border rounded-lg transition-all duration-200 bg-transparent border-gray-200/30 hover:border-brand-red-300/50 focus:border-brand-red-500 focus:ring-2 focus:ring-brand-red-500/20 focus:bg-white/5 resize-none min-h-[120px] ${errors.message ? 'border-red-500 focus:ring-red-500 focus:border-red-500 bg-red-50/10' : ''}`}
               placeholder="Tell us about your project or requirements..."
             />
             {errors.message && (
