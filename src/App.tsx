@@ -4,7 +4,7 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ScrollToTop from './components/utils/ScrollToTop';
 
-// Import all pages directly (no lazy loading)
+// Import all pages
 import Home from './pages/Home';
 import Services from './pages/Services';
 import About from './pages/About';
