@@ -119,9 +119,6 @@ const Talent: React.FC = () => {
                   <Cloud className="text-blue-600" size={24} />
                 </div>
                 <h3 className="text-heading-3">Microsoft Azure</h3>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
                 {[
                   'Azure Data Factory', 'Azure Databricks', 'Microsoft Fabric', 'Power BI',
                   'Azure Synapse', 'Azure ML', 'Azure OpenAI', 'Delta Lake',
@@ -141,9 +138,6 @@ const Talent: React.FC = () => {
                   <Database className="text-red-600" size={24} />
                 </div>
                 <h3 className="text-heading-3">Data Engineering</h3>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
                 {[
                   'Python', 'SQL', 'Spark', 'Kafka',
                   'Docker', 'Kubernetes', 'Terraform', 'dbt',
@@ -163,9 +157,6 @@ const Talent: React.FC = () => {
                   <Brain className="text-purple-600" size={24} />
                 </div>
                 <h3 className="text-heading-3">AI & Machine Learning</h3>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
                 {[
                   'TensorFlow', 'PyTorch', 'Scikit-learn', 'MLflow',
                   'Hugging Face', 'LangChain', 'OpenAI GPT', 'Azure OpenAI',
@@ -185,9 +176,6 @@ const Talent: React.FC = () => {
                   <BarChart3 className="text-green-600" size={24} />
                 </div>
                 <h3 className="text-heading-3">Analytics & BI</h3>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-4">
                 {[
                   'Power BI', 'Tableau', 'Looker', 'Qlik',
                   'R', 'Jupyter', 'Apache Superset', 'Grafana',
